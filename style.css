@@ -1,9 +1,8 @@
 .header {
-    background-color: rgb(40, 40, 189);
+    background-color: #212D8D;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    border-style: dotted;
     width: 150px;
     height: 900px;
     margin-top: 40px;
@@ -20,10 +19,22 @@
 }
 
 .list-color {
-    color: white;
+    color: rgba(255, 255, 255, 0.803);
     cursor: pointer;
+    border-left: solid 5px #ffffff00;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
 .list-color:hover {
     color: white;
+
+}
+
+.list-color:hover{
+    border-top: 0px #212D8D;
+    border-bottom: 0px #212D8D;
+    border-left: solid 5px white;
 }
