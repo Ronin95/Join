@@ -1,0 +1,29 @@
+.header {
+    background-color: rgb(40, 40, 189);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    border-style: dotted;
+    width: 150px;
+    height: 900px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.header-img-buttons {
+    margin-top: 50px;
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.list-color {
+    color: white;
+    cursor: pointer;
+}
+
+.list-color:hover {
+    color: white;
+}
