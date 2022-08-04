@@ -19,8 +19,10 @@ body {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    align-items: flex-start;
     width: 150px;
     height: 900px;
+    /* Lukas: to delete */
     margin-top: 40px;
     margin-bottom: 40px;
 }
@@ -53,4 +55,8 @@ body {
     border-top: 0px #212D8D;
     border-bottom: 0px #212D8D;
     border-left: solid 5px white;
+}
+
+.board-column {
+    background-color: rgb(230, 232, 255);
 }

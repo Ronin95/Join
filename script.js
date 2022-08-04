@@ -2,7 +2,8 @@ async function init() {
     await downloadFromServer();
     allTasks = JSON.parse(backend.getItem('allTasks')) || [];
     await includeHTML();
-    document.getElementById('headline').innerHTML = 'Herzlich willkommen!';
+    // LUKAS 04.08.22 16:06: I have commented it out because this ID (so far) is not used and causes error the console.
+    // document.getElementById('headline').innerHTML = 'Herzlich willkommen!';
 }
 
 async function includeHTML() {
