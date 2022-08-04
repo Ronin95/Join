@@ -1,3 +1,19 @@
+* {
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightslategray;
+    height: 100vh;
+}
+
+.app-window {
+    background: lightblue;
+}
+
 .header {
     background-color: #212D8D;
     display: flex;
@@ -33,7 +49,7 @@
 
 }
 
-.list-color:hover{
+.list-color:hover {
     border-top: 0px #212D8D;
     border-bottom: 0px #212D8D;
     border-left: solid 5px white;
