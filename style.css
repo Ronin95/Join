@@ -60,3 +60,90 @@ body {
 .board-column {
     background-color: rgb(230, 232, 255);
 }
+
+.titles {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.outer-border {
+    margin: 20px;
+    background-color: lightgrey;
+    border-radius: 10px;
+}
+
+.first-row-column {
+    margin: 20px;
+}
+
+.first-row-column input {
+    width: 280px;
+    border-radius: 5px;
+    border-color: rgba(0,0,0,.2);
+    padding: 10px;
+}
+
+.first-row {
+    display: flex;
+}
+
+.first-row-2column {
+    margin: 20px;
+}
+
+.first-row-2column  input {
+    width: 280px;
+    border-radius: 5px;
+    border-color: rgba(0,0,0,.2);
+    padding: 10px;
+}
+
+.second-row {
+    display: flex;
+}
+
+.second-row-column {
+    margin: 20px;
+}
+
+.category select {
+    width: 280px;
+    border-radius: 5px;
+    border-color: rgba(0,0,0,.2);
+    padding: 10px;
+}
+
+.second-row-2column {
+    margin: 20px;
+}
+
+.third-row {
+    display: flex;
+}
+
+.third-row-column {
+    margin: 20px;
+}
+
+.third-row-column textarea {
+    width: 280px;
+    height: 150px;
+    border-radius: 5px;
+    border-color: rgba(0,0,0,.2);
+    padding: 10px;
+}
+
+.third-row-2column {
+    margin: 20px;
+}
+
+.third-row-2column img {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.buttons-Task {
+    margin-top: 15px;
+    margin-left: 70px;
+}
