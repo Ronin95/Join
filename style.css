@@ -63,73 +63,112 @@ body {
   background-color: rgb(230, 232, 255);
 }
 
+/* Add Task code */
+
+.outer-border {
+  border-style: dotted;
+  width: 100vw;
+}
+
 .titles {
+  border-style: dotted;
   display: flex;
   flex-direction: column;
   margin: 20px;
 }
 
-.outer-border {
+.outer-border-form-field {
   margin: 20px;
   background-color: lightgrey;
   border-radius: 10px;
+  border-style: dotted;
+}
+
+
+.first-row {
+  display: flex;
+  border-style: dashed;
+  width: 80vw;
+  color: green;
 }
 
 .first-row-column {
   margin: 20px;
+  width: 40vw;
+  border-style: dotted;
+  color: red;
 }
 
 .first-row-column input {
-  width: 280px;
+  width: 30vw;
   border-radius: 5px;
   border-color: rgba(0, 0, 0, 0.2);
   padding: 10px;
-}
-
-.first-row {
-  display: flex;
+  font-size: 24px;
+  
 }
 
 .first-row-2column {
   margin: 20px;
+  border-style: dotted;
+  width: 35vw;
+  color: blue;
 }
 
 .first-row-2column input {
-  width: 280px;
+  width: 30vw;
   border-radius: 5px;
   border-color: rgba(0, 0, 0, 0.2);
   padding: 10px;
+  font-size: 24px;
 }
 
 .second-row {
   display: flex;
+  border-style: dashed;
+  width: 80vw;
+  color: violet;
 }
 
 .second-row-column {
   margin: 20px;
+  width: 40vw;
+  border-style: dotted;
+  color: red;
 }
 
 .category select {
-  width: 280px;
+  width: 30vw;
   border-radius: 5px;
   border-color: rgba(0, 0, 0, 0.2);
   padding: 10px;
+  color: greenyellow;
+  font-size: 24px;
 }
 
 .second-row-2column {
   margin: 20px;
+  border-style: dotted;
+  width: 35vw;
+  color: blue;
 }
 
 .third-row {
   display: flex;
+  border-style: dashed;
+  width: 80vw;
+  color: green;
 }
 
 .third-row-column {
   margin: 20px;
+  border-style: dotted;
+  width: 40vw;
+  color: blue;
 }
 
 .third-row-column textarea {
-  width: 280px;
+  width: 30vw;
   height: 150px;
   border-radius: 5px;
   border-color: rgba(0, 0, 0, 0.2);
