@@ -66,12 +66,10 @@ body {
 /* Add Task code */
 
 .outer-border {
-  border-style: dotted;
-  width: 100vw;
+  width: 85vw;
 }
 
 .titles {
-  border-style: dotted;
   display: flex;
   flex-direction: column;
   margin: 20px;
@@ -81,22 +79,17 @@ body {
   margin: 20px;
   background-color: lightgrey;
   border-radius: 10px;
-  border-style: dotted;
 }
 
 
 .first-row {
   display: flex;
-  border-style: dashed;
   width: 80vw;
-  color: green;
 }
 
 .first-row-column {
   margin: 20px;
   width: 40vw;
-  border-style: dotted;
-  color: red;
 }
 
 .first-row-column input {
@@ -110,9 +103,7 @@ body {
 
 .first-row-2column {
   margin: 20px;
-  border-style: dotted;
   width: 35vw;
-  color: blue;
 }
 
 .first-row-2column input {
@@ -125,16 +116,12 @@ body {
 
 .second-row {
   display: flex;
-  border-style: dashed;
   width: 80vw;
-  color: violet;
 }
 
 .second-row-column {
   margin: 20px;
   width: 40vw;
-  border-style: dotted;
-  color: red;
 }
 
 .category select {
@@ -150,32 +137,21 @@ body {
   background-repeat: no-repeat;
   background-position: calc(100% - 3px) center;
   background-size: 10px;
-  border-style: dotted;
-}
-
-.category select:after {
-  color: blue;
 }
 
 .second-row-2column {
   margin: 20px;
-  border-style: dotted;
   width: 35vw;
-  color: blue;
 }
 
 .third-row {
   display: flex;
-  border-style: dashed;
   width: 80vw;
-  color: green;
 }
 
 .third-row-column {
   margin: 20px;
-  border-style: dotted;
   width: 40vw;
-  color: blue;
 }
 
 .third-row-column textarea {
@@ -184,10 +160,14 @@ body {
   border-radius: 5px;
   border-color: rgba(0, 0, 0, 0.2);
   padding: 10px;
+  font-size: 24px;
 }
 
 .third-row-2column {
   margin: 20px;
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
 }
 
 .third-row-2column img {
@@ -196,13 +176,15 @@ body {
 }
 
 .buttons-Task {
-  height: 70px;
-  margin-top: 15px;
-  margin-left: 200px;
-  border-style: dotted;
+  gap: 20px;
   display: flex;
-  gap: 40px;
+  justify-content: flex-end;
+  width: 25vw;
+}
 
+.buttons-Task button {
+  width: 150px;
+  font-size: 24px;
 }
 
 /*
