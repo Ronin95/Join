@@ -10,6 +10,10 @@ body {
   height: 100vh;
 }
 
+.main-color{
+  color: #212d8d;
+}
+
 .app-window {
   background: lightblue;
 }
@@ -144,4 +148,75 @@ body {
 .buttons-Task {
   margin-top: 15px;
   margin-left: 70px;
+}
+
+/*
+backlog.hmtl Style
+*/
+
+.position-top{
+    position: fixed;
+    top: 74px;
+  }
+
+  .backlog-headline{
+    color: black;
+    font-size: 32px;
+  }
+
+  .backlog-secondline{
+    color: #212d8d;
+    font-size: 12px;
+  }
+
+.tr-margin{
+  margin-bottom: 12px !important;
+}
+.whole-contain{
+  width: 90%;
+}
+
+.text-align{
+  text-align:right
+}
+
+.width-twenty{
+  width: 30%;
+}
+
+.table>tbody{
+  vertical-align: middle !important;
+}
+
+.assigned-img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 12px;
+  margin-right: 18px;
+}
+
+.left-rounded{
+  border-top-left-radius: 18px;
+  border-bottom-left-radius: 18px;
+}
+
+.right-rounded{
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+}
+
+.assigned-to-row{
+  display: flex;
+  align-items: center;
+}
+
+.flex-it-column{
+  display: flex;
+  flex-direction: column;
+}
+
+td:hover{
+  cursor: pointer;
 }
