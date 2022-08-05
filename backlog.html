@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join</title>
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+    <script src="mini_backend.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+    <link rel="icon" href="/Kanban_Gruppenarbeit/logo.png" />
+    <script>
+      setURL(
+        'https://gruppe-293-join.developerakademie.net/smallest_backend_ever'
+      );
+    </script>
+  </head>
+
+  <body onload="includeHTML()" class="m-0">
+    <div
+      class="app-window p-0 w-100 d-flex flex-sm-row justify-content-flex-start align-items-center h-100"
+    >
+      <div w3-include-html="header.html"></div>
+      <div>
+        <div class="flex-it-column m-4 position-top">
+          <h2 class="backlog-headline">Backlog</h2>
+          <span class="backlog-secondline"
+            >Learning Management System Project</span
+          >
+        </div>
+
+        <div class="whole-contain">
+          <table class="table table-hover table-borderless">
+            <thead class="table-top">
+              <tr>
+                <th scope="col" class="main-color width-twenty">ASSIGNED TO</th>
+                <th scope="col" class="main-color width-twenty">CATEGORY</th>
+                <th scope="col" class="main-color text-align">DETAILS</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr class="table-secondary table-row table-row-design">
+                <td class="left-rounded assigned-to-row">
+                  <img
+                    class="border rounded-circle assigned-img"
+                    src="./img/maik.png"
+                    alt=""
+                  />
+                  <div class="flex-it-column">
+                    <span>Maik Rophone</span
+                    ><span
+                      ><a href="x">maikrophone@developerakademie.com</a></span
+                    >
+                  </div>
+                </td>
+                <td class="">IT-Support</td>
+                <td class="right-rounded">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
+                  quisquam, eius odit, rerum excepturi labore, architecto facere
+                  id animi impedit officia culpa.
+                </td>
+              </tr>
+
+              <!-- 
+                  AB hier ist der Code nur zur Veranschaulichung
+                  da das oben ja ein HTML Template wird wenn die Funktion
+                  eingebunuden sind
+                -->
+
+              <tr class="table-secondary table-row table-row-design">
+                <td class="left-rounded assigned-to-row">
+                  <img
+                    class="border rounded-circle assigned-img"
+                    src="./img/nikola.png"
+                    alt=""
+                  />
+                  <div class="flex-it-column">
+                    <span>Nikola Badjevic</span
+                    ><span
+                      ><a href="x">maikrophone@developerakademie.com</a></span
+                    >
+                  </div>
+                </td>
+                <td class="">Marketing</td>
+                <td class="right-rounded mt-4">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
+                  quisquam, eius odit, rerum excepturi labore, architecto facere
+                  id animi impedit officia culpa.
+                </td>
+              </tr>
+
+              <tr class="table-secondary table-row table-row-design">
+                <td class="left-rounded assigned-to-row">
+                  <img
+                    class="border rounded-circle assigned-img"
+                    src="./img/Phil.jpg"
+                    alt=""
+                  />
+                  <div class="flex-it-column">
+                    <span>Phil Schmucker</span
+                    ><span
+                      ><a href="x">maikrophone@developerakademie.com</a></span
+                    >
+                  </div>
+                </td>
+                <td class="">Sale</td>
+                <td class="right-rounded mt-4">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
+                  quisquam, eius odit, rerum excepturi labore, architecto facere
+                  id animi impedit officia culpa.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
