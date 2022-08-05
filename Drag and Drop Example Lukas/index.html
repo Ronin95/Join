@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop</title>
+
+    <style>
+        .drag-area {
+            height: 200px;
+            background-color: rgba(0, 0, 0, 0.1);
+            border: 1px dashed black;
+            margin-bottom: 50px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .drag-area-highlight {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .todo {
+            border: 1px solid gray;
+            background-color: white;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+
+    <script>
+        let todos = [{
+            'id': 0,
+            'title': 'Putzen',
+            'category': 'open'
+        }, {
+            'id': 1,
+            'title': 'Kochen',
+            'category': 'open'
+        }, {
+            'id': 2,
+            'title': 'Einkaufen',
+            'category': 'closed'
+        }
+        ];
+
+        let currentDraggedElement;
+
+        /* Array todos wird gefiltert. */
+        function updateHTML() {
+            /* Array todos wird nach category open gefilter und Resultat in open gespeichert */
+            let open = todos.filter(t => t['category'] == 'open');
+
+            /* Container wird geleert. */
+            document.getElementById('open').innerHTML = '';
+
+            /* Iteration und Generieren aller gefilterten todos / gespeichert in open 
+            mit (return-Funktion) generateToDoHTML. */
+            for (let index = 0; index < open.length; index++) {
+                const element = open[index];
+                document.getElementById('open').innerHTML += generateTodoHTML(element);
+                document.getElementById('open').classList.remove('drag-area-highlight');
+            }
+
+            /* Array todos wird nach category closed gefilter und Resultat in closed gespeichert */
+            let closed = todos.filter(t => t['category'] == 'closed');
+
+
+            /* Container wird geleert. */
+            document.getElementById('closed').innerHTML = '';
+
+            /* Iteration und Generieren aller gefilterten todos / gespeichert in closed 
+            mit (return-Funktion) generateToDoHTML. */
+            for (let index = 0; index < closed.length; index++) {
+                const element = closed[index];
+                document.getElementById('closed').innerHTML += generateTodoHTML(element);
+                document.getElementById('closed').classList.remove('drag-area-highlight');
+            }
+        }
+
+        function generateTodoHTML(element) {
+            /* Mit draggable Attribut (boolen) erlaubt man ein HTML-ELement zu mit der Maus haltend zu schieben.*/
+
+            /* Mit ondragstart Attribut wird eine JS-Funktion nach dem Start der Bewegung eines HTML-Elements ausgeführt. */
+            return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="todo">${element['title']}</div>`
+        }
+
+        /* Hier wird global in var currentDraggedElement das gedraggte Element gespeichert.*/
+        function startDragging(id) {
+            currentDraggedElement = id;
+        }
+
+        /* fertige w3-School-Funktion: Einfach im Tutorial reinkopiert */
+        /* Ändert das Standardverhalten von betroffenem Container, dass man die Möglichkeit hat, 
+        über diesen Containter ein anderes HTML-Element abzuwerfen. */
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        /* Wird ausgeführt nach dem ein gedraggtes Element losgelassen wird (ondrop) */
+        function moveTo(category) {
+            /* Z.B. Todo mit id 1: Das Feld 'category' ändert sich zu 'open' oder 'closed'. */
+            todos[currentDraggedElement]['category'] = category;
+            /* damit nach Änderung der Kategorie auch optisch das Element verschoben wird muss HTML Update durchgeführt werden. */
+            updateHTML();
+        }
+
+        /* Highlighttet den Sammelcontainer wenn man mit dem gedrggten Element drüber geht (eine Klasse wird hinzugeführt)  */
+        function highlight(id) {
+            document.getElementById(id).classList.add('drag-area-highlight');
+        }
+
+        /* Entzieht die Highlight Klasse der Container wenn das gedraggte Element den Sammelcontainer verlässt. */
+        function removeHighlight(id) {
+            document.getElementById(id).classList.remove('drag-area-highlight');
+        }
+    </script>
+</head>
+
+<body onload="updateHTML()">
+
+    <!-- Mit ondrop wird eine Funktion ausgeführt wenn ein gedraggtes Element losgelassen wird (gedropt). -->
+
+    <!-- Mit ondragover wird eine Funktion ausgeführt wenn ein anderes gedraggtes Elementes ÜBER dieses Element (hier Sammelcontainer) OHNE LOSZULASSEN GESCHOBBEN WIRD.
+    Hier ändert man das Standardverhalten des Container (Sammlers) von open und closed Todos (fertige w3-school Funktion) -->
+
+    <!-- Mit ondragleave wird eine Funktion ausgeführt wenn ein anderes gedraggtes Element das hier betroffene Element (hier der Sammelcontainer) verlässt (ohne loszulassen) -->
+    <div class="drag-area" id="open" ondrop="moveTo('open')" ondragleave="removeHighlight(id)"
+        ondragover="allowDrop(event); highlight('open')"></div>
+    <div class="drag-area" id="closed" ondrop="moveTo('closed')" ondragleave="removeHighlight(id)"
+        ondragover="allowDrop(event); highlight('closed')">
+    </div>
+
+</body>
+
+</html>
