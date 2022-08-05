@@ -1,3 +1,5 @@
+setURL('https://gruppe-293-join.developerakademie.net/smallest_backend_ever');
+
 // funktioniert noch nicht richtig.
 // async function init() {
 //     await downloadFromServer();
