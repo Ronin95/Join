@@ -141,10 +141,20 @@ body {
   width: 30vw;
   border-radius: 5px;
   border-color: rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  color: greenyellow;
   font-size: 24px;
-  ;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  padding: 15px;
+  background-image: url('img/chevron\ .png');
+  background-repeat: no-repeat;
+  background-position: calc(100% - 3px) center;
+  background-size: 10px;
+  border-style: dotted;
+}
+
+.category select:after {
+  color: blue;
 }
 
 .second-row-2column {
@@ -186,8 +196,13 @@ body {
 }
 
 .buttons-Task {
+  height: 70px;
   margin-top: 15px;
-  margin-left: 70px;
+  margin-left: 200px;
+  border-style: dotted;
+  display: flex;
+  gap: 40px;
+
 }
 
 /*
