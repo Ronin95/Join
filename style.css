@@ -155,8 +155,8 @@ backlog.hmtl Style
 */
 
 .position-top{
-    position: fixed;
-    top: 74px;
+  margin-top: 64px !important;
+  margin-bottom: 48px !important;
   }
 
   .backlog-headline{
@@ -173,7 +173,7 @@ backlog.hmtl Style
   margin-bottom: 12px !important;
 }
 .whole-contain{
-  width: 90%;
+  margin-left: 24px;
 }
 
 .text-align{
@@ -219,4 +219,9 @@ backlog.hmtl Style
 
 td:hover{
   cursor: pointer;
+}
+
+.table {
+  border-collapse: separate;
+  border-spacing:0px 12px;
 }
