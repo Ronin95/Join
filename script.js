@@ -1,5 +1,4 @@
 setURL('https://gruppe-293-join.developerakademie.net/smallest_backend_ever');
-let allTasks = [];
 
 async function init() {
   await downloadFromServer();
@@ -7,7 +6,8 @@ async function init() {
   await includeHTML();
   // LUKAS 04.08.22 16:06: I have commented it out because this ID (so far) is not used and causes error the console.
   // document.getElementById('headline').innerHTML = 'Herzlich willkommen!';
-  backend.setItem('Test', 'Hallo');
+  backend.setItem(allTasks);
+  
 }
 
 async function includeHTML() {
@@ -22,4 +22,7 @@ async function includeHTML() {
       element.innerHTML = 'Page not found';
     }
   }
+  loadAllTasks();
 }
+
+
