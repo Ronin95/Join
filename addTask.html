@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="addTask.js"></script>
+    <script src="script.js"></script>
     <title>Join</title>
     <!-- CSS only -->
     <link
@@ -37,7 +39,7 @@
           <div class="first-row">
             <div class="first-row-column">
               <h3>Title</h3>
-              <input id="title" placeholder="Add a title for your task" />
+              <input id="title" placeholder="Add a title for your task">
             </div>
             <div class="first-row-2column">
               <h3>Due Date</h3>
@@ -50,7 +52,7 @@
             <div class="second-row-column">
               <h3>Category</h3>
               <form class="category">
-                <select>
+                <select id="category">
                   <option value="Sales">Sales</option>
                   <option value="IT">IT</option>
                   <option value="Production">Production</option>
@@ -63,7 +65,7 @@
             <div class="second-row-2column">
               <h3>Urgency</h3>
               <form class="category">
-                <select>
+                <select id="urgency">
                   <option value="Low">Low</option>
                   <option value="Medium">Medium</option>
                   <option value="High">High</option>
@@ -75,7 +77,7 @@
             <div class="third-row-column">
               <h3>Description</h3>
               <textarea
-                id="textNotes"
+                id="description"
                 placeholder="Add your notes for the task here..."
               ></textarea>
             </div>
@@ -106,10 +108,10 @@
                   id="cancelTask"
                 >Cancel
                 </button>
-                <button 
+                <button onclick="addTask()"
                   class="btn btn-primary" 
                   type="button" 
-                  id="createTask"
+                  id="addTask"
                 >Create Task
                 </button>
               </div>
