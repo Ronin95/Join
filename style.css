@@ -200,6 +200,14 @@ body {
 backlog.hmtl Style
 */
 
+
+
+.category-headers{
+  display: flex;
+  justify-content: space-between;
+}
+
+
 #freshTask{
   display: flex;
   flex-direction: column-reverse;

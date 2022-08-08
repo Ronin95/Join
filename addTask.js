@@ -30,7 +30,7 @@ async function loadAllTasks(){
       const task = allTasks[i];
     
     document.getElementById('freshTask').innerHTML += /*html*/ `
-                <tr class="table-secondary table-row table-row-design d-flex">
+                <tr class="m-1 table-secondary table-row table-row-design d-flex">
                   <td class="left-rounded assigned-to-row">
                     <img
                       class="border rounded-circle assigned-img"
@@ -43,8 +43,8 @@ async function loadAllTasks(){
                       >
                     </div>
                   </td>
-                  <td class="">${task.category}</td>
-                  <td class="right-rounded">
+                  <td class="justify-content-center">${task.category}</td>
+                  <td class="right-rounded justify-content-end">
                   ${task.description}
                   </td>
                 </tr>

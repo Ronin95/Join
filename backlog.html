@@ -35,7 +35,7 @@
       class="app-window p-0 w-100 d-flex flex-sm-row justify-content-flex-start align-items-center h-100"
     >
       <div w3-include-html="header.html"></div>
-      <div>
+      <div class="contain-all">
         <div class="flex-it-column m-4 position-top">
           <h2 class="backlog-headline">Backlog</h2>
           <span class="backlog-secondline"
@@ -44,9 +44,9 @@
         </div>
 
         <div class="whole-contain">
-          <table class="table table-hover table-borderless">
+          <table class="table table-hover table-borderless d-flex flex-it-column">
             <thead class="table-top">
-              <tr>
+              <tr class="category-headers">
                 <th scope="col" class="main-color width-twenty">ASSIGNED TO</th>
                 <th scope="col" class="main-color width-twenty">CATEGORY</th>
                 <th scope="col" class="main-color text-align">DETAILS</th>
