@@ -19,12 +19,37 @@ let allTasksAsString = JSON.stringify(allTasks);
 localStorage.setItem('allTasks', allTasksAsString);
 loadAllTasks(allTasks);
 clearInput();
+
 }
 
-function loadAllTasks(allTasks){
+async function loadAllTasks(){
     let allTasksAsString = localStorage.getItem('allTasks');
     allTasks = JSON.parse(allTasksAsString);
-    console.log('Loadad all tasks', allTasks);
+    document.getElementById('freshTask').innerHTML = '';
+    for (let i = 0; i < allTasks.length; i++) {
+      const task = allTasks[i];
+    
+    document.getElementById('freshTask').innerHTML += /*html*/ `
+                <tr class="table-secondary table-row table-row-design d-flex">
+                  <td class="left-rounded assigned-to-row">
+                    <img
+                      class="border rounded-circle assigned-img"
+                      src="./img/maik.png"
+                      alt="">
+                    <div class="flex-it-column">
+                      <span>Maik RophoneXXX</span
+                      ><span
+                        ><a href="x">DasFunktionniert.com</a></span
+                      >
+                    </div>
+                  </td>
+                  <td class="">${task.category}</td>
+                  <td class="right-rounded">
+                  ${task.description}
+                  </td>
+                </tr>
+              
+    `};
 }
 
 
@@ -43,33 +68,32 @@ async function init() {
   backend.setItem('Test', 'Hallo');
 }
 
-function AddTaskToBacklog() {
-  for (let i = 0; i < allTasks.length; i++) {
-    let task = allTasks[i];
-    
-  document.getElementById('newTask').innerHTML += /*html*/ `
-            <tbody>
-              <tr class="table-secondary table-row table-row-design">
-                <td class="left-rounded assigned-to-row">
-                  <img
-                    class="border rounded-circle assigned-img"
-                    src="./img/maik.png"
-                    alt=""
-                  />
-                  <div class="flex-it-column">
-                    <span>Maik Rophone</span
-                    ><span
-                      ><a href="x">maikrophone@developerakademie.com</a></span
-                    >
-                  </div>
-                </td>
-                <td class="">${task.category}.</td>
-                <td class="right-rounded">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
-                  quisquam, eius odit, rerum excepturi labore, architecto facere
-                  id animi impedit officia culpa.
-                </td>
-              </tr>
-            </tbody>
-  `};
+function addTaskToBacklog(allTasks) {
+  
+  // for (let i = 0; i < allTasks.length; i++) {
+  //   const task = allTasks[i];
+  
+  // document.getElementById('freshTask').innerHTML += /*html*/ `
+  //             <tr class="table-secondary table-row table-row-design">
+  //               <td class="left-rounded assigned-to-row">
+  //                 <img
+  //                   class="border rounded-circle assigned-img"
+  //                   src="./img/maik.png"
+  //                   alt="">
+  //                 <div class="flex-it-column">
+  //                   <span>Maik RophoneXXX</span
+  //                   ><span
+  //                     ><a href="x">DasFunktionniert.com</a></span
+  //                   >
+  //                 </div>
+  //               </td>
+  //               <td class="">${task.category}</td>
+  //               <td class="right-rounded">
+  //                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro
+  //                 quisquam, eius odit, rerum excepturi labore, architecto facere
+  //                 id animi impedit officia culpa.
+  //               </td>
+  //             </tr>
+            
+  // `};
 }

@@ -200,6 +200,11 @@ body {
 backlog.hmtl Style
 */
 
+#freshTask{
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 .position-top {
   margin-top: 64px !important;
   margin-bottom: 48px !important;
@@ -262,6 +267,12 @@ backlog.hmtl Style
 .flex-it-column {
   display: flex;
   flex-direction: column;
+}
+
+td{
+  display: flex;
+  align-items: center;
+  width: 20vw;
 }
 
 td:hover {
