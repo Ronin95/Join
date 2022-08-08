@@ -219,6 +219,13 @@ body {
 backlog.hmtl Style
 */
 
+.searchfield-backlog input {
+  width: 280px;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+}
 
 
 .category-headers{
