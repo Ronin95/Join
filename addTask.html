@@ -1,124 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="addTask.js"></script>
-    <script src="script.js"></script>
-    <title>Join</title>
-    <!-- CSS only -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-      crossorigin="anonymous"
-    />
-    <!-- JavaScript Bundle with Popper -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-      crossorigin="anonymous"
-    ></script>
-    <script src="mini_backend.js"></script>
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
-    <link rel="icon" href="/Kanban_Gruppenarbeit/logo.png" />
-  </head>
-  <body onload="includeHTML()">
-    <div
-      class="app-window p-0 w-100 d-flex flex-sm-row justify-content-flex-start align-items-center h-100"
-    >
-      <div w3-include-html="header.html"></div>
-      <div class="outer-border">
-        <div class="titles">
-          <h2>Add Task</h2>
-          <p>Learning Management System Project</p>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="addTask.js"></script>
+  <script src="script.js"></script>
+  <title>Join</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+  <script src="mini_backend.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+  <link rel="icon" href="/Kanban_Gruppenarbeit/logo.png" />
+</head>
+
+<body onload="init()" class="m-0 p-0 py-sm-4">
+  <div class="app-window h-100 w-100 d-flex flex-column flex-sm-row justify-content-flex-start">
+    <div class="" w3-include-html="navbar.html"></div>
+
+    <!-- work area (right site: content of the nav-link) -->
+    <div class="outer-border">
+      <div class="titles">
+        <h2>Add Task</h2>
+        <p>Learning Management System Project</p>
+      </div>
+      <div class="outer-border-form-field">
+        <div class="first-row">
+          <div class="first-row-column">
+            <h3>Title</h3>
+            <input id="title" placeholder="Add a title for your task">
+          </div>
+          <div class="first-row-2column">
+            <h3>Due Date</h3>
+            <form>
+              <input type="date" id="dateTask" name="workTask" />
+            </form>
+          </div>
         </div>
-        <div class="outer-border-form-field">
-          <div class="first-row">
-            <div class="first-row-column">
-              <h3>Title</h3>
-              <input id="title" placeholder="Add a title for your task">
-            </div>
-            <div class="first-row-2column">
-              <h3>Due Date</h3>
-              <form>
-                <input type="date" id="dateTask" name="workTask" />
-              </form>
-            </div>
+        <div class="second-row">
+          <div class="second-row-column">
+            <h3>Category</h3>
+            <form class="category">
+              <select id="category">
+                <option value="Sales">Sales</option>
+                <option value="IT">IT</option>
+                <option value="Production">Production</option>
+                <option value="Management">Management</option>
+                <option value="Design">Design</option>
+                <option value="Marketing">Marketing</option>
+              </select>
+            </form>
           </div>
-          <div class="second-row">
-            <div class="second-row-column">
-              <h3>Category</h3>
-              <form class="category">
-                <select id="category">
-                  <option value="Sales">Sales</option>
-                  <option value="IT">IT</option>
-                  <option value="Production">Production</option>
-                  <option value="Management">Management</option>
-                  <option value="Design">Design</option>
-                  <option value="Marketing">Marketing</option>
-                </select>
-              </form>
-            </div>
-            <div class="second-row-2column">
-              <h3>Urgency</h3>
-              <form class="category">
-                <select id="urgency">
-                  <option value="Low">Low</option>
-                  <option value="Medium">Medium</option>
-                  <option value="High">High</option>
-                </select>
-              </form>
-            </div>
+          <div class="second-row-2column">
+            <h3>Urgency</h3>
+            <form class="category">
+              <select id="urgency">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+              </select>
+            </form>
           </div>
-          <div class="third-row">
-            <div class="third-row-column">
-              <h3>Description</h3>
-              <textarea
-                id="description"
-                placeholder="Add your notes for the task here..."
-              ></textarea>
+        </div>
+        <div class="third-row">
+          <div class="third-row-column">
+            <h3>Description</h3>
+            <textarea id="description" placeholder="Add your notes for the task here..."></textarea>
+          </div>
+          <div class="third-row-2column">
+            <h3>Assigned To:</h3>
+            <div class="user-img">
+              <img src="img/nikola.png" style="width: 75px; border-radius: 50%" />
+              <img src="img/lukas.png" style="width: 75px; border-radius: 50%" />
+              <img src="img/maik.png" style="width: 75px; border-radius: 50%; " />
+              <img src="img/Phil.jpg" style="width: 75px; border-radius: 50%" />
             </div>
-            <div class="third-row-2column">
-              <h3>Assigned To:</h3>
-              <div class="user-img">
-                <img
-                  src="img/nikola.png"
-                  style="width: 75px; border-radius: 50%"
-                />
-                <img 
-                  src="img/lukas.png"
-                  style="width: 75px; border-radius: 50%"
-                />
-                <img 
-                  src="img/maik.png"
-                  style="width: 75px; border-radius: 50%; "
-                />
-                <img 
-                  src="img/Phil.jpg"
-                  style="width: 75px; border-radius: 50%"
-                />
-              </div>
-              <div class="buttons-Task mt-4">
-                <button
-                  class="btn btn-transparent"
-                  type="button"
-                  id="cancelTask"
-                >Cancel
-                </button>
-                <button onclick="addTask()"
-                  class="btn btn-primary" 
-                  type="button" 
-                  id="addTask"
-                >Create Task
-                </button>
-              </div>
+            <div class="buttons-Task mt-4">
+              <button class="btn btn-transparent" type="button" id="cancelTask">Cancel
+              </button>
+              <button onclick="addTask()" class="btn btn-primary" type="button" id="addTask">Create Task
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
