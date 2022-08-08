@@ -230,6 +230,12 @@ backlog.hmtl Style
 #freshTask{
   display: flex;
   flex-direction: column-reverse;
+  overflow-y: scroll;
+  height: 590px;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
 }
 
 .position-top {
