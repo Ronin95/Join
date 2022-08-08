@@ -84,6 +84,10 @@ body {
 
 /* Add Task code */
 
+.user-img img{
+  cursor: pointer;
+}
+
 .outer-border {
   width: 85vw;
 }
@@ -192,7 +196,7 @@ body {
 }
 
 .third-row-2column {
-  margin: 20px;
+  margin: 12px;
   width: 30vw;
   display: flex;
   flex-direction: column;
