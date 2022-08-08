@@ -82,6 +82,41 @@ body {
   background-color: rgb(230, 232, 255);
 }
 
+/* Borad Column Task Item = BCTI */
+.green {
+  background: linear-gradient(-135deg, #608A32 14px, transparent 0);
+  overflow: hidden;
+}
+
+.yellow {
+  background: linear-gradient(-135deg, #eac910 14px, transparent 0);
+  overflow: hidden;
+}
+
+.red {
+  background: linear-gradient(-135deg, #e83b3b 14px, transparent 0);
+  overflow: hidden;
+}
+
+
+.card-title {
+  font-size: 0.7rem;
+}
+
+.card .badge,
+span {
+  font-size: 0.55rem;
+}
+
+.card span {
+  font-size: 0.66rem;
+}
+
+.BCTIassignedTo img {
+  width: 24px;
+  height: 24px;
+}
+
 /* Add Task code */
 
 .user-img img{
@@ -223,15 +258,22 @@ body {
 backlog.hmtl Style
 */
 
+.searchfield-backlog input {
+  width: 280px;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+}
 
 
-.category-headers{
+.category-headers {
   display: flex;
   justify-content: space-between;
 }
 
 
-#freshTask{
+#freshTask {
   display: flex;
   flex-direction: column-reverse;
   overflow-y: scroll;
@@ -306,7 +348,7 @@ backlog.hmtl Style
   flex-direction: column;
 }
 
-td{
+td {
   display: flex;
   align-items: center;
   width: 20vw;
