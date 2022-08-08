@@ -16,47 +16,66 @@ body {
 
 .app-window {
   background: lightblue;
+  /* later to delete */
+  border: 1px solid red;
 }
 
-.header {
+/* navbar with its components */
+.navbar {
   background-color: #212d8d;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 150px;
-  height: 95vh;
-  /* Lukas: to delete */
-  /* margin-top: 40px;
-  margin-bottom: 40px; */
+  /* later to delete */
+  border: 1px solid yellow;
 }
 
-.header-img-buttons {
-  margin-top: 50px;
-  display: flex;
-  gap: 60px;
-  align-items: center;
-  flex-direction: column;
+.logo {
+  height: 66px;
 }
 
-.list-color {
-  color: rgba(255, 255, 255, 0.803);
-  cursor: pointer;
-  border-left: solid 5px #ffffff00;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  margin-top: 8px;
-  margin-bottom: 8px;
+.navbar-border {
+  border-left: 8px solid transparent;
 }
 
-.list-color:hover {
+.navbar-nav .nav-item:hover {
   color: white;
+  border-left: 8px solid white;
 }
 
-.list-color:hover {
-  border-top: 0px #212d8d;
-  border-bottom: 0px #212d8d;
-  border-left: solid 5px white;
+.avatar-board img {
+  height: 68px;
+  width: 68px;
+  object-fit: cover;
+}
+
+
+/* navbar with its components to bs-sm-break point*/
+@media (max-width: 575px) {
+  .logo {
+    height: 40px;
+  }
+
+  .navbar-border {
+    border-left: unset;
+    border-bottom: 2px solid transparent;
+  }
+
+  .navbar-nav .nav-item:hover {
+    border-left: unset;
+    border-bottom: 2px solid white;
+  }
+
+  .avatar-board {
+    position: absolute;
+    width: fit-content;
+    top: 0;
+    left: 0;
+    right: 0;
+    border: 0 !important;
+  }
+
+  .avatar-board img {
+    height: 40px;
+    width: 40px;
+  }
 }
 
 .board-column {
@@ -192,7 +211,7 @@ body {
 }
 
 .buttons-Task button {
-  width: 150px;
+  width: 120px;
   font-size: 24px;
 }
 
