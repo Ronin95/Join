@@ -72,12 +72,16 @@
           </div>
           <div class="third-row-2column">
             <h3>Assigned To:</h3>
-            <div class="user-img">
-              <img src="img/nikola.png" style="width: 75px; border-radius: 50%" />
-              <img src="img/lukas.png" style="width: 75px; border-radius: 50%" />
-              <img src="img/maik.png" style="width: 75px; border-radius: 50%; " />
-              <img src="img/Phil.jpg" style="width: 75px; border-radius: 50%" />
-            </div>
+            <form class="category">
+              <select id="user">
+                <option value="All Members">All Members</option>
+                <option value="Lukas Erdmanski">Lukas Erdmanski</option>
+                <option value="Nikola Badjevic">Nikola Badjevic</option>
+                <option value="Phil Schmucker">Phil Schmucker</option>
+                <option value="Maik Langer">Maik Langer</option>
+              </select>
+            </form>
+
             <div class="buttons-Task mt-4">
               <button class="btn btn-transparent" type="button" id="cancelTask">Cancel
               </button>

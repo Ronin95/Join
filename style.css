@@ -15,6 +15,10 @@ html {
   margin: 0;
 }
 
+.b-style-dotted {
+  border-style: dotted;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -145,6 +149,10 @@ body {
 
 /* Add Task code */
 
+.user-img img{
+  cursor: pointer;
+}
+
 .outer-border {
   width: 85vw;
 }
@@ -253,7 +261,7 @@ body {
 }
 
 .third-row-2column {
-  margin: 20px;
+  margin: 12px;
   width: 30vw;
   display: flex;
   flex-direction: column;
@@ -280,6 +288,13 @@ body {
 backlog.hmtl Style
 */
 
+.searchfield-backlog input {
+  width: 280px;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+}
 
 
 .category-headers {
