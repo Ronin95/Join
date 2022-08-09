@@ -419,3 +419,20 @@ td:hover {
   border-collapse: separate;
   border-spacing: 0px 12px;
 }
+
+/*
+Check Button only
+*/
+#succes-arrow{
+  position: fixed;
+}
+
+.safe-color{
+  font-weight: bold;
+  margin-bottom: -12px;
+}
+
+
+/*
+Check Button only
+*/

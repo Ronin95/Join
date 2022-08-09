@@ -20,6 +20,7 @@ function addTask() {
   // in backlog.html
   saveTask(newTask);// save the array
   clearInput(); // clear the fields that were previously inputed by the user
+  doneIt();
 }
 
 // if the allTasks array is empty display that the user has to add a new task
@@ -73,3 +74,10 @@ function clearInput() {
   urgency.selectedIndex = 0;
   description.value = "";
 }
+
+  function doneIt() {
+      document.getElementById('succes-arrow').classList.remove('d-none');
+    setTimeout(function () {
+      document.getElementById('succes-arrow').classList.add('d-none');        
+    },2000);
+    };
