@@ -18,7 +18,7 @@ function addTask() {
   // The above array creates the base structure as to how of an
   // array we want to save from addTask.html that can then be displayed
   // in backlog.html
-  saveTask(newTask); // save the array
+  saveTask(newTask);// save the array
   clearInput(); // clear the fields that were previously inputed by the user
 }
 
