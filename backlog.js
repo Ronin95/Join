@@ -1,4 +1,6 @@
-function initBacklog() {
-  loadAllTasks(allTasks);
+async function initBacklog() {
   includeHTML();
+  loadAllTasks();
 }
+
+

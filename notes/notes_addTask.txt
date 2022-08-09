@@ -1,0 +1,29 @@
+let task = allTasks[i];
+    let taskUserLowerCase = task['user'].toLowerCase().replace(' ', '');
+    document.getElementById('freshTask').innerHTML += /*html*/ `
+    <tr class="m-1 table-secondary table-row table-row-design d-flex">
+      <td class="left-rounded assigned-to-row">
+        <img
+          class="border rounded-circle assigned-img"
+          src="./img/maik.png"
+          alt="">
+        <div class="flex-it-column">
+          <span>${task.user}</span>
+          <span
+            ><a href="x">${taskUserLowerCase}@live.com</a>
+          </span>
+        </div>
+      </td>
+      <td class="justify-content-center">${task.category}</td>
+      <td class="right-rounded justify-content-end">
+        ${task.description}
+      </td>
+    </tr>    
+    `;
+  }
+
+
+  allTasks.push(newTask);
+  let allTasksAsString = JSON.stringify(allTasks);
+  localStorage.setItem('allTasks', allTasksAsString);
+  clearInput();

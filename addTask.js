@@ -7,48 +7,36 @@ function addTask() {
   let urgency = document.getElementById('urgency');
   let description = document.getElementById('description');
   let user = document.getElementById('user');
-  let newTask = {
-    title: title.value,
-    date: date.value,
-    category: category.value,
-    urgency: urgency.value,
-    description: description.value,
-    user: user.value,
-  };
-  allTasks.push(newTask);
-  let allTasksAsString = JSON.stringify(allTasks);
-  localStorage.setItem('allTasks', allTasksAsString);
-  clearInput();
+  // The above 6 lines of code only refer to the id field in the html
+  let newTask = [{
+    'title': title.value,
+    'date': date.value,
+    'category': category.value,
+    'urgency': urgency.value,
+    'description': description.value,
+    'user': user.value,
+  }];
+  // The above array creates the base structure as to how of an
+  // array we want to save from addTask.html that can then be displayed
+  // in backlog.html
+  saveTask(newTask); // save the array
+  clearInput(); // clear the fields that were previously inputed by the user
 }
 
-async function loadAllTasks() {
-  let allTasksAsString = localStorage.getItem('allTasks');
-  allTasks = JSON.parse(allTasksAsString);
-  document.getElementById('freshTask').innerHTML = '';
-  for (let i = 0; i <= allTasks.length; i++) {
-    let task = allTasks[i];
-    let taskUserLowerCase = task['user'].toLowerCase().replace(' ', '');
-    document.getElementById('freshTask').innerHTML += /*html*/ `
-                <tr class="m-1 table-secondary table-row table-row-design d-flex">
-                  <td class="left-rounded assigned-to-row">
-                    <img
-                      class="border rounded-circle assigned-img"
-                      src="./img/maik.png"
-                      alt="">
-                    <div class="flex-it-column">
-                      <span>${task.user}</span
-                      ><span
-                        ><a href="x">${taskUserLowerCase}@live.com</a></span
-                      >
-                    </div>
-                  </td>
-                  <td class="justify-content-center">${task.category}</td>
-                  <td class="right-rounded justify-content-end">
-                  ${task.description}
-                  </td>
-                </tr>    
+function saveTask(newTask) {
+  allTasks.push(newTask);
+  let task = JSON.stringify(allTasks); 
+  localStorage.setItem('allTasks', task);
+}
+
+function loadAllTasks() {
+  if (allTasks.length === 0) {
+    let noTask = document.getElementById('freshTask');
+    noTask.innerHTML += /*html*/`
+      <h1>Please add a new Task into Add Task</h1>
     `;
   }
+
 }
 
 function clearInput() {
