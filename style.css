@@ -327,10 +327,13 @@ backlog.hmtl Style
 }
 
 
+.taskDescription {
+  width: 30vw;
+  height: 80%;
+  text-align: center;
+}
+
 #freshTask {
-  display: flex;
-  flex-direction: column-reverse;
-  overflow-y: scroll;
   text-align: center;
 }
 

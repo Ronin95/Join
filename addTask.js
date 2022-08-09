@@ -56,10 +56,10 @@ function loadAllTasks() {
           <p>${allTasks[0]['user'].replace(' ', '.')}@join.com</p>
         </div>
       </div>
-      <div>
+      <div class='b-style-dotted taskCategory'>
         <h5>${allTasks[0]['category']}</h5>
       </div>
-      <div>
+      <div class='taskDescription b-style-dotted'>
         <p>${allTasks[0]['description']}</p>
       </div>
     </div>
