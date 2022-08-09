@@ -1,5 +1,3 @@
-setURL('https://gruppe-293-join.developerakademie.net/smallest_backend_ever');
-
 async function init() {
   // await downloadFromServer();
   // allTasks = JSON.parse(backend.getItem('allTasks')) || [];

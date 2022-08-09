@@ -1,4 +1,11 @@
-let allTasks = [];
+let allTasks = [{
+  'title': 'Test_Title',
+  'date': '2022-08-10',
+  'category': 'Sales',
+  'urgency': 'Low',
+  'description': 'Test_Text',
+  'user': 'Nikola Badjevic'
+}];
 
 function addTask() {
   let title = document.getElementById('title');
@@ -8,14 +15,14 @@ function addTask() {
   let description = document.getElementById('description');
   let user = document.getElementById('user');
   // The above 6 lines of code only refer to the id field in the html
-  let newTask = [{
+  let newTask = {
     'title': title.value,
     'date': date.value,
     'category': category.value,
     'urgency': urgency.value,
     'description': description.value,
     'user': user.value,
-  }];
+  };
   // The above array creates the base structure as to how of an
   // array we want to save from addTask.html that can then be displayed
   // in backlog.html
@@ -26,17 +33,38 @@ function addTask() {
 function saveTask(newTask) {
   allTasks.push(newTask);
   let task = JSON.stringify(allTasks); 
-  localStorage.setItem('allTasks', task);
+  localStorage.setItem('Task', task);
 }
 
+// if the allTasks array is empty display that the user has to add a new task
+// Else display the Task that the user already entered in AddTask
 function loadAllTasks() {
   if (allTasks.length === 0) {
     let noTask = document.getElementById('freshTask');
     noTask.innerHTML += /*html*/`
       <h1>Please add a new Task into Add Task</h1>
     `;
+  } else {
+    console.log(allTasks);
+    let newTask = document.getElementById('freshTask');
+    newTask.innerHTML += /*html*/`
+    <div class='b-style-dotted backlog-task-Container'>
+      <div class='task-img-name-email b-style-dotted'>
+        <img src='img/nikola.png' style='width: 80px;'>
+        <div>
+          <p>${allTasks[0]['user']}</p>
+          <p>${allTasks[0]['user'].replace(' ', '.')}@join.com</p>
+        </div>
+      </div>
+      <div>
+        <h5>${allTasks[0]['category']}</h5>
+      </div>
+      <div>
+        <p>${allTasks[0]['description']}</p>
+      </div>
+    </div>
+    `;
   }
-
 }
 
 function clearInput() {

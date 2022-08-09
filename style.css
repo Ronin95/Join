@@ -301,6 +301,17 @@ backlog.hmtl Style
   justify-content: space-between;
 }
 
+.task-img-name-email {
+  display: flex;
+}
+
+.backlog-task-Container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+}
+
 .searchfield-backlog input {
   width: 280px;
   height: 50px;
