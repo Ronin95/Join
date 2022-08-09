@@ -19,19 +19,6 @@ html {
   border-style: dotted;
 }
 
-.backlog-container {
-  width: 80vw;
-  height: 70vh;
-  margin-left: 20px;
-  margin-bottom: 20px;
-  overflow-y: hidden;
-}
-
-.backlog-titles {
-  display: flex;
-  justify-content: space-between;
-}
-
 body {
   display: flex;
   justify-content: center;
@@ -301,6 +288,19 @@ body {
 backlog.hmtl Style
 */
 
+.backlog-container {
+  width: 80vw;
+  height: 70vh;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  overflow-y: hidden;
+}
+
+.backlog-titles {
+  display: flex;
+  justify-content: space-between;
+}
+
 .searchfield-backlog input {
   width: 280px;
   height: 50px;
@@ -320,7 +320,7 @@ backlog.hmtl Style
   display: flex;
   flex-direction: column-reverse;
   overflow-y: scroll;
-  height: 590px;
+  text-align: center;
 }
 
 .scrollbar-hidden::-webkit-scrollbar {
