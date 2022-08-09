@@ -45,26 +45,31 @@ function loadAllTasks() {
       <h1>Please add a new Task into Add Task</h1>
     `;
   } else {
-    console.log(allTasks);
-    let newTask = document.getElementById('freshTask');
-    newTask.innerHTML += /*html*/`
-    <div class='b-style-dotted backlog-task-Container'>
-      <div class='task-img-name-email b-style-dotted'>
-        <img src='img/nikola.png' style='width: 80px;'>
-        <div>
-          <p>${allTasks[0]['user']}</p>
-          <p>${allTasks[0]['user'].replace(' ', '.')}@join.com</p>
+    for (let i = 0; i < allTasks.length; i++) {
+      let newTasks = allTasks[i];
+      
+    
+      console.log(allTasks);
+      let newTask = document.getElementById('freshTask');
+      newTask.innerHTML += /*html*/`
+      <div class='b-style-dotted backlog-task-Container'>
+        <div class='task-img-name-email b-style-dotted'>
+          <img src='img/nikola.png' style='width: 80px;'>
+          <div>
+            <p>${newTasks['user']}</p>
+            <p>${newTasks['user'].replace(' ', '.')}@join.com</p>
+          </div>
         </div>
-      </div>
-      <div class='b-style-dotted taskCategory'>
-        <h5>${allTasks[0]['category']}</h5>
-      </div>
-      <div class='taskDescription b-style-dotted'>
-        <p>${allTasks[0]['description']}</p>
+        <div class='b-style-dotted taskCategory'>
+          <h5>${newTasks['category']}</h5>
+        </div>
+        <div class='taskDescription b-style-dotted'>
+          <p>${newTasks['description']}</p>
       </div>
     </div>
     `;
   }
+}
 }
 
 function clearInput() {
