@@ -15,38 +15,21 @@ function addTask() {
     description: description.value,
     user: user.value,
   };
-  // The above array creates the base structure as to how of an
-  // array we want to save from addTask.html that can then be displayed
-  // in backlog.html
-  saveTask(newTask);// save the array
-  clearInput(); // clear the fields that were previously inputed by the user
-  doneIt();
+  checkIsAnythingThere(newTask);
 }
 
-// if the allTasks array is empty display that the user has to add a new task
-// Else display the Task that the user already entered in AddTask
+function checkIsAnythingThere(newTask) {
+  if (allTasks >= 1) {
+    loadTask();
+  } else saveTask(newTask);
+}
+
 function loadAllTasks() {
   loadTask();
   for (let i = 0; i < allTasks.length; i++) {
     let newTask = allTasks[i];
-      let newTasks = document.getElementById("freshTask");
-      newTasks.innerHTML += /*html*/ `
-        <div class='b-style-dotted backlog-task-Container'>
-          <div class='task-img-name-email b-style-dotted'>
-            <img src='img/nikola.png' style='width: 80px;'>
-            <div>
-              <p>${newTask.user}</p>
-              <p>${newTask.user}@join.com</p>
-            </div>
-          </div>
-          <div class='b-style-dotted taskCategory'>
-            <h5>${newTask.category}</h5>
-          </div>
-          <div class='taskDescription b-style-dotted'>
-            <p>${newTask.description}</p>
-        </div>
-           </div>
-      `;
+    let newTasks = document.getElementById("freshTask");
+    newTasks.innerHTML += newTaskTemp(newTask, i);
   }
 }
 
@@ -61,6 +44,8 @@ function saveTask(newTask) {
   allTasks.push(newTask);
   let task = JSON.stringify(allTasks);
   localStorage.setItem("Task", task);
+  clearInput();
+  doneIt();
 }
 
 function loadTask() {
@@ -75,9 +60,9 @@ function clearInput() {
   description.value = "";
 }
 
-  function doneIt() {
-      document.getElementById('succes-arrow').classList.remove('d-none');
-    setTimeout(function () {
-      document.getElementById('succes-arrow').classList.add('d-none');        
-    },2000);
-    };
+function doneIt() {
+  document.getElementById("succes-arrow").classList.remove("d-none");
+  setTimeout(function () {
+    document.getElementById("succes-arrow").classList.add("d-none");
+  }, 2000);
+}
