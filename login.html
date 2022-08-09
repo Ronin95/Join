@@ -15,6 +15,7 @@
     <script src="mini_backend.js"></script>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
+    <script src="login.js"></script>
     <link
       rel="shortcut icon"
       href="./Kanban_Gruppenarbeit/logo.png"
@@ -32,23 +33,22 @@
         <div class="card-body w-100 d-flex align-items-center flex-column">
           <h3 class="">Login</h3>
             <form class="w-100 was-validated">
-                <div class="row mx-3 mb-3">
-                  <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
-                  <div class="col-sm-8">
-                    <input type="email" class="form-control" id="inputEmail3" placeholder="example@example.com">
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Email address</label>
                   </div>
-                </div>
-                <div class="row mx-3 mb-3">
-                  <label for="inputPassword3" class="col-sm-3 col-form-label">Password</label>
-                  <div class="col-sm-8">
-                    <input type="password" class="form-control" id="inputPassword3">
-                  </div>
-                </div>      
+                  <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                  </div>    
                 <div class="d-flex justify-content-center">         
-                <button type="submit" class="btn btn-primary">Sign in</button>
+                    <button onclick="loadRegisterCard()" class="btn btn-outline-secondary m-2">Register</button>
+                    <button onclick="generateGuestArray()" class="btn btn-outline-secondary m-2">Sign in as guest</button>
+                    <button type="submit" class="btn btn-primary m-2">Sign in</button>
             </div> 
               </form>
-
+<div class="d-flex justify-content-sm-end">
+</div>
       </div>
     </div>
   </body>
