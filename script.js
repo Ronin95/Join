@@ -1,5 +1,5 @@
 /* General all posible variables / arrays like categories, users, avatars etc., which are used in every sub page und script */
-let allCategories = ['IT', 'Sales', 'Management', 'Production', 'Marketing', 'Marketing'];
+let allCategories = ['IT', 'Sales', 'Management', 'Production', 'Marketing'];
 
 /* Wenn der gleiche Style für die Kategorien Items/Badges noch irgendwo genasuo wie 
 im Board bei den Task Items im Card Header benutzt wird, 
@@ -7,8 +7,18 @@ dann sollte es auch als ein general Array zentralisiert werden.
  */
 /* let bsClassesForCategory = ['secondary', 'primary', 'danger', 'success', 'warning', 'info',]; */
 
-let allUsers = ['Lukas Erdmanski', 'Nikola Badjevic', 'Phil Schmucker', 'Maik Lange'];
-let allUsersAvatars = ['/img/lukas.png', '/img/nikola.png', '/img/Phil.jpg', '/img/maik.png'];
+let allUsers = [
+  'Lukas Erdmanski',
+  'Nikola Badjevic',
+  'Phil Schmucker',
+  'Maik Langer',
+];
+let allUsersAvatars = [
+  '/img/lukas.png',
+  '/img/nikola.png',
+  '/img/Phil.jpg',
+  '/img/maik.png',
+];
 
 async function init() {
   // await downloadFromServer();
