@@ -11,13 +11,13 @@ let users = [
   {
     name: 'Lukas Erdmanski',
     password: '123',
-    avatar: '../img/lukas.jpg',
+    avatar: '../img/lukas.png',
     email: 'lukas@join.org',
   },
   {
     name: 'Nikola Badjevic',
     password: '123',
-    avatar: '../img/nikola.jpg',
+    avatar: '../img/nikola.png',
     email: 'nikola@join.org',
   },
   {
@@ -29,7 +29,7 @@ let users = [
   {
     name: 'Maik Langer',
     password: '123',
-    avatar: '../img/maik.jpg',
+    avatar: '../img/maik.png',
     email: 'maik@join.org',
   },
 ];
