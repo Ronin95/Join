@@ -1,5 +1,5 @@
 /* General all posible variables / arrays like categories, users, avatars etc., which are used in every sub page und script */
-let allCategories = ["IT", "Sales", "Management", "Production", "Marketing"];
+let allCategories = ['IT', 'Sales', 'Management', 'Production', 'Marketing'];
 
 /* Wenn der gleiche Style für die Kategorien Items/Badges noch irgendwo genasuo wie 
 im Board bei den Task Items im Card Header benutzt wird, 
@@ -7,17 +7,31 @@ dann sollte es auch als ein general Array zentralisiert werden.
  */
 /* let bsClassesForCategory = ['secondary', 'primary', 'danger', 'success', 'warning', 'info',]; */
 
-let allUsers = [
-  "Lukas Erdmanski",
-  "Nikola Badjevic",
-  "Phil Schmucker",
-  "Maik Langer",
-];
-let allUsersAvatars = [
-  "/img/lukas.png",
-  "/img/nikola.png",
-  "/img/Phil.jpg",
-  "/img/maik.png",
+let users = [
+  {
+    name: 'Lukas Erdmanski',
+    password: '123',
+    avatar: '../img/lukas.jpg',
+    email: 'lukas@join.org',
+  },
+  {
+    name: 'Nikola Badjevic',
+    password: '123',
+    avatar: '../img/nikola.jpg',
+    email: 'nikola@join.org',
+  },
+  {
+    name: 'Phil Schmucker',
+    password: '123',
+    avatar: '../img/Phil.jpg',
+    email: 'phil@join.org',
+  },
+  {
+    name: 'Maik Langer',
+    password: '123',
+    avatar: '../img/maik.jpg',
+    email: 'maik@join.org',
+  },
 ];
 
 async function init() {
@@ -30,15 +44,15 @@ async function init() {
 }
 
 async function includeHTML() {
-  let includeElements = document.querySelectorAll("[w3-include-html]");
+  let includeElements = document.querySelectorAll('[w3-include-html]');
   for (let i = 0; i < includeElements.length; i++) {
     const element = includeElements[i];
-    file = element.getAttribute("w3-include-html"); // "header.html"
+    file = element.getAttribute('w3-include-html'); // "header.html"
     let resp = await fetch(file);
     if (resp.ok) {
       element.innerHTML = await resp.text();
     } else {
-      element.innerHTML = "Page not found";
+      element.innerHTML = 'Page not found';
     }
   }
 }
