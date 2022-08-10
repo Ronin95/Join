@@ -11,25 +11,25 @@ let users = [
   {
     name: 'Lukas Erdmanski',
     password: '123',
-    avatar: '../img/lukas.png',
+    avatar: './img/lukas.png',
     email: 'lukas@join.org',
   },
   {
     name: 'Nikola Badjevic',
     password: '123',
-    avatar: '../img/nikola.png',
+    avatar: './img/nikola.png',
     email: 'nikola@join.org',
   },
   {
     name: 'Phil Schmucker',
     password: '123',
-    avatar: '../img/Phil.jpg',
+    avatar: './img/Phil.jpg',
     email: 'phil@join.org',
   },
   {
     name: 'Maik Langer',
     password: '123',
-    avatar: '../img/maik.png',
+    avatar: './img/maik.png',
     email: 'maik@join.org',
   },
 ];

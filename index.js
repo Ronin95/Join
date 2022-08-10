@@ -1,6 +1,6 @@
 let allTasks = [
     {
-        id: '1',
+        id: 0,
         title: 'Aufgabe Nr1',
         date: '2022-10-03',
         category: 'IT',
@@ -10,7 +10,7 @@ let allTasks = [
         state: 'toDo',
     },
     {
-        id: '2',
+        id: 1,
         title: 'Aufgabe Nr2',
         date: '2022-07-08',
         category: 'Management',
@@ -20,7 +20,7 @@ let allTasks = [
         state: 'inProgress'
     },
     {
-        id: '3',
+        id: 2,
         title: 'Aufgabe Nr3',
         date: '2022-05-25',
         category: 'Sales',
@@ -30,7 +30,7 @@ let allTasks = [
         state: 'testing'
     },
     {
-        id: '4',
+        id: 3,
         title: 'Aufgabe Nr4',
         date: '2022-01-03',
         category: 'Design',
@@ -40,6 +40,10 @@ let allTasks = [
         state: 'done'
     }
 ];
+
+
+/** The current dragged element (a task item of a board kanban columns) is globally saved here. */
+let currentDraggedElement;
 
 /**
  * The function is executed immediattasky after loading the web page.
@@ -64,6 +68,7 @@ function renderAllColumns() {
     renderColumn('toDo');
     renderColumn('inProgress');
     renderColumn('testing');
+    renderColumn('done');
 }
 
 
@@ -94,7 +99,7 @@ function renderColumn(columnName) {
 function genHTMLBoardTaskItem(task) {
     return /* html */ `
     <!-- a column task item -->
-    <div class="card red border-dark my-2 w-100">
+    <div class="card red border-dark my-2 w-100" draggable="true" ondragstart="startDragging(${task['id']})">
         <div id="categories${task['id']}" class="card-header p-1 fs-6"></div>
 
         <div class="card-body text-dark p-1">
@@ -114,21 +119,6 @@ function genHTMLBoardTaskItem(task) {
 
 
 /**
- * Set the bootstrap class of a badge for a specific category of a task item.
- * 
- * @param {string} category - This is the assigned category to a task item according to which the badge style should be set as a return value.
- * @returns - The bootstrap class as a string staskected for a specific task item category.
- */
-function setCategoryStyleForTaskItem(category) {
-    /* Maybe to dtaskete here if bsClassesForCategory will be declared generally in script.js. Temporary as as a local array.  */
-    let bsClassesForCategory = ['secondary', 'primary', 'danger', 'success', 'warning', 'info',]
-    let indexInAllCategories = allCategories.indexOf(category)
-    let classToSet = bsClassesForCategory[indexInAllCategories];
-    return classToSet
-}
-
-
-/**
  * Set the bootstrap class of a badge for a specific category of a task item and generate the category badge in the board task item. 
  * 
  * @param {JSON} task - This is a task from allTasks array with a certain filtered category. 
@@ -140,4 +130,61 @@ function genHTMLcategory(task) {
 
     let categoriesContainer = document.getElementById(`categories${task['id']}`);
     categoriesContainer.innerHTML = /* html */ `<span class="badge p-1 fw-semibold text-bg-${categoryClass}">${task['category']}</span>`;
+}
+
+
+/**
+ * Set the current dragged task item.
+ * 
+ * @param {number} id - This is a unique id of the task item.
+ */
+function startDragging(id) {
+    currentDraggedElement = id;
+}
+
+
+/**
+ * Execute after a dragged element (here task item) is dropped 
+ * on the affected container (here board kanban column).
+ * Change the state (to do / in progress / testing / done) for the affected task item.
+ * 
+ * @param {string} state - This is the name of the board kanban column and the completion process of the affected task item.
+ */
+function moveTo(state) {
+    allTasks[currentDraggedElement]['state'] = state;
+    render();
+}
+
+
+/**
+ * A w3school function: Simply integrated here.
+ * Change the default behavior of the affected container (here board kanban column)
+ * and give the permission to drop another HTML element over the affected container.
+ * 
+ * @param {Event} ev - This is an event, if the a dragged element (her task item) is over (hovering) the affected container (here board kanban column).
+ */
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+
+/**
+ * Highlight the kanban column when you hover over it with the dragged task item
+ * (a corresponding class for this effect will be added to the affected column.).
+ * 
+ * @param {string} columnName - This is the name of the board kanban column, which should be highlighted
+ */
+function hightlight(columnName) {
+    document.getElementById(columnName).classList.add('drag-area-highlight');
+}
+
+
+/**
+ * Remove the highlight effect for the kanban column when the dragged task item stop to hover it or will be dropped on it
+ * (a corresponding class for this effect will be removed from the affected colum).
+ * 
+ * @param {string} columnName - This is the name of the board kanban column, for which the highlicht effect should be removed.
+ */
+function removeHightlight(columnName) {
+    document.getElementById(columnName).classList.remove('drag-area-highlight');
 }

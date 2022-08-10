@@ -101,6 +101,10 @@ body {
   overflow-y: overlay;
 }
 
+.drag-area-highlight {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .hiddeneScrollbar::-webkit-scrollbar {
   display: none;
@@ -108,8 +112,10 @@ body {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .hiddeneScrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 /* Borad Column Task Item = BCTI */
@@ -149,7 +155,7 @@ body {
 
 /* Add Task code */
 
-.user-img img{
+.user-img img {
   cursor: pointer;
 }
 
@@ -425,11 +431,11 @@ td:hover {
 /*
 Check Button only
 */
-#succes-arrow{
+#succes-arrow {
   position: fixed;
 }
 
-.safe-color{
+.safe-color {
   font-weight: bold;
   margin-bottom: -12px;
 }
