@@ -1,12 +1,3 @@
-let users = [
-  {
-    name: 'Phil Schmucker',
-    password: '123',
-    avatar: '../img/Phil.jpg',
-    email: 'phil@join.org',
-  },
-];
-
 function login() {
   let email = document.getElementById('inputEmail3');
   let password = document.getElementById('inputPassword3');
