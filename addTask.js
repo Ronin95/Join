@@ -2,34 +2,21 @@ let allTasks = [];
 
 function addTask() {
   loadTask();
-<<<<<<< HEAD
-  let title = document.getElementById("title");
-  let date = document.getElementById("dateTask");
-  let category = document.getElementById("category");
-  let urgency = document.getElementById("urgency");
-  let description = document.getElementById("description");
-  let user = document.getElementById("user");
-  let id = allTasks.length;
-=======
   let title = document.getElementById('title');
   let date = document.getElementById('dateTask');
   let category = document.getElementById('category');
   let urgency = document.getElementById('urgency');
   let description = document.getElementById('description');
   let user = document.getElementById('user');
->>>>>>> 45cd8a4c49bb3981d0d5e2763d877ac8964d84f1
   let newTask = {
     title: title.value,
     date: date.value,
     category: category.value,
     urgency: urgency.value,
     description: description.value,
-<<<<<<< HEAD
     user: user.value,
     id: id++,
-=======
     selectedUser: user.value,
->>>>>>> 45cd8a4c49bb3981d0d5e2763d877ac8964d84f1
   };
   saveTask(newTask);
 }
