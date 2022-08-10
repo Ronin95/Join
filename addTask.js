@@ -1,6 +1,7 @@
 let allTasks = [];
 
 function addTask() {
+  loadTask();
   let title = document.getElementById("title");
   let date = document.getElementById("dateTask");
   let category = document.getElementById("category");
@@ -15,13 +16,7 @@ function addTask() {
     description: description.value,
     user: user.value,
   };
-  checkIsAnythingThere(newTask);
-}
-
-function checkIsAnythingThere(newTask) {
-  if (allTasks >= 1) {
-    loadTask();
-  } else saveTask(newTask);
+  saveTask(newTask)
 }
 
 function loadAllTasks() {
@@ -50,7 +45,9 @@ function saveTask(newTask) {
 
 function loadTask() {
   let task = localStorage.getItem("Task");
-  allTasks = JSON.parse(task);
+  if (task) {
+    allTasks = JSON.parse(task);
+  }
 }
 
 function clearInput() {
