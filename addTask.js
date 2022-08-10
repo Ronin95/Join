@@ -16,7 +16,8 @@ function addTask() {
     description: description.value,
     user: user.value,
   };
-  saveTask(newTask)
+  saveTask(newTask);
+  doneIt();
 }
 
 function loadAllTasks() {
@@ -40,7 +41,7 @@ function saveTask(newTask) {
   let task = JSON.stringify(allTasks);
   localStorage.setItem("Task", task);
   clearInput();
-  doneIt();
+  
 }
 
 function loadTask() {
@@ -61,5 +62,5 @@ function doneIt() {
   document.getElementById("succes-arrow").classList.remove("d-none");
   setTimeout(function () {
     document.getElementById("succes-arrow").classList.add("d-none");
-  }, 2000);
+  }, 3000);
 }

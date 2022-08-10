@@ -335,6 +335,8 @@ backlog.hmtl Style
 
 #freshTask {
   text-align: center;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .scrollbar-hidden::-webkit-scrollbar {
