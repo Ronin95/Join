@@ -23,22 +23,7 @@ function addTask() {
   doneIt();
 }
 
-function loadAllTasks() {
-  loadTask();
-  for (let i = 0; i < allTasks.length; i++) {
-    let newTask = allTasks[i];
-    let newTasks = document.getElementById("freshTask");
-    newTasks.innerHTML += newTaskTemp(newTask, i);
-  }
-}
 
-function loadUserinBacklog() {
-  for (let i = 0; i < selectedUser.length; i++) {
-    let user = selectedUser[i];
-    document.getElementById('user_name').innerHTML += user.name
-    document.getElementById('user_email').innerHTML += user.name.toLowerCase() + "@join.com"
-  }
-}
 
 async function initX() {
   await downloadFromServer();
@@ -58,7 +43,7 @@ function loadTask() {
   let user = localStorage.getItem("User");
   if (task && user) {
     allTasks = JSON.parse(task);
-    selectedUser = JSON.parse(user)
+    selectedUser = JSON.parse(user);
   }
 }
 
@@ -81,6 +66,26 @@ function showAllUser() {
     let user = users[i];
     let showUser = document.getElementById("user");
     showUser.innerHTML += `<img id="selected${i}" onclick="selectUser(${i})" class="user-show" src="${user.avatar}" alt="">`;
+  }
+}
+
+function loadAllTasks() {
+  loadTask();
+  for (let i = 0; i < allTasks.length; i++) {
+    let newTask = allTasks[i];
+    let newTasks = document.getElementById("freshTask");
+    newTasks.innerHTML += newTaskTemp(newTask, i);
+  }
+}
+
+function loadUserinBacklog() {
+  for (let i = 0; i < selectedUser.length; i++) {
+    let user = selectedUser[i];
+    let userChoice = document.getElementById('wich_user');
+    let userPic = document.getElementById('user_pic');
+    userChoice.innerHTML += /*html*/ ` <p>${user.name}</p>
+    <p>${user.name.toLowerCase()}@join.com</p>`;
+    userPic.innerHTML += ` <img class="backlog-img" src="${user.avatar}" alt="">`
   }
 }
 

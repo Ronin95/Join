@@ -309,6 +309,12 @@ body {
 backlog.hmtl Style
 */
 
+.backlog-img {
+  height: 72px;
+  border-radius: 50%;
+  margin: 4px;
+}
+
 .backlog-container {
   width: 80vw;
   height: 70vh;
