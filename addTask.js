@@ -8,6 +8,7 @@ function addTask() {
   let urgency = document.getElementById("urgency");
   let description = document.getElementById("description");
   let user = document.getElementById("user");
+  let id = allTasks.length;
   let newTask = {
     title: title.value,
     date: date.value,
@@ -15,6 +16,7 @@ function addTask() {
     urgency: urgency.value,
     description: description.value,
     user: user.value,
+    id: id++,
   };
   saveTask(newTask);
   doneIt();

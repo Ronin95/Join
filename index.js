@@ -1,45 +1,4 @@
-let allTasks = [
-    {
-        id: '1',
-        title: 'Aufgabe Nr1',
-        date: '2022-10-03',
-        category: ['IT', 'Design'],
-        urgency: 'Medium',
-        description: 'This will be the description text.',
-        users: ['Lukas Erdmanski', 'Phil Schmucker'],
-        state: 'toDo',
-    },
-    {
-        id: '2',
-        title: 'Aufgabe Nr2',
-        date: '2022-07-08',
-        category: ['Management', 'Design'],
-        urgency: 'Low',
-        description: 'This will be the description text.',
-        users: ['Nikola Badjevic', 'Phil Schmucker', 'Maik Lange'],
-        state: 'inProgress'
-    },
-    {
-        id: '3',
-        title: 'Aufgabe Nr3',
-        date: '2022-05-25',
-        category: ['Management', 'Sales', 'IT'],
-        urgency: 'High',
-        description: 'This will be the description text.',
-        users: ['Lukas Erdmanski', 'Nikola Badjevic', 'Phil Schmucker', 'Maik Lange'],
-        state: 'testing'
-    },
-    {
-        id: '4',
-        title: 'Aufgabe Nr4',
-        date: '2022-01-03',
-        category: ['Design', 'Sales', 'IT'],
-        urgency: 'Low',
-        description: 'This will be the description text.',
-        users: ['Lukas Erdmanski', 'Nikola Badjevic'],
-        state: 'done'
-    }
-];
+
 
 /**
  * The function is executed immediattasky after loading the web page.
