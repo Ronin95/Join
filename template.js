@@ -4,8 +4,8 @@ function newTaskTemp(newTask) {
     <div class='task-img-name-email b-style-dotted'>
       <img src='img/nikola.png' style='width: 80px;'>
       <div>
-        <p>${newTask.user}</p>
-        <p>${newTask.user}@join.com</p>
+        <p id="user_name" ></p>
+        <p id="user_email"></p>
       </div>
     </div>
     <div class='b-style-dotted taskCategory'>
