@@ -14,7 +14,7 @@ function addTask() {
     category: category.value,
     urgency: urgency.value,
     description: description.value,
-    user: user.value,
+    selectedUser: user.value,
   };
   saveTask(newTask);
 }
