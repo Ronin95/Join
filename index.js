@@ -1,4 +1,45 @@
-
+let allTasks = [
+    {
+        id: '1',
+        title: 'Aufgabe Nr1',
+        date: '2022-10-03',
+        category: 'IT',
+        urgency: 'Medium',
+        description: 'This will be the description text.',
+        selectedUser: users[0],
+        state: 'toDo',
+    },
+    {
+        id: '2',
+        title: 'Aufgabe Nr2',
+        date: '2022-07-08',
+        category: 'Management',
+        urgency: 'Low',
+        description: 'This will be the description text.',
+        selectedUser: users[1],
+        state: 'inProgress'
+    },
+    {
+        id: '3',
+        title: 'Aufgabe Nr3',
+        date: '2022-05-25',
+        category: 'Sales',
+        urgency: 'High',
+        description: 'This will be the description text.',
+        selectedUser: users[2],
+        state: 'testing'
+    },
+    {
+        id: '4',
+        title: 'Aufgabe Nr4',
+        date: '2022-01-03',
+        category: 'Design',
+        urgency: 'Low',
+        description: 'This will be the description text.',
+        selectedUser: users[3],
+        state: 'done'
+    }
+];
 
 /**
  * The function is executed immediattasky after loading the web page.
@@ -39,8 +80,7 @@ function renderColumn(columnName) {
     for (let index = 0; index < filteredWithSameState.length; index++) {
         const task = filteredWithSameState[index];
         document.getElementById(`${columnName}Column`).innerHTML += genHTMLBoardTaskItem(task);
-        genHTMLcategories(task);
-        genHTMLBCTIassignedTo(task);
+        genHTMLcategory(task);
     }
 }
 
@@ -64,7 +104,9 @@ function genHTMLBoardTaskItem(task) {
 
         <div class="card-footer bg-transparent border-success p-1 d-flex flex-grow-1 justify-content-between align-items-center gap-1">
             <span class="fw-semibold">${task['date']}</span>
-            <div id="BCTIassignedTo${task['id']}" class="BCTIassignedTo d-flex flex-wrap justify-content-sm-end"></div>
+            <div class="BCTIassignedTo d-flex flex-wrap justify-content-sm-end">
+                <img src="${task['selectedUser']['avatar']}" class="border border-1 rounded-circle"/>
+            </div>
         </div>
     </div>
     `;
@@ -86,54 +128,16 @@ function setCategoryStyleForTaskItem(category) {
 }
 
 
-function genHTMLcategories(task) {
-    let categoriesContainer = document.getElementById(`categories${task['id']}`);
-    task['category'].forEach(category => {
-        categoriesContainer.innerHTML += genHTMLCategory(category);
-    });
-}
-
-
-function genHTMLCategory(category) {
-    let categoryClass = setCategoryClassForTaskItem(category);
-    return /* html */ `
-        <span class="badge p-1 fw-semibold text-bg-${categoryClass}">${category}</span>
-    `;
-}
-
-
-function setCategoryClassForTaskItem(category) {
+/**
+ * Set the bootstrap class of a badge for a specific category of a task item and generate the category badge in the board task item. 
+ * 
+ * @param {JSON} task - This is a task from allTasks array with a certain filtered category. 
+ */
+function genHTMLcategory(task) {
     let bsClassesForCategory = ['secondary', 'primary', 'danger', 'success', 'warning', 'info',]
+    let indexInAllCategories = allCategories.indexOf(task['category']);
+    let categoryClass = bsClassesForCategory[indexInAllCategories];
 
-    let indexInAllCategories = allCategories.indexOf(category);
-    let categoryClassToSet = bsClassesForCategory[indexInAllCategories];
-    return categoryClassToSet
+    let categoriesContainer = document.getElementById(`categories${task['id']}`);
+    categoriesContainer.innerHTML = /* html */ `<span class="badge p-1 fw-semibold text-bg-${categoryClass}">${task['category']}</span>`;
 }
-
-
-function genHTMLBCTIassignedTo(task) {
-    let avatarsContainer = document.getElementById(`BCTIassignedTo${task['id']}`);
-    task['users'].forEach(user => {
-        avatarsContainer.innerHTML += genHTMLAssignedUser(user);
-    });
-}
-
-
-function genHTMLAssignedUser(user) {
-    let avatarSrc = setAvatarSrcForTaskItem(user);
-    return /* html */ `
-        <img src="${avatarSrc}" class="border border-1 rounded-circle"/>
-    `;
-}
-
-
-function setAvatarSrcForTaskItem(user) {
-    let indexInAllUsers = allUsers.indexOf(user);
-    let avatarSrcToSet = allUsersAvatars[indexInAllUsers];
-    return avatarSrcToSet
-}
-
-
-
-
-
