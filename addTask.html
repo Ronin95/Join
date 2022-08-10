@@ -32,48 +32,49 @@
           <h2>Add Task</h2>
           <p>Learning Management System Project</p>
         </div>
-        <div class="outer-border-form-field">
-          <div class="first-row">
-            <div class="first-row-column">
-              <h3>Title</h3>
-              <input id="title" placeholder="Add a title for your task" />
+        <form onsubmit="addTask()"> 
+          <div class="outer-border-form-field">
+            <div class="first-row">
+              <div class="first-row-column">
+                <h3>Title</h3>
+                <input required minlength="3" id="title" placeholder="Add a title for your task" />
+              </div>
+              <div class="first-row-2column">
+                <h3>Due Date</h3>
+                <form>
+                  <input type="date" id="dateTask" name="workTask" />
+                </form>
+              </div>
             </div>
-            <div class="first-row-2column">
-              <h3>Due Date</h3>
-              <form>
-                <input type="date" id="dateTask" name="workTask" />
-              </form>
-            </div>
-          </div>
-          <div class="second-row">
-            <div class="second-row-column">
-              <h3>Category</h3>
-              <form class="category">
-                <select id="category">
-                  <option value="Sales">Sales</option>
-                  <option value="IT">IT</option>
-                  <option value="Production">Production</option>
-                  <option value="Management">Management</option>
-                  <option value="Design">Design</option>
-                  <option value="Marketing">Marketing</option>
-                </select>
-              </form>
-            </div>
-            <div class="second-row-2column">
-              <h3>Urgency</h3>
-              <form class="category">
-                <select id="urgency">
-                  <option value="Low">Low</option>
-                  <option value="Medium">Medium</option>
-                  <option value="High">High</option>
-                </select>
+            <div class="second-row">
+              <div class="second-row-column">
+                <h3>Category</h3>
+                <form class="category">
+                  <select id="category">
+                    <option value="Sales">Sales</option>
+                    <option value="IT">IT</option>
+                    <option value="Production">Production</option>
+                    <option value="Management">Management</option>
+                    <option value="Design">Design</option>
+                    <option value="Marketing">Marketing</option>
+                  </select>
+                </form>
+              </div>
+              <div class="second-row-2column">
+                <h3>Urgency</h3>
+                <form class="category">
+                  <select id="urgency">
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                  </select>
               </form>
             </div>
           </div>
           <div class="third-row">
             <div class="third-row-column">
               <h3>Description</h3>
-              <textarea required
+              <textarea required minlength="3"
                 id="description"
                 placeholder="Add your notes for the task here..." 
               ></textarea>
@@ -98,17 +99,12 @@
                 >
                   Cancel
                 </button>
-                <button
-                  onclick="addTask()"
-                  class="btn btn-primary"
-                  type="button"
-                  id="addTask"
-                >
-                  Create Task
-                </button>
+                <input class="btn btn-primary" type="submit" value="Create Task">
+              
               </div>
             </div>
           </div>
+        </form>
         </div>
       </div>
     </div>
