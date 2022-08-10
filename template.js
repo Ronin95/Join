@@ -1,4 +1,4 @@
-function newTaskTemp(newTask, user, category, description) {
+function newTaskTemp(newTask) {
     return /*html*/ `
   <div class='b-style-dotted backlog-task-Container'>
     <div class='task-img-name-email b-style-dotted'>
