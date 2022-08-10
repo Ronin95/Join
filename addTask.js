@@ -79,14 +79,32 @@ function loadAllTasks() {
 }
 
 function loadUserinBacklog() {
-  for (let i = 0; i < selectedUser.length; i++) {
-    let user = selectedUser[i];
-    let userChoice = document.getElementById('wich_user');
-    let userPic = document.getElementById('user_pic');
-    userChoice.innerHTML += /*html*/ ` <p>${user.name}</p>
-    <p>${user.name.toLowerCase()}@join.com</p>`;
-    userPic.innerHTML += ` <img class="backlog-img" src="${user.avatar}" alt="">`
+  if (allTasks.length === 0) {
+    let noTask = document.getElementById('freshTask');
+    noTask.innerHTML += /*html*/`
+    <div class='mt-5'>
+      <h1>No Tasks available.</h1>
+      <h2>Please enter a task into <a href=addTask.html>Add Task</a>.</h2>
+    </div>
+    `;
+  } else {
+    for (let i = 0; i < selectedUser.length; i++) {
+      let user = selectedUser[i];
+      let userChoice = document.getElementById('which_user');
+      let userPic = document.getElementById('user_pic');
+      userPic.innerHTML += /*html*/`
+        <img class="backlog-img" src="${user.avatar}" alt="">
+      `;
+      userChoice.innerHTML += /*html*/ ` 
+        <p>${user.name}</p>
+        <p>
+          <a href='mailto:invalidmail@join.com' alt='Invalid Mail Address'>
+            ${user.name.toLowerCase().replace(' ', '.')}@join.com
+          </a>
+        </p>`;
+    }
   }
+
 }
 
 function selectUser(i) {
