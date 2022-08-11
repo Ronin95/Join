@@ -1,10 +1,3 @@
-const myModal = document.getElementById('myModal');
-const myInput = document.getElementById('myInput');
-
-myModal.addEventListener('shown.bs.modal', () => {
-  myInput.focus();
-});
-
 function verifyNull() {
   let email = document.getElementById('floatingEmail').value.trim();
   let password = document.getElementById('floatingPassword').value.trim();
@@ -33,7 +26,6 @@ function login(email, password) {
   }
   if (checkEmail && checkPassword) {
     window.location.href = 'index.html';
-    console.log(currentUser);
   } else if (!checkEmail) {
     console.log('falsche email');
     toastWrongEmail();
@@ -48,6 +40,25 @@ function loginAsUser(i) {
   console.log(currentUser);
 }
 
+function saveRegristration() {}
+
 function toastWrongEmail() {}
 
 function toastWrongPassword() {}
+
+function highlightAvatar() {
+  for (let i = 1; i < 5; i++) {
+    let gridRadio = document.getElementById(`gridRadios${i}`);
+    if (gridRadio.checked) {
+      document.getElementById(`worker${i}`).classList.add('border-danger');
+      document.getElementById(`worker${i}`).classList.remove('border-light');
+    } else {
+      document.getElementById(`worker${i}`).classList.remove('border-danger');
+      document.getElementById(`worker${i}`).classList.add('border-light');
+    }
+  }
+}
+
+document.querySelector('#toastBtn').onclick = function () {
+  new bootstrap.Toast(document.querySelector('#liveToast')).show();
+};
