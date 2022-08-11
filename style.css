@@ -15,8 +15,17 @@ html {
   margin: 0;
 }
 
+.category-color {
+  height: 100px;
+  width: 20px;
+}
+
 .b-style-dotted {
   border-style: dotted;
+}
+
+.b-style-dashed {
+  border-style: dashed;
 }
 
 body {
@@ -159,6 +168,21 @@ body {
   cursor: pointer;
 }
 
+.user-show {
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 0px;
+  margin-bottom: 24px;
+  cursor: pointer;
+  opacity: 0.7;
+  border: solid 3px transparent;
+}
+
+.user-selected {
+  opacity: 1;
+  border: 3px white solid;
+}
+
 .outer-border {
   width: 85vw;
 }
@@ -294,12 +318,26 @@ body {
 backlog.hmtl Style
 */
 
+.backlog-img {
+  height: 72px;
+  border-radius: 50%;
+  margin: 4px;
+}
+
 .backlog-container {
   width: 80vw;
   height: 70vh;
   margin-left: 20px;
   margin-bottom: 20px;
   overflow-y: hidden;
+}
+
+.category-task {
+  background-color: black;
+  height: 100px;
+  width: 10px;
+  border-top-left-radius: 10px 10px;
+  border-bottom-left-radius: 10px 10px;
 }
 
 .backlog-titles {
@@ -309,9 +347,13 @@ backlog.hmtl Style
 
 .task-img-name-email {
   display: flex;
+  align-items: center;
 }
 
 .backlog-task-Container {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
