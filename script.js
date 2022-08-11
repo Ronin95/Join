@@ -1,3 +1,5 @@
+let currentUser = [];
+
 /* General all posible variables / arrays like categories, users, avatars etc., which are used in every sub page und script */
 let allCategories = ['IT', 'Sales', 'Management', 'Production', 'Marketing'];
 

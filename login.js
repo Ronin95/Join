@@ -44,8 +44,7 @@ function login(email, password) {
 }
 
 function loginAsUser(i) {
-  currentUser = users[i];
-  localStorage.setItem('currentUser', JSON.stringify(currentUser));
+  currentUser.push(i);
   console.log(currentUser);
 }
 
