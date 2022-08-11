@@ -1,4 +1,4 @@
-let allTasks = [
+/* let allTasks = [
     {
         id: 0,
         title: 'Aufgabe Nr1',
@@ -39,7 +39,7 @@ let allTasks = [
         selectedUser: users[3],
         state: 'done'
     }
-];
+]; */
 
 
 /** The current dragged element (a task item of a board kanban columns) is globally saved here. */
@@ -49,6 +49,7 @@ let currentDraggedElement;
  * The function is executed immediattasky after loading the web page.
  */
 function initBoard() {
+    loadTask()
     render();
 }
 
