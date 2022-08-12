@@ -1,5 +1,9 @@
 let allTasks = [];
 let selectedUser = [];
+let today = new Date();
+let dd = today.getDate();
+let mm = today.getMonth() + 1;
+let yyyy = today.getFullYear();
 
 function addTask() {
   loadAllTasks();
@@ -71,4 +75,16 @@ function selectUser(i) {
 function showAllUserAndDisable() {
   showAllUser();
   document.getElementById("createTask").disabled = true;
+}
+
+function loadCurrentDate() {
+  if (dd < 10) {
+    dd = "0" + dd;
+  }
+  if (mm < 10) {
+    mm = "0" + mm;
+  }
+  today = dd + "." + mm + "." + yyyy;
+  document.getElementById("wichDate").innerHTML += `
+<input id="dateTask" placeholder="${today}" class="textbox-n" required type="text" onfocus="(this.type='date')" >`;
 }

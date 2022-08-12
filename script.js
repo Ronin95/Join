@@ -75,4 +75,5 @@ async function includeHTML() {
 async function initAddTask() {
   await includeHTML();
   showAllUser();
+  loadCurrentDate();
 }
