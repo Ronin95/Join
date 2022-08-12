@@ -1,4 +1,8 @@
 /* General all posible variables / arrays like categories, users, avatars etc., which are used in every sub page und script */
+/* Lukas 11.08: Sollen wir auch die Kategorien zentalisieren, ähnlich wie bei users und selectedUser, 
+oder soll ein lokales Board Array sein.
+Ich brauch auch hier
+*/
 let allCategories = ['IT', 'Sales', 'Management', 'Production', 'Marketing'];
 
 /* Wenn der gleiche Style für die Kategorien Items/Badges noch irgendwo genasuo wie 

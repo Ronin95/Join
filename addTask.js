@@ -44,12 +44,28 @@ async function initX() {
   backend.setItem("Test", "Hallo");
 }
 
+
+/* Lukas 11.08: Die Save UND LOAD Funktion müssten ein wenig angepasst werden, 
+dass auch die Änderungen: Kategorie-Wechsel beim Board den alten Stand von allTasks local und im Backed überspeichert
+und danach vor dem Rendern der neue Stand in allen Subseiten erneut geleden wird. 
+
+Die sollten wir @Maik gemeinsam besprechen/anpassen. */
 function saveTask(newTask) {
   allTasks.push(newTask);
   let task = JSON.stringify(allTasks);
   localStorage.setItem("Task", task);
 }
 
+
+/* Lukas 11.08: Alte Version der Load Funktion: Für meine Zwecke, damit Board überhaupt funktioniert. Board kennt keine selectedUser. */
+/* function loadTask() {
+  let task = localStorage.getItem("Task"); if (task) {
+    allTasks = JSON.parse(task);
+  }
+} */
+
+
+/* Lukas 11.08: warum brauchen wir noch eine Var hier selectedUser, wenn wir schon im script.js users haben? */
 function loadTask() {
   let task = localStorage.getItem("Task");
   let user = localStorage.getItem("User");
@@ -58,6 +74,7 @@ function loadTask() {
     selectedUser = JSON.parse(user);
   }
 }
+
 
 function clearInput() {
   title.value = "";
@@ -90,32 +107,6 @@ function loadAllTasks() {
   }
 }
 
-<<<<<<< HEAD
-async function initX() {
-  await downloadFromServer();
-  allTasks = JSON.parse(backend.getItem('allTasks')) || [];
-  await includeHTML();
-  backend.setItem('Test', 'Hallo');
-}
-
-/* Die Save UND LOAD Funktion müssten ein wenig angepasst werden, 
-dass auch die Änderungen: Kategorie-Wechsel beim Board den alten Stand von allTasks local und im Backed überspeichert
-und danach vor dem Rendern der neue Stand in allen Subseiten erneut geleden wird. 
-
-Die sollten wie @Maik gemeinsam besprechen/anpassen. */
-function saveTask(newTask) {
-  allTasks.push(newTask);
-  let task = JSON.stringify(allTasks);
-  localStorage.setItem('Task', task);
-  clearInput();
-  doneIt();
-}
-
-function loadTask() {
-  let task = localStorage.getItem('Task');
-  if (task) {
-    allTasks = JSON.parse(task);
-=======
 function loadUserinBacklog() {
   if (allTasks.length === 0) {
     let noTask = document.getElementById('freshTask');
@@ -141,7 +132,6 @@ function loadUserinBacklog() {
           </a>
         </p>`;
     }
->>>>>>> 4db4e360b6d09d81717d7e0f7899d42f84fe6914
   }
 
 }

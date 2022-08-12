@@ -6,7 +6,7 @@ function categoryColor(newTask) {
   let designCategory;
   let marketingCategory;
 
-/* Lukas 11.08: Siesen Style sollten wir auch besprechen, abstimmen, zentralisieren, 
+/* Lukas 11.08: Diesen Style sollten wir auch besprechen, abstimmen, zentralisieren, 
 damit die gleichen Farben für die Kategorien im Board und Backlog verwendet werden.*/
 
   if (newTask.category === 'Sales') { // Sales (lightcoral)

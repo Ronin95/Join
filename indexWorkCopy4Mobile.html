@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join Mobile</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+  <script src="mini_backend.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+
+  <!-- addTask script file -->
+  <script src="addTask.js"></script>
+
+  <!-- board script file -->
+  <script src="index.js"></script>
+
+
+
+  <link rel="icon" href="/Kanban_Gruppenarbeit/logo.png" />
+</head>
+
+<body onload="init(), initBoard()" class="m-0 p-0 py-sm-4">
+  <div class="app-window h-100 w-100 d-flex flex-column flex-sm-row justify-content-flex-start">
+    <div class="" w3-include-html="navbar.html"></div>
+    <!-- work area (right site: content of the nav-link) -->
+    <div class="container-fluid d-flex justify-content-center align-items-center h-100">
+      <div class="row h-75 w-100">
+
+        <div id="carouselExampleDark" class="carousel carousel-dark slide">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+              aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3"
+              aria-label="Slide 4"></button>
+          </div>
+          <div class="carousel-inner h-100 w-75 mx-auto">
+
+
+            <div class="carousel-item active border border-danger border-2 h-100" data-bs-interval="10000">
+              <!-- <img src="..." class="d-block w-100" alt="..."> -->
+              <div class="col-12 col-sm-3 d-flex flex-column align-items-center h-100">
+                <span class="fw-bold my-1">TO DO</span>
+                <div id="toDoColumn" class="board-column hiddeneScrollbar flex-grow-1 w-75 px-1 h-100"
+                  ondrop="moveTo('inProgress'), removeHightlight('inProgressColumn')"
+                  ondragover="allowDrop(event), hightlight('inProgressColumn')"
+                  ondragleave="removeHightlight('inProgressColumn')"></div>
+              </div>
+              <div class="carousel-caption d-none d-md-block">
+                <h5>First slide label</h5>
+                <p>Some representative placeholder content for the first slide.</p>
+              </div>
+            </div>
+
+
+            <div class="carousel-item border border-danger border-2 h-100" data-bs-interval="2000">
+              <!-- <img src="..." class="d-block w-100" alt="..."> -->
+              <div class="col-12 col-sm-3 d-flex flex-column align-items-center h-100">
+                <span class="fw-bold my-1">IN PROGRESS</span>
+                <div id="inProgressColumn" class="board-column hiddeneScrollbar flex-grow-1 w-75 px-1 h-100"
+                  ondrop="moveTo('inProgress'), removeHightlight('inProgressColumn')"
+                  ondragover="allowDrop(event), hightlight('inProgressColumn')"
+                  ondragleave="removeHightlight('inProgressColumn')">
+                </div>
+              </div>
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Second slide label</h5>
+                <p>Some representative placeholder content for the second slide.</p>
+              </div>
+            </div>
+
+
+
+            <div class="carousel-item border border-danger border-2 h-100" data-bs-interval="2000">
+              <!-- <img src="..." class="d-block w-100" alt="..."> -->
+              <div class="col-12 col-sm-3 d-flex flex-column align-items-center h-100">
+                <span class="fw-bold my-1">TESTING</span>
+                <div id="testingColumn" class="board-column hiddeneScrollbar flex-grow-1 w-75 px-1 h-100"
+                  ondrop="moveTo('testing'), removeHightlight('testingColumn')"
+                  ondragover="allowDrop(event), hightlight('testingColumn')"
+                  ondragleave="removeHightlight('testingColumn')">
+                </div>
+              </div>
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Third slide label</h5>
+                <p>Some representative placeholder content for the third slide.</p>
+              </div>
+            </div>
+
+
+
+            <div class="carousel-item border border-danger border-2 h-100" data-bs-interval="2000">
+              <!-- <img src="..." class="d-block w-100" alt="..."> -->
+              <div class="col-12 col-sm-3 d-flex flex-column align-items-center h-100">
+                <span class="fw-bold my-1">DONE</span>
+                <div id="doneColumn" class="board-column hiddeneScrollbar flex-grow-1 w-75 px-1 h-100"
+                  ondrop="moveTo('done'), removeHightlight('doneColumn')"
+                  ondragover="allowDrop(event), hightlight('doneColumn')" ondragleave="removeHightlight('doneColumn')">
+                </div>
+              </div>
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Third slide label</h5>
+                <p>Some representative placeholder content for the third slide.</p>
+              </div>
+            </div>
+
+
+          </div>
+          <button class="carousel-control-prev bg-primary d-flex flex-column gap-5" type="button"
+            data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <span class="fs-6">DONE</span>
+            <span id="left-arrow" class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next bg-warning d-flex flex-column gap-5" type="button"
+            data-bs-target="#carouselExampleDark" data-bs-slide="next" ondragover="slideWhenTaskHoverArrow()">
+            <span class="fs-6">IN PROGRESS</span>
+            <span id="right-arrow" class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+
+  <script>
+
+  </script>
+
+
+</body>
+
+</html>

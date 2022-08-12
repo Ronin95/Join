@@ -143,6 +143,21 @@ body {
   overflow: hidden;
 }
 
+.green-modal {
+  background: linear-gradient(-135deg, #608A32 3.4%, transparent 0);
+  overflow: hidden;
+}
+
+.yellow-modal {
+  background: linear-gradient(-135deg, #eac910 3.4%, transparent 0);
+  overflow: hidden;
+}
+
+.red-modal {
+  background: linear-gradient(-135deg, #e83b3b 3.4%, transparent 0);
+  overflow: hidden;
+}
+
 
 .card-title {
   font-size: 0.7rem;
@@ -160,6 +175,27 @@ body {
 .BCTIassignedTo img {
   width: 20px;
   height: 20px;
+}
+
+/* modal */
+.date-container {
+  min-width: 114px;
+  max-width: 120px;
+}
+
+.date-container input {
+  width: 90%;
+}
+
+/* .avatar-modal {
+  width: fit-content;
+} */
+
+.avatar-modal img {
+  height: 45px;
+  width: 45px;
+  object-fit: cover;
+  margin-right: 2px;
 }
 
 /* Add Task code */
