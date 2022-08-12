@@ -147,7 +147,7 @@ body {
 }
 
 .green-modal {
-  background: linear-gradient(-135deg, #608A32 3.4%, transparent 0);
+  background: linear-gradient(-135deg, #608a32 3.4%, transparent 0);
   overflow: hidden;
 }
 
@@ -160,7 +160,6 @@ body {
   background: linear-gradient(-135deg, #e83b3b 3.4%, transparent 0);
   overflow: hidden;
 }
-
 
 .card-title {
   font-size: 0.7rem;

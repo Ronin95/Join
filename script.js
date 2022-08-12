@@ -13,6 +13,15 @@ dann sollte es auch als ein general Array zentralisiert werden.
  */
 /* let bsClassesForCategory = ['secondary', 'primary', 'danger', 'success', 'warning', 'info',]; */
 
+let colorsCategory = {
+  Sales: '#DC5445',
+  IT: '#5F61B3',
+  Production: '#C4A381',
+  Management: '#E9E265',
+  Design: '#BBD686',
+  Marketing: '#EEF1BD',
+};
+
 let users = [
   {
     name: 'Lukas Erdmanski',
