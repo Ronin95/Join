@@ -24,7 +24,7 @@ function addTask() {
     /* Lukas 11.08: Wie gestern besprochen, diese Variable muss zu selectedUser geändert werden 
     und in users (aus script.js / Phli LogIn Seite) gespeichert werden, damit die Verlinkung nach der gestern abgesprochene Methode
     in Board funktioniert und damit die Tasks überhauptangezeigt werden. */
-    selectedUser: users[user.value],
+    userForTask: selectedUser,
     id: id++,
     /* Lukas 11.08: Ergäntzt, da sonst die Tasks im Board aus dem LocalStorage nicht in die Spalten geladen werden. 
     "Er weisst nicht, wohin mit den Tasks beim Rendern, in welche Spalte?"  */
@@ -68,10 +68,8 @@ function saveTask(newTask) {
 /* Lukas 11.08: warum brauchen wir noch eine Var hier selectedUser, wenn wir schon im script.js users haben? */
 function loadTask() {
   let task = localStorage.getItem("Task");
-  let user = localStorage.getItem("User");
-  if (task && user) {
+  if (task) {
     allTasks = JSON.parse(task);
-    selectedUser = JSON.parse(user);
   }
 }
 
@@ -107,42 +105,13 @@ function loadAllTasks() {
   }
 }
 
-function loadUserinBacklog() {
-  if (allTasks.length === 0) {
-    let noTask = document.getElementById('freshTask');
-    noTask.innerHTML += /*html*/`
-    <div class='mt-5'>
-      <h1>No Tasks available.</h1>
-      <h2>Please enter a task into <a href=addTask.html>Add Task</a>.</h2>
-    </div>
-    `;
-  } else {
-    for (let i = 0; i < selectedUser.length; i++) {
-      let user = selectedUser[i];
-      let userChoice = document.getElementById('which_user');
-      let userPic = document.getElementById('user_pic');
-      userPic.innerHTML += /*html*/`
-        <img class="backlog-img" src="${user.avatar}" alt="">
-      `;
-      userChoice.innerHTML += /*html*/ ` 
-        <p>${user.name}</p>
-        <p>
-          <a href='mailto:invalidmail@join.com' alt='Invalid Mail Address'>
-            ${user.name.toLowerCase().replace(' ', '.')}@join.com
-          </a>
-        </p>`;
-    }
-  }
-
-}
 
 function selectUser(i) {
   document.getElementById(`selected${i}`).classList.toggle("user-selected");
-  if (selectedUser.includes(users[i])) {
-    selectedUser = selectedUser.filter((a) => a != users[i]);
-  } else {
-    selectedUser.push(users[i]);
-  }
-  let userChoice = JSON.stringify(selectedUser);
-  localStorage.setItem("User", userChoice);
+  selectedUser = users[i];
+    if (selectedUser.includes(users[i])) {
+      selectedUser = selectedUser.filter((a) => a != users[i]);
+    } else {
+      selectedUser = users[i];
+    }
 }

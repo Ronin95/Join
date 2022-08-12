@@ -1,19 +1,19 @@
-function categoryColor(newTask) {
+/* function categoryColor(newTask) {
   let salesCategory;
   let itCategory;
   let productionCategory;
   let managementCategory;
   let designCategory;
-  let marketingCategory;
+  let marketingCategory; */
 
 /* Lukas 11.08: Diesen Style sollten wir auch besprechen, abstimmen, zentralisieren, 
 damit die gleichen Farben für die Kategorien im Board und Backlog verwendet werden.*/
 
-  if (newTask.category === 'Sales') { // Sales (lightcoral)
+/*   if (newTask.category === 'Sales') { // Sales (lightcoral)
     salesCategory = document.getElementsByClassName('category-task');
     return salesCategory[0].style.backgroundColor = '#f08080';
   } else if (newTask.category === 'IT') { // IT (lightblue)
-    itCategory = document.getElementsByClassName('category-task'); 
+    itCategory = document.getElementsByClassName('category-task');
     return itCategory[0].style.backgroundColor = '#add8e6';
   } else if (newTask.category === 'Production') { // Production (lightgreen)
     productionCategory = document.getElementsByClassName('category-task');
@@ -29,23 +29,32 @@ damit die gleichen Farben für die Kategorien im Board und Backlog verwendet wer
     return marketingCategory[0].style.backgroundColor = '#ffff00';
   }
 }
-
+ */
 function newTaskTemp(newTask) {
   return /*html*/ `
   <div class=' backlog-task-Container'>
     <div class='task-img-name-email '>
       <div class='category-task'>
-        ${categoryColor(newTask)}
+
       </div>
-      <div id="user_pic"></div>
-      <div id="which_user"></div>
-    </div>
+      <div id="user_pic">
+        <img src="${newTask.userForTask.avatar}">
+      </div>
+      <div id="which_user">
+        <p>${newTask.userForTask.name}</p>
+          <p>
+            <a href='mailto:invalidmail@join.com' alt='Invalid Mail Address'>
+              ${newTask.userForTask.email}
+            </a>
+          </p>
+      </div >
+    </div >
     <div class='taskCategory'>
       <h5>${newTask.category}</h5>
     </div>
     <div class='taskDescription '>
       <p>${newTask.description}</p>
   </div>
-     </div>
-  `;
+     </div >
+    `;
 }
