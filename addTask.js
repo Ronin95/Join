@@ -62,5 +62,13 @@ function showAllUser() {
 function selectUser(i) {
   document.getElementById(`selected${i}`).classList.toggle("user-selected");
   selectedUser = users[i];
-  document.getElementById(`user`).innerHTML = /*html*/ `<div onclick="showAllUser()"> <img id="${i}" class="user-show user-selected"  src="${selectedUser.avatar}" alt=""> </div>`;
+  document.getElementById(`user`).innerHTML = /*html*/ ` 
+    <div onclick="showAllUserAndDisable()"> 
+      <img id="${i}" class="user-show user-selected" src="${selectedUser.avatar}" alt=""></div>`;
+  document.getElementById("createTask").removeAttribute("disabled");
+}
+
+function showAllUserAndDisable() {
+  showAllUser();
+  document.getElementById("createTask").disabled = true;
 }
