@@ -91,7 +91,7 @@
                 <button
                   class="btn btn-transparent"
                   type="button"
-                  id="cancelTask">
+                  id="cancelTask"> 
                   Cancel
                 </button>
                 <input id="createTask" class="btn btn-primary" type="submit" value="Create Task" disabled>
@@ -103,13 +103,13 @@
         </div>
       </div>
     </div>
-
-    <div
-      class="d-none d-flex flex-column justify-content-center align-items-center"
-      id="succes-arrow"
-    >
-      <div><img src="./img/check.png" alt="" /></div>
-      <div class="safe-color">Done!</div>
+    <div id="succes_task" class="d-none toast d-block succes-arrow" role="alert" aria-atomic="true" style="max-width: fit-content">
+      <div class="d-flex justify-content-sm-between align-items-center p-2 flex-column">
+        <img src="img/check.png" class="rounded me-2" alt="Done it!" height="48px">
+        <strong>New Task added</strong>
+      </div>
+      <div id="task_for_user" class="toast-body">
+      </div>
     </div>
 
     <!-- JavaScript Bundle with Popper -->

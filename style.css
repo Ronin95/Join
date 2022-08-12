@@ -502,7 +502,7 @@ td:hover {
 /*
 Check Button only
 */
-#succes-arrow {
+.succes-arrow {
   position: fixed;
 }
 

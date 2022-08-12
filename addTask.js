@@ -48,9 +48,10 @@ function clearInput() {
 }
 
 function doneIt() {
-  document.getElementById("succes-arrow").classList.remove("d-none");
+  document.getElementById("succes_task").classList.remove("d-none");
+  document.getElementById("task_for_user").innerHTML = `For ${selectedUser.name}`;
   setTimeout(function () {
-    document.getElementById("succes-arrow").classList.add("d-none");
+    document.getElementById("succes_task").classList.add("d-none");
   }, 2000);
 }
 
