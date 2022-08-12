@@ -212,14 +212,15 @@ body {
   margin-right: 0px;
   margin-bottom: 24px;
   cursor: pointer;
-  opacity: 0.7;
-  border: solid 3px transparent;
+  border: solid 2px transparent;
 }
 
 .user-selected {
   opacity: 1;
-  border: 3px white solid;
+  border: 2px white solid;
+  display: unset !important;
 }
+
 
 .outer-border {
   width: 85vw;
@@ -513,3 +514,11 @@ Check Button only
 /*
 Check Button only
 */
+
+
+/* User Pic Backlog*/
+
+.user-pic{
+  height: 70px;
+  border-radius: 50%;
+}

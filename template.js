@@ -8,7 +8,7 @@ function newTaskTemp(newTask, i) {
 
       </div>
       <div id="user_pic">
-        <img class="d-none" src="${newTask.userForTask.avatar}">
+        <img class="user-pic m-3" src="${newTask.userForTask.avatar}">
       </div>
       <div id="which_user">
         <p>${newTask.userForTask.name}</p>
