@@ -23,6 +23,9 @@ function addTask() {
     id: id++,
     state: "toDo",
   };
+  if (newTask.date = !date.value) {
+    newTask.date = today
+  } else {newTask.date = date.value}
   saveTask(newTask);
   clearInput();
   doneIt();
@@ -85,7 +88,7 @@ function loadCurrentDate() {
   if (mm < 10) {
     mm = "0" + mm;
   }
-  today = dd + "." + mm + "." + yyyy;
+  today = yyyy + "-" + mm + "-" + dd;
   document.getElementById("wichDate").innerHTML += `
-<input id="dateTask" placeholder="${today}" class="textbox-n" required type="text" onfocus="(this.type='date')" >`;
+<input id="dateTask" placeholder="${today}" class="textbox-n" type="text" onfocus="(this.type='date')" >`;
 }

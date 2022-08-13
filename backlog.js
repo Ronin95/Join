@@ -11,7 +11,6 @@ function generateAllTasks() {
     let newTasks = document.getElementById("freshTask");
     newTasks.innerHTML += newTaskTemp(newTask, i);
   }
-  
 }
 
 function filterNames() {
