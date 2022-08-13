@@ -1,9 +1,7 @@
 async function initBacklog() {
-  /* Lukas 11.08: warum muss hier loaskTask gemacht werden, wenn loadAllTaksk
-  bereits loadTask mit beinhaltet? */
-  includeHTML();
+  await includeHTML();
   generateAllTasks();
-  // loadUserinBacklog();
+  document.getElementById('navInBacklog').classList.add('you-are-here');
 }
 
 function generateAllTasks() {
@@ -13,6 +11,7 @@ function generateAllTasks() {
     let newTasks = document.getElementById("freshTask");
     newTasks.innerHTML += newTaskTemp(newTask, i);
   }
+  
 }
 
 function filterNames() {
@@ -26,5 +25,5 @@ function filterNames() {
     if (name.toLowerCase().includes(search) || category.toLowerCase().includes(search))
     {document.getElementById("freshTask").innerHTML += searchTaskTemp(newTask)
     }
-  }
+  };
 }
