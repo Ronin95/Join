@@ -60,6 +60,17 @@ function clearInput() {
 }
 
 /**
+ * delete unsafed values from the inputs if the written or clicked are not really want to add
+ */
+function deleteUnsafedInput() {
+  document.getElementById('title').value = "";
+  document.getElementById('category').selectedIndex = 0;
+  document.getElementById('urgency').selectedIndex = 0;
+  document.getElementById('description').value = "";
+  showAllUser();
+}
+
+/**
  * creates a small Pop-up that tells the adder that the task is added
  * The pop-up also shows who the task was created for
  * the pop is blended out after 2 seconds
@@ -82,7 +93,7 @@ function showAllUser() {
   for (let i = 0; i < users.length; i++) {
     let user = users[i];
     let showUser = document.getElementById("user");
-    showUser.innerHTML += `<img id="selected${i}" onclick="selectUser(${i})" class="user-show" src="${user.avatar}" alt="">`;
+    showUser.innerHTML += `<img title="${user.name}" id="selected${i}" onclick="selectUser(${i})" class="user-show" src="${user.avatar}" alt="">`;
   }
 }
 
@@ -96,7 +107,7 @@ function selectUser(i) {
   selectedUser = users[i];
   document.getElementById(`user`).innerHTML = /*html*/ ` 
     <div onclick="showAllUserAndDisable()"> 
-      <img id="${i}" class="user-show user-selected" src="${selectedUser.avatar}" alt=""></div>`;
+      <img title="${selectedUser.name}" id="${i}" class="user-show user-selected" src="${selectedUser.avatar}" alt=""></div>`;
   document.getElementById("createTask").removeAttribute("disabled");
 }
 

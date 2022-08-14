@@ -71,7 +71,7 @@ body {
   margin-left: -8px;
 }
 
-.navbar a:hover{
+.navbar a:hover {
   color: rgb(255, 255, 255) !important;
 }
 
@@ -219,7 +219,7 @@ body {
 }
 
 .user-show {
-  height: 60px;
+  height: 70px;
   border-radius: 50%;
   margin-right: 0px;
   margin-bottom: 24px;
@@ -233,9 +233,8 @@ body {
   display: unset !important;
 }
 
-
 .outer-border {
-  width: 85vw;
+  width: 100vw;
 }
 
 .titles {
@@ -341,20 +340,22 @@ body {
 }
 
 .third-row-2column img {
-  margin-left: 20px;
-  margin-top: 20px;
+  margin-right: 18px;
+  margin-top: 18px;
 }
 
 .buttons-Task {
-  gap: 20px;
+  cursor: pointer;
   display: flex;
-  justify-content: flex-end;
-  width: 25vw;
 }
 
-.buttons-Task button {
-  width: 120px;
-  font-size: 24px;
+.clear-button:focus {
+  box-shadow: none !important;
+}
+
+.buttons-Task input {
+  margin-right: 8px;
+  min-width: 100px;
 }
 
 /*
@@ -527,10 +528,9 @@ Check Button only
 Check Button only
 */
 
-
 /* User Pic Backlog*/
 
-.user-pic{
+.user-pic {
   height: 70px;
   border-radius: 50%;
 }

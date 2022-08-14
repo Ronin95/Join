@@ -87,14 +87,10 @@
 
               <div id="user"></div>
 
-              <div class="buttons-Task mt-4">
-                <button
-                  class="btn btn-transparent"
-                  type="button"
-                  id="cancelTask"> 
-                  Cancel
-                </button>
-                <input id="createTask" class="btn btn-primary" type="submit" value="Create Task" disabled>
+              <div class="buttons-Task mt-2">
+
+                <input title="Clear your input" id="clearInput" class="btn btn-secondary clear-button" type="button" onclick="deleteUnsafedInput()" value="Clear">
+                <input title="Create a new task" id="createTask" class="btn btn-primary" type="submit" value="Create" disabled>
               
               </div>
             </div>
