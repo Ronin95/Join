@@ -9,3 +9,15 @@ function loadAllTasks() {
     allTasks = JSON.parse(task);
   }
 }
+
+function saveInBackend(json, key) {
+  let asString = JSON.stringify(json);
+  localStorage.setItem(key, asString);
+}
+
+function loadFromBackend(json, key) {
+  let asString = localStorage.getItem(key);
+  if (asString) {
+    json = JSON.parse(asString);
+  }
+}

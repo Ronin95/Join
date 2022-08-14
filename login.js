@@ -1,7 +1,10 @@
 function verifyNull() {
-  let email = document.getElementById('floatingEmail').value.trim();
+  loadFromBackend(users, 'users');
+  let email = document
+    .getElementById('floatingEmail')
+    .value.trim()
+    .toLowerCase();
   let password = document.getElementById('floatingPassword').value.trim();
-  debugger;
   if (!email.length) {
     console.log('Please enter email');
   } else if (!password.length) {
@@ -15,11 +18,10 @@ function login(email, password) {
   let checkEmail = false;
   let checkPassword = false;
   for (let i = 0; i < users.length; i++) {
-    if (email == users[i].email) {
+    if (email.toLowerCase() == users[i].email.toLowerCase()) {
       checkEmail = true;
       if (password == users[i].password) {
         checkPassword = true;
-        debugger;
         loginAsUser(i);
       }
     }
@@ -40,7 +42,27 @@ function loginAsUser(i) {
   console.log(currentUser);
 }
 
-function saveRegristration() {}
+function saveRegristration() {
+  let firstName = document.getElementById('floatingFirstNameRegister');
+  let LastName = document.getElementById('floatingLastNameRegister');
+  let email = document.getElementById('floatingEmailRegister');
+  let password = document.getElementById('floatingPasswordRegister');
+  let avatar;
+  for (let i = 1; i < 5; i++) {
+    let worker = document.getElementById(`worker${i}`);
+    if (worker.classList.contains('border-danger')) {
+      avatar = worker;
+    }
+  }
+  let registration = {
+    name: firstName.value + ' ' + LastName.value,
+    password: password.value,
+    avatar: avatar.src,
+    email: email.value,
+  };
+  users.push(registration);
+  saveInBackend(users, 'users');
+}
 
 function toastWrongEmail() {}
 
@@ -58,7 +80,3 @@ function highlightAvatar() {
     }
   }
 }
-
-document.querySelector('#toastBtn').onclick = function () {
-  new bootstrap.Toast(document.querySelector('#liveToast')).show();
-};
