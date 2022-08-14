@@ -5,6 +5,12 @@ let dd = today.getDate();
 let mm = today.getMonth() + 1;
 let yyyy = today.getFullYear();
 
+/**
+ * add a new task, by getting the values from document by id
+ * safe in the JSON new Task
+ * clear the input
+ * show a message the Message with the value for wich Member is the task added
+ */
 function addTask() {
   loadAllTasks();
   let title = document.getElementById("title");
@@ -23,26 +29,29 @@ function addTask() {
     id: id++,
     state: "toDo",
   };
-  if (newTask.date = !date.value) {
-    newTask.date = today
-  } else {newTask.date = date.value}
+  if ((newTask.date = !date.value)) {
+    newTask.date = today;
+  } else {
+    newTask.date = date.value;
+  }
   saveTask(newTask);
   clearInput();
   doneIt();
 }
 
-async function initX() {
-  await downloadFromServer();
-  allTasks = JSON.parse(backend.getItem("allTasks")) || [];
-  await includeHTML();
-  backend.setItem("Test", "Hallo");
-}
-
+/**
+ * save the new Task and push it to the JSON all Task
+ * @param {string} newTask - This ist the JSON array that will be created
+ * push the newTask into allTasks JSON array
+ */
 function saveTask(newTask) {
   allTasks.push(newTask);
   saveAllTasks();
 }
 
+/**
+ * clear the input values and set the category and urgency on a default value
+ */
 function clearInput() {
   title.value = "";
   category.selectedIndex = 0;
@@ -50,14 +59,24 @@ function clearInput() {
   description.value = "";
 }
 
+/**
+ * creates a small Pop-up that tells the adder that the task is added
+ * The pop-up also shows who the task was created for
+ * the pop is blended out after 2 seconds
+ */
 function doneIt() {
   document.getElementById("succes_task").classList.remove("d-none");
-  document.getElementById("task_for_user").innerHTML = `For ${selectedUser.name}`;
+  document.getElementById(
+    "task_for_user"
+  ).innerHTML = `For ${selectedUser.name}`;
   setTimeout(function () {
     document.getElementById("succes_task").classList.add("d-none");
   }, 2000);
 }
 
+/**
+ * show all User from the global JSON array - users - that can be selected for a task
+ */
 function showAllUser() {
   document.getElementById("user").innerHTML = ``;
   for (let i = 0; i < users.length; i++) {
@@ -67,6 +86,11 @@ function showAllUser() {
   }
 }
 
+/**
+ * select an avatar to choose a user to add a task
+ * @param {string} i - this is the Person who is choose by clicking an avatar
+ * creates a new element wich show only the user who is selected
+ */
 function selectUser(i) {
   document.getElementById(`selected${i}`).classList.toggle("user-selected");
   selectedUser = users[i];
@@ -76,11 +100,17 @@ function selectUser(i) {
   document.getElementById("createTask").removeAttribute("disabled");
 }
 
+/**
+ * function that show all user an disable the commit button, when no single user is selected 
+ */
 function showAllUserAndDisable() {
   showAllUser();
   document.getElementById("createTask").disabled = true;
 }
 
+/**
+ * load the current date, and formate it so it can use as a default value in the add Task formular
+ */
 function loadCurrentDate() {
   if (dd < 10) {
     dd = "0" + dd;
@@ -91,4 +121,11 @@ function loadCurrentDate() {
   today = yyyy + "-" + mm + "-" + dd;
   document.getElementById("wichDate").innerHTML += `
 <input id="dateTask" placeholder="${today}" class="textbox-n" type="text" onfocus="(this.type='date')" >`;
+}
+
+async function initX() {
+  await downloadFromServer();
+  allTasks = JSON.parse(backend.getItem("allTasks")) || [];
+  await includeHTML();
+  backend.setItem("Test", "Hallo");
 }
