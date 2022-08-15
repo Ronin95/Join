@@ -17,66 +17,67 @@
   <script src="helpers.js"></script>
 </head>
 
-<body onload="init(), initBoard()" class="m-0 p-0 py-md-4">
-  <div class="app-window h-100 w-100 d-flex flex-column flex-md-row justify-content-flex-start">
+<body onload="init(), initBoard()" class="py-md-4">
+  <div class="app-window h-100 w-100 d-flex flex-column flex-md-row">
     <div class="" w3-include-html="navbar.html"></div>
 
     <!-- work area (right site: content of the nav-link) -->
-    <div class="container-fluid d-flex justify-content-center align-items-center h-100 overflow-hidden px-0 px-sm-1">
-      <div class="row h-75 w-100">
+    <!-- <div class="container-fluid justify-content-center align-items-center flex-grow-1 over-flow px-0 px-sm-1 border-4 border border-primary"> -->
+    <div class="d-flex align-items-center flex-grow-1 overflow-hidden border-primary">
+      <div class="row h-75 w-100 border-4 border m-0">
 
-        <!-- unsder bs-sm-break point: carousel of kanban columns-->
-        <div id="carousel" class="all hidden-sm carousel carousel-dark slide px-0 h-100">
 
-          <div class="all carousel-inner h-100 mx-auto">
+        
+        <div id="carousel" class="carousel slide px-0 h-100">
+
+          <div class="carousel-inner d-sm-flex justify-content-center h-100 mx-auto">
 
 
 
             <div class="all carousel-item active h-100">
-              <div class="test">
-                <div class="visible-ever col-12 col-sm-3 d-flex flex-column align-items-center h-100">
-                  <span class="fw-bold my-1 column-name">TO DO</span>
-                  <div id="toDoColumn" class="board-column hiddeneScrollbar flex-grow-1 h-100 w-100 px-1"
-                    ondrop="moveTo('toDo'), removeHightlight('toDoColumn')"
-                    ondragover="allowDrop(event), hightlight('toDoColumn')"
-                    ondragleave="removeHightlight('toDoColumn')">
-                  </div>
+
+              <div class="d-flex flex-column align-items-center h-100">
+                <span class="fw-bold my-1 column-name">TO DO</span>
+                <div id="toDoColumn" class="board-column hiddeneScrollbar flex-grow-1 h-100 w-100 px-1"
+                  ondrop="moveTo('toDo'), removeHightlight('toDoColumn')"
+                  ondragover="allowDrop(event), hightlight('toDoColumn')" ondragleave="removeHightlight('toDoColumn')">
                 </div>
+
               </div>
 
             </div>
 
 
             <div class="all carousel-item h-100">
-              <div class="all test">
-                <div class="visible-ever col-12 col-sm-3 d-flex flex-column align-items-center h-100">
-                  <span class="fw-bold my-1 column-name">IN PROGRESS</span>
-                  <div id="inProgressColumn" class="board-column hiddeneScrollbar flex-grow-1 w-100 px-1"
-                    ondrop="moveTo('inProgress'), removeHightlight('inProgressColumn')"
-                    ondragover="allowDrop(event), hightlight('inProgressColumn')"
-                    ondragleave="removeHightlight('inProgressColumn')"></div>
-                </div>
+
+              <div class="d-flex flex-column align-items-center h-100">
+                <span class="fw-bold my-1 column-name">IN PROGRESS</span>
+                <div id="inProgressColumn" class="board-column hiddeneScrollbar flex-grow-1 w-100 px-1"
+                  ondrop="moveTo('inProgress'), removeHightlight('inProgressColumn')"
+                  ondragover="allowDrop(event), hightlight('inProgressColumn')"
+                  ondragleave="removeHightlight('inProgressColumn')"></div>
               </div>
+
 
             </div>
 
             <div class="all carousel-item h-100">
-              <div class="all test">
-                <div class="visible-ever col-12 col-sm-3 d-flex flex-column align-items-center h-100">
-                  <span class="fw-bold my-1 column-name">TESTING</span>
-                  <div id="testingColumn" class="board-column hiddeneScrollbar flex-grow-1 w-100 px-1"
-                    ondrop="moveTo('testing'), removeHightlight('testingColumn')"
-                    ondragover="allowDrop(event), hightlight('testingColumn')"
-                    ondragleave="removeHightlight('testingColumn')">
-                  </div>
+
+              <div class="d-flex flex-column align-items-center h-100">
+                <span class="fw-bold my-1 column-name">TESTING</span>
+                <div id="testingColumn" class="board-column hiddeneScrollbar flex-grow-1 w-100 px-1"
+                  ondrop="moveTo('testing'), removeHightlight('testingColumn')"
+                  ondragover="allowDrop(event), hightlight('testingColumn')"
+                  ondragleave="removeHightlight('testingColumn')">
                 </div>
               </div>
+
 
             </div>
 
             <div class="all carousel-item h-100">
-              <div class="all test">
-                <div class="visible-ever col-12 col-sm-3 d-flex flex-column align-items-center h-100">
+
+                <div class="d-flex flex-column align-items-center h-100">
                   <span class="fw-bold my-1 column-name">DONE</span>
                   <div id="doneColumn" class="board-column hiddeneScrollbar flex-grow-1 w-100 px-1"
                     ondrop="moveTo('done'), removeHightlight('doneColumn')"
@@ -84,12 +85,13 @@
                     ondragleave="removeHightlight('doneColumn')">
                   </div>
                 </div>
-              </div>
+
             </div>
 
-
-
           </div>
+
+
+
           <button class="d-sm-none carousel-control-prev d-flex flex-column columnToSlide" type="button"
             data-bs-target="#carousel" data-bs-slide="prev">
             <span id="leftArrowText" class="fs-6 fw-bold columnNameToSlide">DONE</span>
@@ -111,49 +113,10 @@
             <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
             <button type="button" data-bs-target="#carousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
           </div>
-        </div>
-
-        <!-- bs-sm-break poinit: column in a row -->
-        <!-- <div class="justify-content-center h-100 gap-3 w-100 px-5"> -->
-        <div class="d-none">
-
-
-          <div class="col-12 col-sm-3 d-flex flex-column align-items-center mh-100">
-            <span class="fw-bold my-1">TO DO</span>
-            <div id="toDoColumn" class="board-column hiddeneScrollbar flex-grow-1 w-100 px-1"
-              ondrop="moveTo('toDo'), removeHightlight('toDoColumn')"
-              ondragover="allowDrop(event), hightlight('toDoColumn')" ondragleave="removeHightlight('toDoColumn')">
-            </div>
-          </div>
-
-          <div class="col-12 col-sm-3 d-flex flex-column align-items-center h-100">
-            <span class="fw-bold my-1">IN PROGRESS</span>
-            <div id="inProgressColumn" class="board-column hiddeneScrollbar flex-grow-1 w-100 px-1"
-              ondrop="moveTo('inProgress'), removeHightlight('inProgressColumn')"
-              ondragover="allowDrop(event), hightlight('inProgressColumn')"
-              ondragleave="removeHightlight('inProgressColumn')"></div>
-          </div>
-
-          <div class="col-12 col-sm-3 d-flex flex-column align-items-center mh-100">
-            <span class="fw-bold my-1">TESTING</span>
-            <div id="testingColumn" class="board-column hiddeneScrollbar flex-grow-1 w-100 px-1"
-              ondrop="moveTo('testing'), removeHightlight('testingColumn')"
-              ondragover="allowDrop(event), hightlight('testingColumn')"
-              ondragleave="removeHightlight('testingColumn')">
-            </div>
-          </div>
-
-          <div class="col-12 col-sm-3 d-flex flex-column align-items-center mh-100">
-            <span class="fw-bold my-1">DONE</span>
-            <div id="doneColumn" class="board-column hiddeneScrollbar flex-grow-1 w-100 px-1"
-              ondrop="moveTo('done'), removeHightlight('doneColumn')"
-              ondragover="allowDrop(event), hightlight('doneColumn')" ondragleave="removeHightlight('doneColumn')">
-            </div>
-          </div>
-
 
         </div>
-        <!-- </div> -->
+
+
 
       </div>
     </div>
