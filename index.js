@@ -50,6 +50,8 @@ let currentDraggedElement;
 function initBoard() {
   loadAllTasks();
   render();
+  currentUser = loadFromBackend('currentUser');
+  users = loadFromBackend('users');
 }
 
 /**

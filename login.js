@@ -1,5 +1,8 @@
+/**
+ * Checks if an email address and password are entered. Then login() is called.
+ */
 function verifyNull() {
-  loadFromBackend(users, 'users');
+  users = loadFromBackend('users');
   let email = document
     .getElementById('floatingEmail')
     .value.trim()
@@ -13,7 +16,11 @@ function verifyNull() {
     login(email, password);
   }
 }
-
+/**
+ * Checks if the entered email address and password match the array 'users'. If so, loginAsUser() is executed.
+ * @param {email} email
+ * @param {password} password
+ */
 function login(email, password) {
   let checkEmail = false;
   let checkPassword = false;
@@ -26,6 +33,15 @@ function login(email, password) {
       }
     }
   }
+  validationLogin(checkEmail, checkPassword);
+}
+
+/**
+ * validated the email and password and redirected to index.html if this is the case
+ * @param {boolean} checkEmail
+ * @param {boolean} checkPassword
+ */
+function validationLogin(checkEmail, checkPassword) {
   if (checkEmail && checkPassword) {
     window.location.href = 'index.html';
   } else if (!checkEmail) {
@@ -37,8 +53,13 @@ function login(email, password) {
   }
 }
 
+/**
+ * pushes in currentUser the logged in user
+ * @param {number} i - reference which user is logged in
+ */
 function loginAsUser(i) {
-  currentUser.push(i);
+  currentUser = i;
+  saveInBackend(currentUser, 'currentUser');
   console.log(currentUser);
 }
 
@@ -46,7 +67,7 @@ function saveRegristration() {
   let firstName = document.getElementById('floatingFirstNameRegister');
   let LastName = document.getElementById('floatingLastNameRegister');
   let email = document.getElementById('floatingEmailRegister');
-  let password = document.getElementById('floatingPasswordRegister');
+  let password = document.getElementById('floatingPasswordRegister1');
   let avatar;
   for (let i = 1; i < 5; i++) {
     let worker = document.getElementById(`worker${i}`);
@@ -62,6 +83,29 @@ function saveRegristration() {
   };
   users.push(registration);
   saveInBackend(users, 'users');
+}
+
+function checkPassword() {
+  let password1 = document.getElementById('floatingPasswordRegister1');
+  let password2 = document.getElementById('floatingPasswordRegister2');
+  if (password2.value == password1.value) {
+    password2.classList.add('is-valid');
+    password2.classList.remove('is-invalid');
+  } else {
+    password2.classList.add('is-invalid');
+    password2.classList.remove('is-valid');
+  }
+}
+
+function showPassword() {
+  let passwords = document.querySelectorAll('input[placeholder="Password"]');
+  passwords.forEach((password) => {
+    if (password.type === 'password') {
+      password.type = 'text';
+    } else {
+      password.type = 'password';
+    }
+  });
 }
 
 function toastWrongEmail() {}

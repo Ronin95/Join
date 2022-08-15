@@ -27,7 +27,7 @@
     />
     <title>Join</title>
   </head>
-  <body>
+  <body onload="users = loadFromBackend('users');">
     <div class="w-100 h-100 d-flex justify-content-center align-items-center">
       <div
         class="card d-flex justify-content-center align-items-center"
@@ -42,9 +42,10 @@
                 <label for="floatingEmail">Email address</label>
               </div>
               <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <input type="password" minlength="3" class="form-control" id="floatingPassword" placeholder="Password">
                 <label for="floatingPassword">Password</label>
-              </div>    
+                <input class="mt-3" type="checkbox" onclick="showPassword()"> Show Password
+              </div> 
               <div class="d-flex justify-content-center mt-2">         
                 <button type="submit" class="btn btn-primary m-2">Sign in</button>
               </div> 
@@ -66,25 +67,30 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body ">
-                  <form onsubmit="saveRegristration()">
+                  <form onsubmit="saveRegristration()" onkeyup="checkPassword()">
                     
                     <div class="form-floating mb-3">
                       <input type="text" minlength="3" class="form-control" id="floatingFirstNameRegister" placeholder="First Name" required>
-                      <label for="floatingFirstNameRegister">First Name</label>
+                      <label class="form-label"for="floatingFirstNameRegister">First Name</label>
                     </div> 
                     <div class="form-floating mb-3">
                       <input type="text" class="form-control" id="floatingLastNameRegister" placeholder="Last name" required>
-                      <label for="floatingLastNameRegister">Last Name</label>
+                      <label class="form-label"for="floatingLastNameRegister">Last Name</label>
                     </div> 
                     <div class="form-floating mb-3">
                       <input type="email" class="form-control" id="floatingEmailRegister" placeholder="Email address" required>
-                      <label for="floatingEmailRegister">Email address</label>
+                      <label class="form-label"for="floatingEmailRegister">Email address</label>
                     </div> 
                     <div class="form-floating mb-3">
-                      <input type="password" minlength="3" class="form-control" id="floatingPasswordRegister" placeholder="Password" required>
-                      <label for="floatingPasswordRegister">Password</label>
+                      <input type="password" minlength="3" class="form-control" id="floatingPasswordRegister1" placeholder="Password" required>
+                      <label class="form-label"for="floatingPasswordRegister1">Password</label>
+                      <input class="mt-3" type="checkbox" onclick="showPassword()"> Show Password
                     </div> 
-                              
+                    <div class="form-floating mb-3" >
+                      <input type="password" class="form-control" id="floatingPasswordRegister2" placeholder="repeatPassword" required>
+                      <label class="form-label"for="floatingPasswordRegister2">Repeat password</label>
+                    </div> 
+                                                  
                     <fieldset class="row mb-3" onchange="highlightAvatar()">
                       <legend class="col-sm-10 pt-0">Choose Avatar</legend>
                       <div class="row row-cols-2 row-cols-sm-4">
