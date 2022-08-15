@@ -4,7 +4,7 @@
   }
 
   .carousel-item {
-    width: 20% !important;
+    width: 23% !important;
     padding: 8px;
   }
 }
@@ -209,6 +209,7 @@ body {
 
 .card span {
   font-size: 0.85rem;
+  white-space: nowrap;
 }
 
 .BCTIassignedTo img {
