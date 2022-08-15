@@ -82,9 +82,21 @@ body {
   border-left: 8px solid transparent;
 }
 
-.navbar-nav .nav-item:hover {
-  color: white;
+.navbar-nav a:hover {
+  color: white !important;
   border-left: 8px solid white;
+  margin-left: -8px;
+}
+
+.navbar a:hover {
+  color: rgb(255, 255, 255) !important;
+}
+
+.you-are-here {
+  color: white;
+  border-left: white;
+  border-left: 8px solid white;
+  margin-left: -8px;
 }
 
 .avatar-board img {
@@ -266,22 +278,22 @@ body {
 }
 
 .user-show {
-  height: 60px;
+  height: 70px;
   border-radius: 50%;
   margin-right: 0px;
   margin-bottom: 24px;
   cursor: pointer;
-  opacity: 0.7;
-  border: solid 3px transparent;
+  border: solid 2px transparent;
 }
 
 .user-selected {
   opacity: 1;
-  border: 3px white solid;
+  border: 2px white solid;
+  display: unset !important;
 }
 
 .outer-border {
-  width: 85vw;
+  width: 100vw;
 }
 
 .titles {
@@ -387,20 +399,22 @@ body {
 }
 
 .third-row-2column img {
-  margin-left: 20px;
-  margin-top: 20px;
+  margin-right: 18px;
+  margin-top: 18px;
 }
 
 .buttons-Task {
-  gap: 20px;
+  cursor: pointer;
   display: flex;
-  justify-content: flex-end;
-  width: 25vw;
 }
 
-.buttons-Task button {
-  width: 120px;
-  font-size: 24px;
+.clear-button:focus {
+  box-shadow: none !important;
+}
+
+.buttons-Task input {
+  margin-right: 8px;
+  min-width: 100px;
 }
 
 /*
@@ -560,7 +574,7 @@ td:hover {
 /*
 Check Button only
 */
-#succes-arrow {
+.succes-arrow {
   position: fixed;
 }
 
@@ -572,3 +586,10 @@ Check Button only
 /*
 Check Button only
 */
+
+/* User Pic Backlog*/
+
+.user-pic {
+  height: 70px;
+  border-radius: 50%;
+}

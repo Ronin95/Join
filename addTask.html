@@ -43,7 +43,9 @@
               <div class="first-row-2column">
                 <h3>Due Date</h3>
                 <form>
-                  <input required type="date" id="dateTask" name="workTask" />
+                  <div id="wichDate">
+                  
+                  </div>
                 </form>
               </div>
             </div>
@@ -85,16 +87,10 @@
 
               <div id="user"></div>
 
-     
-              <div class="buttons-Task mt-4">
-                <button
-                  class="btn btn-transparent"
-                  type="button"
-                  id="cancelTask"
-                >
-                  Cancel
-                </button>
-                <input class="btn btn-primary" type="submit" value="Create Task">
+              <div class="buttons-Task mt-2">
+
+                <input title="Clear your input" id="clearInput" class="btn btn-secondary clear-button" type="button" onclick="deleteUnsafedInput()" value="Clear">
+                <input title="Create a new task" id="createTask" class="btn btn-primary" type="submit" value="Create" disabled>
               
               </div>
             </div>
@@ -103,13 +99,13 @@
         </div>
       </div>
     </div>
-
-    <div
-      class="d-none d-flex flex-column justify-content-center align-items-center"
-      id="succes-arrow"
-    >
-      <div><img src="./img/check.png" alt="" /></div>
-      <div class="safe-color">Done!</div>
+    <div id="succes_task" class="d-none toast d-block succes-arrow" role="alert" aria-atomic="true" style="max-width: fit-content">
+      <div class="d-flex justify-content-sm-between align-items-center p-2 flex-column">
+        <img src="img/check.png" class="rounded me-2" alt="Done it!" height="48px">
+        <strong>New Task added</strong>
+      </div>
+      <div id="task_for_user" class="toast-body">
+      </div>
     </div>
 
     <!-- JavaScript Bundle with Popper -->
