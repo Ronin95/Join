@@ -35,8 +35,8 @@ function loadFromBackend(key) {
 /**
  * loads the avatar of the current user
  */
-function currentUserImage() {
-  currentUser = loadFromBackend('currentUser');
+async function currentUserImage() {
+  currentUser = await loadFromBackend('currentUser');
   let currentUserProfile = document.getElementById('currentUser');
   currentUserProfile.src = users[currentUser].avatar;
 }

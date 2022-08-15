@@ -22,44 +22,14 @@ let colorsCategory = {
   Marketing: '#EEF1BD',
 };
 
-let users = [
-  {
-    name: 'Guest',
-    password: '000',
-    avatar: './img/worker1.png',
-    email: 'guest@join.org',
-  },
-  {
-    name: 'Lukas Erdmanski',
-    password: '123',
-    avatar: './img/lukas.png',
-    email: 'lukas@join.org',
-  },
-  {
-    name: 'Nikola Badjevic',
-    password: '123',
-    avatar: './img/nikola.png',
-    email: 'nikola@join.org',
-  },
-  {
-    name: 'Phil Schmucker',
-    password: '123',
-    avatar: './img/Phil.jpg',
-    email: 'phil@join.org',
-  },
-  {
-    name: 'Maik Langer',
-    password: '123',
-    avatar: './img/maik.png',
-    email: 'maik@join.org',
-  },
-];
+let users = [];
 
 async function init() {
   // await downloadFromServer();
   // allTasks = JSON.parse(backend.getItem('allTasks')) || [];
   await includeHTML();
-  currentUserImage();
+  users = loadFromBackend('users');
+  await currentUserImage();
   // checkIfLogin();
   document.getElementById('navBoard').classList.add('you-are-here');
   // LUKAS 04.08.22 16:06: I have commented it out because this ID (so far) is not used and causes error the console.
@@ -69,14 +39,16 @@ async function init() {
 
 async function initHelp() {
   await includeHTML();
-  currentUserImage();
+  users = loadFromBackend('users');
+  await currentUserImage();
   // checkIfLogin();
   document.getElementById('navHelp').classList.add('you-are-here');
 }
 
 async function initBacklog() {
   await includeHTML();
-  currentUserImage();
+  users = loadFromBackend('users');
+  await currentUserImage();
   generateAllTasks();
   // checkIfLogin();
   document.getElementById('navInBacklog').classList.add('you-are-here');
@@ -84,11 +56,48 @@ async function initBacklog() {
 
 async function initAddTask() {
   await includeHTML();
-  currentUserImage();
+  users = loadFromBackend('users');
+  await currentUserImage();
   // checkIfLogin();
   showAllUser();
   loadCurrentDate();
   document.getElementById('addTaskNav').classList.add('you-are-here');
+}
+
+function initLogin() {
+  users = [
+    {
+      name: 'Guest',
+      password: '000',
+      avatar: './img/worker1.png',
+      email: 'guest@join.org',
+    },
+    {
+      name: 'Lukas Erdmanski',
+      password: '123',
+      avatar: './img/lukas.png',
+      email: 'lukas@join.org',
+    },
+    {
+      name: 'Nikola Badjevic',
+      password: '123',
+      avatar: './img/nikola.png',
+      email: 'nikola@join.org',
+    },
+    {
+      name: 'Phil Schmucker',
+      password: '123',
+      avatar: './img/Phil.jpg',
+      email: 'phil@join.org',
+    },
+    {
+      name: 'Maik Langer',
+      password: '123',
+      avatar: './img/maik.png',
+      email: 'maik@join.org',
+    },
+  ];
+  saveInBackend(users, 'users');
 }
 
 function checkIfLogin() {
