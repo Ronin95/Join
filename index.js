@@ -120,8 +120,8 @@ function genHTMLBoardTaskItem(task) {
  * @param {JSON} task - This is a task from allTasks array with a certain filtered category.
  */
 function genHTMLcategory(task) {
-  let categoriesContainer = document.getElementById(`categories${task['id']}`);
-  categoriesContainer.innerHTML = /* html */ `
+  let categoryContainer = document.getElementById(`categories${task['id']}`);
+  categoryContainer.innerHTML = /* html */ `
   <span class="badge p-1 fw-semibold" 
   style="background-color: ${colorsCategory[task['category']]}">
   ${task['category']}</span>`;
@@ -189,7 +189,7 @@ let columns = [
   },
   {
     id: 1,
-    name: 'In PROGRESS',
+    name: 'IN PROGRESS',
   },
   {
     id: 2,
@@ -205,12 +205,12 @@ let currentColumn = 1;
 
 function slideWhenTaskHoverArrow() {
   let evt = new MouseEvent('click', {
-      view: window,
-      bubbles: true,
-      cancelable: true,
-      clientX: 20,
-      /* whatever properties you want to give it */
-    }),
+    view: window,
+    bubbles: true,
+    cancelable: true,
+    clientX: 20,
+    /* whatever properties you want to give it */
+  }),
     ele = document.getElementById('right-arrow');
   ele.dispatchEvent(evt);
 }
@@ -220,9 +220,9 @@ function slideWhenTaskHoverArrow() {
 //   let currentColumn = document.getElementById;
 // }
 
-let myCarousel = document.getElementById('carouselExampleDark');
+let columnsCarousel = document.getElementById('carousel');
 
-myCarousel.addEventListener('slid.bs.carousel', (event) => {
+columnsCarousel.addEventListener('slid.bs.carousel', (event) => {
   let leftArrow = document.getElementById('leftArrowText');
   let rightArrow = document.getElementById('rightArrowText');
   if (currentColumn == 0) {

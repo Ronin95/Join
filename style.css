@@ -1,3 +1,20 @@
+@media (min-width: 576px) {
+  .all {
+    all: unset;
+  }
+
+  .carousel-item {
+    width: 20% !important;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 575px) {
+  .carousel-inner {
+    width: calc(100% - 120px) !important;
+  }
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 html::-webkit-scrollbar {
   display: none;
@@ -77,7 +94,7 @@ body {
 }
 
 /* navbar with its components to bs-sm-break point*/
-@media (max-width: 575px) {
+@media (max-width: 767px) {
   .logo {
     height: 40px;
   }
@@ -111,6 +128,10 @@ body {
   background-color: rgb(230, 232, 255);
   overflow-y: auto;
   overflow-y: overlay;
+}
+
+.column-name {
+  line-height: 36px;
 }
 
 .drag-area-highlight {
@@ -161,22 +182,26 @@ body {
   overflow: hidden;
 }
 
-.card-title {
-  font-size: 0.7rem;
+.card .badge {
+  padding: 4px !important;
+  font-size: 0.85rem;
 }
 
-.card .badge {
-  padding: 2.8px !important;
-  font-size: 0.48rem;
+.card-title {
+  font-size: 1rem;
+  height: 48px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card span {
-  font-size: 0.6rem;
+  font-size: 0.85rem;
 }
 
 .BCTIassignedTo img {
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
 }
 
 /* modal */
@@ -198,6 +223,40 @@ body {
   width: 45px;
   object-fit: cover;
   margin-right: 2px;
+}
+
+/* board columns slide style under bs-sm-breakpoint */
+
+.columnToSlide {
+  width: 60px;
+  margin-top: 44px;
+  background-color: rgb(98, 100, 199);
+}
+
+.columnNameToSlide {
+  font-size: 0.7rem !important;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  margin-bottom: 60px;
+}
+
+.carousel-indicators button {
+  background-color: white !important;
+  border: 1.8px solid black !important;
+  height: 3px !important;
+}
+
+
+@media (max-width: 575px) {
+  .row {
+    height: 100% !important;
+  }
 }
 
 /* Add Task code */
@@ -450,7 +509,7 @@ backlog.hmtl Style
   width: 30%;
 }
 
-.table > tbody {
+.table>tbody {
   vertical-align: middle !important;
 }
 
