@@ -60,23 +60,30 @@ function validationLogin(checkEmail, checkPassword) {
 function loginAsUser(i) {
   currentUser = i;
   saveInBackend(currentUser, 'currentUser');
-  console.log(currentUser);
 }
 
+/**
+ * pushes in currentUser the logged in user
+ * @param {number} i - reference which user is logged in
+ */
+function loginAsGuest() {
+  document.getElementById('floatingEmail').value = 'guest@join.org';
+  document.getElementById('floatingPassword').value = '000';
+  loginAsUser(0);
+  validationLogin(true, true);
+}
+
+/**
+ * saves the information in the JSON 'users' as a new user
+ */
 function saveRegristration() {
   let firstName = document.getElementById('floatingFirstNameRegister');
-  let LastName = document.getElementById('floatingLastNameRegister');
+  let lastName = document.getElementById('floatingLastNameRegister');
   let email = document.getElementById('floatingEmailRegister');
   let password = document.getElementById('floatingPasswordRegister1');
-  let avatar;
-  for (let i = 1; i < 5; i++) {
-    let worker = document.getElementById(`worker${i}`);
-    if (worker.classList.contains('border-danger')) {
-      avatar = worker;
-    }
-  }
+  let avatar = checkSelectedAvatar();
   let registration = {
-    name: firstName.value + ' ' + LastName.value,
+    name: firstName.value + ' ' + lastName.value,
     password: password.value,
     avatar: avatar.src,
     email: email.value,
@@ -85,6 +92,22 @@ function saveRegristration() {
   saveInBackend(users, 'users');
 }
 
+/**
+ * checks which element was chosen as avatar
+ * @returns the chosen element
+ */
+function checkSelectedAvatar() {
+  for (let i = 1; i < 5; i++) {
+    let worker = document.getElementById(`worker${i}`);
+    if (worker.classList.contains('border-danger')) {
+      return worker;
+    }
+  }
+}
+
+/**
+ * checks whether both password are identical
+ */
 function checkPassword() {
   let password1 = document.getElementById('floatingPasswordRegister1');
   let password2 = document.getElementById('floatingPasswordRegister2');
@@ -97,6 +120,9 @@ function checkPassword() {
   }
 }
 
+/**
+ * shows & hide password by checkbox
+ */
 function showPassword() {
   let passwords = document.querySelectorAll('input[placeholder="Password"]');
   passwords.forEach((password) => {
@@ -112,6 +138,9 @@ function toastWrongEmail() {}
 
 function toastWrongPassword() {}
 
+/**
+ * highlights the chosen avatar
+ */
 function highlightAvatar() {
   for (let i = 1; i < 5; i++) {
     let gridRadio = document.getElementById(`gridRadios${i}`);

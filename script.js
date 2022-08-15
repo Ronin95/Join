@@ -24,6 +24,12 @@ let colorsCategory = {
 
 let users = [
   {
+    name: 'Guest',
+    password: '000',
+    avatar: './img/worker1.png',
+    email: 'guest@join.org',
+  },
+  {
     name: 'Lukas Erdmanski',
     password: '123',
     avatar: './img/lukas.png',
@@ -87,5 +93,5 @@ async function initAddTask() {
   await includeHTML();
   showAllUser();
   loadCurrentDate();
-  document.getElementById('addTaskNav').classList.add('you-are-here')
+  document.getElementById('addTaskNav').classList.add('you-are-here');
 }
