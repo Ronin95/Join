@@ -31,3 +31,12 @@ function loadFromBackend(key) {
     return JSON.parse(asString);
   }
 }
+
+/**
+ * loads the avatar of the current user
+ */
+function currentUserImage() {
+  currentUser = loadFromBackend('currentUser');
+  let currentUserProfile = document.getElementById('currentUser');
+  currentUserProfile.src = users[currentUser].avatar;
+}

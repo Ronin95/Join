@@ -59,6 +59,8 @@ async function init() {
   // await downloadFromServer();
   // allTasks = JSON.parse(backend.getItem('allTasks')) || [];
   await includeHTML();
+  currentUserImage();
+  // checkIfLogin();
   document.getElementById('navBoard').classList.add('you-are-here');
   // LUKAS 04.08.22 16:06: I have commented it out because this ID (so far) is not used and causes error the console.
   // document.getElementById('headline').innerHTML = 'Herzlich willkommen!';
@@ -66,13 +68,33 @@ async function init() {
 }
 
 async function initHelp() {
-  // await downloadFromServer();
-  // allTasks = JSON.parse(backend.getItem('allTasks')) || [];
   await includeHTML();
+  currentUserImage();
+  // checkIfLogin();
   document.getElementById('navHelp').classList.add('you-are-here');
-  // LUKAS 04.08.22 16:06: I have commented it out because this ID (so far) is not used and causes error the console.
-  // document.getElementById('headline').innerHTML = 'Herzlich willkommen!';
-  // backend.setItem();
+}
+
+async function initBacklog() {
+  await includeHTML();
+  currentUserImage();
+  generateAllTasks();
+  // checkIfLogin();
+  document.getElementById('navInBacklog').classList.add('you-are-here');
+}
+
+async function initAddTask() {
+  await includeHTML();
+  currentUserImage();
+  // checkIfLogin();
+  showAllUser();
+  loadCurrentDate();
+  document.getElementById('addTaskNav').classList.add('you-are-here');
+}
+
+function checkIfLogin() {
+  if (localStorage.getItem('isLoggedIn') == null) {
+    location.href = 'login.html';
+  }
 }
 
 async function includeHTML() {
@@ -87,11 +109,4 @@ async function includeHTML() {
       element.innerHTML = 'Page not found';
     }
   }
-}
-
-async function initAddTask() {
-  await includeHTML();
-  showAllUser();
-  loadCurrentDate();
-  document.getElementById('addTaskNav').classList.add('you-are-here');
 }

@@ -43,7 +43,8 @@ function login(email, password) {
  */
 function validationLogin(checkEmail, checkPassword) {
   if (checkEmail && checkPassword) {
-    window.location.href = 'index.html';
+    localStorage.setItem('isLoggedIn', true);
+    location.href = 'index.html';
   } else if (!checkEmail) {
     console.log('falsche email');
     toastWrongEmail();
