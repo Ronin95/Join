@@ -47,7 +47,7 @@ function renderColumn(columnName) {
 function genHTMLBoardTaskItem(task) {
   return /* html */ `
     <!-- a column task item -->
-    <div class="card red border-dark my-2 w-100" draggable="true" ondragstart="startDragging(${task['id']})">
+    <div class="card red border-dark my-2 w-100" draggable="true" ondragstart="startDragging(${task['id']})" data-bs-toggle="modal" data-bs-target="#taskModal">
         <div id="categories${task['id']}" class="card-header p-1 fs-6"></div>
 
         <div class="card-body text-dark p-1">
@@ -56,9 +56,9 @@ function genHTMLBoardTaskItem(task) {
         </div>
 
         <div class="card-footer bg-transparent border-success p-1 d-flex flex-grow-1 justify-content-between align-items-center gap-1">
-            <span class="fw-semibold">${task['date']}</span>
+            <span class="fw-semibold date">${task['date']}</span>
             <div class="BCTIassignedTo d-flex flex-wrap justify-content-sm-end">
-                <img src="${task.userForTask.avatar}" class="border border-1 rounded-circle"/>
+                <img src="${task.userForTask.avatar}" class="rounded-circle"/>
             </div>
         </div>
     </div>
@@ -173,7 +173,7 @@ function slideWhenTaskHoverArrow() {
 
 let columnsCarousel = document.getElementById('carousel');
 
-columnsCarousel.addEventListener('slid.bs.carousel', (event) => {
+/* columnsCarousel.addEventListener('slid.bs.carousel', (event) => {
   let leftArrow = document.getElementById('leftArrowText');
   let rightArrow = document.getElementById('rightArrowText');
   if (currentColumn == 0) {
@@ -188,4 +188,4 @@ columnsCarousel.addEventListener('slid.bs.carousel', (event) => {
     rightArrow.innerHTML = columns[currentColumn + 1].name;
   }
   currentColumn++;
-});
+}); */

@@ -4,7 +4,7 @@
   }
 
   .carousel-item {
-    width: 20% !important;
+    width: 23% !important;
     padding: 8px;
   }
 }
@@ -53,7 +53,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: lightslategray;
+  background-color: rgb(255, 255, 255);
   height: 100vh;
 }
 
@@ -62,7 +62,7 @@ body {
 }
 
 .app-window {
-  background: lightblue;
+  background: rgb(255, 255, 255);
   /* later to delete */
   border: 1px solid red;
 }
@@ -137,7 +137,7 @@ body {
 }
 
 .board-column {
-  background-color: rgb(230, 232, 255);
+  background-color: rgb(244, 243, 251);
   overflow-y: auto;
   overflow-y: overlay;
 }
@@ -209,6 +209,7 @@ body {
 
 .card span {
   font-size: 0.85rem;
+  white-space: nowrap;
 }
 
 .BCTIassignedTo img {
@@ -242,7 +243,7 @@ body {
 .columnToSlide {
   width: 60px;
   margin-top: 44px;
-  background-color: rgb(98, 100, 199);
+  background-color: rgb(33, 45, 141);
 }
 
 .columnNameToSlide {
@@ -262,6 +263,13 @@ body {
   background-color: white !important;
   border: 1.8px solid black !important;
   height: 3px !important;
+}
+
+.carousel-control-next:focus {
+  color: #fff;
+  text-decoration: none;
+  outline: 0;
+  opacity: 1 !important;
 }
 
 
