@@ -30,7 +30,7 @@ async function init() {
   await includeHTML();
   users = loadFromBackend('users');
   await currentUserImage();
-  // checkIfLogin();
+  checkIfLogin();
   document.getElementById('navBoard').classList.add('you-are-here');
   // LUKAS 04.08.22 16:06: I have commented it out because this ID (so far) is not used and causes error the console.
   // document.getElementById('headline').innerHTML = 'Herzlich willkommen!';
@@ -41,7 +41,7 @@ async function initHelp() {
   await includeHTML();
   users = loadFromBackend('users');
   await currentUserImage();
-  // checkIfLogin();
+  checkIfLogin();
   document.getElementById('navHelp').classList.add('you-are-here');
 }
 
@@ -50,7 +50,7 @@ async function initBacklog() {
   users = loadFromBackend('users');
   await currentUserImage();
   generateAllTasks();
-  // checkIfLogin();
+  checkIfLogin();
   document.getElementById('navInBacklog').classList.add('you-are-here');
 }
 
@@ -58,7 +58,7 @@ async function initAddTask() {
   await includeHTML();
   users = loadFromBackend('users');
   await currentUserImage();
-  // checkIfLogin();
+  checkIfLogin();
   showAllUser();
   loadCurrentDate();
   document.getElementById('addTaskNav').classList.add('you-are-here');
@@ -69,7 +69,7 @@ function initLogin() {
     {
       name: 'Guest',
       password: '000',
-      avatar: './img/worker1.png',
+      avatar: './img/office_worker_1.jpg',
       email: 'guest@join.org',
     },
     {

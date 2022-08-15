@@ -5,9 +5,9 @@ let currentDraggedElement;
  * The function is executed immediattasky after loading the web page.
  */
 function initBoard() {
+  users = loadFromBackend('users');
   allTasks = loadFromBackend('allTasks');
   renderAllColumns();
-  users = loadFromBackend('users');
 }
 
 /**
@@ -47,7 +47,7 @@ function renderColumn(columnName) {
 function genHTMLBoardTaskItem(task) {
   return /* html */ `
     <!-- a column task item -->
-    <div class="card red border-dark my-2 w-100" draggable="true" ondragstart="startDragging(${task['id']})" data-bs-toggle="modal" data-bs-target="#taskModal">
+    <div class="card green border-dark my-2 w-100" draggable="true" ondragstart="startDragging(${task['id']})" data-bs-toggle="modal" data-bs-target="#taskModal">
         <div id="categories${task['id']}" class="card-header p-1 fs-6"></div>
 
         <div class="card-body text-dark p-1">
@@ -99,7 +99,7 @@ function moveTo(state) {
   saveInBackend(allTasks, 'allTasks');
   /* Hier muss eine Save Funktion ('Änderung des allTasks Standes) erfolgen, 
     damit die Änderung auch nach dem Reload der Seite funktioniert */
-  render();
+  renderAllColumns();
 }
 
 /**

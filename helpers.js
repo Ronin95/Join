@@ -1,15 +1,3 @@
-function saveAllTasks() {
-  let task = JSON.stringify(allTasks);
-  localStorage.setItem('allTasks', task);
-}
-
-function loadAllTasks() {
-  let task = localStorage.getItem('allTasks');
-  if (task) {
-    allTasks = JSON.parse(task);
-  }
-}
-
 /**
  * converts the JSON into a string and stores it in the backend
  * @param {object} json
@@ -29,6 +17,8 @@ function loadFromBackend(key) {
   let asString = localStorage.getItem(key);
   if (asString) {
     return JSON.parse(asString);
+  } else {
+    return [];
   }
 }
 
