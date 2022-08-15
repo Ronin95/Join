@@ -421,14 +421,13 @@ body {
 backlog.hmtl Style
 */
 
-.backlog-img {
-  height: 72px;
-  border-radius: 50%;
-  margin: 4px;
+.overall-backlog {
+  display: flex;
+  align-items: center;
 }
 
 .backlog-container {
-  width: 80vw;
+  width: 85vw;
   height: 70vh;
   margin-left: 20px;
   margin-bottom: 20px;
@@ -448,6 +447,15 @@ backlog.hmtl Style
   justify-content: space-between;
 }
 
+#cat-style {
+  position: relative;
+  right: 30px;
+}
+
+.delete-task {
+  cursor: pointer;
+}
+
 .task-img-name-email {
   display: flex;
   align-items: center;
@@ -461,6 +469,7 @@ backlog.hmtl Style
   justify-content: space-between;
   align-items: center;
   height: 100px;
+  width: 85vw;
 }
 
 .searchfield-backlog input {
