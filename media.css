@@ -1,0 +1,36 @@
+@media only screen and (max-width: 767.8px) 
+{
+  .you-are-here{
+    border-left: none;
+    margin-left: 0px;
+  }
+  .navbar-nav a:hover {
+    border-left: none;
+    border-bottom: transparent;
+    margin-left: 0px;
+  }
+
+  .logo {
+    height: 40px;
+  }
+
+  .avatar-board {
+    position: absolute;
+    width: fit-content;
+    top: 0;
+    left: 0;
+    right: 0;
+    border: 2px transparent !important;
+  }
+
+  .avatar-board img {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+@media (max-width: 575px) {
+  .row {
+    height: 100% !important;
+  }
+}

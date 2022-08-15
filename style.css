@@ -70,8 +70,6 @@ body {
 /* navbar with its components */
 .navbar {
   background-color: #212d8d;
-  /* later to delete */
-  border: 1px solid yellow;
 }
 
 .logo {
@@ -103,37 +101,6 @@ body {
   height: 68px;
   width: 68px;
   object-fit: cover;
-}
-
-/* navbar with its components to bs-sm-break point*/
-@media (max-width: 767px) {
-  .logo {
-    height: 40px;
-  }
-
-  .navbar-border {
-    border-left: unset;
-    border-bottom: 2px solid transparent;
-  }
-
-  .navbar-nav .nav-item:hover {
-    border-left: unset;
-    border-bottom: 2px solid white;
-  }
-
-  .avatar-board {
-    position: absolute;
-    width: fit-content;
-    top: 0;
-    left: 0;
-    right: 0;
-    border: 0 !important;
-  }
-
-  .avatar-board img {
-    height: 40px;
-    width: 40px;
-  }
 }
 
 .board-column {
@@ -270,13 +237,6 @@ body {
   text-decoration: none;
   outline: 0;
   opacity: 1 !important;
-}
-
-
-@media (max-width: 575px) {
-  .row {
-    height: 100% !important;
-  }
 }
 
 /* Add Task code */
@@ -588,9 +548,7 @@ td:hover {
   border-spacing: 0px 12px;
 }
 
-/*
-Check Button only
-*/
+/*Check Button only*/
 .succes-arrow {
   position: fixed;
 }
@@ -599,14 +557,11 @@ Check Button only
   font-weight: bold;
   margin-bottom: -12px;
 }
-
-/*
-Check Button only
-*/
+/*Check Button only*/
 
 /* User Pic Backlog*/
-
 .user-pic {
   height: 70px;
   border-radius: 50%;
 }
+/* User Pic Backlog*/
