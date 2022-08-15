@@ -39,7 +39,7 @@
 
               <div class="d-flex flex-column align-items-center h-100">
                 <span class="fw-bold my-1 column-name">TO DO</span>
-                <div id="toDoColumn" class="board-column hiddeneScrollbar flex-grow-1 h-100 w-100 px-1"
+                <div id="toDoColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 h-100 w-100 px-1"
                   ondrop="moveTo('toDo'), removeHightlight('toDoColumn')"
                   ondragover="allowDrop(event), hightlight('toDoColumn')" ondragleave="removeHightlight('toDoColumn')">
                 </div>
@@ -53,7 +53,7 @@
 
               <div class="d-flex flex-column align-items-center h-100">
                 <span class="fw-bold my-1 column-name">IN PROGRESS</span>
-                <div id="inProgressColumn" class="board-column hiddeneScrollbar flex-grow-1 w-100 px-1"
+                <div id="inProgressColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
                   ondrop="moveTo('inProgress'), removeHightlight('inProgressColumn')"
                   ondragover="allowDrop(event), hightlight('inProgressColumn')"
                   ondragleave="removeHightlight('inProgressColumn')"></div>
@@ -66,7 +66,7 @@
 
               <div class="d-flex flex-column align-items-center h-100">
                 <span class="fw-bold my-1 column-name">TESTING</span>
-                <div id="testingColumn" class="board-column hiddeneScrollbar flex-grow-1 w-100 px-1"
+                <div id="testingColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
                   ondrop="moveTo('testing'), removeHightlight('testingColumn')"
                   ondragover="allowDrop(event), hightlight('testingColumn')"
                   ondragleave="removeHightlight('testingColumn')">
@@ -80,7 +80,7 @@
 
                 <div class="d-flex flex-column align-items-center h-100">
                   <span class="fw-bold my-1 column-name">DONE</span>
-                  <div id="doneColumn" class="board-column hiddeneScrollbar flex-grow-1 w-100 px-1"
+                  <div id="doneColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
                     ondrop="moveTo('done'), removeHightlight('doneColumn')"
                     ondragover="allowDrop(event), hightlight('doneColumn')"
                     ondragleave="removeHightlight('doneColumn')">

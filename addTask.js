@@ -93,7 +93,7 @@ function showAllUser() {
   for (let i = 0; i < users.length; i++) {
     let user = users[i];
     let showUser = document.getElementById('user');
-    showUser.innerHTML += `<img title="${user.name}" id="selected${i}" onclick="selectUser(${i})" class="user-show" src="${user.avatar}" alt="">`;
+    showUser.innerHTML += `<img title="${user.name}" id="selected${i}" onclick="selectUser(${i})" class="user-show rounded-circle" src="${user.avatar}" alt="">`;
   }
 }
 
@@ -107,7 +107,7 @@ function selectUser(i) {
   selectedUser = users[i];
   document.getElementById(`user`).innerHTML = /*html*/ ` 
     <div onclick="showAllUserAndDisable()"> 
-      <img title="${selectedUser.name}" id="${i}" class="user-show user-selected" src="${selectedUser.avatar}" alt=""></div>`;
+      <img title="${selectedUser.name}" id="${i}" class="user-show rounded-circle user-selected" src="${selectedUser.avatar}" alt=""></div>`;
   document.getElementById('createTask').removeAttribute('disabled');
 }
 
@@ -131,5 +131,5 @@ function loadCurrentDate() {
   }
   today = yyyy + '-' + mm + '-' + dd;
   document.getElementById('wichDate').innerHTML += /*html*/ `
-  <input id="dateTask" placeholder="${today}" class="textbox-n" type="text" onfocus="(this.type='date')" >`;
+  <input class="rounded fs-4 p-2 bs-simple" id="dateTask" placeholder="${today}" class="textbox-n" type="text" onfocus="(this.type='date')" >`;
 }

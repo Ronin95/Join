@@ -34,3 +34,20 @@
     height: 100% !important;
   }
 }
+
+@media (min-width: 576px) {
+  .all {
+    all: unset;
+  }
+
+  .carousel-item {
+    width: 23% !important;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 575px) {
+  .carousel-inner {
+    width: calc(100% - 120px) !important;
+  }
+}
