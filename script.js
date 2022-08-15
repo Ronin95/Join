@@ -92,9 +92,17 @@ async function initAddTask() {
 }
 
 function checkIfLogin() {
-  if (localStorage.getItem('isLoggedIn') == null) {
+  if (
+    localStorage.getItem('isLoggedIn') == null ||
+    localStorage.getItem('isLoggedIn') == false
+  ) {
     location.href = 'login.html';
   }
+}
+
+function logout() {
+  localStorage.setItem('isLoggedIn', false);
+  location.href = 'login.html';
 }
 
 async function includeHTML() {
