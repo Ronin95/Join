@@ -1,46 +1,3 @@
-/* let allTasks = [
-    {
-        id: 0,
-        title: 'Aufgabe Nr1',
-        date: '2022-10-03',
-        category: 'IT',
-        urgency: 'Medium',
-        description: 'This will be the description text.',
-        selectedUser: users[0],
-        state: 'toDo',
-    },
-    {
-        id: 1,
-        title: 'Aufgabe Nr2',
-        date: '2022-07-08',
-        category: 'Management',
-        urgency: 'Low',
-        description: 'This will be the description text.',
-        selectedUser: users[1],
-        state: 'inProgress'
-    },
-    {
-        id: 2,
-        title: 'Aufgabe Nr3',
-        date: '2022-05-25',
-        category: 'Sales',
-        urgency: 'High',
-        description: 'This will be the description text.',
-        selectedUser: users[2],
-        state: 'testing'
-    },
-    {
-        id: 3,
-        title: 'Aufgabe Nr4',
-        date: '2022-01-03',
-        category: 'Design',
-        urgency: 'Low',
-        description: 'This will be the description text.',
-        selectedUser: users[3],
-        state: 'done'
-    }
-]; */
-
 /** The current dragged element (a task item of a board kanban columns) is globally saved here. */
 let currentDraggedElement;
 
@@ -48,17 +5,9 @@ let currentDraggedElement;
  * The function is executed immediattasky after loading the web page.
  */
 function initBoard() {
-  loadAllTasks();
-  render();
-  currentUser = loadFromBackend('currentUser');
-  users = loadFromBackend('users');
-}
-
-/**
- * Render the whole board content (site)
- */
-function render() {
+  allTasks = loadFromBackend('allTasks');
   renderAllColumns();
+  users = loadFromBackend('users');
 }
 
 /**
@@ -98,7 +47,7 @@ function renderColumn(columnName) {
 function genHTMLBoardTaskItem(task) {
   return /* html */ `
     <!-- a column task item -->
-    <div class="card red border-dark my-2 w-100" draggable="true" ondragstart="startDragging(${task['id']})">
+    <div class="card red border-dark my-2 w-100" draggable="true" ondragstart="startDragging(${task['id']})" data-bs-toggle="modal" data-bs-target="#taskModal">
         <div id="categories${task['id']}" class="card-header p-1 fs-6"></div>
 
         <div class="card-body text-dark p-1">
@@ -107,9 +56,9 @@ function genHTMLBoardTaskItem(task) {
         </div>
 
         <div class="card-footer bg-transparent border-success p-1 d-flex flex-grow-1 justify-content-between align-items-center gap-1">
-            <span class="fw-semibold">${task['date']}</span>
+            <span class="fw-semibold date">${task['date']}</span>
             <div class="BCTIassignedTo d-flex flex-wrap justify-content-sm-end">
-                <img src="${task.userForTask.avatar}" class="border border-1 rounded-circle"/>
+                <img src="${task.userForTask.avatar}" class="rounded-circle"/>
             </div>
         </div>
     </div>
@@ -147,7 +96,7 @@ function startDragging(id) {
  */
 function moveTo(state) {
   allTasks[currentDraggedElement]['state'] = state;
-  saveAllTasks();
+  saveInBackend(allTasks, 'allTasks');
   /* Hier muss eine Save Funktion ('Änderung des allTasks Standes) erfolgen, 
     damit die Änderung auch nach dem Reload der Seite funktioniert */
   render();
@@ -207,12 +156,12 @@ let currentColumn = 1;
 
 function slideWhenTaskHoverArrow() {
   let evt = new MouseEvent('click', {
-    view: window,
-    bubbles: true,
-    cancelable: true,
-    clientX: 20,
-    /* whatever properties you want to give it */
-  }),
+      view: window,
+      bubbles: true,
+      cancelable: true,
+      clientX: 20,
+      /* whatever properties you want to give it */
+    }),
     ele = document.getElementById('right-arrow');
   ele.dispatchEvent(evt);
 }
@@ -224,7 +173,7 @@ function slideWhenTaskHoverArrow() {
 
 let columnsCarousel = document.getElementById('carousel');
 
-columnsCarousel.addEventListener('slid.bs.carousel', (event) => {
+/* columnsCarousel.addEventListener('slid.bs.carousel', (event) => {
   let leftArrow = document.getElementById('leftArrowText');
   let rightArrow = document.getElementById('rightArrowText');
   if (currentColumn == 0) {
@@ -239,4 +188,4 @@ columnsCarousel.addEventListener('slid.bs.carousel', (event) => {
     rightArrow.innerHTML = columns[currentColumn + 1].name;
   }
   currentColumn++;
-});
+}); */

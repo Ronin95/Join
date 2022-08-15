@@ -1,45 +1,90 @@
 <!-- navbar -->
 <nav class="navbar navbar-expand-md navbar-dark flex-column py-0 pt-md-3 h-100">
   <!-- logo + navbar-nav + avatar -->
-  <div class="container-fluid flex-grow-1 p-0 d-flex flex-md-column align-items-start ">
+  <div
+    class="container-fluid flex-grow-1 p-0 d-flex flex-md-column align-items-start"
+  >
     <!-- logo + mobile menu button -->
-    <div class="container-fluid d-flex justify-content-between align-items-md-center p-2 p-md-0 mt-0 mt-md-2 ">
-      <a class="navbar-brand navbar-border py-0 ps-md-4" href="index.html" onclick="">
+    <div
+      class="container-fluid d-flex justify-content-between align-items-md-center p-2 p-md-0 mt-0 mt-md-2"
+    >
+      <a
+        class="navbar-brand navbar-border py-0 ps-md-4"
+        href="index.html"
+        onclick=""
+      >
         <img class="logo ps-0 ps-md-2" src="./img/logo.png" />
       </a>
       <div class="d-flex justify-content-center align-items-center">
-        <button class="navbar-toggler p-1" type="button" data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-          aria-label="Toggle navigation">
+        <button
+          class="navbar-toggler p-1"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
       </div>
     </div>
     <!-- navbar-nav-->
-    <div class="collapse navbar-collapse align-items-md-start" id="navbarSupportedContent">
+    <div
+      class="collapse navbar-collapse align-items-md-start"
+      id="navbarSupportedContent"
+    >
       <ul
-        class="navbar-nav d-flex flex-grow-1 flex-row justify-content-around flex-md-column fs-4 me-md-2 mt-md-2 mb-1 mb-md-0 p-0 pe-md-4 pt-md-5 ">
+        class="navbar-nav d-flex flex-grow-1 flex-row justify-content-around flex-md-column fs-4 me-md-2 mt-md-2 mb-1 mb-md-0 p-0 pe-md-4 pt-md-5"
+      >
         <li class="nav-item navbar-border">
-          <a id="navBoard" class="nav-link my-0 my-0 my-sm-2 p-0 pt-sm-1 ps-sm-4" href="index.html">Board</a>
+          <a
+            id="navBoard"
+            class="nav-link my-0 my-0 my-sm-2 p-0 pt-sm-1 ps-sm-4"
+            href="index.html"
+            >Board</a
+          >
         </li>
         <li class="nav-item navbar-border">
-          <a id="navInBacklog" class="nav-link my-0 my-sm-2 p-0 pt-sm-1 ps-sm-4" href=" backlog.html">Backlog</a>
+          <a
+            id="navInBacklog"
+            class="nav-link my-0 my-sm-2 p-0 pt-sm-1 ps-sm-4"
+            href=" backlog.html"
+            >Backlog</a
+          >
         </li>
         <li class="nav-item navbar-border">
-          <a id="addTaskNav" class="nav-link my-0 my-sm-2 p-0 pt-sm-1 ps-sm-4 text-nowrap" href="addTask.html">Add
-            Task</a>
+          <a
+            id="addTaskNav"
+            class="nav-link my-0 my-sm-2 p-0 pt-sm-1 ps-sm-4 text-nowrap"
+            href="addTask.html"
+            >Add Task</a
+          >
         </li>
         <li class="nav-item navbar-border">
-          <a id="navHelp" class="nav-link my-0 my-sm-2 p-0 pt-sm-1 ps-sm-4" href=" help.html">Help</a>
+          <a
+            id="navHelp"
+            class="nav-link my-0 my-sm-2 p-0 pt-sm-1 ps-sm-4"
+            href=" help.html"
+            >Help</a
+          >
         </li>
       </ul>
     </div>
 
     <!-- avatar -->
     <div
-      class="mb-0 mb-md-4 d-flex align-items-center d-md-block navbar-border py-2 ps-0 ps-md-4 avatar-board mx-auto mx-md-0 my-auto my-md-0">
-      <img src=" img/lukas.png" alt="profile image" class="border rounded-circle border-3
-                      border-left-transparent mb-0 mb-md-2 " />
+      class="mb-0 d-flex justify-content-center align-items-center flex-md-column navbar-border py-2 avatar-board mx-auto my-auto"
+    >
+      <img
+        id="currentUser"
+        src=" img/lukas.png"
+        alt="profile image"
+        class="border rounded-circle border-3 border-left-transparent mb-2"
+      />
+      <button class="btn btn-danger mb-2 ms-4 ms-md-0" onclick="logout()">
+        Logout
+      </button>
     </div>
   </div>
 </nav>
