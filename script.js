@@ -86,7 +86,3 @@ async function includeHTML() {
     }
   }
 }
-
-// window.onunload = () => {
-//   localStorage.setItem('isLoggedIn', false);
-// };
