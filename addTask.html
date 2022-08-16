@@ -35,13 +35,13 @@
           <p>Learning Management System Project</p>
         </div>
         <form onsubmit="addTask()"> 
-          <div class="outer-border-form-field w-90 m-2 rounded-2 bg-grey">
+          <div class="outer-border-form-field w-90 rounded-2 bg-grey m-2">
             <div class="d-flex">
-              <div class="first-row-column add-Task-width">
+              <div class="add-Task-width m-4">
                 <h3>Title</h3>
-                <input class="rounded fs-4 p-2 bs-simple" required minlength="3" id="title" placeholder="Add a title for your task" />
+                <input class="rounded fs-4 p-2 bs-simple add-Task-width" required minlength="3" id="title" placeholder="Add a title for your task" />
               </div>
-              <div class="add-Task-width">
+              <div class="add-Task-width m-4">
                 <h3>Due Date</h3>
                 <form>
                   <div id="wichDate" >
@@ -49,11 +49,11 @@
                 </form>
               </div>
             </div>
-            <div class="d-flex add-Task-width">
-              <div class="second-row-column">
+            <div class="d-flex">
+              <div class="add-Task-width m-4">
                 <h3>Category</h3>
-                <form class="category add-Task-width">
-                  <select class="p-2 rounded fs-4 p-2 bs-simple" id="category">
+                <form class="add-Task-width">
+                  <select class="p-2 rounded fs-4 p-2 bs-simple add-Task-width" id="category">
                     <option value="Sales">Sales</option>
                     <option value="IT">IT</option>
                     <option value="Production">Production</option>
@@ -63,9 +63,9 @@
                   </select>
                 </form>
               </div>
-              <div class="second-row-2column">
+              <div class="add-Task-width m-4">
                 <h3>Urgency</h3>
-                <form class="category">
+                <form class="add-Task-width">
                   <select class="w-100 p-2 rounded fs-4 p-2 bs-simple" id="urgency">
                     <option value="Low">Low</option>
                     <option value="Medium">Medium</option>
@@ -74,30 +74,33 @@
               </form>
             </div>
           </div>
-          <div class="d-flex add-Task-width">
-            <div class="add-Task-width">
+          <div class="d-flex">
+            <div class="add-Task-width m-4">
               <h3>Description</h3>
-              <textarea class="w-100 p-2 rounded fs-4 p-2 bs-simple add-Task-width" required minlength="3"
+              <textarea class="w-100 p-2 rounded fs-4 p-2 bs-simple" required minlength="3"
                 id="description"
                 placeholder="Add your notes for the task here..." 
               ></textarea>
             </div>
-            <div class="add-Task-width">
+            <div class="add-Task-width m-4">
               <h3>Assigned To:</h3>
 
-              <div id="user" class="add-Task-width"></div>
+              <div id="user" class="add-Task-width p-2"></div>
 
-              <div class="buttons-Task mt-2">
 
-                <input title="Clear your input" id="clearInput" class="btn btn-secondary clear-button" type="button" onclick="deleteUnsafedInput()" value="Clear">
-                <input title="Create a new task" id="createTask" class="btn btn-primary" type="submit" value="Create" disabled>
-              
-              </div>
             </div>
+            
+          </div>
+          <div class="buttons-Task m-4 d-flex justify-content-center">
+
+            <input title="Clear your input" id="clearInput" class="btn btn-secondary clear-button" type="button" onclick="deleteUnsafedInput()" value="Clear">
+            <input title="Create a new task" id="createTask" class="btn btn-primary" type="submit" value="Create" disabled>
+          
           </div>
         </form>
         </div>
       </div>
+
     </div>
     <div id="succes_task" class="d-none toast d-block succes-arrow" role="alert" aria-atomic="true" style="max-width: fit-content">
       <div class="d-flex justify-content-sm-between align-items-center p-2 flex-column">
