@@ -69,7 +69,7 @@ function initLogin() {
     {
       name: 'Guest',
       password: '000',
-      avatar: './img/office_worker_1.jpg',
+      avatar: './img/guest.png',
       email: 'guest@join.org',
     },
     {
@@ -97,7 +97,6 @@ function initLogin() {
       email: 'maik@join.org',
     },
   ];
-  saveInBackend(users, 'users');
 }
 
 function checkIfLogin() {

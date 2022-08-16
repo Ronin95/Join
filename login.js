@@ -1,8 +1,11 @@
+// Icon Verlinkung
+
+// <a href="https://www.flaticon.com/free-icons/login" title="login icons">Login icons created by Uniconlabs - Flaticon</a>
+
 /**
  * Checks if an email address and password are entered. Then login() is called.
  */
 function verifyNull() {
-  users = loadFromBackend('users');
   let email = document
     .getElementById('floatingEmail')
     .value.trim()
