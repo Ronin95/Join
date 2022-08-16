@@ -14,12 +14,13 @@
     />
     <script src="mini_backend.js"></script>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="media.css"/>
     <script src="helpers.js"></script>
     <script src="script.js"></script>
     <script src="addTask.js"></script>
     <script src="backlog.js"></script>
     <script src="template.js"></script>
-    <link rel="icon" href="/Kanban_Gruppenarbeit/logo.png" />
+    <link rel="shortcut icon" href="./img/joinlogo.png" type="image/x-icon" />
     <script>
       setURL(
         'https://gruppe-293-join.developerakademie.net/smallest_backend_ever'
@@ -44,7 +45,11 @@
           </div>
           <div class="searchfield-backlog">
             <form>
-              <input id="searchTask" onkeyup="filterNames()" placeholder="Search by Person or Category" />
+              <input
+                id="searchTask"
+                onkeyup="filterNames()"
+                placeholder="Search by Person or Category"
+              />
             </form>
           </div>
         </div>
@@ -55,10 +60,13 @@
               <h3>ASSIGNED TO</h3>
             </div>
             <div>
-              <h3>CATEGORY</h3>
+              <h3 id="cat-style">CATEGORY</h3>
             </div>
             <div>
               <h3>DETAILS</h3>
+            </div>
+            <div> <!-- Close Task Colum-->
+              
             </div>
           </div>
           <div id="freshTask"></div>

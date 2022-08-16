@@ -1,46 +1,3 @@
-/* let allTasks = [
-    {
-        id: 0,
-        title: 'Aufgabe Nr1',
-        date: '2022-10-03',
-        category: 'IT',
-        urgency: 'Medium',
-        description: 'This will be the description text.',
-        selectedUser: users[0],
-        state: 'toDo',
-    },
-    {
-        id: 1,
-        title: 'Aufgabe Nr2',
-        date: '2022-07-08',
-        category: 'Management',
-        urgency: 'Low',
-        description: 'This will be the description text.',
-        selectedUser: users[1],
-        state: 'inProgress'
-    },
-    {
-        id: 2,
-        title: 'Aufgabe Nr3',
-        date: '2022-05-25',
-        category: 'Sales',
-        urgency: 'High',
-        description: 'This will be the description text.',
-        selectedUser: users[2],
-        state: 'testing'
-    },
-    {
-        id: 3,
-        title: 'Aufgabe Nr4',
-        date: '2022-01-03',
-        category: 'Design',
-        urgency: 'Low',
-        description: 'This will be the description text.',
-        selectedUser: users[3],
-        state: 'done'
-    }
-]; */
-
 /** The current dragged element (a task item of a board kanban columns) is globally saved here. */
 let currentDraggedElement;
 
@@ -48,16 +5,8 @@ let currentDraggedElement;
  * The function is executed immediattasky after loading the web page.
  */
 function initBoard() {
-  loadAllTasks();
-  render();
-  currentUser = loadFromBackend('currentUser');
   users = loadFromBackend('users');
-}
-
-/**
- * Render the whole board content (site)
- */
-function render() {
+  allTasks = loadFromBackend('allTasks');
   renderAllColumns();
 }
 
@@ -147,10 +96,10 @@ function startDragging(id) {
  */
 function moveTo(state) {
   allTasks[currentDraggedElement]['state'] = state;
-  saveAllTasks();
+  saveInBackend(allTasks, 'allTasks');
   /* Hier muss eine Save Funktion ('Änderung des allTasks Standes) erfolgen, 
     damit die Änderung auch nach dem Reload der Seite funktioniert */
-  render();
+  renderAllColumns();
 }
 
 /**
@@ -207,12 +156,12 @@ let currentColumn = 1;
 
 function slideWhenTaskHoverArrow() {
   let evt = new MouseEvent('click', {
-    view: window,
-    bubbles: true,
-    cancelable: true,
-    clientX: 20,
-    /* whatever properties you want to give it */
-  }),
+      view: window,
+      bubbles: true,
+      cancelable: true,
+      clientX: 20,
+      /* whatever properties you want to give it */
+    }),
     ele = document.getElementById('right-arrow');
   ele.dispatchEvent(evt);
 }

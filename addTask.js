@@ -12,12 +12,12 @@ let yyyy = today.getFullYear();
  * show a message the Message with the value for wich Member is the task added
  */
 function addTask() {
-  loadAllTasks();
-  let title = document.getElementById("title");
-  let date = document.getElementById("dateTask");
-  let category = document.getElementById("category");
-  let urgency = document.getElementById("urgency");
-  let description = document.getElementById("description");
+  allTasks = loadFromBackend('allTasks');
+  let title = document.getElementById('title');
+  let date = document.getElementById('dateTask');
+  let category = document.getElementById('category');
+  let urgency = document.getElementById('urgency');
+  let description = document.getElementById('description');
   let id = allTasks.length;
   let newTask = {
     title: title.value,
@@ -27,7 +27,7 @@ function addTask() {
     description: description.value,
     userForTask: selectedUser,
     id: id++,
-    state: "toDo",
+    state: 'toDo',
   };
   if ((newTask.date = !date.value)) {
     newTask.date = today;
@@ -46,27 +46,27 @@ function addTask() {
  */
 function saveTask(newTask) {
   allTasks.push(newTask);
-  saveAllTasks();
+  saveInBackend(allTasks, 'allTasks');
 }
 
 /**
  * clear the input values and set the category and urgency on a default value
  */
 function clearInput() {
-  title.value = "";
+  title.value = '';
   category.selectedIndex = 0;
   urgency.selectedIndex = 0;
-  description.value = "";
+  description.value = '';
 }
 
 /**
  * delete unsafed values from the inputs if the written or clicked are not really want to add
  */
 function deleteUnsafedInput() {
-  document.getElementById('title').value = "";
+  document.getElementById('title').value = '';
   document.getElementById('category').selectedIndex = 0;
   document.getElementById('urgency').selectedIndex = 0;
-  document.getElementById('description').value = "";
+  document.getElementById('description').value = '';
   showAllUser();
 }
 
@@ -76,12 +76,12 @@ function deleteUnsafedInput() {
  * the pop is blended out after 2 seconds
  */
 function doneIt() {
-  document.getElementById("succes_task").classList.remove("d-none");
+  document.getElementById('succes_task').classList.remove('d-none');
   document.getElementById(
-    "task_for_user"
+    'task_for_user'
   ).innerHTML = `For ${selectedUser.name}`;
   setTimeout(function () {
-    document.getElementById("succes_task").classList.add("d-none");
+    document.getElementById('succes_task').classList.add('d-none');
   }, 2000);
 }
 
@@ -89,11 +89,11 @@ function doneIt() {
  * show all User from the global JSON array - users - that can be selected for a task
  */
 function showAllUser() {
-  document.getElementById("user").innerHTML = ``;
+  document.getElementById('user').innerHTML = ``;
   for (let i = 0; i < users.length; i++) {
     let user = users[i];
-    let showUser = document.getElementById("user");
-    showUser.innerHTML += `<img title="${user.name}" id="selected${i}" onclick="selectUser(${i})" class="user-show" src="${user.avatar}" alt="">`;
+    let showUser = document.getElementById('user');
+    showUser.innerHTML += `<img title="${user.name}" id="selected${i}" onclick="selectUser(${i})" class="user-show rounded-circle" src="${user.avatar}" alt="">`;
   }
 }
 
@@ -103,20 +103,20 @@ function showAllUser() {
  * creates a new element wich show only the user who is selected
  */
 function selectUser(i) {
-  document.getElementById(`selected${i}`).classList.toggle("user-selected");
+  document.getElementById(`selected${i}`).classList.toggle('user-selected');
   selectedUser = users[i];
   document.getElementById(`user`).innerHTML = /*html*/ ` 
     <div onclick="showAllUserAndDisable()"> 
-      <img title="${selectedUser.name}" id="${i}" class="user-show user-selected" src="${selectedUser.avatar}" alt=""></div>`;
-  document.getElementById("createTask").removeAttribute("disabled");
+      <img title="${selectedUser.name}" id="${i}" class="user-show rounded-circle user-selected" src="${selectedUser.avatar}" alt=""></div>`;
+  document.getElementById('createTask').removeAttribute('disabled');
 }
 
 /**
- * function that show all user an disable the commit button, when no single user is selected 
+ * function that show all user an disable the commit button, when no single user is selected
  */
 function showAllUserAndDisable() {
   showAllUser();
-  document.getElementById("createTask").disabled = true;
+  document.getElementById('createTask').disabled = true;
 }
 
 /**
@@ -124,19 +124,12 @@ function showAllUserAndDisable() {
  */
 function loadCurrentDate() {
   if (dd < 10) {
-    dd = "0" + dd;
+    dd = '0' + dd;
   }
   if (mm < 10) {
-    mm = "0" + mm;
+    mm = '0' + mm;
   }
-  today = yyyy + "-" + mm + "-" + dd;
-  document.getElementById("wichDate").innerHTML += `
-<input id="dateTask" placeholder="${today}" class="textbox-n" type="text" onfocus="(this.type='date')" >`;
-}
-
-async function initX() {
-  await downloadFromServer();
-  allTasks = JSON.parse(backend.getItem("allTasks")) || [];
-  await includeHTML();
-  backend.setItem("Test", "Hallo");
+  today = yyyy + '-' + mm + '-' + dd;
+  document.getElementById('wichDate').innerHTML += /*html*/ `
+  <input class="rounded fs-4 p-2 bs-simple" id="dateTask" placeholder="${today}" class="textbox-n" type="text" onfocus="(this.type='date')" >`;
 }
