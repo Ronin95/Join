@@ -1,3 +1,10 @@
+function checkIfLogin() {
+  let check = JSON.parse(localStorage.getItem('isLoggedIn'));
+  if (!check) {
+    location.href = 'login.html';
+  }
+}
+
 /**
  * converts the JSON into a string and stores it in the backend
  * @param {object} json

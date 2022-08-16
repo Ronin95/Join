@@ -32,48 +32,39 @@ async function init() {
 }
 
 async function initIndex() {
+  checkIfLogin();
   await init();
   await includeHTML();
   await currentUserImage();
-  checkIfLogin();
   renderAllColumns();
   // document.getElementById('navBoard').classList.add('you-are-here');
 }
 
 async function initHelp() {
+  checkIfLogin();
   await init();
   await includeHTML();
   await currentUserImage();
-  checkIfLogin();
   // document.getElementById('navHelp').classList.add('you-are-here');
 }
 
 async function initBacklog() {
+  checkIfLogin();
   await init();
   await includeHTML();
   await currentUserImage();
-  checkIfLogin();
   generateAllTasks();
   // document.getElementById('navInBacklog').classList.add('you-are-here');
 }
 
 async function initAddTask() {
+  checkIfLogin();
   await init();
   await includeHTML();
   await currentUserImage();
-  checkIfLogin();
   showAllUser();
   loadCurrentDate();
   // document.getElementById('addTaskNav').classList.add('you-are-here');
-}
-
-function checkIfLogin() {
-  if (
-    localStorage.getItem('isLoggedIn') == null ||
-    localStorage.getItem('isLoggedIn') == false
-  ) {
-    location.href = 'login.html';
-  }
 }
 
 function logout() {
@@ -95,3 +86,7 @@ async function includeHTML() {
     }
   }
 }
+
+// window.onunload = () => {
+//   localStorage.setItem('isLoggedIn', false);
+// };
