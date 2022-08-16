@@ -35,13 +35,13 @@ function newTaskTemp(newTask, i) {
 }
 
 function deleteTask(i) {
-  delete allTasks[i];
-  saveAllTasks();
-  loadAllTasks();
-  newTaskTemp();
+  allTasks.splice(i, 1);
+  saveInBackend(allTasks, 'allTasks');
+  allTasks = loadFromBackend('allTasks');
+  generateAllTasks();
 }
 
-function searchTaskTemp(newTask){
+function searchTaskTemp(newTask) {
   return /*html*/ `
   <div class=' backlog-task-Container'>
     <div class='task-img-name-email '>

@@ -1,9 +1,10 @@
 function generateAllTasks() {
   allTasks = loadFromBackend('allTasks');
+  let backlogContainer = document.getElementById('freshTask');
+  backlogContainer.innerHTML = '';
   for (let i = 0; i < allTasks.length; i++) {
     let newTask = allTasks[i];
-    let newTasks = document.getElementById('freshTask');
-    newTasks.innerHTML += newTaskTemp(newTask, i);
+    backlogContainer.innerHTML += newTaskTemp(newTask, i);
   }
 }
 

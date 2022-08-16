@@ -25,92 +25,51 @@ let colorsCategory = {
 let users = [];
 
 async function init() {
-  // await downloadFromServer();
-  // allTasks = JSON.parse(backend.getItem('allTasks')) || [];
-  await includeHTML();
-  users = loadFromBackend('users');
-  await currentUserImage();
+  setURL('https://gruppe-293-join.developerakademie.net/smallest_backend_ever');
+  await downloadFromServer();
+  users = JSON.parse(backend.getItem('users')) || [];
+  allTasks = JSON.parse(backend.getItem('allTasks')) || [];
+}
+
+async function initIndex() {
   checkIfLogin();
-  document.getElementById('navBoard').classList.add('you-are-here');
-  // LUKAS 04.08.22 16:06: I have commented it out because this ID (so far) is not used and causes error the console.
-  // document.getElementById('headline').innerHTML = 'Herzlich willkommen!';
-  // backend.setItem();
+  await init();
+  await includeHTML();
+  await currentUserImage();
+  renderAllColumns();
+  // document.getElementById('navBoard').classList.add('you-are-here');
 }
 
 async function initHelp() {
-  await includeHTML();
-  users = loadFromBackend('users');
-  await currentUserImage();
   checkIfLogin();
-  document.getElementById('navHelp').classList.add('you-are-here');
+  await init();
+  await includeHTML();
+  await currentUserImage();
+  // document.getElementById('navHelp').classList.add('you-are-here');
 }
 
 async function initBacklog() {
+  checkIfLogin();
+  await init();
   await includeHTML();
-  users = loadFromBackend('users');
   await currentUserImage();
   generateAllTasks();
-  checkIfLogin();
-  document.getElementById('navInBacklog').classList.add('you-are-here');
+  // document.getElementById('navInBacklog').classList.add('you-are-here');
 }
 
 async function initAddTask() {
-  await includeHTML();
-  users = loadFromBackend('users');
-  await currentUserImage();
   checkIfLogin();
+  await init();
+  await includeHTML();
+  await currentUserImage();
   showAllUser();
   loadCurrentDate();
-  document.getElementById('addTaskNav').classList.add('you-are-here');
-}
-
-function initLogin() {
-  users = [
-    {
-      name: 'Guest',
-      password: '000',
-      avatar: './img/office_worker_1.jpg',
-      email: 'guest@join.org',
-    },
-    {
-      name: 'Lukas Erdmanski',
-      password: '123',
-      avatar: './img/lukas.png',
-      email: 'lukas@join.org',
-    },
-    {
-      name: 'Nikola Badjevic',
-      password: '123',
-      avatar: './img/nikola.png',
-      email: 'nikola@join.org',
-    },
-    {
-      name: 'Phil Schmucker',
-      password: '123',
-      avatar: './img/Phil.jpg',
-      email: 'phil@join.org',
-    },
-    {
-      name: 'Maik Langer',
-      password: '123',
-      avatar: './img/maik.png',
-      email: 'maik@join.org',
-    },
-  ];
-  saveInBackend(users, 'users');
-}
-
-function checkIfLogin() {
-  if (
-    localStorage.getItem('isLoggedIn') == null ||
-    localStorage.getItem('isLoggedIn') == false
-  ) {
-    location.href = 'login.html';
-  }
+  // document.getElementById('addTaskNav').classList.add('you-are-here');
 }
 
 function logout() {
   localStorage.setItem('isLoggedIn', false);
+  localStorage.removeItem('currentUser');
   location.href = 'login.html';
 }
 

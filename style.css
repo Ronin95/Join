@@ -242,15 +242,13 @@ body {
 /* Add Task CSS */
 
 .add-Task-width {
-  width: 40vw;
+  width: 30vw;
 }
 
 .user-show {
   height: 70px;
-  margin-right: 0px;
-  margin-bottom: 24px;
   cursor: pointer;
-  border: solid 2px transparent;
+  border: 4px solid white !important;
 }
 
 .user-selected {

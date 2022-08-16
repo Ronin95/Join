@@ -1,4 +1,3 @@
-let allTasks = [];
 let selectedUser = [];
 let today = new Date();
 let dd = today.getDate();
@@ -76,13 +75,12 @@ function deleteUnsafedInput() {
  * the pop is blended out after 2 seconds
  */
 function doneIt() {
-  document.getElementById('succes_task').classList.remove('d-none');
-  document.getElementById(
-    'task_for_user'
-  ).innerHTML = `For ${selectedUser.name}`;
-  setTimeout(function () {
-    document.getElementById('succes_task').classList.add('d-none');
-  }, 2000);
+  alert('Your task is created');
+  // document.getElementById('succes_task').classList.remove('d-none');
+  // document.getElementById('task_for_user').innerHTML = `For ${selectedUser.name}`;
+  // setTimeout(function () {
+  //   document.getElementById('succes_task').classList.add('d-none');
+  // }, 2000);
 }
 
 /**
@@ -93,7 +91,7 @@ function showAllUser() {
   for (let i = 0; i < users.length; i++) {
     let user = users[i];
     let showUser = document.getElementById('user');
-    showUser.innerHTML += `<img title="${user.name}" id="selected${i}" onclick="selectUser(${i})" class="user-show rounded-circle" src="${user.avatar}" alt="">`;
+    showUser.innerHTML += `<img title="${user.name}" id="selected${i}" onclick="selectUser(${i})" class="user-show  border border-white rounded-circle m-1" src="${user.avatar}" alt="">`;
   }
 }
 
@@ -131,5 +129,5 @@ function loadCurrentDate() {
   }
   today = yyyy + '-' + mm + '-' + dd;
   document.getElementById('wichDate').innerHTML += /*html*/ `
-  <input class="rounded fs-4 p-2 bs-simple" id="dateTask" placeholder="${today}" class="textbox-n" type="text" onfocus="(this.type='date')" >`;
+  <input class="rounded fs-4 p-2 bs-simple add-Task-width" id="dateTask" placeholder="${today}" class="textbox-n" type="text" onfocus="(this.type='date')" >`;
 }

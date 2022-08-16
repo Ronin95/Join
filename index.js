@@ -4,11 +4,11 @@ let currentDraggedElement;
 /**
  * The function is executed immediattasky after loading the web page.
  */
-function initBoard() {
-  users = loadFromBackend('users');
-  allTasks = loadFromBackend('allTasks');
-  renderAllColumns();
-}
+// function initBoard() {
+//   users = loadFromBackend('users');
+//   allTasks = loadFromBackend('allTasks');
+//   renderAllColumns();
+// }
 
 /**
  * Render all kanban columns (TO DO, IN PROGRESS etc.) on the board.

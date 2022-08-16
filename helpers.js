@@ -1,3 +1,10 @@
+function checkIfLogin() {
+  let check = JSON.parse(localStorage.getItem('isLoggedIn'));
+  if (!check) {
+    location.href = 'login.html';
+  }
+}
+
 /**
  * converts the JSON into a string and stores it in the backend
  * @param {object} json
@@ -5,7 +12,7 @@
  */
 function saveInBackend(json, key) {
   let asString = JSON.stringify(json);
-  localStorage.setItem(key, asString);
+  backend.setItem(key, asString);
 }
 
 /**
@@ -14,7 +21,7 @@ function saveInBackend(json, key) {
  * @returns gibt ein JSON zurück
  */
 function loadFromBackend(key) {
-  let asString = localStorage.getItem(key);
+  let asString = backend.getItem(key);
   if (asString) {
     return JSON.parse(asString);
   } else {
@@ -26,7 +33,7 @@ function loadFromBackend(key) {
  * loads the avatar of the current user
  */
 async function currentUserImage() {
-  currentUser = await loadFromBackend('currentUser');
+  currentUser = localStorage.getItem('currentUser');
   let currentUserProfile = document.getElementById('currentUser');
   currentUserProfile.src = users[currentUser].avatar;
 }
