@@ -1,3 +1,36 @@
+// users = [
+//   {
+//     name: 'Guest',
+//     password: '000',
+//     avatar: './img/guest.png',
+//     email: 'guest@join.org',
+//   },
+//   {
+//     name: 'Lukas Erdmanski',
+//     password: '123',
+//     avatar: './img/lukas.png',
+//     email: 'lukas@join.org',
+//   },
+//   {
+//     name: 'Nikola Badjevic',
+//     password: '123',
+//     avatar: './img/nikola.png',
+//     email: 'nikola@join.org',
+//   },
+//   {
+//     name: 'Phil Schmucker',
+//     password: '123',
+//     avatar: './img/Phil.jpg',
+//     email: 'phil@join.org',
+//   },
+//   {
+//     name: 'Maik Langer',
+//     password: '123',
+//     avatar: './img/maik.png',
+//     email: 'maik@join.org',
+//   },
+// ];
+
 // Icon Verlinkung
 
 // <a href="https://www.flaticon.com/free-icons/login" title="login icons">Login icons created by Uniconlabs - Flaticon</a>
@@ -62,8 +95,7 @@ function validationLogin(checkEmail, checkPassword) {
  * @param {number} i - reference which user is logged in
  */
 function loginAsUser(i) {
-  currentUser = i;
-  saveInBackend(currentUser, 'currentUser');
+  localStorage.setItem('currentUser', i);
 }
 
 /**

@@ -1,4 +1,3 @@
-let allTasks = [];
 let selectedUser = [];
 let today = new Date();
 let dd = today.getDate();
@@ -76,7 +75,7 @@ function deleteUnsafedInput() {
  * the pop is blended out after 2 seconds
  */
 function doneIt() {
-  alert('Your task is created')
+  alert('Your task is created');
   // document.getElementById('succes_task').classList.remove('d-none');
   // document.getElementById('task_for_user').innerHTML = `For ${selectedUser.name}`;
   // setTimeout(function () {

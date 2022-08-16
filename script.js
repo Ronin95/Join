@@ -25,78 +25,46 @@ let colorsCategory = {
 let users = [];
 
 async function init() {
-  // await downloadFromServer();
-  // allTasks = JSON.parse(backend.getItem('allTasks')) || [];
+  setURL('https://gruppe-293-join.developerakademie.net/smallest_backend_ever');
+  await downloadFromServer();
+  users = JSON.parse(backend.getItem('users')) || [];
+  allTasks = JSON.parse(backend.getItem('allTasks')) || [];
+}
+
+async function initIndex() {
+  await init();
   await includeHTML();
-  users = loadFromBackend('users');
   await currentUserImage();
   checkIfLogin();
-  document.getElementById('navBoard').classList.add('you-are-here');
-  // LUKAS 04.08.22 16:06: I have commented it out because this ID (so far) is not used and causes error the console.
-  // document.getElementById('headline').innerHTML = 'Herzlich willkommen!';
-  // backend.setItem();
+  renderAllColumns();
+  // document.getElementById('navBoard').classList.add('you-are-here');
 }
 
 async function initHelp() {
+  await init();
   await includeHTML();
-  users = loadFromBackend('users');
   await currentUserImage();
   checkIfLogin();
-  document.getElementById('navHelp').classList.add('you-are-here');
+  // document.getElementById('navHelp').classList.add('you-are-here');
 }
 
 async function initBacklog() {
+  await init();
   await includeHTML();
-  users = loadFromBackend('users');
   await currentUserImage();
-  generateAllTasks();
   checkIfLogin();
-  document.getElementById('navInBacklog').classList.add('you-are-here');
+  generateAllTasks();
+  // document.getElementById('navInBacklog').classList.add('you-are-here');
 }
 
 async function initAddTask() {
+  await init();
   await includeHTML();
-  users = loadFromBackend('users');
   await currentUserImage();
   checkIfLogin();
   showAllUser();
   loadCurrentDate();
-  document.getElementById('addTaskNav').classList.add('you-are-here');
-}
-
-function initLogin() {
-  users = [
-    {
-      name: 'Guest',
-      password: '000',
-      avatar: './img/guest.png',
-      email: 'guest@join.org',
-    },
-    {
-      name: 'Lukas Erdmanski',
-      password: '123',
-      avatar: './img/lukas.png',
-      email: 'lukas@join.org',
-    },
-    {
-      name: 'Nikola Badjevic',
-      password: '123',
-      avatar: './img/nikola.png',
-      email: 'nikola@join.org',
-    },
-    {
-      name: 'Phil Schmucker',
-      password: '123',
-      avatar: './img/Phil.jpg',
-      email: 'phil@join.org',
-    },
-    {
-      name: 'Maik Langer',
-      password: '123',
-      avatar: './img/maik.png',
-      email: 'maik@join.org',
-    },
-  ];
+  // document.getElementById('addTaskNav').classList.add('you-are-here');
 }
 
 function checkIfLogin() {
@@ -110,6 +78,7 @@ function checkIfLogin() {
 
 function logout() {
   localStorage.setItem('isLoggedIn', false);
+  localStorage.removeItem('currentUser');
   location.href = 'login.html';
 }
 
