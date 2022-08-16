@@ -218,6 +218,14 @@ body {
 }
 
 /* modal */
+.modal-content .card-title {
+  height: unset;
+}
+
+.modal-content textarea {
+  resize: none;
+}
+
 .date-container {
   min-width: 114px;
   max-width: 120px;

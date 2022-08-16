@@ -98,7 +98,7 @@ function renderColumn(columnName) {
 function genHTMLBoardTaskItem(task) {
   return /* html */ `
     <!-- a column task item -->
-    <div class="card red border-dark my-2 w-100" draggable="true" ondragstart="startDragging(${task['id']})" data-bs-toggle="modal" data-bs-target="#taskModal">
+    <div class="card red border-dark my-2 w-100" draggable="true" ondragstart="startDragging(${task['id']})" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         <div id="categories${task['id']}" class="card-header p-1 fs-6"></div>
 
         <div class="card-body text-dark p-1">
