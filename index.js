@@ -4,11 +4,12 @@ let currentDraggedElement;
 /**
  * The function is executed immediattasky after loading the web page.
  */
-// function initBoard() {
-//   users = loadFromBackend('users');
-//   allTasks = loadFromBackend('allTasks');
-//   renderAllColumns();
-// }
+function initBoard() {
+  users = loadFromBackend('users');
+  allTasks = loadFromBackend('allTasks');
+  renderAllColumns();
+  showAllUser();
+}
 
 /**
  * Render all kanban columns (TO DO, IN PROGRESS etc.) on the board.
@@ -156,12 +157,12 @@ let currentColumn = 1;
 
 function slideWhenTaskHoverArrow() {
   let evt = new MouseEvent('click', {
-      view: window,
-      bubbles: true,
-      cancelable: true,
-      clientX: 20,
-      /* whatever properties you want to give it */
-    }),
+    view: window,
+    bubbles: true,
+    cancelable: true,
+    clientX: 20,
+    /* whatever properties you want to give it */
+  }),
     ele = document.getElementById('right-arrow');
   ele.dispatchEvent(evt);
 }
@@ -189,3 +190,7 @@ let columnsCarousel = document.getElementById('carousel');
   }
   currentColumn++;
 }); */
+
+function toggleClassOpenModalDropDownUserList() {
+  document.getElementById('user').classList.toggle('modal-avatar-container-open');
+}

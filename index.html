@@ -7,18 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Join</title>
   <!-- CSS only -->
-  <link
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-  rel="stylesheet"
-  integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-  crossorigin="anonymous"
-/>
-<link rel="stylesheet" href="style.css" />
-<link rel="stylesheet" href="media.css"/>
-<script src="mini_backend.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="media.css" />
+  <script src="mini_backend.js"></script>
 
 
-<link rel="shortcut icon" href="./img/joinlogo.png" type="image/x-icon" />
+  <link rel="shortcut icon" href="./img/joinlogo.png" type="image/x-icon" />
 </head>
 
 <body onload="initIndex()" class="py-md-4">
@@ -26,34 +22,21 @@
     <div class="" w3-include-html="navbar.html"></div>
 
     <!-- work area (right site: content of the nav-link) -->
-    <!-- <div class="container-fluid justify-content-center align-items-center flex-grow-1 over-flow px-0 px-sm-1 border-4 border border-primary"> -->
     <div class="d-flex align-items-center flex-grow-1 overflow-hidden border-primary">
       <div class="row h-75 w-100 border-4 border m-0">
-
-
-        
         <div id="carousel" class="carousel slide px-0 h-100">
-
           <div class="carousel-inner d-sm-flex justify-content-center h-100 mx-auto">
-
-
-
             <div class="all carousel-item active h-100">
-
               <div class="d-flex flex-column align-items-center h-100">
                 <span class="fw-bold my-1 column-name">TO DO</span>
                 <div id="toDoColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 h-100 w-100 px-1"
                   ondrop="moveTo('toDo'), removeHightlight('toDoColumn')"
                   ondragover="allowDrop(event), hightlight('toDoColumn')" ondragleave="removeHightlight('toDoColumn')">
                 </div>
-
               </div>
-
             </div>
 
-
             <div class="all carousel-item h-100">
-
               <div class="d-flex flex-column align-items-center h-100">
                 <span class="fw-bold my-1 column-name">IN PROGRESS</span>
                 <div id="inProgressColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
@@ -61,12 +44,9 @@
                   ondragover="allowDrop(event), hightlight('inProgressColumn')"
                   ondragleave="removeHightlight('inProgressColumn')"></div>
               </div>
-
-
             </div>
 
             <div class="all carousel-item h-100">
-
               <div class="d-flex flex-column align-items-center h-100">
                 <span class="fw-bold my-1 column-name">TESTING</span>
                 <div id="testingColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
@@ -75,26 +55,18 @@
                   ondragleave="removeHightlight('testingColumn')">
                 </div>
               </div>
-
-
             </div>
 
             <div class="all carousel-item h-100">
-
-                <div class="d-flex flex-column align-items-center h-100">
-                  <span class="fw-bold my-1 column-name">DONE</span>
-                  <div id="doneColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
-                    ondrop="moveTo('done'), removeHightlight('doneColumn')"
-                    ondragover="allowDrop(event), hightlight('doneColumn')"
-                    ondragleave="removeHightlight('doneColumn')">
-                  </div>
+              <div class="d-flex flex-column align-items-center h-100">
+                <span class="fw-bold my-1 column-name">DONE</span>
+                <div id="doneColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
+                  ondrop="moveTo('done'), removeHightlight('doneColumn')"
+                  ondragover="allowDrop(event), hightlight('doneColumn')" ondragleave="removeHightlight('doneColumn')">
                 </div>
-
+              </div>
             </div>
-
           </div>
-
-
 
           <button class="d-sm-none carousel-control-prev d-flex flex-column columnToSlide" type="button"
             data-bs-target="#carousel" data-bs-slide="prev">
@@ -109,7 +81,6 @@
             <span class="visually-hidden">Next</span>
           </button>
 
-
           <div class="d-sm-none carousel-indicators">
             <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active " aria-current="true"
               aria-label="Slide 1"></button>
@@ -117,26 +88,98 @@
             <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
             <button type="button" data-bs-target="#carousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
           </div>
-
         </div>
-
-
-
       </div>
     </div>
-  </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-keyboard="true" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content fs-1">
+          <form onsubmit="addTask()">
+            <div class="card red-modal border-dark w-100 fs-3">
+              <div id="categories${task['id']}" class="card-header p-2 p-sm-3 d-flex justify-content-between gap-1">
+                <div>
+                  <h4>Category</h4>
+                  <form class="category">
+                    <select id="category" class="fs-5">
+                      <option value="Sales">Sales</option>
+                      <option value="IT">IT</option>
+                      <option value="Production">Production</option>
+                      <option value="Management">Management</option>
+                      <option value="Design">Design</option>
+                      <option value="Marketing">Marketing</option>
+                    </select>
+                  </form>
+                </div>
+                <div class="">
+                  <h4>Urgency</h4>
+                  <form class="">
+                    <select id="urgency" class="fs-5">
+                      <option value="Low">Low</option>
+                      <option value="Medium">Medium</option>
+                      <option value="High">High</option>
+                    </select>
+                  </form>
+                </div>
+              </div>
+
+              <div class="card-body text-dark p-2 p-sm-3 fs-3">
+                <div class="card-title">
+                  <h3>Title</h3>
+                  <input required minlength="3" id="title" class="w-100 fs-5" placeholder="Add a title for your task" />
+                </div>
+                <div class="card-text">
+                  <h3>Description</h3>
+                  <textarea required minlength="3" id="description" class="w-100 h-100 fs-5" rows="4" cols="50"
+                    placeholder="Add your notes for the task here...">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni nulla nisi inventore at ipsa voluptatibus eos neque expedita quaerat accusantium cumque voluptas vel soluta quos, non necessitatibus dolor fugiat quae!
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt explicabo consequatur reprehenderit tempora. Repellat, voluptate vitae. Corrupti earum vel autem, doloremque quibusdam tempora eaque, recusandae eum officia est eveniet veritatis!
+              </textarea>
+                </div>
+              </div>
+
+              <div class="card-footer p-2 p-sm-3 d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div class="date-container">
+                    <h3>Due Date</h3>
+                    <form>
+                      <input required type="date" id="dateTask" name="workTask" class="w-100 fs-5" />
+                    </form>
+                  </div>
+                  <div class="assignedToContainer d-flex flex-column align-items-center position-relative">
+                    <h3>Assigned To</h3>
+                    <div id="user" onclick="toggleClassOpenModalDropDownUserList()">
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-end pt-2 pt-sm-3">
+                  <button type="button" class="btn btn-outline-secondary p-1 p-sm-2 me-1 me-sm-3"
+                    data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-outline-secondary p-1 p-sm-2 me-1 me-sm-3"
+                    id="cancelTask">Delete</button>
+                  <button type="button" class="btn btn-outline-secondary p-1 p-sm-2 me-1 me-sm-3"
+                    id="cancelTask">Cancel</button>
+                  <input class="btn btn-primary p-1 p-sm-2" type="submit" value="Save">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
     crossorigin="anonymous"></script>
-    <script src="helpers.js"></script>
-    <script src="template.js"></script>
-    <script src="login.js"></script>
-    <script src="addTask.js"></script>
-    <script src="backlog.js"></script>    
-    <script src="index.js"></script>
+  <script src="helpers.js"></script>
+  <script src="template.js"></script>
+  <script src="login.js"></script>
+  <script src="addTask.js"></script>
+  <script src="backlog.js"></script>
+  <script src="index.js"></script>
   <script src="script.js"></script>
 </body>
 

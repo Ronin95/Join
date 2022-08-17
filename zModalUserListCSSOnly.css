@@ -83,10 +83,7 @@
   overflow: hidden;
 }
 
-.select-sim:hover .options .option {
-  height: 80px;
-  overflow: hidden;
-}
+
 
 .select-sim .options .option img {
   vertical-align: middle;

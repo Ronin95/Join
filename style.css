@@ -20,23 +20,7 @@
   overflow: hidden;
 }
 
-.green-modal {
-  background: linear-gradient(-135deg, #608a32 3.4%, transparent 0);
-  overflow: hidden;
-}
-
-.yellow-modal {
-  background: linear-gradient(-135deg, #eac910 3.4%, transparent 0);
-  overflow: hidden;
-}
-
-.red-modal {
-  background: linear-gradient(-135deg, #e83b3b 3.4%, transparent 0);
-  overflow: hidden;
-}
-
 /*All Colors*/
-
 
 * {
   margin: 0;
@@ -163,6 +147,22 @@ body {
 }
 
 /* modal */
+
+.green-modal {
+  background: linear-gradient(-135deg, #608a32 3.4%, transparent 0);
+  overflow: hidden;
+}
+
+.yellow-modal {
+  background: linear-gradient(-135deg, #eac910 3.4%, transparent 0);
+  overflow: hidden;
+}
+
+.red-modal {
+  background: linear-gradient(-135deg, #e83b3b 3.4%, transparent 0);
+  overflow: hidden;
+}
+
 .modal-content .card-title {
   height: unset;
 }
@@ -172,36 +172,47 @@ body {
 }
 
 .date-container {
-  min-width: 114px;
-  max-width: 120px;
+  max-width: 116px;
+}
+
+.date-container h3 {
+  overflow: visible;
+  white-space: nowrap;
 }
 
 .date-container input {
-  width: 90%;
+  width: 100% !important;
+  border-width: 1px;
 }
 
-/* .avatar-modal {
-  width: fit-content;
-} */
-
-.avatar-modal img {
-  height: 45px;
-  width: 45px;
-  object-fit: cover;
-  margin-right: 2px;
+.assignedToContainer {
+  height: 116px;
 }
 
-.dropdown-menu {
+.assignedToContainer h3 {
+  height: 30px;
+}
+
+.assignedToContainer #user {
+  bottom: 0;
+  margin-left: 22px;
+  width: 100px;
+}
+
+.assignedToContainer #user img {
+  min-height: 70px !important;
+  width: 70px !important;
+  margin: 4px;
+}
+
+.modal-avatar-container-open {
+  position: absolute !important;
+  display: flex;
+  flex-direction: column-reverse;
+  background-color: rgb(181, 186, 191);
+  max-height: 234px;
   overflow-y: scroll;
-  max-height: 200px;
-  position: fixed !important;
-}
-
-.dropdown-menu {
-  /* position: absolute; */
-  /* inset: auto auto 0px 0px !important; */
-  /* margin: 0px; */
-  /* transform: translate(0px, -106px); */
+  margin-left: 22px;
 }
 
 /* board columns slide style under bs-sm-breakpoint */
@@ -237,6 +248,12 @@ body {
   outline: 0;
   opacity: 1 !important;
 }
+
+.carousel-indicators [data-bs-target] {
+  width: 24px;
+}
+
+/* HOVER CLICK FOCUS FUNKTION NOCH BEI SLIDERS IST ZU MACHEN!! */
 
 /*---------------*/
 /* Add Task CSS */

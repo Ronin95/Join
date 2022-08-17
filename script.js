@@ -37,6 +37,8 @@ async function initIndex() {
   await includeHTML();
   await currentUserImage();
   renderAllColumns();
+  showAllUser();
+  selectUser(0);
   // document.getElementById('navBoard').classList.add('you-are-here');
 }
 

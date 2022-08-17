@@ -1,0 +1,209 @@
+body {
+  background-color: bisque;
+}
+
+input[type=checkbox] {
+ width: 40px;
+ height: 40px; 
+ position: absolute;
+ left: 10%;
+ top: 30px;
+}
+
+.select-sim {
+  margin: 50px; /* TO DELETE */
+  width: 116px;
+  /* the start with of the drop down button before the click/hover on it */
+  /* line-height: 80px; */
+  /* vertical-align: middle; */
+  height: 96px;
+  position: relative;
+  border: 2px solid red;
+  /* background: antiquewhite; */
+  /* border: 1px solid red; */
+  /* overflow: hidden; */
+}
+
+.select-sim:hover {
+  width: 300px; /* the width of the whole dropdown button after hover */
+  /* overflow: visible;  */
+  /* the rest (of scrollable the) content is visible  */
+}
+
+.select-sim::after {
+  content: "▼";
+  font-size: 1.25rem;
+  /* the size of the triangle (dropdown) symbol, see the decrlation 'content' */
+  /* font-family: Arial, Helvetica, sans-serif; */
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translate(0, -50%);
+}
+
+.select-sim:hover::after {
+  content: "";
+  /* disappearing of the triangle  */
+}
+
+.select-sim:hover .options {
+  /* background-color: blueviolet; */
+  /* border: 1px solid green; */
+  position: absolute;
+  /* the dropdown options/menu is placed over the selected after hover/click */
+  /* top: -1px;
+  left: -1px; */
+  width: 100%; /* the whole width of the scroll menu will inherited from the with when the dropdown button has been hovered/clicked */
+  /* nötig?? */
+  height: 192px;
+  /* the hight of the scroll container with scroll items (lines) */
+  overflow-y: scroll;
+  /* the dropdown menu can be scrolled */
+  scroll-behavior: smooth;
+}
+
+.select-sim .options .option {
+  position: re;
+  /*   display: flex;
+  align-items: center;
+  overflow: hidden; */
+}
+
+.select-sim:hover .options .option {
+  height: 96px; /* the whole hight of the a select / scroll item (line)  */
+  overflow: hidden;
+}
+
+/* Hiding the radio input / making it invisible but still functional */
+.select-sim .options .option input {
+  width: 1p0x;
+  height: 10px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  float: left;
+  display: inline-block;
+  /* fix specific for Firefox */
+  position: absolute;
+  left: -10px;
+}
+
+.select-sim .options .option input+label {
+  display: none;
+  /* hide the rest of select items which are not selected */
+}
+
+.select-sim .options .option input:checked+label {
+  display: inline-flex;
+  /* !! important in order the selected item is moved ('disappear from the view')  */
+  width: 100%;
+  /* the width of the highlightet selected line, has to be the whole with, i.e. 100% */
+}
+
+.select-sim .options .option label {
+  /* display: flex !important; */
+  display: none;
+  align-items: center;
+  width: 100%;
+  overflow-x: hidden;
+  flex-wrap: nowrap;
+}
+
+.select-sim:hover .options .option label {
+  display: inline-flex;
+  /* !! important in order all select items are moved ('disappear from the view')  */
+  /* background-color: yellow; */
+  /* border: 2px solid violet; */
+}
+
+
+
+.select-sim:hover .options .option input:checked+label {
+  display: inline-flex;
+  /* !! important in order the selected item is moved ('disappear from the view')  */
+  width: 100%;
+  /* the width of the highlightet selected line, has to be the whole with, i.e. 100% */
+}
+
+.select-sim:hover .options .option input:checked+label {
+  background-color: rgba(0, 0, 0, 0.15);
+  /* the color of the selected line */
+}
+
+.select-sim .options .option img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
+.select-sim .options .option span {
+  display: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.select-sim:hover .options .option span {
+  display: unset;
+}
+
+.select-sim .options .option img {
+  /* vertical-align: middle; */
+}
+
+.select-sim .options .option label {
+  display: none;
+}
+
+
+
+
+.switch {
+  margin-top: 200px;
+  position: relative;
+  display: inline-flex;
+  width: 160px;
+  border: 2px solid red;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  float: left;
+  display: inline-block;
+  /* fix specific for Firefox */
+  position: absolute;
+  left: -10000px;
+}
+
+.switch .menu {
+  border: 2px solid greenyellow;
+  height: 24px;
+  width: 100%;
+  vertical-align: middle;
+  overflow-y: scroll;
+}
+
+.switch .menu span {
+  display: block;
+  background-color: coral;
+  height: 24px;
+}
+
+.switch input:checked {
+  display: flex;
+  height: unset;
+}
+
+.switch input:checked+.menu {
+  height: 72px;
+  display: block;
+  border: 2px solid blue;
+}
