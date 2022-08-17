@@ -8,7 +8,9 @@ function newTaskTemp(newTask, i) {
         }" class='category-task'>
         </div>
         <div id="user_pic">
-          <img class="user-pic m-3 rounded-circle" src="${newTask.userForTask.avatar}">
+          <img class="user-pic m-3 rounded-circle" src="${
+            newTask.userForTask.avatar
+          }">
         </div>
         <div id="which_user">
           <p class="m-0">${newTask.userForTask.name}</p>
@@ -23,7 +25,9 @@ function newTaskTemp(newTask, i) {
         <h5 class="mb-0">${newTask.category}</h5>
       </div>
       <div class="">
-        <p class="d-flex mb-0 me-4 width-200 hiddeneScrollbar details-container p-2 wrap-nowrap" id="backlogDetails${i}" onclick="showDetailsInBacklog(i)"><span>${newTask.description}</span></p>
+        <p class="d-flex mb-0 me-4 width-200 hiddeneScrollbar details-container p-2 wrap-nowrap" id="backlogDetails${i}" onclick="showDetailsInBacklog(i)"><span>${
+    newTask.description
+  }</span></p>
       </div>
     </div >
     <div class='mt-4'>
@@ -62,12 +66,4 @@ function searchTaskTemp(newTask) {
     </div>
   </div >
   `;
-}
-
-
-function deleteTask(i) {
-  allTasks.splice(i, 1);
-  saveInBackend(allTasks, 'allTasks');
-  allTasks = loadFromBackend('allTasks');
-  generateAllTasks();
 }
