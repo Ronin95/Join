@@ -68,19 +68,19 @@ if (toastTrigger1) {
   });
 }
 
-let myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+// let myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
 
-let form = document.getElementById('registery');
-const toastLiveExample1 = document.getElementById('liveToast1');
-const toastLiveExample2 = document.getElementById('liveToast2');
-function handleForm(event) {
-  event.preventDefault();
-  toastForEvent('toast-body2', 'Registration completed!');
-  const toast = new bootstrap.Toast(toastLiveExample2);
-  toast.show();
-  saveRegristration();
-  setTimeout(function () {
-    myModal.hide();
-  }, 1500);
-}
-form.addEventListener('submit', handleForm);
+// let form = document.getElementById('registery');
+// const toastLiveExample1 = document.getElementById('liveToast1');
+// const toastLiveExample2 = document.getElementById('liveToast2');
+// function handleForm(event) {
+//   event.preventDefault();
+//   toastForEvent('toast-body2', 'Registration completed!');
+//   const toast = new bootstrap.Toast(toastLiveExample2);
+//   toast.show();
+//   saveRegristration();
+//   // setTimeout(function () {
+//   //   myModal.hide();
+//   // }, 1500);
+// }
+// form.addEventListener('submit', handleForm);

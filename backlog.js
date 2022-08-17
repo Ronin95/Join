@@ -26,7 +26,7 @@ function filterNames() {
 }
 
 // Maik - actually in progres
-// function showDetailsInBacklog(i){
+// function showDetailsInBacklog(i) {
 //   let toggleThis = document.getElementById(`backlogDetails${i}`);
 //   toggleThis.classList.toggle('wrap-nowrap');
-//   }
+// }

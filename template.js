@@ -25,7 +25,7 @@ function newTaskTemp(newTask, i) {
         <h5 class="mb-0">${newTask.category}</h5>
       </div>
       <div class="">
-        <p class="d-flex mb-0 me-4 width-200 hiddeneScrollbar details-container p-2 wrap-nowrap" id="backlogDetails${i}" onclick="showDetailsInBacklog(i)"><span>${
+        <p class="d-flex mb-0 me-4 width-200 hiddeneScrollbar details-container p-2 wrap-nowrap" id="backlogDetails${i}" onclick="showDetailsInBacklog(${i})"><span>${
     newTask.description
   }</span></p>
       </div>
