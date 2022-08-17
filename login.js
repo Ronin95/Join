@@ -1,35 +1,35 @@
-// users = [
-//   {
-//     name: 'Guest',
-//     password: '000',
-//     avatar: './img/guest.png',
-//     email: 'guest@join.org',
-//   },
-//   {
-//     name: 'Lukas Erdmanski',
-//     password: '123',
-//     avatar: './img/lukas.png',
-//     email: 'lukas@join.org',
-//   },
-//   {
-//     name: 'Nikola Badjevic',
-//     password: '123',
-//     avatar: './img/nikola.png',
-//     email: 'nikola@join.org',
-//   },
-//   {
-//     name: 'Phil Schmucker',
-//     password: '123',
-//     avatar: './img/Phil.jpg',
-//     email: 'phil@join.org',
-//   },
-//   {
-//     name: 'Maik Langer',
-//     password: '123',
-//     avatar: './img/maik.png',
-//     email: 'maik@join.org',
-//   },
-// ];
+users = [
+  {
+    name: 'Guest',
+    password: '000',
+    avatar: './img/guest.png',
+    email: 'guest@join.org',
+  },
+  {
+    name: 'Lukas Erdmanski',
+    password: '123',
+    avatar: './img/lukas.png',
+    email: 'lukas@join.org',
+  },
+  {
+    name: 'Nikola Badjevic',
+    password: '123',
+    avatar: './img/nikola.png',
+    email: 'nikola@join.org',
+  },
+  {
+    name: 'Phil Schmucker',
+    password: '123',
+    avatar: './img/phil.png',
+    email: 'phil@join.org',
+  },
+  {
+    name: 'Maik Langer',
+    password: '123',
+    avatar: './img/maik.png',
+    email: 'maik@join.org',
+  },
+];
 
 // Icon Verlinkung
 
@@ -44,10 +44,15 @@ function verifyNull() {
     .value.trim()
     .toLowerCase();
   let password = document.getElementById('floatingPassword').value.trim();
-  if (!email.length) {
-    console.log('Please enter email');
+  if (!email.length && !password.length) {
+    console.log('Please enter something');
+    toastForEvent('toast-body1', 'Please enter something!');
+  } else if (!email.length) {
+    console.log('Please enter password!');
+    toastForEvent('toast-body1', 'Please enter password!');
   } else if (!password.length) {
     console.log('Please enter password');
+    toastForEvent('toast-body1', 'Please enter password');
   } else {
     login(email, password);
   }
@@ -57,7 +62,7 @@ function verifyNull() {
  * @param {email} email
  * @param {password} password
  */
-function login(email, password) {
+function login(email, password, toastBody) {
   let checkEmail = false;
   let checkPassword = false;
   for (let i = 0; i < users.length; i++) {
@@ -69,7 +74,13 @@ function login(email, password) {
       }
     }
   }
-  validationLogin(checkEmail, checkPassword);
+  validationLogin(checkEmail, checkPassword, toastBody);
+}
+
+function toastForEvent(containerId, text) {
+  let toastBody = document.getElementById(containerId);
+  toastBody.innerHTML = '';
+  toastBody.innerHTML = text;
 }
 
 /**
@@ -77,16 +88,16 @@ function login(email, password) {
  * @param {boolean} checkEmail
  * @param {boolean} checkPassword
  */
-function validationLogin(checkEmail, checkPassword) {
+function validationLogin(checkEmail, checkPassword, toastBody) {
   if (checkEmail && checkPassword) {
     localStorage.setItem('isLoggedIn', true);
     location.href = 'index.html';
   } else if (!checkEmail) {
     console.log('falsche email');
-    toastWrongEmail();
+    toastForEvent('toast-body1', 'Wrong email adress! Please check your input');
   } else if (!checkPassword) {
     console.log('falsches passwort');
-    toastWrongPassword();
+    toastForEvent('toast-body1', 'Wrong password! Please check your input');
   }
 }
 
@@ -113,6 +124,7 @@ function loginAsGuest() {
  * saves the information in the JSON 'users' as a new user
  */
 function saveRegristration() {
+  users = loadFromBackend('users');
   let firstName = document.getElementById('floatingFirstNameRegister');
   let lastName = document.getElementById('floatingLastNameRegister');
   let email = document.getElementById('floatingEmailRegister');
@@ -127,6 +139,8 @@ function saveRegristration() {
   users.push(registration);
   saveInBackend(users, 'users');
 }
+
+function clearRegistery(firstName, lastName, email, password, avatar) {}
 
 /**
  * checks which element was chosen as avatar
@@ -169,10 +183,6 @@ function showPassword() {
     }
   });
 }
-
-function toastWrongEmail() {}
-
-function toastWrongPassword() {}
 
 /**
  * highlights the chosen avatar

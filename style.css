@@ -1,7 +1,7 @@
 /*All Colors*/
 
 .bg-grey {
-  background-color: rgb(244, 243, 251);
+  background-color: rgb(244, 243, 251) !important;
 }
 
 /* Borad Column Task Item = BCTI */
@@ -274,16 +274,6 @@ body {
   display: unset !important;
 }
 
-.outer-border {
-  width: 100vw;
-}
-
-.titles {
-  display: flex;
-  flex-direction: column;
-  margin: 20px;
-}
-
 .bs-simple {
   border-color: rgba(0, 0, 0, 0.2);
 }
@@ -304,17 +294,24 @@ body {
 backlog.hmtl Style
 */
 
-.overall-backlog {
-  display: flex;
-  align-items: center;
+.details-container{
+      overflow: hidden;
+      display: inline-block !important;
+      text-overflow: ellipsis;
+      text-align: end;
+      cursor: pointer;
 }
 
-.backlog-container {
-  width: 85vw;
-  height: 70vh;
-  margin-left: 20px;
-  margin-bottom: 20px;
-  overflow-y: hidden;
+.wrap-nowrap{
+  white-space: nowrap;
+}
+
+.width-200{
+  width: 200px;
+}
+
+.width-sixty{
+  width: 60vw;
 }
 
 .category-task {
@@ -325,18 +322,13 @@ backlog.hmtl Style
   border-bottom-left-radius: 10px 10px;
 }
 
-.backlog-titles {
-  display: flex;
-  justify-content: space-between;
-}
-
-#cat-style {
-  position: relative;
-  right: 30px;
-}
-
 .delete-task {
   cursor: pointer;
+  width: 24px;
+  position: relative;
+  right: 24px;
+  bottom: 16px;
+  filter: invert(50%);
 }
 
 .task-img-name-email {
@@ -344,54 +336,9 @@ backlog.hmtl Style
   align-items: center;
 }
 
-.backlog-task-Container {
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 10px;
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100px;
-  width: 85vw;
-}
-
-.searchfield-backlog input {
-  width: 280px;
-  height: 50px;
-  border-radius: 5px;
-  border: none;
-  text-align: center;
-}
-
-.category-headers {
-  display: flex;
-  justify-content: space-between;
-}
-
-.taskDescription {
-  width: 30vw;
-  height: 80%;
-  text-align: center;
-}
-
-#freshTask {
-  text-align: center;
-  display: flex;
-  flex-direction: column-reverse;
-}
 
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
-}
-
-.position-top {
-  margin-top: 64px !important;
-  margin-bottom: 48px !important;
-}
-
-.backlog-headline {
-  color: black;
-  font-size: 32px;
 }
 
 .backlog-secondline {
@@ -405,10 +352,6 @@ backlog.hmtl Style
 
 .whole-contain {
   margin-left: 24px;
-}
-
-.text-align {
-  text-align: right;
 }
 
 .width-twenty {
@@ -443,11 +386,6 @@ backlog.hmtl Style
   align-items: center;
 }
 
-.flex-it-column {
-  display: flex;
-  flex-direction: column;
-}
-
 td {
   display: flex;
   align-items: center;
@@ -478,7 +416,6 @@ td:hover {
 /* User Pic Backlog*/
 .user-pic {
   height: 70px;
-  border-radius: 50%;
 }
 
 /* User Pic Backlog*/

@@ -25,37 +25,36 @@
       <div class="" w3-include-html="navbar.html"></div>
 
       <!-- work area (right site: content of the nav-link) -->
-      <div class="contain-all">
-        <div class="m-4 position-top gap-5 d-flex align-items-center">
-          <div class="flex-it-column">
-            <h2 class="backlog-headline">Backlog</h2>
-            <span class="backlog-secondline"
-              >Learning Management System Project</span
-            >
+      <div class="p-5 position-top h-100 w-100">
+        <div class="d-flex justify-content-between">
+          <div class="">
+            <h2 class="">Backlog</h2>
+            <p>Learning Management System Project</p>
           </div>
-          <div class="searchfield-backlog">
+          <div class="d-flex">
             <form>
               <input
+                class="rounded border-0 bg-grey p-2 me-4"
                 id="searchTask"
                 onkeyup="filterNames()"
-                placeholder="Search by Person or Category"
+                placeholder="Search Person / Category"
               />
             </form>
           </div>
+          <div class="width-200 me-4"></div>
         </div>
 
-        <div class="backlog-container">
-          <div class="backlog-titles">
+        <div class="mt-4">
+          <div class="d-flex justify-content-sm-between">
             <div>
-              <h3>ASSIGNED TO</h3>
+              <h3 class="width-200">ASSIGNED TO</h3>
             </div>
             <div>
-              <h3 id="cat-style">CATEGORY</h3>
+              <h3 class="width-200 ps-5" id="cat-style">CATEGORY</h3>
             </div>
             <div>
-              <h3>DETAILS</h3>
+              <h3 class="width-200 me-4 text-end">DETAILS</h3>
             </div>
-            <div><!-- Close Task Colum--></div>
           </div>
           <div id="freshTask"></div>
         </div>
