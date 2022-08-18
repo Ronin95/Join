@@ -46,13 +46,13 @@ function verifyNull() {
   let password = document.getElementById('floatingPassword').value.trim();
   if (!email.length && !password.length) {
     console.log('Please enter something');
-    toastForEvent('toast-body1', 'Please enter something!');
+    toastForEvent('toast-body-signIn', 'Please enter something!');
   } else if (!email.length) {
     console.log('Please enter password!');
-    toastForEvent('toast-body1', 'Please enter password!');
+    toastForEvent('toast-body-signIn', 'Please enter password!');
   } else if (!password.length) {
     console.log('Please enter password');
-    toastForEvent('toast-body1', 'Please enter password');
+    toastForEvent('toast-body-signIn', 'Please enter password');
   } else {
     login(email, password);
   }
@@ -94,10 +94,16 @@ function validationLogin(checkEmail, checkPassword, toastBody) {
     location.href = 'index.html';
   } else if (!checkEmail) {
     console.log('falsche email');
-    toastForEvent('toast-body1', 'Wrong email adress! Please check your input');
+    toastForEvent(
+      'toast-body-signIn',
+      'Wrong email adress! Please check your input'
+    );
   } else if (!checkPassword) {
     console.log('falsches passwort');
-    toastForEvent('toast-body1', 'Wrong password! Please check your input');
+    toastForEvent(
+      'toast-body-signIn',
+      'Wrong password! Please check your input'
+    );
   }
 }
 
@@ -200,20 +206,31 @@ function highlightAvatar() {
   }
 }
 
-let myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+/**
+ * When you click on the trigger (sign in button), a toast is output after the input has been checked.
+ */
+const toastTrigger1 = document.getElementById('signInBtn');
+const toastLiveExample1 = document.getElementById('signInToast');
+if (toastTrigger1) {
+  toastTrigger1.addEventListener('click', () => {
+    verifyNull();
+    const toast = new bootstrap.Toast(toastLiveExample1);
+    toast.show();
+  });
+}
 
+let myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
 let form = document.getElementById('registery');
-const toastLiveExample1 = document.getElementById('liveToast1');
-const toastLiveExample2 = document.getElementById('liveToast2');
+const registrationToast = document.getElementById('registrationToast');
 function handleForm(event) {
   event.preventDefault();
-  toastForEvent('toast-body2', 'Registration completed!');
-  const toast = new bootstrap.Toast(toastLiveExample2);
+  toastForEvent('toast-body-registration', 'Registration completed!');
+  const toast = new bootstrap.Toast(registrationToast);
   toast.show();
   saveRegristration();
   registery.reset();
   setTimeout(function () {
     myModal.hide();
-  }, 1500);
+  }, 2000);
 }
 form.addEventListener('submit', handleForm);
