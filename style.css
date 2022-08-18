@@ -159,16 +159,10 @@ body {
   overflow: hidden;
 }
 
-
 .red-modal {
   background: linear-gradient(-135deg, #e83b3b 3.4%, transparent 0);
   overflow: hidden;
 }
-
-#urgency option[value=High] { 
-  background-color: blue !important;
-}
-
 
 .modal-content .card-title {
   height: unset;
