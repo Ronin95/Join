@@ -66,15 +66,19 @@
             </div>
           </div>
 
-          <button class="d-sm-none carousel-control-prev d-flex flex-column columnToSlide" type="button"
-            data-bs-target="#carousel" data-bs-slide="prev">
+          <button id="left-slide-buttom" class="d-sm-none carousel-control-prev d-flex flex-column columnToSlide" type="button"
+            data-bs-target="#carousel" data-bs-slide="prev" 
+            ondragover="slideWhenTaskHoverArrow('left'), highlightSlideColumn('left')" ondragleave="removeHighlightSlideColumn('left')">
             <span id="leftArrowText"
               class="fs-6 fw-bold columnNameToSlide d-flex justify-content-center align-items-center">DONE</span>
             <span id="left-arrow" class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="d-sm-none carousel-control-next d-flex flex-column columnToSlide" type="button"
-            data-bs-target="#carousel" data-bs-slide="next" ondragover="slideWhenTaskHoverArrow()">
+          <button  id="right-slide-buttom" class="d-sm-none carousel-control-next d-flex flex-column columnToSlide" type="button"
+            data-bs-target="#carousel" data-bs-slide="next" 
+            ondragover="slideWhenTaskHoverArrow('right'), highlightSlideColumn('right')" ondragleave="removeHighlightSlideColumn('right')"
+            onclick="highlichtSlideColumnOnClick('right')"
+            >
             <span id="rightArrowText"
               class="fs-6 fw-bold columnNameToSlide d-flex justify-content-center align-items-center">IN PROGRESS</span>
             <span id="right-arrow" class="carousel-control-next-icon" aria-hidden="true"></span>

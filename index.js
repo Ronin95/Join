@@ -78,8 +78,8 @@ function genHTMLBoardTaskItem(task) {
  */
 function startDragging(id) {
   currentDraggedElement = id;
-/*   document.getElementById('1660819882175').style.position = 'absolute';
-  mobileDragDrop(); */
+  /*   document.getElementById('1660819882175').style.position = 'absolute';
+    mobileDragDrop(); */
 }
 
 /**
@@ -150,26 +150,20 @@ let columns = [
 
 let currentColumn = 1;
 
-function slideWhenTaskHoverArrow() {
+function slideWhenTaskHoverArrow(side) {
   let evt = new MouseEvent('click', {
     view: window,
     bubbles: true,
     cancelable: true,
     clientX: 20,
-    /* whatever properties you want to give it */
   }),
-    ele = document.getElementById('right-arrow');
+    ele = document.getElementById(side + '-arrow');
   ele.dispatchEvent(evt);
 }
 
-// function changeNameOfArrowColumn(i) {
-//   currentColumn = columns;
-//   let currentColumn = document.getElementById;
-// }
-
 let columnsCarousel = document.getElementById('carousel');
 
-/* columnsCarousel.addEventListener('slid.bs.carousel', (event) => {
+columnsCarousel.addEventListener('slid.bs.carousel', (event) => {
   let leftArrow = document.getElementById('leftArrowText');
   let rightArrow = document.getElementById('rightArrowText');
   if (currentColumn == 0) {
@@ -184,7 +178,7 @@ let columnsCarousel = document.getElementById('carousel');
     rightArrow.innerHTML = columns[currentColumn + 1].name;
   }
   currentColumn++;
-}); */
+});
 
 function toggleClassOpenModalDropDownUserList() {
   document
@@ -192,5 +186,19 @@ function toggleClassOpenModalDropDownUserList() {
     .classList.toggle('modal-avatar-container-open');
 }
 
+function highlightSlideColumn(side) {
+  document.getElementById(side + '-slide-buttom').classList.add('highlightSlideBtn');
+}
 
-let done = true ;
+function removeHighlightSlideColumn(side) {
+  document.getElementById(side + '-slide-buttom').classList.remove('highlightSlideBtn');
+}
+
+function highlichtSlideColumnOnClick(side) {
+  highlightSlideColumn(side);
+  console.log('clicked')
+  setTimeout(() => {
+    removeHighlightSlideColumn(side)
+    console.log('removed after 2 second')
+  }, 2000);
+}
