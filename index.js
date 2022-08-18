@@ -35,7 +35,6 @@ function renderColumn(columnName) {
     const task = filteredWithSameState[index];
     document.getElementById(`${columnName}Column`).innerHTML +=
       genHTMLBoardTaskItem(task);
-    genHTMLcategory(task);
   }
 }
 
@@ -48,9 +47,16 @@ function renderColumn(columnName) {
 function genHTMLBoardTaskItem(task) {
   return /* html */ `
     <!-- a column task item -->
-    <div class="card red border-dark my-2 w-100" draggable="true" ondragstart="startDragging(${task['id']})" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        <div id="categories${task['id']}" class="card-header p-1 fs-6"></div>
-
+    <div class="card red border-dark my-2 w-100" draggable="true" 
+    ondragstart="startDragging(${task['id']})" 
+        data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        <div class="card-header p-1 fs-6">
+        <span class="badge p-1 fw-semibold" style="background-color: ${
+          colorsCategory[task['category']]
+        }">
+        ${task['category']}</span>
+    </div>
+        
         <div class="card-body text-dark p-1">
             <p class="card-title fw-bold m-0">${task['title']}</p>
             <p class="card-text d-none">${task['description']} </p>
@@ -64,19 +70,6 @@ function genHTMLBoardTaskItem(task) {
         </div>
     </div>
     `;
-}
-
-/**
- * Set the bootstrap class of a badge for a specific category of a task item and generate the category badge in the board task item.
- *
- * @param {JSON} task - This is a task from allTasks array with a certain filtered category.
- */
-function genHTMLcategory(task) {
-  let categoryContainer = document.getElementById(`categories${task['id']}`);
-  categoryContainer.innerHTML = /* html */ `
-  <span class="badge p-1 fw-semibold" 
-  style="background-color: ${colorsCategory[task['category']]}">
-  ${task['category']}</span>`;
 }
 
 /**
@@ -96,8 +89,8 @@ function startDragging(id) {
  * @param {string} state - This is the name of the board kanban column and the completion process of the affected task item.
  */
 function moveTo(state) {
-  let idInAllTask = allTasks.index
-  allTasks[currentDraggedElement]['state'] = state;
+  let taskIndex = allTasks.find((n) => n.id == currentDraggedElement);
+  taskIndex.state = state;
   saveInBackend(allTasks, 'allTasks');
   /* Hier muss eine Save Funktion ('Änderung des allTasks Standes) erfolgen, 
     damit die Änderung auch nach dem Reload der Seite funktioniert */
@@ -158,12 +151,12 @@ let currentColumn = 1;
 
 function slideWhenTaskHoverArrow() {
   let evt = new MouseEvent('click', {
-    view: window,
-    bubbles: true,
-    cancelable: true,
-    clientX: 20,
-    /* whatever properties you want to give it */
-  }),
+      view: window,
+      bubbles: true,
+      cancelable: true,
+      clientX: 20,
+      /* whatever properties you want to give it */
+    }),
     ele = document.getElementById('right-arrow');
   ele.dispatchEvent(evt);
 }
@@ -193,5 +186,7 @@ let columnsCarousel = document.getElementById('carousel');
 }); */
 
 function toggleClassOpenModalDropDownUserList() {
-  document.getElementById('user').classList.toggle('modal-avatar-container-open');
+  document
+    .getElementById('user')
+    .classList.toggle('modal-avatar-container-open');
 }

@@ -2,18 +2,22 @@
  * Checks whether the visitor is logged in and whether the login period has not expired.
  */
 function checkIfLogin() {
-  // let check = JSON.parse(localStorage.getItem('isLoggedIn'));
-  // let hours = 1;
-  // let now = new Date().getTime();
-  // let setupTime = localStorage.getItem('setupTime');
-  // if (!setupTime && check) {
-  //   localStorage.setItem('setupTime', now);
-  // } else if (now - setupTime > hours * 60 * 60 * 1000 || !check) {
-  //   localStorage.removeItem('setupTime');
-  //   location.href = 'login.html';
-  // }
+  let check = JSON.parse(localStorage.getItem('isLoggedIn'));
+  let hours = 1;
+  let now = new Date().getTime();
+  let setupTime = localStorage.getItem('setupTime');
+  if (!setupTime && check) {
+    localStorage.setItem('setupTime', now);
+  } else if (now - setupTime > hours * 60 * 60 * 1000 || !check) {
+    localStorage.removeItem('setupTime');
+    location.href = 'login.html';
+  }
 }
 
+/**
+ * Deletes the selected task from the array
+ * @param {number} i indicates the location of the object in the array
+ */
 function deleteTask(i) {
   allTasks.splice(i, 1);
   saveInBackend(allTasks, 'allTasks');
@@ -53,34 +57,3 @@ async function currentUserImage() {
   let currentUserProfile = document.getElementById('currentUser');
   currentUserProfile.src = users[currentUser].avatar;
 }
-
-/**
- * Eventlisterne for register form
- */
-
-const toastTrigger1 = document.getElementById('liveToastBtn1');
-const toastTrigger2 = document.getElementById('liveToastBtn2');
-if (toastTrigger1) {
-  toastTrigger1.addEventListener('click', () => {
-    verifyNull();
-    const toast = new bootstrap.Toast(toastLiveExample1);
-    toast.show();
-  });
-}
-
-// let myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
-
-// let form = document.getElementById('registery');
-// const toastLiveExample1 = document.getElementById('liveToast1');
-// const toastLiveExample2 = document.getElementById('liveToast2');
-// function handleForm(event) {
-//   event.preventDefault();
-//   toastForEvent('toast-body2', 'Registration completed!');
-//   const toast = new bootstrap.Toast(toastLiveExample2);
-//   toast.show();
-//   saveRegristration();
-//   // setTimeout(function () {
-//   //   myModal.hide();
-//   // }, 1500);
-// }
-// form.addEventListener('submit', handleForm);

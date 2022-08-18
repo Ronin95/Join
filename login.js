@@ -1,35 +1,35 @@
-users = [
-  {
-    name: 'Guest',
-    password: '000',
-    avatar: './img/guest.png',
-    email: 'guest@join.org',
-  },
-  {
-    name: 'Lukas Erdmanski',
-    password: '123',
-    avatar: './img/lukas.png',
-    email: 'lukas@join.org',
-  },
-  {
-    name: 'Nikola Badjevic',
-    password: '123',
-    avatar: './img/nikola.png',
-    email: 'nikola@join.org',
-  },
-  {
-    name: 'Phil Schmucker',
-    password: '123',
-    avatar: './img/phil.png',
-    email: 'phil@join.org',
-  },
-  {
-    name: 'Maik Langer',
-    password: '123',
-    avatar: './img/maik.png',
-    email: 'maik@join.org',
-  },
-];
+// users = [
+//   {
+//     name: 'Guest',
+//     password: '000',
+//     avatar: './img/guest.png',
+//     email: 'guest@join.org',
+//   },
+//   {
+//     name: 'Lukas Erdmanski',
+//     password: '123',
+//     avatar: './img/lukas.png',
+//     email: 'lukas@join.org',
+//   },
+//   {
+//     name: 'Nikola Badjevic',
+//     password: '123',
+//     avatar: './img/nikola.png',
+//     email: 'nikola@join.org',
+//   },
+//   {
+//     name: 'Phil Schmucker',
+//     password: '123',
+//     avatar: './img/phil.png',
+//     email: 'phil@join.org',
+//   },
+//   {
+//     name: 'Maik Langer',
+//     password: '123',
+//     avatar: './img/maik.png',
+//     email: 'maik@join.org',
+//   },
+// ];
 
 // Icon Verlinkung
 
@@ -46,13 +46,13 @@ function verifyNull() {
   let password = document.getElementById('floatingPassword').value.trim();
   if (!email.length && !password.length) {
     console.log('Please enter something');
-    toastForEvent('toast-body1', 'Please enter something!');
+    toastForEvent('toast-body-signIn', 'Please enter something!');
   } else if (!email.length) {
     console.log('Please enter password!');
-    toastForEvent('toast-body1', 'Please enter password!');
+    toastForEvent('toast-body-signIn', 'Please enter email!');
   } else if (!password.length) {
     console.log('Please enter password');
-    toastForEvent('toast-body1', 'Please enter password');
+    toastForEvent('toast-body-signIn', 'Please enter password!');
   } else {
     login(email, password);
   }
@@ -94,10 +94,16 @@ function validationLogin(checkEmail, checkPassword, toastBody) {
     location.href = 'index.html';
   } else if (!checkEmail) {
     console.log('falsche email');
-    toastForEvent('toast-body1', 'Wrong email adress! Please check your input');
+    toastForEvent(
+      'toast-body-signIn',
+      'Wrong email adress! Please check your input'
+    );
   } else if (!checkPassword) {
     console.log('falsches passwort');
-    toastForEvent('toast-body1', 'Wrong password! Please check your input');
+    toastForEvent(
+      'toast-body-signIn',
+      'Wrong password! Please check your input'
+    );
   }
 }
 
@@ -199,3 +205,32 @@ function highlightAvatar() {
     }
   }
 }
+
+/**
+ * When you click on the trigger (sign in button), a toast is output after the input has been checked.
+ */
+const toastTrigger1 = document.getElementById('signInBtn');
+const toastLiveExample1 = document.getElementById('signInToast');
+if (toastTrigger1) {
+  toastTrigger1.addEventListener('click', () => {
+    verifyNull();
+    const toast = new bootstrap.Toast(toastLiveExample1);
+    toast.show();
+  });
+}
+
+let myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+let formRegistery = document.getElementById('registery');
+const registrationToast = document.getElementById('registrationToast');
+function handleForm(event) {
+  event.preventDefault();
+  toastForEvent('toast-body-registration', 'Registration completed!');
+  const toast = new bootstrap.Toast(registrationToast);
+  toast.show();
+  saveRegristration();
+  formRegistery.reset();
+  setTimeout(function () {
+    myModal.hide();
+  }, 2000);
+}
+formRegistery.addEventListener('submit', handleForm);
