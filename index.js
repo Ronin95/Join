@@ -47,13 +47,12 @@ function renderColumn(columnName) {
 function genHTMLBoardTaskItem(task) {
   return /* html */ `
     <!-- a column task item -->
-    <div class="card red border-dark my-2 w-100" draggable="true" 
+    <div id="${task.id}" class="card red border-dark my-2 w-100" draggable="true" 
     ondragstart="startDragging(${task['id']})" 
         data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         <div class="card-header p-1 fs-6">
-        <span class="badge p-1 fw-semibold" style="background-color: ${
-          colorsCategory[task['category']]
-        }">
+        <span class="badge p-1 fw-semibold" style="background-color: ${colorsCategory[task['category']]
+    }">
         ${task['category']}</span>
     </div>
         
@@ -79,6 +78,8 @@ function genHTMLBoardTaskItem(task) {
  */
 function startDragging(id) {
   currentDraggedElement = id;
+/*   document.getElementById('1660819882175').style.position = 'absolute';
+  mobileDragDrop(); */
 }
 
 /**
@@ -151,12 +152,12 @@ let currentColumn = 1;
 
 function slideWhenTaskHoverArrow() {
   let evt = new MouseEvent('click', {
-      view: window,
-      bubbles: true,
-      cancelable: true,
-      clientX: 20,
-      /* whatever properties you want to give it */
-    }),
+    view: window,
+    bubbles: true,
+    cancelable: true,
+    clientX: 20,
+    /* whatever properties you want to give it */
+  }),
     ele = document.getElementById('right-arrow');
   ele.dispatchEvent(evt);
 }
@@ -190,3 +191,6 @@ function toggleClassOpenModalDropDownUserList() {
     .getElementById('user')
     .classList.toggle('modal-avatar-container-open');
 }
+
+
+let done = true ;
