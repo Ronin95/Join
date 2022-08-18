@@ -49,10 +49,10 @@ function verifyNull() {
     toastForEvent('toast-body-signIn', 'Please enter something!');
   } else if (!email.length) {
     console.log('Please enter password!');
-    toastForEvent('toast-body-signIn', 'Please enter password!');
+    toastForEvent('toast-body-signIn', 'Please enter email!');
   } else if (!password.length) {
     console.log('Please enter password');
-    toastForEvent('toast-body-signIn', 'Please enter password');
+    toastForEvent('toast-body-signIn', 'Please enter password!');
   } else {
     login(email, password);
   }
@@ -220,7 +220,7 @@ if (toastTrigger1) {
 }
 
 let myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
-let form = document.getElementById('registery');
+let formRegistery = document.getElementById('registery');
 const registrationToast = document.getElementById('registrationToast');
 function handleForm(event) {
   event.preventDefault();
@@ -228,9 +228,9 @@ function handleForm(event) {
   const toast = new bootstrap.Toast(registrationToast);
   toast.show();
   saveRegristration();
-  registery.reset();
+  formRegistery.reset();
   setTimeout(function () {
     myModal.hide();
   }, 2000);
 }
-form.addEventListener('submit', handleForm);
+formRegistery.addEventListener('submit', handleForm);
