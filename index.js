@@ -96,6 +96,7 @@ function startDragging(id) {
  * @param {string} state - This is the name of the board kanban column and the completion process of the affected task item.
  */
 function moveTo(state) {
+  let idInAllTask = allTasks.index
   allTasks[currentDraggedElement]['state'] = state;
   saveInBackend(allTasks, 'allTasks');
   /* Hier muss eine Save Funktion ('Änderung des allTasks Standes) erfolgen, 
