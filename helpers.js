@@ -2,16 +2,16 @@
  * Checks whether the visitor is logged in and whether the login period has not expired.
  */
 function checkIfLogin() {
-  // let check = JSON.parse(localStorage.getItem('isLoggedIn'));
-  // let hours = 1;
-  // let now = new Date().getTime();
-  // let setupTime = localStorage.getItem('setupTime');
-  // if (!setupTime && check) {
-  //   localStorage.setItem('setupTime', now);
-  // } else if (now - setupTime > hours * 60 * 60 * 1000 || !check) {
-  //   localStorage.removeItem('setupTime');
-  //   location.href = 'login.html';
-  // }
+  let check = JSON.parse(localStorage.getItem('isLoggedIn'));
+  let hours = 1;
+  let now = new Date().getTime();
+  let setupTime = localStorage.getItem('setupTime');
+  if (!setupTime && check) {
+    localStorage.setItem('setupTime', now);
+  } else if (now - setupTime > hours * 60 * 60 * 1000 || !check) {
+    localStorage.removeItem('setupTime');
+    location.href = 'login.html';
+  }
 }
 
 /**
