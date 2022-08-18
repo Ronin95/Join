@@ -17,7 +17,7 @@ function addTask() {
   let category = document.getElementById('category');
   let urgency = document.getElementById('urgency');
   let description = document.getElementById('description');
-  let id = allTasks.length;
+  let id = 0;
   let newTask = {
     title: title.value,
     date: date.value,
@@ -25,7 +25,7 @@ function addTask() {
     urgency: urgency.value,
     description: description.value,
     userForTask: selectedUser,
-    id: id++,
+    id: new Date().getTime(),
     state: 'toDo',
   };
   if ((newTask.date = !date.value)) {
