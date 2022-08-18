@@ -58,7 +58,7 @@ function genHTMLBoardTaskItem(task) {
 
         <div class="card-footer bg-transparent border-success p-1 d-flex flex-grow-1 justify-content-between align-items-center gap-1">
             <span class="fw-semibold date">${task['date']}</span>
-            <div class="BCTIassignedTo d-flex flex-wrap justify-content-sm-end">
+            <div class="cardAssignedTo d-flex flex-wrap justify-content-sm-end">
                 <img src="${task.userForTask.avatar}" class="rounded-circle"/>
             </div>
         </div>

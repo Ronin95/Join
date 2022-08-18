@@ -70,13 +70,15 @@
 
           <button class="d-sm-none carousel-control-prev d-flex flex-column columnToSlide" type="button"
             data-bs-target="#carousel" data-bs-slide="prev">
-            <span id="leftArrowText" class="fs-6 fw-bold columnNameToSlide">DONE</span>
+            <span id="leftArrowText"
+              class="fs-6 fw-bold columnNameToSlide d-flex justify-content-center align-items-center">DONE</span>
             <span id="left-arrow" class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
           <button class="d-sm-none carousel-control-next d-flex flex-column columnToSlide" type="button"
             data-bs-target="#carousel" data-bs-slide="next" ondragover="slideWhenTaskHoverArrow()">
-            <span id="rightArrowText" class="fs-6 fw-bold columnNameToSlide">IN PROGRESS</span>
+            <span id="rightArrowText"
+              class="fs-6 fw-bold columnNameToSlide d-flex justify-content-center align-items-center">IN PROGRESS</span>
             <span id="right-arrow" class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
@@ -133,18 +135,16 @@
                 <div class="card-text">
                   <h3>Description</h3>
                   <textarea required minlength="3" id="description" class="w-100 h-100 fs-5" rows="4" cols="50"
-                    placeholder="Add your notes for the task here...">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni nulla nisi inventore at ipsa voluptatibus eos neque expedita quaerat accusantium cumque voluptas vel soluta quos, non necessitatibus dolor fugiat quae!
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt explicabo consequatur reprehenderit tempora. Repellat, voluptate vitae. Corrupti earum vel autem, doloremque quibusdam tempora eaque, recusandae eum officia est eveniet veritatis!
-              </textarea>
+                    placeholder="Add your notes for the task here...">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni nulla nisi inventore at ipsa voluptatibus eos neque expedita quaerat accusantium cumque voluptas vel soluta quos, non necessitatibus dolor fugiat quae! Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt explicabo consequatur reprehenderit tempora. Repellat, voluptate vitae. Corrupti earum vel autem, doloremque quibusdam tempora eaque, recusandae eum officia est eveniet.</textarea>
                 </div>
               </div>
 
               <div class="card-footer p-2 p-sm-3 d-flex flex-column">
                 <div class="d-flex justify-content-between align-items-start">
-                  <div class="date-container">
-                    <h3>Due Date</h3>
+                  <div class="date-container w-100">
+                    <h3 class="overflow-visible text-nowrap">Due Date</h3>
                     <form>
-                      <input required type="date" id="dateTask" name="workTask" class="w-100 fs-5" />
+                      <input required type="date" id="dateTask" name="workTask" class="w-100 fs-5 over" />
                     </form>
                   </div>
                   <div class="assignedToContainer d-flex flex-column align-items-center position-relative">

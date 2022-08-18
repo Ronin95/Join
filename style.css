@@ -141,12 +141,13 @@ body {
   white-space: nowrap;
 }
 
-.BCTIassignedTo img {
+.cardAssignedTo img {
   width: 40px;
   height: 40px;
 }
 
-/* modal */
+/*------------------------------------------------------------------------------------ */
+/* Style for a selected task item from board kanban column in dialog window (bs-modal) */
 
 .green-modal {
   background: linear-gradient(-135deg, #608a32 3.4%, transparent 0);
@@ -158,10 +159,16 @@ body {
   overflow: hidden;
 }
 
+
 .red-modal {
   background: linear-gradient(-135deg, #e83b3b 3.4%, transparent 0);
   overflow: hidden;
 }
+
+#urgency option[value=High] { 
+  background-color: blue !important;
+}
+
 
 .modal-content .card-title {
   height: unset;
@@ -175,15 +182,11 @@ body {
   max-width: 116px;
 }
 
-.date-container h3 {
-  overflow: visible;
-  white-space: nowrap;
-}
-
 .date-container input {
-  width: 100% !important;
   border-width: 1px;
 }
+
+/* A select drop down user list based and modified on rules from the all task sub page */
 
 .assignedToContainer {
   height: 116px;
@@ -211,11 +214,13 @@ body {
   flex-direction: column-reverse;
   background-color: rgb(181, 186, 191);
   max-height: 234px;
+  overflow-x: hidden;
   overflow-y: scroll;
   margin-left: 22px;
 }
 
-/* board columns slide style under bs-sm-breakpoint */
+/*-------------------------------------------------------------------------*/
+/* Board kanban columns in a sliding carousel style under bs-sm-breakpoint */
 
 .columnToSlide {
   width: 60px;
@@ -226,14 +231,23 @@ body {
 .columnNameToSlide {
   font-size: 0.7rem !important;
   height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   margin-bottom: 60px;
+}
+
+.carousel-control-next,
+.carousel-control-prev,
+.carousel-control-next:focus,
+.carousel-control-prev:focus {
+  opacity: 0.75 !important;
+}
+
+.carousel-control-next:hover,
+.carousel-control-prev:hover {
+  opacity: 1 !important;
 }
 
 .carousel-indicators button {
@@ -242,18 +256,9 @@ body {
   height: 3px !important;
 }
 
-.carousel-control-next:focus {
-  color: #fff;
-  text-decoration: none;
-  outline: 0;
-  opacity: 1 !important;
-}
-
 .carousel-indicators [data-bs-target] {
   width: 24px;
 }
-
-/* HOVER CLICK FOCUS FUNKTION NOCH BEI SLIDERS IST ZU MACHEN!! */
 
 /*---------------*/
 /* Add Task CSS */
@@ -294,23 +299,23 @@ body {
 backlog.hmtl Style
 */
 
-.details-container{
-      overflow: hidden;
-      display: inline-block !important;
-      text-overflow: ellipsis;
-      text-align: end;
-      cursor: pointer;
+.details-container {
+  overflow: hidden;
+  display: inline-block !important;
+  text-overflow: ellipsis;
+  text-align: end;
+  cursor: pointer;
 }
 
-.wrap-nowrap{
+.wrap-nowrap {
   white-space: nowrap;
 }
 
-.width-200{
+.width-200 {
   width: 200px;
 }
 
-.width-sixty{
+.width-sixty {
   width: 60vw;
 }
 
