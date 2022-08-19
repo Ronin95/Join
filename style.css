@@ -234,18 +234,33 @@ body {
 
 .carousel-control-next,
 .carousel-control-prev {
-  opacity: 0.5 !important;
-  background-color: green;
+  opacity: 0.75;
 }
 
 .carousel-control-next:focus,
 .carousel-control-prev:focus {
-  opacity: 0.5 !important;
+  opacity: 0.75;
 }
 
 .carousel-control-next:hover,
 .carousel-control-prev:hover {
-  opacity: 1 !important;
+  opacity: 1;
+}
+
+@media (max-width: 575px) {
+
+  .carousel-control-next:hover,
+  .carousel-control-prev:hover {
+    opacity: 0.75;
+  }
+
+  .highlightSlideBtn {
+    opacity: 1 !important;
+  }
+
+  .testy {
+    background-color: red;
+  }
 }
 
 .carousel-indicators button {
@@ -258,10 +273,7 @@ body {
   width: 24px;
 }
 
-.highlightSlideBtn {
-  background-color: red;
-  opacity: 1 !important;
-}
+
 
 /*---------------*/
 /* Add Task CSS */

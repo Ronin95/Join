@@ -150,8 +150,8 @@ let columns = [
 
 let currentColumn = 1;
 
-function slideWhenTaskHoverArrow(side) {
-  let evt = new MouseEvent('click', {
+function slideWhenTaskHoverArrow() {
+/*   let evt = new MouseEvent('over', {
     view: window,
     bubbles: true,
     cancelable: true,
@@ -159,7 +159,16 @@ function slideWhenTaskHoverArrow(side) {
   }),
     ele = document.getElementById(side + '-arrow');
   ele.dispatchEvent(evt);
+  console.log('Mouse') */
+  myCarousel.pause();
+  myCarousel.cycle();
 }
+
+
+function stopSlideWhenTaskOutOfArrow() {
+  myCarousel.pause();
+}
+
 
 let columnsCarousel = document.getElementById('carousel');
 
@@ -192,13 +201,27 @@ function highlightSlideColumn(side) {
 
 function removeHighlightSlideColumn(side) {
   document.getElementById(side + '-slide-buttom').classList.remove('highlightSlideBtn');
+  console.log('stop')
 }
 
+let timeOut;
+
 function highlichtSlideColumnOnClick(side) {
+  clearTimeout(timeOut);
   highlightSlideColumn(side);
-  console.log('clicked')
-  setTimeout(() => {
+  timeOut = setTimeout(() => {
     removeHighlightSlideColumn(side)
-    console.log('removed after 2 second')
-  }, 2000);
+  }, 1000);
 }
+
+function log() {
+  console.log('test')
+}
+
+const myCarousel = new bootstrap.Carousel(document.getElementById('carousel'), {
+  interval: 100,
+  wrap: true
+});
+
+console.log(myCarousel)
+// myCarousel.cycle();

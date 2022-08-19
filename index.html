@@ -30,7 +30,8 @@
                 <span class="fw-bold my-1 column-name">TO DO</span>
                 <div id="toDoColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 h-100 w-100 px-1"
                   ondrop="moveTo('toDo'), removeHightlight('toDoColumn')"
-                  ondragover="allowDrop(event), hightlight('toDoColumn')" ondragleave="removeHightlight('toDoColumn')">
+                  ondragover="allowDrop(event), hightlight('toDoColumn'), stopSlideWhenTaskOutOfArrow()"
+                  ondragleave="removeHightlight('toDoColumn')">
                 </div>
               </div>
             </div>
@@ -38,47 +39,55 @@
             <div class="all carousel-item h-100">
               <div class="d-flex flex-column align-items-center h-100">
                 <span class="fw-bold my-1 column-name">IN PROGRESS</span>
-                <div id="inProgressColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
+                <div id="inProgressColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 h-100 w-100 px-1"
                   ondrop="moveTo('inProgress'), removeHightlight('inProgressColumn')"
-                  ondragover="allowDrop(event), hightlight('inProgressColumn')"
-                  ondragleave="removeHightlight('inProgressColumn')"></div>
+                  ondragover="allowDrop(event), hightlight('inProgressColumn'), stopSlideWhenTaskOutOfArrow()"
+                  ondragleave="removeHightlight('inProgressColumn')">
+                </div>
               </div>
             </div>
 
             <div class="all carousel-item h-100">
               <div class="d-flex flex-column align-items-center h-100">
                 <span class="fw-bold my-1 column-name">TESTING</span>
-                <div id="testingColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
+                <div id="testingColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 h-100 w-100 px-1"
                   ondrop="moveTo('testing'), removeHightlight('testingColumn')"
-                  ondragover="allowDrop(event), hightlight('testingColumn')"
-                  ondragleave="removeHightlight('testingColumn')"></div>
+                  ondragover="allowDrop(event), hightlight('testingColumn'), stopSlideWhenTaskOutOfArrow()"
+                  ondragleave="removeHightlight('testingColumn')">
+                </div>
               </div>
             </div>
 
             <div class="all carousel-item h-100">
               <div class="d-flex flex-column align-items-center h-100">
                 <span class="fw-bold my-1 column-name">DONE</span>
-                <div id="doneColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
-                  ondrop="moveTo('done'), removeHightlight('doneColumn')"
-                  ondragover="allowDrop(event), hightlight('doneColumn')" ondragleave="removeHightlight('doneColumn')">
+                <div id="donegColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 h-100 w-100 px-1"
+                  ondrop="moveTo('doneg'), removeHightlight('donegColumn')"
+                  ondragover="allowDrop(event), hightlight('donegColumn'), stopSlideWhenTaskOutOfArrow()"
+                  ondragleave="removeHightlight('donegColumn')">
                 </div>
               </div>
             </div>
+
+
           </div>
 
-          <button id="left-slide-buttom" class="d-sm-none carousel-control-prev d-flex flex-column columnToSlide" type="button"
-            data-bs-target="#carousel" data-bs-slide="prev" 
-            ondragover="slideWhenTaskHoverArrow('left'), highlightSlideColumn('left')" ondragleave="removeHighlightSlideColumn('left')">
+          <button id="left-slide-buttom" class="d-sm-none carousel-control-prev d-flex flex-column columnToSlide"
+            type="button" data-bs-target="#carousel" data-bs-slide="prev"
+            ondragover="slideWhenTaskHoverArrow(), highlightSlideColumn('left')"
+            ondragleave="stopSlideWhenTaskOutOfArrow(), removeHighlightSlideColumn('left')">
             <span id="leftArrowText"
               class="fs-6 fw-bold columnNameToSlide d-flex justify-content-center align-items-center">DONE</span>
             <span id="left-arrow" class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button  id="right-slide-buttom" class="d-sm-none carousel-control-next d-flex flex-column columnToSlide" type="button"
-            data-bs-target="#carousel" data-bs-slide="next" 
-            ondragover="slideWhenTaskHoverArrow('right'), highlightSlideColumn('right')" ondragleave="removeHighlightSlideColumn('right')"
-            onclick="highlichtSlideColumnOnClick('right')"
-            >
+
+
+          <button id="right-slide-buttom" class="d-sm-none carousel-control-next d-flex flex-column columnToSlide"
+            type="button" data-bs-target="#carousel" data-bs-slide="next"
+            ondragover="slideWhenTaskHoverArrow(), highlightSlideColumn('right')"
+            ondragleave="stopSlideWhenTaskOutOfArrow(), removeHighlightSlideColumn('right')"
+            onclick="highlichtSlideColumnOnClick('right')">
             <span id="rightArrowText"
               class="fs-6 fw-bold columnNameToSlide d-flex justify-content-center align-items-center">IN PROGRESS</span>
             <span id="right-arrow" class="carousel-control-next-icon" aria-hidden="true"></span>
