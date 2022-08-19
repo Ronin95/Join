@@ -23,27 +23,27 @@
       <div class="" w3-include-html="navbar.html"></div>
 
       <!-- work area (right site: content of the nav-link) -->
-      <div class="p-5 position-top h-100 w-100">
-        <div class="d-flex justify-content-between">
+      <div class="position-top h-100 w-100 media-backlog-padding">
+        <div class="d-flex p-5 pb-3">
           <div class="">
             <h2 class="">Backlog</h2>
             <p>Learning Management System Project</p>
           </div>
-          <div class="d-flex">
+          <div class="search-field">
             <form>
               <input
-                class="rounded border-0 bg-grey p-2 me-4"
+                class="rounded border-0 bg-grey p-2 search-field-mini"
                 id="searchTask"
                 onkeyup="filterNames()"
-                placeholder="Search Person / Category"
+                placeholder="Search"
               />
             </form>
           </div>
           <div class="width-200 me-4"></div>
         </div>
 
-        <div class="mt-4">
-          <div class="d-flex justify-content-sm-between">
+        <div class="ps-5">
+          <div class="d-flex justify-content-sm-between media-backlog">
             <div>
               <h3 class="width-200">ASSIGNED TO</h3>
             </div>
@@ -51,7 +51,7 @@
               <h3 class="width-200 ps-5" id="cat-style">CATEGORY</h3>
             </div>
             <div>
-              <h3 class="width-200 me-4 text-end">DETAILS</h3>
+              <h3 class="width-200 me-4 text-end details-media">DETAILS</h3>
             </div>
           </div>
           <div id="freshTask"></div>

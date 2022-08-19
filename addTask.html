@@ -25,17 +25,17 @@
       <div class="" w3-include-html="navbar.html"></div>
 
       <!-- work area (right site: content of the nav-link) -->
-      <div class="outer-border ">
+      <div class="outer-border p-5 ">
         <div class="titles">
           <h2>Add Task</h2>
           <p>Learning Management System Project</p>
         </div>
         <form class="d-flex justify-content-center" onsubmit="addTask()"> 
           <div class="outer-border-form-field w-90 rounded-2 bg-grey m-2">
-            <div class="d-flex">
+            <div class="d-flex sm-column">
               <div class="add-Task-width m-4">
                 <h3>Title</h3>
-                <input class="rounded fs-4 p-2 bs-simple add-Task-width" required minlength="3" id="title" placeholder="Add a title for your task" />
+                <input class="rounded fs-4 p-2 bs-simple add-Task-width" required minlength="3" id="title" placeholder="Add a title" />
               </div>
               <div class="add-Task-width m-4">
                 <h3>Due Date</h3>
@@ -45,7 +45,7 @@
                 </form>
               </div>
             </div>
-            <div class="d-flex">
+            <div class="d-flex sm-column">
               <div class="add-Task-width m-4">
                 <h3>Category</h3>
                 <form class="add-Task-width">
@@ -70,18 +70,18 @@
               </form>
             </div>
           </div>
-          <div class="d-flex">
+          <div class="d-flex sm-column">
             <div class="add-Task-width m-4">
               <h3>Description</h3>
               <textarea class="w-100 p-2 rounded fs-4 p-2 bs-simple" required minlength="3"
                 id="description"
-                placeholder="Add your notes for the task here..." 
+                placeholder="Add your notes" 
               ></textarea>
             </div>
             <div class="add-Task-width m-4">
               <h3>Assigned To:</h3>
 
-              <div id="user" class="add-Task-width p-2"></div>
+              <div id="user" class="add-Task-width p-2 flex-media"></div>
 
 
             </div>

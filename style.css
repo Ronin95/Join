@@ -4,7 +4,7 @@
   background-color: rgb(244, 243, 251) !important;
 }
 
-/* Borad Column Task Item = BCTI */
+/* Board Column Task Item = BCTI */
 .green {
   background: linear-gradient(-135deg, #608a32 14px, transparent 0);
   overflow: hidden;
@@ -25,6 +25,11 @@
 * {
   margin: 0;
 }
+
+.container-fluid{
+  z-index: 99;
+}
+
 
 .cursor-pointer {
   cursor: pointer;
@@ -326,14 +331,6 @@ backlog.hmtl Style
   white-space: nowrap;
 }
 
-.width-200 {
-  width: 200px;
-}
-
-.width-sixty {
-  width: 60vw;
-}
-
 .category-task {
   background-color: black;
   height: 100px;
@@ -356,6 +353,18 @@ backlog.hmtl Style
   align-items: center;
 }
 
+.search-field{
+  position: fixed;
+  top: 10.5vh;
+  right: 24px;
+}
+.search-field input{
+  text-align: center;
+}
+
+.media-description{
+  display: none;
+}
 
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
@@ -370,17 +379,13 @@ backlog.hmtl Style
   margin-bottom: 12px !important;
 }
 
-.whole-contain {
-  margin-left: 24px;
-}
-
-.width-twenty {
-  width: 30%;
-}
-
 .table>tbody {
   vertical-align: middle !important;
 }
+
+
+
+/* HELP.html CSS */
 
 .assigned-img {
   width: 50px;
@@ -389,21 +394,6 @@ backlog.hmtl Style
   object-fit: cover;
   margin: 12px;
   margin-right: 18px;
-}
-
-.left-rounded {
-  border-top-left-radius: 18px;
-  border-bottom-left-radius: 18px;
-}
-
-.right-rounded {
-  border-top-right-radius: 18px;
-  border-bottom-right-radius: 18px;
-}
-
-.assigned-to-row {
-  display: flex;
-  align-items: center;
 }
 
 td {
