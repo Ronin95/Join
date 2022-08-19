@@ -1,7 +1,7 @@
 function newTaskTemp(newTask, i) {
   return /*html*/ `
   <div class='d-flex'>
-    <div class='d-flex mt-2 rounded bg-grey justify-content-sm-between w-100 align-items-center'>
+    <div class='d-flex mt-2 rounded bg-grey justify-content-sm-between w-100 align-items-center backlog-flex media-backlog backlog-xs-media'>
       <div class='task-img-name-email '>
         <div style="background-color: ${
           colorsCategory[newTask.category]
@@ -21,16 +21,16 @@ function newTaskTemp(newTask, i) {
             </p>
         </div >
       </div >
-      <div class='taskCategory text-center width-200'>
-        <h5 class="mb-0">${newTask.category}</h5>
+      <div class='taskCategory text-center width-200 '>
+        <h5 class="mb-0 media-padding">${newTask.category}</h5>
       </div>
-      <div class="">
-        <p class="d-flex mb-0 me-4 width-200 hiddeneScrollbar details-container p-2 wrap-nowrap" id="backlogDetails${i}" onclick="showDetailsInBacklog(${i})"><span>${
+      <div class="media-backlog-center">
+        <p class="d-flex mb-0 me-4 width-200 hiddeneScrollbar details-container p-2 wrap-nowrap" id="backlogDetails${i}" onclick="showDetailsInBacklog(${i})"><b class="media-description">Description: </b><span>${
     newTask.description
   }</span></p>
       </div>
     </div >
-    <div class='mt-4'>
+    <div class="mt-4">
       <img class='delete-task' onclick='deleteTask(${i})' src='img/delete-task.png'>
     </div>
   </div>
