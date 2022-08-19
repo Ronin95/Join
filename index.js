@@ -150,7 +150,7 @@ let columns = [
 
 let currentColumn = 1;
 
-function slideWhenTaskHoverArrow() {
+function startSlide() {
 /*   let evt = new MouseEvent('over', {
     view: window,
     bubbles: true,
@@ -165,7 +165,7 @@ function slideWhenTaskHoverArrow() {
 }
 
 
-function stopSlideWhenTaskOutOfArrow() {
+function stopSlide() {
   myCarousel.pause();
 }
 
@@ -220,7 +220,8 @@ function log() {
 
 const myCarousel = new bootstrap.Carousel(document.getElementById('carousel'), {
   interval: 100,
-  wrap: true
+  pause: false,
+  wrap: true,
 });
 
 console.log(myCarousel)
