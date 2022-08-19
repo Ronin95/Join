@@ -219,7 +219,7 @@ function log() {
 }
 
 const myCarousel = new bootstrap.Carousel(document.getElementById('carousel'), {
-  interval: 100,
+  interval: 1,
   pause: false,
   wrap: true,
 });
