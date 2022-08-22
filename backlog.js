@@ -20,7 +20,7 @@ function filterNames() {
       name.toLowerCase().includes(search) ||
       category.toLowerCase().includes(search)
     ) {
-      document.getElementById('freshTask').innerHTML += searchTaskTemp(newTask);
+      document.getElementById('freshTask').innerHTML += newTaskTemp(newTask, i);
     }
   }
 }

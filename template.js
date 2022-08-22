@@ -1,69 +1,54 @@
 function newTaskTemp(newTask, i) {
   return /*html*/ `
-  <div class='d-flex'>
-    <div class='d-flex mt-2 rounded bg-grey justify-content-sm-between w-100 align-items-center backlog-flex media-backlog backlog-xs-media'>
-      <div class='task-img-name-email '>
-        <div style="background-color: ${
-          colorsCategory[newTask.category]
-        }" class='category-task'>
+<div class="d-flex position-relative align-items-sm-center border-1 rounded bg-grey mb-4">
+  <div 
+    style="background-color:${colorsCategory[newTask.category]}"
+    class="category-task position-absolute top-0 bottom-0"
+    title="${newTask.category}"></div>
+  <div
+    class="d-flex justify-content-sm-between justify-content-around w-100 align-items-center flex-column flex-sm-row ms-3"
+  >
+    <div class="d-flex align-items-center flex-column flex-sm-row me-2 me-sm-0">
+        <div>
+          <img
+            class="user-pic m-sm-3 m-2 rounded-circle"
+            src="${newTask.userForTask.avatar}"
+          />
         </div>
-        <div id="user_pic">
-          <img class="user-pic m-3 rounded-circle" src="${
-            newTask.userForTask.avatar
-          }">
-        </div>
-        <div id="which_user">
+        <div class="mb-2 mb-sm-0">
           <p class="m-0">${newTask.userForTask.name}</p>
-            <p class="mb-0">
-              <a href='mailto:invalidmail@join.com' alt='Invalid Mail Address'>
-                ${newTask.userForTask.email}
-              </a>
-            </p>
-        </div >
-      </div >
-      <div class='taskCategory text-center width-200 '>
-        <h5 class="mb-0 media-padding">${newTask.category}</h5>
-      </div>
-      <div class="media-backlog-center">
-        <p class="d-flex mb-0 me-4 width-200 hiddeneScrollbar details-container p-2 wrap-nowrap" id="backlogDetails${i}" onclick="showDetailsInBacklog(${i})"><b class="media-description">Description: </b><span>${
-    newTask.description
-  }</span></p>
-      </div>
-    </div >
-    <div class="mt-4">
-      <img class='delete-task' onclick='deleteTask(${i})' src='img/delete-task.png'>
-    </div>
-  </div>
-
-  `;
-}
-
-function searchTaskTemp(newTask) {
-  return /*html*/ `
-  <div class=' backlog-task-Container'>
-    <div class='task-img-name-email '>
-      <div style="background-color: 
-        ${colorsCategory[newTask.category]}"
-        class='category-task'>
-      </div>
-      <div id="user_pic">
-        <img class="user-pic m-3" src="${newTask.userForTask.avatar}">
-      </div>
-      <div id="which_user">
-        <p>${newTask.userForTask.name}</p>
-          <p>
-            <a href='mailto:invalidmail@join.com' alt='Invalid Mail Address'>
+            <a 
+            class="m-0" 
+            href="mailto:${newTask.userForTask.email}" 
+            alt="${newTask.userForTask.email}">
               ${newTask.userForTask.email}
-            </a>
-          </p>
-      </div >
-    </div >
-    <div class='taskCategory'>
-      <h5>${newTask.category}</h5>
+            </a>          
+        </div>
+      </div>
+      <div class="d-none d-sm-block text-center">
+        <h5 class="mb-0 m-2">${newTask.category}</h5>
+      </div>
+      <div class="d-flex justify-content-center justify-content-sm-end align-items-center flex-sm-row flex-column ms-1 ms-sm-0 mb-2 mb-sm-0">
+        <div
+          class="d-flex justify-content-center align-items-center justify-content-sm-end align-items-sm-start flex-sm-row flex-column m-0 cursor-pointer"
+          id="backlogDetails${i}"
+          
+        >
+          <b class="d-block d-sm-none">Description: </b>
+          <span class=" hiddenScrollbar overflow-auto text-center text-sm-end text-break max-height-100 width-150">${
+            newTask.description
+          }</span>
+        </div>
+      </div>      
     </div>
-    <div class='taskDescription '>
-      <p>${newTask.description}</p>
+    <div class="d-flex justify-content-center pt-3 pt-sm-0 ps-2">
+      <button
+        type="button"
+        onclick="deleteTask(${i})"
+        class="btn-close me-2 m-auto"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+      ></button>
     </div>
-  </div >
-  `;
+</div>`;
 }
