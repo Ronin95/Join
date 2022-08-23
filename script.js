@@ -1,5 +1,6 @@
 let currentUser = [];
 
+
 /* General all posible variables / arrays like categories, users, avatars etc., which are used in every sub page und script */
 /* Lukas 11.08: Sollen wir auch die Kategorien zentalisieren, ähnlich wie bei users und selectedUser, 
 oder soll ein lokales Board Array sein.
@@ -40,8 +41,8 @@ async function initIndex() {
   await currentUserImage();
   renderAllColumns();
   showAllUser();
+  document.getElementById('navBoard').classList.add('you-are-here');
   selectUser(1);
-  // document.getElementById('navBoard').classList.add('you-are-here');
 }
 
 async function initHelp() {
@@ -49,7 +50,7 @@ async function initHelp() {
   await init();
   await includeHTML();
   await currentUserImage();
-  // document.getElementById('navHelp').classList.add('you-are-here');
+  document.getElementById('navHelp').classList.add('you-are-here');
 }
 
 async function initBacklog() {
@@ -58,7 +59,7 @@ async function initBacklog() {
   await includeHTML();
   await currentUserImage();
   generateAllTasks();
-  // document.getElementById('navInBacklog').classList.add('you-are-here');
+  document.getElementById('navInBacklog').classList.add('you-are-here');
 }
 
 async function initAddTask() {
@@ -68,7 +69,7 @@ async function initAddTask() {
   await currentUserImage();
   showAllUser();
   loadCurrentDate();
-  // document.getElementById('addTaskNav').classList.add('you-are-here');
+  document.getElementById('addTaskNav').classList.add('you-are-here');
 }
 
 function logout() {
