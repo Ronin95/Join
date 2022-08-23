@@ -1,6 +1,5 @@
-@media only screen and (max-width: 767.8px) 
-{
-  .you-are-here{
+@media only screen and (max-width: 767.8px) {
+  .you-are-here {
     border-left: none;
     margin-left: 0px;
   }
@@ -30,24 +29,17 @@
 }
 
 @media (max-width: 575px) {
-  .row {
-    height: 100% !important;
-  }
   .sm-column {
     flex-direction: column;
   }
-  .add-Task-width{
+  .add-Task-width {
     width: 80vw;
   }
-  .flex-media{
+  .flex-media {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-}
-.search-field{
-  top: 18.5vh;
-  right: 10px;
-}
+  }
 }
 
 @media (min-width: 576px) {
@@ -64,52 +56,8 @@
   .carousel-inner {
     width: calc(100% - 128px) !important;
   }
-  .backlog-xs-media{
-    display: block !important;
-    border: solid 1px #2e2e2e17;
-    margin-right: -16px
-  }
-  #cat-style{
-    display: none;
-  }
-  .details-media {
-    display: none;
-  }
-  .media-backlog-center{
-    text-align: center;
-  }
-  .details-container{
-    margin-right: 0px !important;
-    text-align: center !important;
-  }
-  .media-description{
-    display: unset !important;
-  }
 
-  .category-task{
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    height: 102px;
-    width: 3px;
-  }
-
-  .ps-5 {
-    padding-left: 8px !important;
-  }
-
-}
-
-@media (max-width: 945px){
-  .media-backlog{
-    justify-content: space-between !important;
-  }
-}
-
-@media (max-width: 397px){
-  .search-field-mini{
-    width: 70px;
-  }
-  .search-field{
-    top: 20.5vh;
+  .width-150 {
+    width: 100%;
   }
 }

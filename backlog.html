@@ -20,38 +20,39 @@
 
   <body onload="initBacklog()" class="py-md-4">
     <div class="app-window h-100 w-100 d-flex flex-column flex-md-row">
-      <div class="" w3-include-html="navbar.html"></div>
+      <div w3-include-html="navbar.html"></div>
 
       <!-- work area (right site: content of the nav-link) -->
-      <div class="position-top h-100 w-100 media-backlog-padding">
-        <div class="d-flex p-5 pb-3">
-          <div class="">
-            <h2 class="">Backlog</h2>
-            <p>Learning Management System Project</p>
-          </div>
-          <div class="search-field">
-            <form>
+      <div class="position-top p-2 p-sm-5 h-100 w-100">
+        <div class="d-flex">
+          <div
+            class="w-100 d-flex justify-content-sm-between justify-content-start align-items-sm-center flex-column flex-sm-row"
+          >
+            <div>
+              <h2 class="">Backlog</h2>
+              <p>Learning Management System Project</p>
+            </div>
+            <div class="mb-2 mb-sm-0">
               <input
-                class="rounded border-0 bg-grey p-2 search-field-mini"
+                class="rounded w-100 border-0 bg-grey p-2 text-center"
                 id="searchTask"
                 onkeyup="filterNames()"
                 placeholder="Search"
               />
-            </form>
+            </div>
           </div>
-          <div class="width-200 me-4"></div>
         </div>
 
-        <div class="ps-5">
-          <div class="d-flex justify-content-sm-between media-backlog">
+        <div class="">
+          <div class="d-flex justify-content-between">
             <div>
-              <h3 class="width-200">ASSIGNED TO</h3>
+              <h3 class="">ASSIGNED TO</h3>
             </div>
             <div>
-              <h3 class="width-200 ps-5" id="cat-style">CATEGORY</h3>
+              <h3 class="d-none d-sm-block">CATEGORY</h3>
             </div>
             <div>
-              <h3 class="width-200 me-4 text-end details-media">DETAILS</h3>
+              <h3 class="d-none d-sm-block">DETAILS</h3>
             </div>
           </div>
           <div id="freshTask"></div>
