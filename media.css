@@ -62,7 +62,7 @@
 
 @media (max-width: 575px) {
   .carousel-inner {
-    width: calc(100% - 120px) !important;
+    width: calc(100% - 128px) !important;
   }
   .backlog-xs-media{
     display: block !important;

@@ -47,7 +47,7 @@ function renderColumn(columnName) {
 function genHTMLBoardTaskItem(task) {
   return /* html */ `
     <!-- a column task item -->
-    <div id="${task.id}" class="card red border-dark my-2 w-100" draggable="true" 
+    <div id="${task.id}" class="card red border-dark my-2 w-100" draggable="true" ondragend="stopSlidePrev(), stopSlideNext()"
     ondragstart="startDragging(${task['id']})" 
         data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         <div class="card-header p-1 fs-6">
@@ -98,6 +98,7 @@ function moveTo(state) {
   renderAllColumns();
 }
 
+
 /**
  * A w3school function: Simply integrated here.
  * Change the default behavior of the affected container (here board kanban column)
@@ -109,6 +110,7 @@ function allowDrop(ev) {
   ev.preventDefault();
 }
 
+
 /**
  * Highlight the kanban column when you hover over it with the dragged task item
  * (a corresponding class for this effect will be added to the affected column.).
@@ -119,6 +121,7 @@ function hightlight(columnName) {
   document.getElementById(columnName).classList.add('drag-area-highlight');
 }
 
+
 /**
  * Remove the highlight effect for the kanban column when the dragged task item stop to hover it or will be dropped on it
  * (a corresponding class for this effect will be removed from the affected colum).
@@ -128,6 +131,7 @@ function hightlight(columnName) {
 function removeHightlight(columnName) {
   document.getElementById(columnName).classList.remove('drag-area-highlight');
 }
+
 
 let columns = [
   {
@@ -149,27 +153,6 @@ let columns = [
 ];
 
 let currentColumn = 1;
-
-function startSlide() {
-/*   let evt = new MouseEvent('over', {
-    view: window,
-    bubbles: true,
-    cancelable: true,
-    clientX: 20,
-  }),
-    ele = document.getElementById(side + '-arrow');
-  ele.dispatchEvent(evt);
-  console.log('Mouse') */
-  myCarousel.pause();
-  myCarousel.cycle();
-}
-
-
-function stopSlide() {
-  myCarousel.pause();
-}
-
-
 let columnsCarousel = document.getElementById('carousel');
 
 columnsCarousel.addEventListener('slid.bs.carousel', (event) => {
@@ -189,40 +172,92 @@ columnsCarousel.addEventListener('slid.bs.carousel', (event) => {
   currentColumn++;
 });
 
+
 function toggleClassOpenModalDropDownUserList() {
   document
     .getElementById('user')
     .classList.toggle('modal-avatar-container-open');
 }
 
+
 function highlightSlideColumn(side) {
   document.getElementById(side + '-slide-buttom').classList.add('highlightSlideBtn');
 }
 
+
 function removeHighlightSlideColumn(side) {
   document.getElementById(side + '-slide-buttom').classList.remove('highlightSlideBtn');
-  console.log('stop')
 }
-
-let timeOut;
 
 function highlichtSlideColumnOnClick(side) {
   clearTimeout(timeOut);
   highlightSlideColumn(side);
   timeOut = setTimeout(() => {
     removeHighlightSlideColumn(side)
-  }, 1000);
+  }, 800);
 }
 
-function log() {
-  console.log('test')
-}
 
 const myCarousel = new bootstrap.Carousel(document.getElementById('carousel'), {
-  interval: 1,
+  interval: 600,
   pause: false,
   wrap: true,
 });
 
-console.log(myCarousel)
-// myCarousel.cycle();
+
+function startSlideNext() {
+  myCarousel.pause()
+  myCarousel.cycle();
+}
+
+
+function stopSlideNext() {
+  myCarousel.pause();
+}
+
+
+let alreadyChildrenDirectionReversed = false;
+
+function startSlidePrev() {
+  addChangeDirectionClass();
+  reverseChildren();
+  alreadyChildrenDirectionReversed = true;
+  myCarousel.pause()
+  myCarousel.cycle();
+}
+
+
+function stopSlidePrev() {
+  myCarousel.pause();
+  reverseChildren();
+  removeChangeDirectionClass();
+  alreadyChildrenDirectionReversed = false;
+}
+
+
+function stopSlideJustOnDrop() {
+  myCarousel.pause();
+  if (alreadyChildrenReverse) {
+    reverseChildren();
+    removeChangeDirectionClass();
+    alreadyChildrenDirectionReversed = false;
+  }
+}
+
+
+function addChangeDirectionClass() {
+  document.getElementById('carousel-inner').classList.add('changeDirection')
+}
+
+
+function removeChangeDirectionClass() {
+  document.getElementById('carousel-inner').classList.remove('changeDirection')
+}
+
+
+function reverseChildren() {
+  let parent = document.getElementById('carousel-inner')
+  for (var i = 1; i < parent.childNodes.length; i++) {
+    parent.insertBefore(parent.childNodes[i], parent.firstChild);
+  }
+}

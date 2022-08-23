@@ -22,59 +22,12 @@
 
     <!-- work area (right site: content of the nav-link) -->
     <div class="d-flex align-items-center flex-grow-1 overflow-hidden border-primary">
-      <div class="row h-100 w-100 border-4 border m-0 py-sm-4">
-        <div id="carousel" class="carousel slide px-0 h-100">
-          <div class="carousel-inner d-sm-flex justify-content-center h-100 mx-auto">
-            <div class="all carousel-item active h-100">
-              <div class="d-flex flex-column align-items-center h-100">
-                <span class="fw-bold my-1 column-name">TO DO</span>
-                <div id="toDoColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 h-100 w-100 px-1"
-                  ondrop="moveTo('toDo'), removeHightlight('toDoColumn')"
-                  ondragover="allowDrop(event), hightlight('toDoColumn'), stopSlide()"
-                  ondragleave="removeHightlight('toDoColumn')">
-                </div>
-              </div>
-            </div>
-
-            <div class="all carousel-item h-100">
-              <div class="d-flex flex-column align-items-center h-100">
-                <span class="fw-bold my-1 column-name">IN PROGRESS</span>
-                <div id="inProgressColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 h-100 w-100 px-1"
-                  ondrop="moveTo('inProgress'), removeHightlight('inProgressColumn')"
-                  ondragover="allowDrop(event), hightlight('inProgressColumn'), stopSlide()"
-                  ondragleave="removeHightlight('inProgressColumn')">
-                </div>
-              </div>
-            </div>
-
-            <div class="all carousel-item h-100">
-              <div class="d-flex flex-column align-items-center h-100">
-                <span class="fw-bold my-1 column-name">TESTING</span>
-                <div id="testingColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 h-100 w-100 px-1"
-                  ondrop="moveTo('testing'), removeHightlight('testingColumn')"
-                  ondragover="stopSlide(), allowDrop(event), hightlight('testingColumn')"
-                  ondragleave="removeHightlight('testingColumn')">
-                </div>
-              </div>
-            </div>
-
-            <div class="all carousel-item h-100">
-              <div class="d-flex flex-column align-items-center h-100">
-                <span class="fw-bold my-1 column-name">DONE</span>
-                <div id="doneColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 h-100 w-100 px-1"
-                  ondrop="moveTo('done'), removeHightlight('doneColumn')"
-                  ondragover="allowDrop(event), hightlight('doneColumn'), stopSlide()"
-                  ondragleave="removeHightlight('doneColumn')">
-                </div>
-              </div>
-            </div>
-
-
-          </div>
+      <div class="row h-100 w-100 m-0 py-sm-4">
+        <div id="carousel" class="carousel slide px-0 h-100 justify-content-between">
 
           <button id="left-slide-buttom" class="d-sm-none carousel-control-prev d-flex flex-column columnToSlide"
             type="button" data-bs-target="#carousel" data-bs-slide="prev"
-            ondragover="startSlide(), highlightSlideColumn('left')"
+            ondragenter="startSlide(), highlightSlideColumn('left')"
             ondragleave="stopSlide(), removeHighlightSlideColumn('left')">
             <span id="leftArrowText"
               class="fs-6 fw-bold columnNameToSlide d-flex justify-content-center align-items-center">DONE</span>
@@ -82,17 +35,71 @@
             <span class="visually-hidden">Previous</span>
           </button>
 
+          <div id="carousel-inner"
+            class="carousel-inner d-flex align-items-sm-center d-sm-flex justify-content-sm-center h-100">
+
+
+            <div id="carousel-item0" class="all carousel-item active h-100">
+              <div class="d-flex flex-column align-items-center h-100">
+                <span class="fw-bold my-1 column-name">TO DO</span>
+                <div id="toDoColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 h-100 w-100 px-0 px-sm-1"
+                  ondrop="moveTo('toDo', 0), removeHightlight('toDoColumn')"
+                  ondragenter="allowDrop(event), hightlight('toDoColumn')">
+                </div>
+              </div>
+            </div>
+
+            <div id="carousel-item1" class="all carousel-item h-100">
+              <div class="d-flex flex-column align-items-center h-100">
+                <span class="fw-bold my-1 column-name">IN PROGRESS</span>
+                <div id="inProgressColumn"
+                  class="board-column bg-grey hiddeneScrollbar flex-grow-1 h-100 w-100 px-0 px-sm-1"
+                  ondrop="moveTo('inProgress', 1), removeHightlight('inProgressColumn')"
+                  ondragenter="allowDrop(event), hightlight('inProgressColumn')">
+                </div>
+              </div>
+            </div>
+
+            <div id="carousel-item2" class="all carousel-item h-100">
+              <div class="d-flex flex-column align-items-center h-100">
+                <span class="fw-bold my-1 column-name">TESTING</span>
+                <div id="testingColumn"
+                  class="board-column bg-grey hiddeneScrollbar flex-grow-1 h-100 w-100 px-0 px-sm-1"
+                  ondrop="moveTo('testing', 2), removeHightlight('testingColumn')"
+                  ondragenter="allowDrop(event), hightlight('testingColumn')">
+                </div>
+              </div>
+            </div>
+
+            <div id="carousel-item3" class="all carousel-item h-100">
+              <div class="d-flex flex-column align-items-center h-100">
+                <span class="fw-bold my-1 column-name">DONE</span>
+                <div id="doneColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 h-100 w-100 px-0 px-sm-1"
+                  ondrop="moveTo('done', 3), removeHightlight('testingColumn')"
+                  ondragenter="allowDrop(event), hightlight('doneColumn')">
+                </div>
+              </div>
+            </div>
+
+
+          </div>
 
           <button id="right-slide-buttom" class="d-sm-none carousel-control-next d-flex flex-column columnToSlide"
             type="button" data-bs-target="#carousel" data-bs-slide="next"
-            ondragover="startSlide(), highlightSlideColumn('right')"
-            ondragleave="stopSlide(), removeHighlightSlideColumn('right')"
-            onclick="highlichtSlideColumnOnClick('right')">
+            ondragover="draggedIsOver = true, startSlide(), highlightSlideColumn('right')"
+            ondragleave="draggedIsOver = false, stopSlide(), removeHighlightSlideColumn('right')"
+            ontouchend="stopSlide()" ontouchcancel="stopSlide()" onclick="highlichtSlideColumnOnClick('right')">
             <span id="rightArrowText"
               class="fs-6 fw-bold columnNameToSlide d-flex justify-content-center align-items-center">IN PROGRESS</span>
             <span id="right-arrow" class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
+
+
+
+
+
+
 
           <div class="d-sm-none carousel-indicators">
             <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true"
@@ -192,6 +199,7 @@ Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni nulla nisi inven
   <script src="script.js"></script>
   <script src="index.js"></script>
   <script src="DragDropTouch.js"></script>
+  <!-- <script src="node_modules/bootstrap/js/dist/carousel.js"></script> -->
 </body>
 
 </html>

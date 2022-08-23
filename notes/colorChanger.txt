@@ -1,1 +1,0 @@
-https://isotropic.co/how-to-fix-cannot-read-property-style-of-null-in-javascript/
