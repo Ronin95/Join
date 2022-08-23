@@ -15,7 +15,7 @@ function newTaskTemp(newTask, i) {
             src="${newTask.userForTask.avatar}"
           />
         </div>
-        <div class="mb-2 mb-sm-0">
+        <div class="d-flex flex-column align-items-center align-items-sm-start mb-2 mb-sm-0">
           <p class="m-0">${newTask.userForTask.name}</p>
             <a 
             class="m-0" 
@@ -34,7 +34,7 @@ function newTaskTemp(newTask, i) {
           id="backlogDetails${i}"
           
         >
-          <b class="d-block d-sm-none">Description: </b>
+          <b class="d-block d-sm-none blue-text text-uppercase">Description: </b>
           <span class=" hiddenScrollbar overflow-auto text-center text-sm-end text-break max-height-100 width-150">${
             newTask.description
           }</span>
