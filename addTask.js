@@ -100,7 +100,7 @@ function loadCurrentDate() {
   }
   today = yyyy + '-' + mm + '-' + dd;
   document.getElementById('wichDate').innerHTML += /*html*/ `
-  <input class="rounded fs-4 p-2 bs-simple add-Task-width" id="dateTask" placeholder="${today}" class="textbox-n" type="text" onfocus="(this.type='date')" >`;
+  <input class="rounded fs-4 p-2 bs-simple w-100" id="dateTask" placeholder="${today}" class="textbox-n" type="text" onfocus="(this.type='date')" >`;
 }
 
 function handleForm(event) {
