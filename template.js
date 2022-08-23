@@ -11,7 +11,7 @@ function newTaskTemp(newTask, i) {
     <div class="d-flex align-items-center flex-column flex-sm-row me-2 me-sm-0">
         <div>
           <img
-            class="user-pic m-sm-3 m-2 rounded-circle"
+            class="user-show m-sm-3 m-2 rounded-circle"
             src="${newTask.userForTask.avatar}"
           />
         </div>
