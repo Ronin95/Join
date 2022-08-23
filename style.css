@@ -220,10 +220,18 @@ body {
 /*-------------------------------------------------------------------------*/
 /* Board kanban columns in a sliding carousel style under bs-sm-breakpoint */
 
+.carousel {
+  display: flex;
+  gap: 4px;
+}
+
 .columnToSlide {
-  width: 60px;
+  position: unset;
+  width: 66px;
   margin-top: 44px;
-  background-color: rgb(33, 45, 141);
+  background-color: rgb(33, 45, 141) !important;
+  height: 100%;
+
 }
 
 .columnNameToSlide {
@@ -238,11 +246,13 @@ body {
 
 .carousel-control-next,
 .carousel-control-prev {
+  z-index: unset;
   opacity: 0.75;
 }
 
 .carousel-control-next:focus,
 .carousel-control-prev:focus {
+  background-color: red !important;
   opacity: 0.75;
 }
 
@@ -251,7 +261,24 @@ body {
   opacity: 1;
 }
 
+
+/* The speed of carousel sliding */
+.carousel-item {
+  border: 0.1px solid red;
+  height: 100% !important;
+  transition: all 600ms ease !important;
+}
+
+
 @media (max-width: 575px) {
+  .carousel-inner {
+    width: calc(100vw - 140px) !important;
+  }
+
+  .carousel-item {
+    width: calc(100vw - 140px) !important;
+  }
+
   .carousel-control-next:hover,
   .carousel-control-prev:hover {
     opacity: 0.75;
@@ -259,10 +286,6 @@ body {
 
   .highlightSlideBtn {
     opacity: 1 !important;
-  }
-
-  .testy {
-    background-color: red;
   }
 }
 
@@ -275,6 +298,12 @@ body {
 .carousel-indicators [data-bs-target] {
   width: 24px;
 }
+
+.carousel-indicators .active {
+  background-color: black !important;
+  border-color: rgba(0, 0, 0, 0.65) !important;
+}
+
 
 /*---------------*/
 /* Add Task CSS */
@@ -312,8 +341,8 @@ body {
 /*---------------*/
 
 /*
-backlog.hmtl Style
-*/
+  backlog.hmtl Style
+  */
 
 .max-height-100 {
   max-height: 100px;
@@ -342,7 +371,7 @@ backlog.hmtl Style
   margin-bottom: 12px !important;
 }
 
-.table > tbody {
+.table>tbody {
   vertical-align: middle !important;
 }
 
@@ -378,43 +407,18 @@ html {
   /* Firefox */
 }
 
-/* The speed of carousel sliding */
-.carousel-inner .carousel-item {
-  transition: all 500ms ease !important;
+@media all and (transform-3d),
+(-webkit-transform-3d) {
+
+  .changeDirection .active.carousel-item-start,
+  .changeDirection .carousel-item-prev:not(.carousel-item-end) {
+    -webkit-transform: translateX(100%) !important;
+    transform: translateX(100%) !important;
+  }
+
+  .changeDirection .active.carousel-item-end,
+  .changeDirection .carousel-item-next:not(.carousel-item-start) {
+    -webkit-transform: translateX(-100%) !important;
+    transform: translateX(-100%) !important;
+  }
 }
-
-
-
-/* .carousel-item-next.carousel-item-start,
-.carousel-item-prev.carousel-item-end {
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(-100%, 0, 0);
-}
-
-.carousel-item-next,
-.active.carousel-item-end {
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
-
-.carousel-item-prev,
-.active.carousel-item-start {
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-} */
-
-/* @media all and (transform-3d),
-(-webkit-transform-3d) { */
-.changeDirection .active.carousel-item-start,
-.changeDirection .carousel-item-prev:not(.carousel-item-end) {
-  -webkit-transform: translateX(100%) !important;
-  transform: translateX(100%) !important;
-}
-
-.changeDirection .active.carousel-item-end,
-.changeDirection .carousel-item-next:not(.carousel-item-start) {
-  -webkit-transform: translateX(-100%) !important;
-  transform: translateX(-100%) !important;
-}
-
-/* } */

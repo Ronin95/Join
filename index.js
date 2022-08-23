@@ -38,6 +38,7 @@ function renderColumn(columnName) {
   }
 }
 
+
 /**
  * Generate a single task item in the kanban column on board.
  *
@@ -47,7 +48,7 @@ function renderColumn(columnName) {
 function genHTMLBoardTaskItem(task) {
   return /* html */ `
     <!-- a column task item -->
-    <div id="${task.id}" class="card red border-dark my-2 w-100" draggable="true" ondragend="stopSlidePrev(), stopSlideNext()"
+    <div id="${task.id}" class="card red border-dark my-2 w-100" draggable="true" ondragend="stopSlideJustOnDrop()"
     ondragstart="startDragging(${task['id']})" 
         data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         <div class="card-header p-1 fs-6">
@@ -132,6 +133,13 @@ function removeHightlight(columnName) {
   document.getElementById(columnName).classList.remove('drag-area-highlight');
 }
 
+const myCarousel = new bootstrap.Carousel(document.getElementById('carousel'), {
+  interval: 650,
+  pause: false,
+  wrap: true,
+});
+
+
 
 let columns = [
   {
@@ -152,24 +160,32 @@ let columns = [
   },
 ];
 
-let currentColumn = 1;
-let columnsCarousel = document.getElementById('carousel');
+let currentColumn;
+let carousel = document.getElementById('carousel');
 
-columnsCarousel.addEventListener('slid.bs.carousel', (event) => {
+carousel.addEventListener('slid.bs.carousel', (event) => {
   let leftArrow = document.getElementById('leftArrowText');
   let rightArrow = document.getElementById('rightArrowText');
+
+  currentColumn = myCarousel._activeElement.id
+  console.log(myCarousel._activeElement.id)
+
   if (currentColumn == 0) {
     leftArrow.innerHTML = columns[3].name;
-    rightArrow.innerHTML = columns[currentColumn + 1].name;
-  } else if (currentColumn == 3) {
-    leftArrow.innerHTML = columns[currentColumn - 1].name;
-    rightArrow.innerHTML = columns[0].name;
-    currentColumn = -1;
-  } else {
-    leftArrow.innerHTML = columns[currentColumn - 1].name;
-    rightArrow.innerHTML = columns[currentColumn + 1].name;
+    rightArrow.innerHTML = columns[1].name;
   }
-  currentColumn++;
+  if (currentColumn == 1) {
+    leftArrow.innerHTML = columns[0].name;
+    rightArrow.innerHTML = columns[2].name;
+  }
+  if (currentColumn == 2) {
+    leftArrow.innerHTML = columns[1].name;
+    rightArrow.innerHTML = columns[3].name;
+  }
+  if (currentColumn == 3) {
+    leftArrow.innerHTML = columns[2].name;
+    rightArrow.innerHTML = columns[0].name;
+  }
 });
 
 
@@ -189,6 +205,9 @@ function removeHighlightSlideColumn(side) {
   document.getElementById(side + '-slide-buttom').classList.remove('highlightSlideBtn');
 }
 
+
+let timeOut = null;
+
 function highlichtSlideColumnOnClick(side) {
   clearTimeout(timeOut);
   highlightSlideColumn(side);
@@ -197,16 +216,8 @@ function highlichtSlideColumnOnClick(side) {
   }, 800);
 }
 
-
-const myCarousel = new bootstrap.Carousel(document.getElementById('carousel'), {
-  interval: 600,
-  pause: false,
-  wrap: true,
-});
-
-
 function startSlideNext() {
-  myCarousel.pause()
+  myCarousel.pause();
   myCarousel.cycle();
 }
 
@@ -216,48 +227,81 @@ function stopSlideNext() {
 }
 
 
-let alreadyChildrenDirectionReversed = false;
-
 function startSlidePrev() {
-  addChangeDirectionClass();
-  reverseChildren();
-  alreadyChildrenDirectionReversed = true;
-  myCarousel.pause()
+  myCarousel.pause();
   myCarousel.cycle();
+  console.log('started cycling')
 }
 
 
 function stopSlidePrev() {
   myCarousel.pause();
-  reverseChildren();
-  removeChangeDirectionClass();
-  alreadyChildrenDirectionReversed = false;
+  console.log('paused cycling')
 }
 
 
 function stopSlideJustOnDrop() {
   myCarousel.pause();
-  if (alreadyChildrenReverse) {
-    reverseChildren();
-    removeChangeDirectionClass();
-    alreadyChildrenDirectionReversed = false;
+  if (reversed) {
+    removedChangeDirectionClassReverseBackChildren()
   }
 }
 
 
-function addChangeDirectionClass() {
-  document.getElementById('carousel-inner').classList.add('changeDirection')
+let reversed = false;
+
+
+function addChangeDirectionClassReverseChildren() {
+  document.getElementById('carousel-inner').classList.add('changeDirection');
+  console.log('ADDED class');
+  reverseChildren();
+  reversed = true;
+  console.log('children reversed to order: 4--3--2--1');
 }
 
 
-function removeChangeDirectionClass() {
-  document.getElementById('carousel-inner').classList.remove('changeDirection')
+function removedChangeDirectionClassReverseBackChildren() {
+  document.getElementById('carousel-inner').classList.remove('changeDirection');
+  console.log('REMOVED class');
+  reverseChildren();
+  reversed = false;
+  console.log('children reversed BACK to ORIGINAL order: 1--2--3--4');
+
+  correctActiveIndicator();
+}
+
+function correctActiveIndicator() {
+  let foundedIndex;
+  for (let i = 0; i < 4; i++) {
+    let value = document.getElementById(`ind${i}`).className;
+    if (value == 'active') {
+      foundedIndex = i;
+    }
+  }
+
+  let wrongInd = document.getElementById(`ind${foundedIndex}`);
+  wrongInd.classList.remove('active');
+  wrongInd.removeAttribute('aria-current')
+
+
+  let rightInd = document.getElementById(`ind${myCarousel._activeElement.id}`);
+  rightInd.classList.add('active')
+  rightInd.setAttribute('aria-current', 'true')
 }
 
 
 function reverseChildren() {
-  let parent = document.getElementById('carousel-inner')
-  for (var i = 1; i < parent.childNodes.length; i++) {
-    parent.insertBefore(parent.childNodes[i], parent.firstChild);
+  myCarousel.pause();
+  let parentItems = document.getElementById('carousel-inner');
+  let parentIndicators = document.getElementById('carousel-indicators');
+
+  for (var i = 1; i < parentItems.childNodes.length; i++) {
+    parentItems.insertBefore(parentItems.childNodes[i], parentItems.firstChild);
+    parentIndicators.insertBefore(parentIndicators.childNodes[i], parentIndicators.firstChild);
   }
 }
+
+carousel.addEventListener('slide.bs.carousel', (event) => {
+  let direction = event.direction;
+  console.log(direction)
+});

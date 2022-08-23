@@ -1,35 +1,35 @@
-// users = [
-//   {
-//     name: 'Guest',
-//     password: '000',
-//     avatar: './img/guest.png',
-//     email: 'guest@join.org',
-//   },
-//   {
-//     name: 'Lukas Erdmanski',
-//     password: '123',
-//     avatar: './img/lukas.png',
-//     email: 'lukas@join.org',
-//   },
-//   {
-//     name: 'Nikola Badjevic',
-//     password: '123',
-//     avatar: './img/nikola.png',
-//     email: 'nikola@join.org',
-//   },
-//   {
-//     name: 'Phil Schmucker',
-//     password: '123',
-//     avatar: './img/phil.png',
-//     email: 'phil@join.org',
-//   },
-//   {
-//     name: 'Maik Langer',
-//     password: '123',
-//     avatar: './img/maik.png',
-//     email: 'maik@join.org',
-//   },
-// ];
+/* users = [
+  {
+    name: 'Guest',
+    password: '000',
+    avatar: './img/guest.png',
+    email: 'guest@join.org',
+  },
+  {
+    name: 'Lukas Erdmanski',
+    password: '123',
+    avatar: './img/lukas.png',
+    email: 'lukas@join.org',
+  },
+  {
+    name: 'Nikola Badjevic',
+    password: '123',
+    avatar: './img/nikola.png',
+    email: 'nikola@join.org',
+  },
+  {
+    name: 'Phil Schmucker',
+    password: '123',
+    avatar: './img/phil.png',
+    email: 'phil@join.org',
+  },
+  {
+    name: 'Maik Langer',
+    password: '123',
+    avatar: './img/maik.png',
+    email: 'maik@join.org',
+  },
+]; */
 
 // Icon Verlinkung
 
