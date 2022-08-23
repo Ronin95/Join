@@ -4,6 +4,10 @@
   background-color: rgb(244, 243, 251) !important;
 }
 
+.blue-text{
+  color: #1E3190;
+}
+
 /* Board Column Task Item = BCTI */
 .green {
   background: linear-gradient(-135deg, #608a32 14px, transparent 0);
@@ -67,7 +71,7 @@ body {
 
 /* navbar with its components */
 .navbar {
-  background-color: #212d8d;
+  background-color: #1E3190;
 }
 
 .logo {
@@ -308,9 +312,6 @@ body {
 /*---------------*/
 /* Add Task CSS */
 
-.add-Task-width {
-  width: 30vw;
-}
 
 .user-show {
   height: 70px;
@@ -325,6 +326,7 @@ body {
 }
 
 .bs-simple {
+  border: solid 1px;
   border-color: rgba(0, 0, 0, 0.2);
 }
 
@@ -333,7 +335,6 @@ body {
 }
 
 .buttons-Task input {
-  margin-right: 8px;
   min-width: 100px;
 }
 
