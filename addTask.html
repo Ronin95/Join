@@ -30,7 +30,7 @@
           <h2>Add Task</h2>
           <p>Learning Management System Project</p>
         </div>
-        <form class="d-flex justify-content-center" onsubmit="addTask()"> 
+        <form class="d-flex justify-content-center" id="addTaskSubmit" onsubmit="addTask()"> 
           <div class="outer-border-form-field w-100 rounded-2 bg-grey m-0 m-sm-2">
             <div class="d-flex sm-column">
               <div class="add-Task-width m-4">
@@ -98,12 +98,12 @@
       </div>
 
     </div>
-    <div id="succes_task" class="d-none toast d-block succes-arrow" role="alert" aria-atomic="true" style="max-width: fit-content">
+    <div id="success_task" class="toast succes-arrow" role="alert" aria-atomic="true" style="max-width: fit-content">
       <div class="d-flex justify-content-sm-between align-items-center p-2 flex-column">
         <img src="img/check.png" class="rounded me-2" alt="Done it!" height="48px">
         <strong>New Task added</strong>
       </div>
-      <div id="task_for_user" class="toast-body">
+      <div id="task_for_user" class="toast-body">        
       </div>
     </div>
 

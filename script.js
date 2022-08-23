@@ -25,10 +25,12 @@ let colorsCategory = {
 let users = [];
 
 async function init() {
-  setURL('https://gruppe-293-join.developerakademie.net/smallest_backend_ever');
+  await setURL(
+    'https://gruppe-293-join.developerakademie.net/smallest_backend_ever'
+  );
   await downloadFromServer();
-  users = JSON.parse(backend.getItem('users')) || [];
-  allTasks = JSON.parse(backend.getItem('allTasks')) || [];
+  users = (await JSON.parse(backend.getItem('users'))) || [];
+  allTasks = (await JSON.parse(backend.getItem('allTasks'))) || [];
 }
 
 async function initIndex() {

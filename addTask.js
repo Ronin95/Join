@@ -1,4 +1,5 @@
 let selectedUser = [];
+let formAddTask = document.getElementById('addTaskSubmit');
 let today = new Date();
 let dd = today.getDate();
 let mm = today.getMonth() + 1;
@@ -10,14 +11,13 @@ let yyyy = today.getFullYear();
  * clear the input
  * show a message the Message with the value for wich Member is the task added
  */
-function addTask() {
-  allTasks = loadFromBackend('allTasks');
+async function addTask() {
+  allTasks = await loadFromBackend('allTasks');
   let title = document.getElementById('title');
   let date = document.getElementById('dateTask');
   let category = document.getElementById('category');
   let urgency = document.getElementById('urgency');
   let description = document.getElementById('description');
-  let id = 0;
   let newTask = {
     title: title.value,
     date: date.value,
@@ -34,8 +34,6 @@ function addTask() {
     newTask.date = date.value;
   }
   saveTask(newTask);
-  clearInput();
-  doneIt();
 }
 
 /**
@@ -49,38 +47,11 @@ function saveTask(newTask) {
 }
 
 /**
- * clear the input values and set the category and urgency on a default value
- */
-function clearInput() {
-  title.value = '';
-  category.selectedIndex = 0;
-  urgency.selectedIndex = 0;
-  description.value = '';
-}
-
-/**
  * delete unsafed values from the inputs if the written or clicked are not really want to add
  */
 function deleteUnsafedInput() {
-  document.getElementById('title').value = '';
-  document.getElementById('category').selectedIndex = 0;
-  document.getElementById('urgency').selectedIndex = 0;
-  document.getElementById('description').value = '';
+  formAddTask.reset();
   showAllUser();
-}
-
-/**
- * creates a small Pop-up that tells the adder that the task is added
- * The pop-up also shows who the task was created for
- * the pop is blended out after 2 seconds
- */
-function doneIt() {
-  alert('Your task is created');
-  // document.getElementById('succes_task').classList.remove('d-none');
-  // document.getElementById('task_for_user').innerHTML = `For ${selectedUser.name}`;
-  // setTimeout(function () {
-  //   document.getElementById('succes_task').classList.add('d-none');
-  // }, 2000);
 }
 
 /**
@@ -131,3 +102,13 @@ function loadCurrentDate() {
   document.getElementById('wichDate').innerHTML += /*html*/ `
   <input class="rounded fs-4 p-2 bs-simple add-Task-width" id="dateTask" placeholder="${today}" class="textbox-n" type="text" onfocus="(this.type='date')" >`;
 }
+
+function handleForm(event) {
+  const successToast = document.getElementById('success_task');
+  event.preventDefault();
+  const toast = new bootstrap.Toast(successToast);
+  toast.show();
+  formAddTask.reset();
+  showAllUser();
+}
+formAddTask.addEventListener('submit', handleForm);
