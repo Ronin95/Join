@@ -18,44 +18,68 @@
 
 <body onload="initIndex()" class="py-md-4">
   <div class="app-window h-100 w-100 d-flex flex-column flex-md-row">
-    <div class="" w3-include-html="navbar.html"></div>
+    <div w3-include-html="navbar.html"></div>
 
     <!-- work area (right site: content of the nav-link) -->
     <div class="d-flex flex-grow-1 overflow-hidden">
       <div class="w-100 py-sm-4">
-        <div id="carousel" class="carousel slide h-100 d-flex justify-content-between" data-bs-touch="false">
+        <div 
+          id="carousel" 
+          class="carousel slide h-100 d-flex justify-content-between" 
+          data-bs-touch="false">
 
-          <button id="left-slide-buttom" class="d-sm-none carousel-control-prev d-flex flex-column" type="button"
-            data-bs-target="#carousel" data-bs-slide="prev"
+          <button 
+            id="left-slide-buttom" 
+            class="d-sm-none carousel-control-prev d-flex flex-column" 
+            type="button"
+            data-bs-target="#carousel" 
+            data-bs-slide="prev"
             ondragover="highlightCarouselControl('left'), console.log('over')"
             ondragleave="stopSlidePrev(), removedChangeDirectionClassReverseBackChildren(), removeHighlightCarouselControl('left'), console.log('leave')"
             ondragenter="addChangeDirectionClassReverseChildren(); startSlidePrev(), console.log('enter')"
             onclick="highlightCarouselControlOnClick('left')">
 
-            <span id="leftArrowText" class="fs-6 fw-bold carousel-control-name" d-flex justify-content-center
-              align-items-center">DONE</span>
-            <span id="left-arrow" class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span 
+              id="leftArrowText" 
+              class="fs-6 fw-bold carousel-control-name d-flex justify-content-center" 
+              align-items-center">DONE
+            </span>
+            <span 
+              id="left-arrow" 
+              class="carousel-control-prev-icon" 
+              aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
 
 
-          <div id="carousel-inner" class="carousel-inner d-sm-flex align-items-sm-center justify-content-sm-center">
+          <div 
+            id="carousel-inner" 
+            class="carousel-inner d-sm-flex align-items-sm-center justify-content-sm-center">
 
 
-            <div id="0" class="all carousel-item active h-100">
+            <div 
+              id="0" 
+              class="all carousel-item active h-100">
               <div class="d-flex flex-column align-items-center h-100">
                 <span class="fw-bold my-1 column-name">TO DO</span>
-                <div id="toDoColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
+                <div 
+                  id="toDoColumn" 
+                  class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
                   ondrop="moveTo('toDo'), removeHightlight('toDoColumn')"
-                  ondragover="allowDrop(event), hightlight('toDoColumn')" ondragleave="removeHightlight('toDoColumn')">
+                  ondragover="allowDrop(event), hightlight('toDoColumn')" 
+                  ondragleave="removeHightlight('toDoColumn')">
                 </div>
               </div>
             </div>
 
-            <div id="1" class="all carousel-item h-100">
+            <div 
+              id="1" 
+              class="all carousel-item h-100">
               <div class="d-flex flex-column align-items-center h-100">
                 <span class="fw-bold my-1 column-name">IN PROGRESS</span>
-                <div id="inProgressColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
+                <div 
+                  id="inProgressColumn" 
+                  class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
                   ondrop="moveTo('inProgress'), removeHightlight('inProgressColumn')"
                   ondragover="allowDrop(event), hightlight('inProgressColumn')"
                   ondragleave="removeHightlight('inProgressColumn')">
@@ -63,10 +87,14 @@
               </div>
             </div>
 
-            <div id="2" class="all carousel-item h-100">
+            <div 
+              id="2" 
+              class="all carousel-item h-100">
               <div class="d-flex flex-column align-items-center h-100">
                 <span class="fw-bold my-1 column-name">TESTING</span>
-                <div id="testingColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
+                <div 
+                  id="testingColumn" 
+                  class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
                   ondrop="moveTo('testing'), removeHightlight('testingColumn')"
                   ondragover="allowDrop(event), hightlight('testingColumn')"
                   ondragleave="removeHightlight('testingColumn')">
@@ -74,12 +102,17 @@
               </div>
             </div>
 
-            <div id="3" class="all carousel-item h-100">
+            <div 
+              id="3" 
+              class="all carousel-item h-100">
               <div class="d-flex flex-column align-items-center h-100">
                 <span class="fw-bold my-1 column-name">DONE</span>
-                <div id="doneColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
+                <div 
+                  id="doneColumn" 
+                  class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
                   ondrop="moveTo('done'), removeHightlight('doneColumn')"
-                  ondragover="allowDrop(event), hightlight('doneColumn')" ondragleave="removeHightlight('doneColumn')">
+                  ondragover="allowDrop(event), hightlight('doneColumn')" 
+                  ondragleave="removeHightlight('doneColumn')">
                 </div>
               </div>
             </div>
@@ -87,29 +120,65 @@
 
 
 
-          <button id="right-slide-buttom" class="d-sm-none carousel-control-next d-flex flex-column" type="button"
-            data-bs-target="#carousel" data-bs-slide="next"
+          <button 
+            id="right-slide-buttom" 
+            class="d-sm-none carousel-control-next d-flex flex-column" 
+            type="button"
+            data-bs-target="#carousel" 
+            data-bs-slide="next"
             ondragover="highlightCarouselControl('right'), console.log('over')"
             ondragleave="stopSlideNext(), removeHighlightCarouselControl('right'), console.log('leave')"
-            ondragenter="startSlideNext(), console.log('enter')" onclick="highlightCarouselControlOnClick('right')">
+            ondragenter="startSlideNext(), console.log('enter')" 
+            onclick="highlightCarouselControlOnClick('right')">
 
-            <span id="rightArrowText"
+            <span 
+              id="rightArrowText"
               class="fs-6 fw-bold carousel-control-name d-flex justify-content-center align-items-center">IN
-              PROGRESS</span>
-            <span id="right-arrow" class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
+              PROGRESS
+            </span>
+            <span 
+              id="right-arrow" 
+              class="carousel-control-next-icon" 
+              aria-hidden="true">
+            </span>
+            <span class="visually-hidden">Next
+            </span>
           </button>
 
 
-          <div id="carousel-indicators" class="d-sm-none carousel-indicators">
-            <button id="ind0" type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active"
-              aria-current="true" aria-label="Slide 0"></button>
-            <button id="ind1" type="button" data-bs-target="#carousel" data-bs-slide-to="1"
-              aria-label="Slide 1"></button>
-            <button id="ind2" type="button" data-bs-target="#carousel" data-bs-slide-to="2"
-              aria-label="Slide 2"></button>
-            <button id="ind3" type="button" data-bs-target="#carousel" data-bs-slide-to="3"
-              aria-label="Slide 3"></button>
+          <div 
+            id="carousel-indicators" 
+            class="d-sm-none carousel-indicators">
+            <button 
+              id="ind0" 
+              type="button" 
+              data-bs-target="#carousel" 
+              data-bs-slide-to="0" 
+              class="active"
+              aria-current="true" 
+              aria-label="Slide 0">
+            </button>
+            <button 
+                id="ind1" 
+                type="button" 
+                data-bs-target="#carousel" 
+                data-bs-slide-to="1"
+                aria-label="Slide 1">
+              </button>
+            <button 
+              id="ind2" 
+              type="button" 
+              data-bs-target="#carousel" 
+              data-bs-slide-to="2"
+              aria-label="Slide 2">
+            </button>
+            <button 
+              id="ind3" 
+              type="button" 
+              data-bs-target="#carousel" 
+              data-bs-slide-to="3"
+              aria-label="Slide 3">
+            </button>
           </div>
         </div>
       </div>
@@ -117,17 +186,26 @@
 
     <!-- Modal -->
     <!-- Am Ende Modal noch unnötige Klassen checken / löschen / cleanen -->
-    <div class="modal fade" id="staticBackdrop" data-bs-keyboard="true" tabindex="-1"
-      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div 
+      class="modal fade" 
+      id="staticBackdrop" 
+      data-bs-keyboard="true" 
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel" 
+      aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content fs-1">
           <form onsubmit="addTask()">
             <div class="card red-modal border-dark w-100 fs-3">
-              <div id="categories${task['id']}" class="card-header p-2 p-sm-3 d-flex justify-content-between gap-1">
+              <div 
+                id="categories${task['id']}" 
+                class="card-header p-2 p-sm-3 d-flex justify-content-between gap-1">
                 <div>
                   <h4>Category</h4>
                   <form class="category">
-                    <select id="category" class="fs-5">
+                    <select 
+                      id="category" 
+                      class="fs-5">
                       <option value="Sales">Sales</option>
                       <option value="IT">IT</option>
                       <option value="Production">Production</option>
@@ -140,7 +218,9 @@
                 <div class="">
                   <h4>Urgency</h4>
                   <form class="">
-                    <select id="urgency" class="fs-5">
+                    <select 
+                      id="urgency" 
+                      class="fs-5">
                       <option value="Low">Low</option>
                       <option value="Medium">Medium</option>
                       <option value="High">High</option>
@@ -152,11 +232,22 @@
               <div class="card-body text-dark p-2 p-sm-3 fs-3">
                 <div class="card-title">
                   <h3>Title</h3>
-                  <input required minlength="3" id="title" class="w-100 fs-5" placeholder="Add a title for your task" />
+                  <input 
+                    required 
+                    minlength="3" 
+                    id="title" 
+                    class="w-100 fs-5" 
+                    placeholder="Add a title for your task" />
                 </div>
                 <div class="card-text">
                   <h3>Description</h3>
-                  <textarea required minlength="3" id="description" class="w-100 h-100 fs-5" rows="4" cols="50"
+                  <textarea 
+                    required 
+                    minlength="3" 
+                    id="description" 
+                    class="w-100 h-100 fs-5" 
+                    rows="4" 
+                    cols="50"
                     placeholder="Add your notes for the task here...">
 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni nulla nisi inventore at ipsa voluptatibus eos neque expedita quaerat accusantium cumque voluptas vel soluta quos, non necessitatibus dolor fugiat quae! Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt explicabo consequatur reprehenderit tempora. Repellat, voluptate vitae. Corrupti earum vel autem, doloremque quibusdam tempora eaque, recusandae eum officia est eveniet.</textarea>
                 </div>
@@ -167,23 +258,38 @@ Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni nulla nisi inven
                   <div class="date-container w-100">
                     <h3 class="overflow-visible text-nowrap">Due Date</h3>
                     <form>
-                      <input required type="date" id="dateTask" name="workTask" class="w-100 fs-5 over" />
+                      <input 
+                        required 
+                        type="date" 
+                        id="dateTask" 
+                        name="workTask" 
+                        class="w-100 fs-5 over" />
                     </form>
                   </div>
                   <div class="assignedToContainer d-flex flex-column align-items-center position-relative">
                     <h3>Assigned To</h3>
-                    <div id="user" onclick="toggleClassOpenModalDropDownUserList()"></div>
+                    <div 
+                      id="user" 
+                      onclick="toggleClassOpenModalDropDownUserList()"></div>
                   </div>
                 </div>
                 <div class="d-flex justify-content-end pt-2 pt-sm-3">
-                  <button type="button" class="btn btn-outline-secondary p-1 p-sm-2 me-1 me-sm-3" id="cancelTask">
-                    Delete
+                  <button 
+                    type="button" 
+                    class="btn btn-outline-secondary p-1 p-sm-2 me-1 me-sm-3" 
+                    id="cancelTask">Delete
                   </button>
-                  <button type="button" class="btn btn-outline-secondary p-1 p-sm-2 me-1 me-sm-3" id="cancelTask"
+                  <button 
+                    type="button" 
+                    class="btn btn-outline-secondary p-1 p-sm-2 me-1 me-sm-3" 
+                    id="cancelTask"
                     data-bs-dismiss="modal">
                     Cancel
                   </button>
-                  <input class="btn btn-primary p-1 p-sm-2" type="submit" value="Save" />
+                  <input 
+                    class="btn btn-primary p-1 p-sm-2"
+                    type="submit" 
+                    value="Save" />
                 </div>
               </div>
             </div>
