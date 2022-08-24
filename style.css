@@ -1,13 +1,18 @@
 /*All Colors*/
-
 .bg-grey {
   background-color: rgb(244, 243, 251) !important;
 }
 
-/*All Colors*/
-
 * {
   margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  height: 100vh;
 }
 
 .container-fluid {
@@ -20,27 +25,6 @@
 
 .cursor-pointer {
   cursor: pointer;
-}
-
-.category-color {
-  height: 100px;
-  width: 20px;
-}
-
-.b-style-dotted {
-  border-style: dotted;
-}
-
-.b-style-dashed {
-  border-style: dashed;
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(255, 255, 255);
-  height: 100vh;
 }
 
 .main-color {
