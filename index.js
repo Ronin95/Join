@@ -48,7 +48,7 @@ function renderColumn(columnName) {
 function genHTMLBoardTaskItem(task) {
   return /* html */ `
     <!-- a column task item -->
-    <div id="${task.id}" class="card red border-dark my-2 w-100" draggable="true" ondragend="stopSlideJustOnDrop()"
+    <div id="${task.id}" class="card red border-dark my-2" draggable="true" ondragend="stopSlideJustOnDrop()"
     ondragstart="startDragging(${task['id']})" 
         data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         <div class="card-header p-1 fs-6">
@@ -62,9 +62,9 @@ function genHTMLBoardTaskItem(task) {
             <p class="card-text d-none">${task['description']} </p>
         </div>
 
-        <div class="card-footer bg-transparent border-success p-1 d-flex flex-grow-1 justify-content-between align-items-center gap-1">
-            <span class="fw-semibold date">${task['date']}</span>
-            <div class="cardAssignedTo d-flex flex-wrap justify-content-sm-end">
+        <div class="card-footer bg-transparent p-1 d-flex justify-content-between align-items-center gap-1">
+            <span class="fw-semibold">${task['date']}</span>
+            <div class="cardAssignedTo">
                 <img src="${task.userForTask.avatar}" class="rounded-circle"/>
             </div>
         </div>
@@ -134,7 +134,7 @@ function removeHightlight(columnName) {
 }
 
 const myCarousel = new bootstrap.Carousel(document.getElementById('carousel'), {
-  interval: 650,
+  interval: 350,
   pause: false,
   wrap: true,
 });
@@ -196,41 +196,49 @@ function toggleClassOpenModalDropDownUserList() {
 }
 
 
-function highlightSlideColumn(side) {
-  document.getElementById(side + '-slide-buttom').classList.add('highlightSlideBtn');
+function highlightCarouselControl(side) {
+  document.getElementById(side + '-slide-buttom').classList.add('highlight-carousel-control');
 }
 
 
-function removeHighlightSlideColumn(side) {
-  document.getElementById(side + '-slide-buttom').classList.remove('highlightSlideBtn');
+function removeHighlightCarouselControl(side) {
+  document.getElementById(side + '-slide-buttom').classList.remove('highlight-carousel-control');
 }
 
 
 let timeOut = null;
 
-function highlichtSlideColumnOnClick(side) {
+function highlightCarouselControlOnClick(side) {
   clearTimeout(timeOut);
-  highlightSlideColumn(side);
+  highlightCarouselControl(side);
   timeOut = setTimeout(() => {
-    removeHighlightSlideColumn(side)
-  }, 800);
+    removeHighlightCarouselControl(side)
+  }, 600);
 }
 
 function startSlideNext() {
-  myCarousel.pause();
-  myCarousel.cycle();
+  if (window.innerWidth < 576) {
+    myCarousel.pause();
+    myCarousel.cycle();
+    console.log('test')
+  }
 }
 
 
 function stopSlideNext() {
-  myCarousel.pause();
+  if (window.innerWidth < 576) {
+    myCarousel.pause();
+  }
 }
 
 
 function startSlidePrev() {
-  myCarousel.pause();
-  myCarousel.cycle();
-  console.log('started cycling')
+  if (window.innerWidth < 576) {
+    myCarousel.pause();
+    myCarousel.cycle();
+    console.log('started cycling')
+    console.log('test')
+  }
 }
 
 
@@ -245,6 +253,8 @@ function stopSlideJustOnDrop() {
   if (reversed) {
     removedChangeDirectionClassReverseBackChildren()
   }
+  removeHighlightCarouselControl('right')
+  removeHighlightCarouselControl('left')
 }
 
 
@@ -301,7 +311,10 @@ function reverseChildren() {
   }
 }
 
-carousel.addEventListener('slide.bs.carousel', (event) => {
-  let direction = event.direction;
-  console.log(direction)
-});
+window.onresize = function () {
+  if (window.innerWidth < 576) {
+    document.getElementById('carousel').setAttribute('data-bs-touch', 'true')
+  } else {
+    document.getElementById('carousel').setAttribute('data-bs-touch', 'false')
+  }
+}

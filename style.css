@@ -4,22 +4,6 @@
   background-color: rgb(244, 243, 251) !important;
 }
 
-/* Board Column Task Item = BCTI */
-.green {
-  background: linear-gradient(-135deg, #608a32 14px, transparent 0);
-  overflow: hidden;
-}
-
-.yellow {
-  background: linear-gradient(-135deg, #eac910 14px, transparent 0);
-  overflow: hidden;
-}
-
-.red {
-  background: linear-gradient(-135deg, #e83b3b 14px, transparent 0);
-  overflow: hidden;
-}
-
 /*All Colors*/
 
 * {
@@ -59,13 +43,18 @@ body {
   color: #212d8d;
 }
 
+/*------------------------------------------------------------------------------------*/
+/* The whole app window (background) with incl. the navbar and the content / sub page */
+
 .app-window {
   background: rgb(255, 255, 255);
   /* later to delete */
-  border: 1px solid red;
+  /* border: 3px solid red; */
 }
 
-/* navbar with its components */
+/*--------------------------------*/
+/* The navbar with its components */
+
 .navbar {
   background-color: #212d8d;
 }
@@ -101,6 +90,41 @@ body {
   object-fit: cover;
 }
 
+@media only screen and (max-width: 767.8px) {
+  .you-are-here {
+    border-left: none;
+    margin-left: 0px;
+  }
+
+  .navbar-nav a:hover {
+    border-left: none;
+    border-bottom: transparent;
+    margin-left: 0px;
+  }
+
+  .logo {
+    height: 40px;
+  }
+
+  .avatar-board {
+    position: absolute;
+    width: fit-content;
+    top: 0;
+    left: 0;
+    right: 0;
+    border: 2px transparent !important;
+  }
+
+  .avatar-board img {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+/*-------------------------*/
+/* Board Column Task Item  */
+
+/* Allow scrolling of board kanban column */
 .board-column {
   overflow-y: auto;
   overflow-y: overlay;
@@ -127,12 +151,23 @@ body {
   /* Firefox */
 }
 
-.card .badge {
-  padding: 4px !important;
-  font-size: 0.85rem;
+.green {
+  background: linear-gradient(-135deg, #608a32 14px, transparent 0);
+  overflow: hidden;
+}
+
+.yellow {
+  background: linear-gradient(-135deg, #eac910 14px, transparent 0);
+  overflow: hidden;
+}
+
+.red {
+  background: linear-gradient(-135deg, #e83b3b 14px, transparent 0);
+  overflow: hidden;
 }
 
 .card-title {
+  /* TO DO: Ellipsis for only second line, if the title is longer than to card title lines */
   font-size: 1rem;
   height: 48px;
   white-space: nowrap;
@@ -140,11 +175,17 @@ body {
   text-overflow: ellipsis;
 }
 
+/* The size of the date in the task item bottom and preventing of wraping.  */
 .card span {
   font-size: 0.85rem;
   white-space: nowrap;
 }
 
+.card-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.176)
+}
+
+/* The size of the avatar in task item */
 .cardAssignedTo img {
   width: 40px;
   height: 40px;
@@ -220,22 +261,54 @@ body {
 /*-------------------------------------------------------------------------*/
 /* Board kanban columns in a sliding carousel style under bs-sm-breakpoint */
 
-.carousel {
-  display: flex;
-  gap: 4px;
+@media (min-width: 576px) {
+  .all {
+    all: unset;
+  }
+
+  .carousel-item {
+    width: 23% !important;
+  }
 }
 
-.columnToSlide {
+@media (max-width: 767px) {
+  .cardAssignedTo img {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+
+@media (max-width: 575px) {
+  .carousel {
+    gap: 2px;
+  }
+
+  .carousel-inner {
+    /* TO DO: Later to delete. */
+    width: calc(100vw - 142px) !important;
+    border: 3px solid blue;
+  }
+
+  .carousel-item {
+    padding: 0px !important;
+  }
+}
+
+.carousel-control-next,
+.carousel-control-prev {
   position: unset;
   width: 66px;
   margin-top: 44px;
   background-color: rgb(33, 45, 141) !important;
-  height: 100%;
-
+  /* TO DO: Later to delete. */
+  border: 3px solid yellow;
+  opacity: 1 !important;
+  z-index: unset;
 }
 
-.columnNameToSlide {
-  font-size: 0.7rem !important;
+.carousel-control-name {
+  font-size: 0.65rem !important;
   height: 60px;
 }
 
@@ -244,58 +317,56 @@ body {
   margin-bottom: 60px;
 }
 
-.carousel-control-next,
-.carousel-control-prev {
-  z-index: unset;
-  opacity: 0.75;
-}
-
 .carousel-control-next:focus,
-.carousel-control-prev:focus {
-  background-color: red !important;
-  opacity: 0.75;
-}
-
+.carousel-control-prev:focus,
 .carousel-control-next:hover,
 .carousel-control-prev:hover {
-  opacity: 1;
+  opacity: 1 !important;
+
 }
 
+/* Highlight the slide column button (prev or next) on click or on drag under bs-sm-break point  */
+.highlight-carousel-control {
+  opacity: 1 !important;
+  background-color: #dc3545 !important;
+}
 
-/* The speed of carousel sliding */
+/* Additional class to change the default cycle direction of bootstrap carousel
+ for sliding on hover with a dragged task item over the carousel prev button  */
+@media all and (transform-3d),
+(-webkit-transform-3d) {
+
+  .changeDirection .active.carousel-item-start,
+  .changeDirection .carousel-item-prev:not(.carousel-item-end) {
+    -webkit-transform: translateX(100%) !important;
+    transform: translateX(100%) !important;
+    width: calc(100vw - 142px) !important;
+  }
+
+  .changeDirection .active.carousel-item-end,
+  .changeDirection .carousel-item-next:not(.carousel-item-start) {
+    -webkit-transform: translateX(-100%) !important;
+    transform: translateX(-100%) !important;
+    width: calc(100vw - 142px) !important;
+  }
+}
+
 .carousel-item {
-  border: 0.1px solid red;
-  height: 100% !important;
-  transition: all 600ms ease !important;
-}
-
-
-@media (max-width: 575px) {
-  .carousel-inner {
-    width: calc(100vw - 140px) !important;
-  }
-
-  .carousel-item {
-    width: calc(100vw - 140px) !important;
-  }
-
-  .carousel-control-next:hover,
-  .carousel-control-prev:hover {
-    opacity: 0.75;
-  }
-
-  .highlightSlideBtn {
-    opacity: 1 !important;
-  }
+  padding: 8px;
+  /* TO DO: Later to delete. */
+  /* border: 1px solid black; */
+  /* The speed of carousel sliding */
+  transition: all 375ms ease !important;
 }
 
 .carousel-indicators button {
   background-color: white !important;
   border: 1.8px solid black !important;
-  height: 3px !important;
+  height: 6px !important;
 }
 
 .carousel-indicators [data-bs-target] {
+  margin: 4px;
   width: 24px;
 }
 
@@ -303,7 +374,6 @@ body {
   background-color: black !important;
   border-color: rgba(0, 0, 0, 0.65) !important;
 }
-
 
 /*---------------*/
 /* Add Task CSS */
@@ -405,20 +475,4 @@ html {
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
-}
-
-@media all and (transform-3d),
-(-webkit-transform-3d) {
-
-  .changeDirection .active.carousel-item-start,
-  .changeDirection .carousel-item-prev:not(.carousel-item-end) {
-    -webkit-transform: translateX(100%) !important;
-    transform: translateX(100%) !important;
-  }
-
-  .changeDirection .active.carousel-item-end,
-  .changeDirection .carousel-item-next:not(.carousel-item-start) {
-    -webkit-transform: translateX(-100%) !important;
-    transform: translateX(-100%) !important;
-  }
 }

@@ -10,7 +10,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="media.css" />
+  <!-- <link rel="stylesheet" href="media.css" /> -->
   <script src="mini_backend.js"></script>
 
   <link rel="shortcut icon" href="./img/joinlogo.png" type="image/x-icon" />
@@ -21,30 +21,31 @@
     <div class="" w3-include-html="navbar.html"></div>
 
     <!-- work area (right site: content of the nav-link) -->
-    <div class="d-flex align-items-center flex-grow-1 overflow-hidden border-primary">
-      <div class="row h-100 w-100 m-0 py-sm-4">
-        <div id="carousel" class="carousel slide px-0 h-100 justify-content-between">
+    <div class="d-flex flex-grow-1 overflow-hidden">
+      <div class="w-100 py-sm-4">
+        <div id="carousel" class="carousel slide h-100 d-flex justify-content-between" data-bs-touch="false">
 
-          <button id="left-slide-buttom" class="d-sm-none carousel-control-prev d-flex flex-column columnToSlide"
-            type="button" data-bs-target="#carousel" data-bs-slide="prev"
-            ondragover="startSlidePrev(), highlightSlideColumn('left'), console.log('over')"
-            ondragleave="stopSlidePrev(), removedChangeDirectionClassReverseBackChildren(), removeHighlightSlideColumn('left'), console.log('leave')"
-            ondragenter="addChangeDirectionClassReverseChildren(); console.log('enter')">
+          <button id="left-slide-buttom" class="d-sm-none carousel-control-prev d-flex flex-column" type="button"
+            data-bs-target="#carousel" data-bs-slide="prev"
+            ondragover="highlightCarouselControl('left'), console.log('over')"
+            ondragleave="stopSlidePrev(), removedChangeDirectionClassReverseBackChildren(), removeHighlightCarouselControl('left'), console.log('leave')"
+            ondragenter="addChangeDirectionClassReverseChildren(); startSlidePrev(), console.log('enter')"
+            onclick="highlightCarouselControlOnClick('left')">
 
-            <span id="leftArrowText"
-              class="fs-6 fw-bold columnNameToSlide d-flex justify-content-center align-items-center">DONE</span>
+            <span id="leftArrowText" class="fs-6 fw-bold carousel-control-name" d-flex justify-content-center
+              align-items-center">DONE</span>
             <span id="left-arrow" class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
 
-          <div id="carousel-inner"
-            class="carousel-inner d-flex align-items-sm-center d-sm-flex justify-content-sm-center h-100">
+
+          <div id="carousel-inner" class="carousel-inner d-sm-flex align-items-sm-center justify-content-sm-center">
 
 
             <div id="0" class="all carousel-item active h-100">
               <div class="d-flex flex-column align-items-center h-100">
                 <span class="fw-bold my-1 column-name">TO DO</span>
-                <div id="toDoColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 h-100 w-100 px-1"
+                <div id="toDoColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
                   ondrop="moveTo('toDo'), removeHightlight('toDoColumn')"
                   ondragover="allowDrop(event), hightlight('toDoColumn')" ondragleave="removeHightlight('toDoColumn')">
                 </div>
@@ -54,7 +55,7 @@
             <div id="1" class="all carousel-item h-100">
               <div class="d-flex flex-column align-items-center h-100">
                 <span class="fw-bold my-1 column-name">IN PROGRESS</span>
-                <div id="inProgressColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 h-100 w-100 px-1"
+                <div id="inProgressColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
                   ondrop="moveTo('inProgress'), removeHightlight('inProgressColumn')"
                   ondragover="allowDrop(event), hightlight('inProgressColumn')"
                   ondragleave="removeHightlight('inProgressColumn')">
@@ -65,7 +66,7 @@
             <div id="2" class="all carousel-item h-100">
               <div class="d-flex flex-column align-items-center h-100">
                 <span class="fw-bold my-1 column-name">TESTING</span>
-                <div id="testingColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 h-100 w-100 px-1"
+                <div id="testingColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
                   ondrop="moveTo('testing'), removeHightlight('testingColumn')"
                   ondragover="allowDrop(event), hightlight('testingColumn')"
                   ondragleave="removeHightlight('testingColumn')">
@@ -76,7 +77,7 @@
             <div id="3" class="all carousel-item h-100">
               <div class="d-flex flex-column align-items-center h-100">
                 <span class="fw-bold my-1 column-name">DONE</span>
-                <div id="doneColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 h-100 w-100 px-1"
+                <div id="doneColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
                   ondrop="moveTo('done'), removeHightlight('doneColumn')"
                   ondragover="allowDrop(event), hightlight('doneColumn')" ondragleave="removeHightlight('doneColumn')">
                 </div>
@@ -84,31 +85,38 @@
             </div>
           </div>
 
-          <button id="right-slide-buttom" class="d-sm-none carousel-control-next d-flex flex-column columnToSlide"
-            type="button" data-bs-target="#carousel" data-bs-slide="next"
-            ondragover="startSlideNext(), highlightSlideColumn('right'), console.log('over')"
-            ondragleave="stopSlideNext(), removeHighlightSlideColumn('right'), console.log('leave')"
-            ondragenter="console.log('enter')">
+
+
+          <button id="right-slide-buttom" class="d-sm-none carousel-control-next d-flex flex-column" type="button"
+            data-bs-target="#carousel" data-bs-slide="next"
+            ondragover="highlightCarouselControl('right'), console.log('over')"
+            ondragleave="stopSlideNext(), removeHighlightCarouselControl('right'), console.log('leave')"
+            ondragenter="startSlideNext(), console.log('enter')" onclick="highlightCarouselControlOnClick('right')">
 
             <span id="rightArrowText"
-              class="fs-6 fw-bold columnNameToSlide d-flex justify-content-center align-items-center">IN PROGRESS</span>
+              class="fs-6 fw-bold carousel-control-name d-flex justify-content-center align-items-center">IN
+              PROGRESS</span>
             <span id="right-arrow" class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
 
 
           <div id="carousel-indicators" class="d-sm-none carousel-indicators">
-            <button id="ind0" type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true"
-              aria-label="Slide 0"></button>
-            <button id="ind1" type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 1"></button>
-            <button id="ind2" type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 2"></button>
-            <button id="ind3" type="button" data-bs-target="#carousel" data-bs-slide-to="3" aria-label="Slide 3"></button>
+            <button id="ind0" type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 0"></button>
+            <button id="ind1" type="button" data-bs-target="#carousel" data-bs-slide-to="1"
+              aria-label="Slide 1"></button>
+            <button id="ind2" type="button" data-bs-target="#carousel" data-bs-slide-to="2"
+              aria-label="Slide 2"></button>
+            <button id="ind3" type="button" data-bs-target="#carousel" data-bs-slide-to="3"
+              aria-label="Slide 3"></button>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Modal -->
+    <!-- Am Ende Modal noch unnötige Klassen checken / löschen / cleanen -->
     <div class="modal fade" id="staticBackdrop" data-bs-keyboard="true" tabindex="-1"
       aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered">
