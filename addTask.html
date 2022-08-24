@@ -22,7 +22,7 @@
 
   <body onload="initAddTask()" class="py-md-4">
     <div class="app-window h-100 w-100 d-flex flex-column flex-md-row">
-      <div class="" w3-include-html="navbar.html"></div>
+      <div w3-include-html="navbar.html"></div>
 
       <!-- work area (right site: content of the nav-link) -->
       <div class="p-2 p-sm-5 mb-4 w-100">
@@ -30,12 +30,20 @@
           <h2>Add Task</h2>
           <p class="blue-text">Learning Management System Project</p>
         </div>
-        <form class="d-flex justify-content-center" id="addTaskSubmit" onsubmit="addTask()"> 
+        <form 
+          class="d-flex justify-content-center" 
+          id="addTaskSubmit" 
+          onsubmit="addTask()"> 
           <div class="w-100 rounded-2 bg-grey m-0">
             <div class="d-flex align-items-center flex-column flex-sm-row">
               <div class="w-75 m-2 m-sm-4">
                 <h3 class="blue-text">TITLE</h3>
-                <input class="rounded fs-4 p-2 bs-simple w-100" required minlength="3" id="title" placeholder="Add a title" />
+                <input 
+                  class="rounded fs-4 p-2 bs-simple w-100" 
+                  required 
+                  minlength="3" 
+                  id="title" 
+                  placeholder="Add a title" />
               </div>
               <div class="w-75 m-2 m-sm-4">
                 <h3 class="blue-text">DUE DATE</h3>
@@ -62,7 +70,9 @@
               <div class="w-75 m-2 m-sm-4">
                 <h3 class="blue-text">URGENCY</h3>
                 <form class="w-100">
-                  <select class="rounded fs-4 p-2 bs-simple w-100" id="urgency">
+                  <select 
+                    class="rounded fs-4 p-2 bs-simple w-100" 
+                    id="urgency">
                     <option value="Low">Low</option>
                     <option value="Medium">Medium</option>
                     <option value="High">High</option>
@@ -73,7 +83,10 @@
           <div class="d-flex align-items-center align-items-sm-start flex-column flex-sm-row">
             <div class="w-75 m-2 m-sm-4">
               <h3 class="blue-text">DESCRIPTION</h3>
-              <textarea class="rounded fs-4 p-2 bs-simple w-100" required minlength="3"
+              <textarea 
+                required 
+                class="rounded fs-4 p-2 bs-simple w-100" 
+                minlength="3"
                 id="description"
                 placeholder="Add your notes" 
               ></textarea>
@@ -81,29 +94,64 @@
             <div class="w-75 m-2 m-sm-4">
               <h3 class="blue-text">ASSIGNED TO</h3>
 
-              <div id="user" class="w-100 p-2 flex-media"></div>
+              <div 
+                id="user" 
+                class="w-100 p-2 flex-media">
+              </div>
 
             </div>
             
           </div>
           <div class="buttons-Task m-2 m-sm-4 d-flex justify-content-center">
 
-            <input title="Clear your input" id="clearInput" class="btn btn-secondary clear-button me-2" type="button" onclick="deleteUnsafedInput()" value="Clear">
-            <input title="Create a new task" id="createTask" class="btn btn-primary" type="submit" value="Create" disabled>
-          
+            <input 
+              title="Clear your input" 
+              id="clearInput" 
+              class="btn btn-secondary clear-button me-2" 
+              type="button" 
+              onclick="deleteUnsafedInput()" 
+              value="Clear">
+            <input 
+              title="Create a new task" 
+              id="createTask" 
+              class="btn btn-primary" 
+              type="submit" 
+              value="Create" 
+              disabled>
+
           </div>
         </form>
         </div>
       </div>
 
     </div>
-    <div id="success_task" class="toast succes-arrow" role="alert" aria-atomic="true" style="max-width: fit-content">
+    <div 
+      id="success_task" 
+      class="toast succes-arrow" 
+      role="alert" 
+      aria-atomic="true" 
+      style="max-width: fit-content">
       <div class="d-flex justify-content-sm-between align-items-center p-2 flex-column">
-        <img src="img/check.png" class="rounded" alt="Done it!" height="48px">
+        <img 
+          src="img/check.png" 
+          class="rounded" 
+          alt="Done it!" 
+          height="48px">
         <strong>New Task added</strong>
         <div class="mt-2 pt-2 ">
-          <a href="index.html"><button type="button" class="btn btn-primary btn-sm">Go to Board</button></a>
-          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Close</button>
+          <a href="index.html">
+            <button 
+              type="button" 
+              class="btn btn-primary btn-sm">
+                Go to Board
+            </button>
+          </a>
+          <button 
+            type="button" 
+            class="btn btn-secondary btn-sm" 
+            data-bs-dismiss="toast">
+              Close
+          </button>
         </div>
       </div>
 
