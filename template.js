@@ -6,16 +6,16 @@ function newTaskTemp(newTask, i) {
     class="category-task position-absolute top-0 bottom-0"
     title="${newTask.category}"></div>
   <div
-    class="d-flex justify-content-sm-between justify-content-around w-100 align-items-center flex-column flex-sm-row ms-3"
+    class="d-flex justify-content-sm-between justify-content-around w-100 align-items-center flex-column flex-sm-row ms-4"
   >
-    <div class="d-flex align-items-center flex-column flex-sm-row me-2 me-sm-0">
+    <div class="d-flex align-items-center flex-column flex-sm-row me-sm-0">
         <div>
           <img
-            class="user-pic m-sm-3 m-2 rounded-circle"
+            class="user-show m-sm-3 m-2 rounded-circle "
             src="${newTask.userForTask.avatar}"
           />
         </div>
-        <div class="mb-2 mb-sm-0">
+        <div class="d-flex flex-column align-items-center align-items-sm-start mb-2 mb-sm-0">
           <p class="m-0">${newTask.userForTask.name}</p>
             <a 
             class="m-0" 
@@ -30,22 +30,22 @@ function newTaskTemp(newTask, i) {
       </div>
       <div class="d-flex justify-content-center justify-content-sm-end align-items-center flex-sm-row flex-column ms-1 ms-sm-0 mb-2 mb-sm-0">
         <div
-          class="d-flex justify-content-center align-items-center justify-content-sm-end align-items-sm-start flex-sm-row flex-column m-0 cursor-pointer"
+          class="d-flex justify-content-center align-items-center justify-content-sm-end align-items-sm-start flex-sm-row flex-column me-sm-2 cursor-pointer"
           id="backlogDetails${i}"
           
         >
-          <b class="d-block d-sm-none">Description: </b>
+          <b class="d-block d-sm-none blue-text text-uppercase">Description: </b>
           <span class=" hiddenScrollbar overflow-auto text-center text-sm-end text-break max-height-100 width-150">${
             newTask.description
           }</span>
         </div>
       </div>      
     </div>
-    <div class="d-flex justify-content-center pt-3 pt-sm-0 ps-2">
+    <div class="d-flex justify-content-centerpt-sm-0">
       <button
         type="button"
         onclick="deleteTask(${i})"
-        class="btn-close me-2 m-auto"
+        class="btn-close  p-2 m-auto"
         data-bs-dismiss="toast"
         aria-label="Close"
       ></button>
