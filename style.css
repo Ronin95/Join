@@ -7,6 +7,10 @@
   margin: 0;
 }
 
+.blue-text{
+  color: #1E3190;
+}
+
 body {
   display: flex;
   justify-content: center;
