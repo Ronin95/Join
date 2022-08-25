@@ -101,9 +101,10 @@ function newTaskTemp(newTask, i) {
       <div class="d-flex 
                   justify-content-centerpt-sm-0">
         <button
+          class="btn-close
+                 p-2 m-auto"
           type="button"
           onclick="deleteTask(${i})"
-          class="btn-close  p-2 m-auto"
           data-bs-dismiss="toast"
           aria-label="Close">
         </button>
