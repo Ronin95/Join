@@ -14,7 +14,7 @@ let yyyy = today.getFullYear();
 async function addTask() {
   allTasks = await loadFromBackend('allTasks');
   let title = document.getElementById('title');
-  let date = document.getElementById('dateTask');
+  let date = document.getElementById('txtDate');
   let category = document.getElementById('category');
   let urgency = document.getElementById('urgency');
   let description = document.getElementById('description');
@@ -31,7 +31,7 @@ async function addTask() {
   if ((newTask.date = !date.value)) {
     newTask.date = today;
   } else {
-    newTask.date = date.value;
+    newTask.date = date.value.replace('.', '/');
   }
   saveTask(newTask);
 }
@@ -91,6 +91,8 @@ function showAllUserAndDisable() {
 /**
  * load the current date, and formate it so it can use as a default value in the add Task formular
  */
+
+/* HAVE TO REWRITE for the new BOOTSRAP DATE*/
 function loadCurrentDate() {
   if (dd < 10) {
     dd = '0' + dd;
@@ -98,9 +100,13 @@ function loadCurrentDate() {
   if (mm < 10) {
     mm = '0' + mm;
   }
-  today = yyyy + '-' + mm + '-' + dd;
-  document.getElementById('wichDate').innerHTML += /*html*/ `
-  <input class="rounded fs-4 p-2 bs-simple w-100" id="dateTask" placeholder="${today}" class="textbox-n" type="text" onfocus="(this.type='date')" >`;
+  today = yyyy + '/' + mm + '/' + dd;
+  document.getElementById('txtDate').innerHTML += /*html*/ `
+
+<input id="txtDate" placeholder="${today}" type="text" class="form-control date-input" readonly="readonly" />
+
+  <!-- <input class="rounded fs-4 p-2 bs-simple w-100" id="dateTask" placeholder="${today}" class="textbox-n" type="text" onfocus="(this.type='date')" > -->
+  `;
 }
 
 function handleForm(event) {
