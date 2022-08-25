@@ -48,9 +48,13 @@ function renderColumn(columnName) {
 function genHTMLBoardTaskItem(task) {
   return /* html */ `
     <!-- a column task item -->
-    <div id="${task.id}" class="card red border-dark my-2" draggable="true" ondragend="stopSlideJustOnDrop()"
+    <div id="${task.id}" class="card red border-dark my-2" 
+    draggable="true" 
+    ondragend="stopSlideJustOnDrop()"
     ondragstart="startDragging(${task['id']})" 
-        data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    data-bs-toggle="modal" 
+    data-bs-target="#staticBackdrop"
+    onclick="openModal(${task['id']})">
         <div class="card-header p-1 fs-6">
         <span class="badge p-1 fw-semibold" style="background-color: ${colorsCategory[task['category']]
     }">
@@ -319,3 +323,33 @@ window.onresize = function () {
     document.getElementById('carousel').setAttribute('data-bs-touch', 'false')
   }
 }
+
+function openModal(idValue) {
+  console.log('open')
+  modalGenAllUser()
+
+  let task = allTasks.find((n) => n.id == idValue);
+  document.getElementById('modalTitle').value = task.title;
+  document.getElementById('modalDate').value = task.date;
+  document.getElementById('modalCategory').value = task.category;
+  document.getElementById('modalUrgency').value = task.urgency;
+  document.getElementById('modalDescription').value = task.description;
+  document.getElementById('modalSelectedUser').src = task.userForTask.avatar;
+}
+
+function modalShowAllUsers() {
+  document.getElementById('modalSelectedUser').classList.toggle('d-none')
+  document.getElementById('modalUserCollection').classList.toggle('d-none')
+}
+
+function modalGenAllUser() {
+  let modalUserCollection = document.getElementById('modalUserCollection')
+  modalUserCollection.innerHTML = '';
+  for (let i = 0; i < users.length; i++) {
+    const user = users[i];
+    modalUserCollection.innerHTML += /* html */ `
+       <img class="assigendToImg rounded-circle border border-4 border-white m-1" src="${user.avatar}">
+    `;
+  }
+}
+

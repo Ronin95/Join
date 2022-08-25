@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./css/fonts.css" />
+    <script src="./js/mini_backend.js"></script>
+
+    <link rel="shortcut icon" href="./img/joinlogo.png" type="image/x-icon" />
+</head>
+
+<body onload="initIndex()" class="py-md-4">
+    <div class="app-window h-100 w-100 d-flex flex-column flex-md-row">
+        <!-- Modal -->
+        <!-- Am Ende Modal noch unnötige Klassen checken / löschen / cleanen -->
+        <div class="bg-warning" id="staticBackdrop" data-bs-keyboard="true" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered m-1 m-sm-2">
+                <div class="modal-content">
+
+                    <form class="d-flex justify-content-cente " id="addTaskSubmit" onsubmit="addTask()">
+                        <div class="w-100 rounded-2 bg-grey m-0 red-modal">
+                            <!-- title -->
+                            <div class="m-2 m-sm-4">
+                                <h4class="blue-text">TITLE</h4class=>
+                                <input id="modalTitle" class="rounded fs-5 p-2 bs-simple w-100" required minlength="3" id="title"
+                                    placeholder="Add a title" />
+                            </div>
+
+                            <!-- date -->
+                            <div class="m-2 m-sm-4">
+                                <h4 class="blue-text">DUE DATE</h4>
+                                <form>
+                                    <div id="wichDate">
+                                        <input id="modalDate" class="rounded fs-4 p-2 bs-simple w-100"
+                                            placeholder="today" class="textbox-n" type="text"
+                                            onfocus="(this.type='date')">
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- category -->
+                            <div class="m-2 m-sm-4">
+                                <h4 class="blue-text">CATEGORY</h4>
+                                <form class="w-100">
+                                    <select id="modalCategory" class="p-2 rounded fs-5 p-2 bs-simple w-100" id="category">
+                                        <option value="Sales">Sales</option>
+                                        <option value="IT">IT</option>
+                                        <option value="Production">Production</option>
+                                        <option value="Management">Management</option>
+                                        <option value="Design">Design</option>
+                                        <option value="Marketing">Marketing</option>
+                                    </select>
+                                </form>
+                            </div>
+
+                            <!-- urgency -->
+                            <div class="m-2 m-sm-4">
+                                <h4 class="blue-text">URGENCY</h4>
+                                <form class="w-100">
+                                    <select id="modalUrgency" class="rounded fs-5 p-2 bs-simple w-100" id="urgency">
+                                        <option value="Low">Low</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="High">High</option>
+                                    </select>
+                                </form>
+                            </div>
+
+                            <!-- description -->
+                            <div class="d-flex flex-column m-2 m-sm-4">
+                                <h4 class="blue-text">DESCRIPTION</h4>
+                                <textarea id="modalDescription" required class="rounded fs-5 p-2 bs-simple w-100 h-100" minlength="3"
+                                    id="description" rows="2" cols="50" placeholder="Add your notes"></textarea>
+                            </div>
+
+                            <!-- assigned to -->
+                            <div class="m-2 m-sm-4">
+                                <h4 class="blue-text mb-1">ASSIGNED TO</h4>
+                                <div id="modalAssignedUser" class="w-100 position-relative modalAssignedUser"
+                                    onclick="modalShowAllUsers()">
+                                    <img id="modalSelectedUser" class="assigendToImg rounded-circle border border-4 border-primary m-1" src="img/lukas.png">
+                                    <div id="modalUserCollection" class="d-none modal-user-collection d-flex flex-column rounded">
+                                        <img class="assigendToImg rounded-circle border border-4 border-white m-1" src="img/lukas.png">
+                                        <img class="assigendToImg rounded-circle border border-4 border-white m-1" src="img/lukas.png">
+                                        <img class="assigendToImg rounded-circle border border-4 border-white m-1" src="img/lukas.png">
+                                        <img class="assigendToImg rounded-circle border border-4 border-primary m-1" src="img/lukas.png">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="m-2 m-sm-4 d-flex justify-content-between">
+
+
+                            <input title="Delete and close the task." id="modalCancelBtn"
+                                class="btn btn-outline-danger p-1 p-sm-2 me-1 me-sm-3" type="button" onclick=""
+                                data-bs-dismiss="modal" value="Delete">
+
+                            <div>
+                                <input title="Cancel the changes and close the task." id="modalCancelBtn"
+                                    class="btn btn-outline-secondary p-1 p-sm-2 me-1 me-sm-3" type="button" onclick=""
+                                    data-bs-dismiss="modal" value="Cancel">
+                                <input title="Save the changes to the task and close it." id="modalSaveBtn"
+                                    class="btn btn-primary p-1 p-sm-2" type="submit" value="Save" disabled>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <script src="./js/helpers.js"></script>
+    <script src="./js/template.js"></script>
+    <script src="./js/addTask.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/index.js"></script>
+  <script src=" ./js/DragDropTouch.js"></script>
+</body>
+
+</html>
