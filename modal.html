@@ -20,27 +20,40 @@
     <div class="app-window h-100 w-100 d-flex flex-column flex-md-row">
         <!-- Modal -->
         <!-- Am Ende Modal noch unnötige Klassen checken / löschen / cleanen -->
-        <div class="bg-warning" id="staticBackdrop" data-bs-keyboard="true" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div 
+            class="bg-warning" 
+            id="staticBackdrop" 
+            data-bs-keyboard="true" 
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel" 
+            aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered m-1 m-sm-2">
                 <div class="modal-content">
-
-
                     <div class="p-2 p-sm-5 mb-4 w-100">
-                        <form class="d-flex justify-content-center" id="addTaskSubmit" onsubmit="addTask()">
+                        <form 
+                            class="d-flex justify-content-center" 
+                            id="addTaskSubmit" 
+                            onsubmit="addTask()">
                             <div class="w-100 rounded-2 bg-grey m-0">
                                 <div class="d-flex align-items-center flex-column flex-sm-row">
                                     <div class="w-75 m-2 m-sm-4">
                                         <h4 class="blue-text">TITLE</h4>
-                                        <input class="rounded fs-5 p-2 bs-simple w-100" required minlength="3"
-                                            id="title" placeholder="Add a title" />
+                                        <input 
+                                            required 
+                                            minlength="3"
+                                            id="title" 
+                                            placeholder="Add a title"
+                                            class="rounded fs-5 p-2 bs-simple w-100"  />
                                     </div>
                                     <div class="w-75 m-2 m-sm-4">
                                         <h4 class="blue-text">DUE DATE</h4>
                                         <form>
                                             <div id="wichDate">
-                                                <input class="rounded fs-5 p-2 bs-simple w-100" id="dateTask"
-                                                    placeholder="today" class="textbox-n" type="text"
+                                                <input 
+                                                    class="rounded fs-5 p-2 bs-simple w-100 textbox-n" 
+                                                    id="dateTask"
+                                                    placeholder="today" 
+                                                    type="text"
                                                     onfocus="(this.type='date')">
                                             </div>
                                         </form>
@@ -50,7 +63,9 @@
                                     <div class="w-75 m-2 m-sm-4">
                                         <h4 class="blue-text">CATEGORY</h4>
                                         <form class="w-100">
-                                            <select class="p-2 rounded fs-5 p-2 bs-simple w-100" id="category">
+                                            <select 
+                                                class="p-2 rounded fs-5 p-2 bs-simple w-100" 
+                                                id="category">
                                                 <option value="Sales">Sales</option>
                                                 <option value="IT">IT</option>
                                                 <option value="Production">Production</option>
@@ -63,7 +78,9 @@
                                     <div class="w-75 m-2 m-sm-4">
                                         <h4 class="blue-text">URGENCY</h4>
                                         <form class="w-100">
-                                            <select class="rounded fs-5 p-2 bs-simple w-100" id="urgency">
+                                            <select 
+                                                class="rounded fs-5 p-2 bs-simple w-100" 
+                                                id="urgency">
                                                 <option value="Low">Low</option>
                                                 <option value="Medium">Medium</option>
                                                 <option value="High">High</option>
@@ -74,26 +91,42 @@
                                 <div class="d-flex align-items-center align-items-sm-start flex-column flex-sm-row">
                                     <div class="w-75 m-2 m-sm-4">
                                         <h4 class="blue-text">DESCRIPTION</h4>
-                                        <textarea required class="rounded fs-5 p-2 bs-simple w-100" minlength="3"
-                                            id="description" placeholder="Add your notes"></textarea>
+                                        <textarea 
+                                            required 
+                                            class="rounded fs-5 p-2 bs-simple w-100" 
+                                            minlength="3"
+                                            id="description" 
+                                            placeholder="Add your notes">
+                                        </textarea>
                                     </div>
                                     <div class="w-75 m-2 m-sm-4">
                                         <h4 class="blue-text">ASSIGNED TO</h4>
 
-                                        <div id="user" class="w-100 p-2 flex-media">
+                                        <div 
+                                            id="user" 
+                                            class="w-100 p-2 flex-media">
                                         </div>
 
                                     </div>
 
                                 </div>
                                 <div class="buttons-Task m-2 m-sm-4 d-flex justify-content-center">
-
-                                    <input title="Clear your input" id="clearInput"
-                                        class="btn btn-secondary clear-button me-2" type="button"
-                                        onclick="deleteUnsafedInput()" value="Clear">
-                                    <input title="Create a new task" id="createTask" class="btn btn-primary"
-                                        type="submit" value="Create" disabled>
-
+                                    <input 
+                                        title="Clear your input" 
+                                        id="clearInput"
+                                        class="btn btn-secondary clear-button me-2" 
+                                        type="button"
+                                        onclick="deleteUnsafedInput()" 
+                                        value="Clear" 
+                                    />
+                                    <input 
+                                        title="Create a new task" 
+                                        id="createTask" 
+                                        class="btn btn-primary"
+                                        type="submit" 
+                                        value="Create" 
+                                        disabled 
+                                    />
                                 </div>
                         </form>
                     </div>
