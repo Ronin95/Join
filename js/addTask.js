@@ -103,9 +103,15 @@ function loadCurrentDate() {
   today = yyyy + '/' + mm + '/' + dd;
   document.getElementById('txtDate').innerHTML += /*html*/ `
 
-<input id="txtDate" placeholder="${today}" type="text" class="form-control date-input" readonly="readonly" />
+  <input 
+    id="txtDate" 
+    placeholder="${today}" 
+    type="text" 
+    class="form-control date-input" 
+    readonly="readonly"
+  />
 
-  <!-- <input class="rounded fs-4 p-2 bs-simple w-100" id="dateTask" placeholder="${today}" class="textbox-n" type="text" onfocus="(this.type='date')" > -->
+  <!-- <input class="rounded fs-4 p-2 bs-simple w-100" id="dateTask" placeholder="${'today'}" class="textbox-n" type="text" onfocus="(this.type='date')" > -->
   `;
 }
 
