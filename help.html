@@ -13,16 +13,17 @@
   integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
   crossorigin="anonymous"
 />
-<link rel="stylesheet" href="style.css" />
-<link rel="stylesheet" href="media.css"/>
+<link rel="stylesheet" href="./css/fonts.css" />
+<link rel="stylesheet" href="./css/style.css" />
+<link rel="stylesheet" href="./css/media.css"/>
 <link rel="shortcut icon" href="./img/joinlogo.png" type="image/x-icon" />
-<script src="mini_backend.js"></script>
+<script src="./js/mini_backend.js"></script>
 
 </head>
 
-<body onload="initHelp()">
+<body onload="initHelp()" class="py-md-4">
   <div class="app-window h-100 w-100 d-flex flex-column flex-md-row">
-    <div class="" w3-include-html="navbar.html"></div>
+    <div w3-include-html="navbar.html"></div>
 
 
     <!-- work area (right site: content of the nav-link) -->
@@ -44,82 +45,154 @@
               <h4>Produced by</h4>
               <div class="d-flex justify-content-center flex-wrap">
                 <div class="d-flex align-items-center flex-column m-2">
-                  <img src="./img/lukas.png" class="border rounded-circle user-show" alt="Lukas Erdmanski">
+                  <img 
+                    src="./img/lukas.png" 
+                    class="border rounded-circle user-show" 
+                    alt="Lukas Erdmanski">
                   <span>Lukas Erdmanski</span>
                 </div>
                 <div class="d-flex align-items-center flex-column m-2">
-                  <img src="./img/maik.png" class="border rounded-circle user-show" alt="Maik Langer">
+                  <img 
+                    src="./img/maik.png" 
+                    class="border rounded-circle user-show" 
+                    alt="Maik Langer">
                   <span>Maik Langer</span>
                 </div>
                 <div class="d-flex align-items-center flex-column m-2">
-                  <img src="./img/nikola.png" class="border rounded-circle user-show" alt="Nikola Badjevic">
+                  <img 
+                    src="./img/nikola.png" 
+                    class="border rounded-circle user-show" 
+                    alt="Nikola Badjevic">
                   <span>Nikola Badjevic</span>
                 </div>
                 <div class="d-flex align-items-center flex-column m-2">
-                  <img src="./img/phil.png" class="border rounded-circle user-show" alt="Phil Schmucker">
+                  <img 
+                    src="./img/phil.png" 
+                    class="border rounded-circle user-show" 
+                    alt="Phil Schmucker">
                   <span>Phil Schmucker</span>
                 </div>
               </div>
             </div>
-            <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div 
+              class="accordion accordion-flush" 
+              id="accordionFlushExample">
               <h5>How does it work?</h5>
               <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingOne">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                <h2 
+                  class="accordion-header" 
+                  id="flush-headingOne">
+                  <button 
+                    class="accordion-button collapsed" 
+                    type="button" 
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseOne" 
+                    aria-expanded="false" 
+                    aria-controls="flush-collapseOne">
                     Create a new task 
                   </button>
                 </h2> 
-                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                <div 
+                  id="flush-collapseOne" 
+                  class="accordion-collapse collapse" 
+                  aria-labelledby="flush-headingOne"
                   data-bs-parent="#accordionFlushExample">
                   <div class="accordion-body">To create a new task, select the tab Add Task and fill in all fields. 
-                    Finally, decide who you want to share this task with and press "create Task". Click <a href="addTask.html">hear</a>.</div>
+                    Finally, decide who you want to share this task with and press "create Task". Click 
+                    <a href="addTask.html">hear</a>.
+                  </div>
                 </div>
               </div>
               <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingTwo">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                <h2 
+                  class="accordion-header" 
+                  id="flush-headingTwo">
+                  <button 
+                    class="accordion-button collapsed" 
+                    type="button" 
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseTwo" 
+                    aria-expanded="false" 
+                    aria-controls="flush-collapseTwo">
                     What happens after a task is created?
                   </button>
                 </h2>
-                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                <div 
+                  id="flush-collapseTwo" 
+                  class="accordion-collapse collapse" 
+                  aria-labelledby="flush-headingTwo"
                   data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body">After the task is created, it is displayed in the backlog and on the board in the "To do" area.</div>
+                  <div class="accordion-body">
+                    After the task is created, it is displayed in the backlog and on the board in the "To do" area.
+                  </div>
                 </div>
               </div>
               <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingThree">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                <h2 
+                  class="accordion-header" 
+                  id="flush-headingThree">
+                  <button 
+                    class="accordion-button collapsed" 
+                    type="button" 
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseThree" 
+                    aria-expanded="false" 
+                    aria-controls="flush-collapseThree">
                     How do I delete a task?
                   </button>
                 </h2>
-                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+                <div 
+                  id="flush-collapseThree" 
+                  class="accordion-collapse collapse" 
+                  aria-labelledby="flush-headingThree"
                   data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body">To delete a task, you can simply press the X in the backlog and it will be deleted.</div>
+                  <div class="accordion-body">
+                    To delete a task, you can simply press the X in the backlog and it will be deleted.
+                  </div>
                 </div>
               </div>
               <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingFour">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                <h2 
+                  class="accordion-header" 
+                  id="flush-headingFour">
+                  <button 
+                    class="accordion-button collapsed" 
+                    type="button" 
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseFour" 
+                    aria-expanded="false" 
+                    aria-controls="flush-collapseFour">
                     How do I change the status of my task on the board?
                   </button>
                 </h2>
-                <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
+                <div 
+                  id="flush-collapseFour" 
+                  class="accordion-collapse collapse" 
+                  aria-labelledby="flush-headingFour"
                   data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body">To change the status, simply drag and drop the task into the desired area.</div>
+                  <div class="accordion-body">
+                    To change the status, simply drag and drop the task into the desired area.
+                  </div>
                 </div>
               </div>
               <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingFive">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                <h2 
+                  class="accordion-header" 
+                  id="flush-headingFive">
+                  <button 
+                    class="accordion-button collapsed" 
+                    type="button" 
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseFive" 
+                    aria-expanded="false" 
+                    aria-controls="flush-collapseFive">
                     How do I change the information in the task?
                   </button>
                 </h2>
-                <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive"
+                <div 
+                  id="flush-collapseFive" 
+                  class="accordion-collapse collapse" 
+                  aria-labelledby="flush-headingFive"
                   data-bs-parent="#accordionFlushExample">
                   <!-- TODO -->
                   <div class="accordion-body">Hier entsteht noch die Erklärung</div>
@@ -138,8 +211,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
     crossorigin="anonymous"></script>
-    <script src="helpers.js"></script>
-    <script src="script.js"></script> 
+    <script src="./js/helpers.js"></script>
+    <script src="./js/script.js"></script> 
 
 </body>
 

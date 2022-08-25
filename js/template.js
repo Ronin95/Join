@@ -32,7 +32,6 @@ function newTaskTemp(newTask, i) {
         <div
           class="d-flex justify-content-center align-items-center justify-content-sm-end align-items-sm-start flex-sm-row flex-column me-sm-2 cursor-pointer"
           id="backlogDetails${i}"
-          
         >
           <b class="d-block d-sm-none blue-text text-uppercase">Description: </b>
           <span class=" hiddenScrollbar overflow-auto text-center text-sm-end text-break max-height-100 width-150">${

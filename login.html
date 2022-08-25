@@ -12,41 +12,72 @@
       integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="media.css"/>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/media.css"/>
     <link rel="shortcut icon" href="./img/joinlogo.png" type="image/x-icon" />
-    <script src="mini_backend.js"></script>   
+    <script src="./js/mini_backend.js"></script>   
     
     </head>
   <body onload="init()">
     <div class="w-100 h-100 d-flex justify-content-center align-items-center">
       <div
         class="card d-flex justify-content-center align-items-center"
-        style="width: 30rem"
-      >
-        <img src="./img/logo.png" class="rounded mx-auto d-block bg-secondary p-2 mt-3 " alt="join-logo">
+        style="width: 30rem">
+        <img 
+          src="./img/logo.png" 
+          class="rounded mx-auto d-block bg-secondary p-2 mt-3 " 
+          alt="join-logo">
         <div class="card-body w-100 d-flex align-items-center flex-column">
           <h3 class="">Login</h3>
-            <form class="w-100 was-validated" method="dialog" action="index.html">
+            <form 
+              class="w-100 was-validated" 
+              method="dialog" 
+              action="index.html">
               <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingEmail" placeholder="Email address">
+                <input 
+                  type="email" 
+                  class="form-control" 
+                  id="floatingEmail" 
+                  placeholder="Email address">
                 <label for="floatingEmail">Email address</label>
               </div>
               <div class="form-floating">
-                <input type="password" minlength="3" class="form-control" id="floatingPassword" placeholder="Password">
+                <input 
+                  type="password" 
+                  minlength="3" 
+                  class="form-control" 
+                  id="floatingPassword" 
+                  placeholder="Password">
                 <label for="floatingPassword">Password</label>
-                <input class="mt-3" type="checkbox" onclick="showPassword()"> Show Password
+                <input 
+                  class="mt-3" 
+                  type="checkbox" 
+                  onclick="showPassword()"> Show Password
               </div> 
               <div class="d-flex justify-content-center mt-2">         
-                <button type="submit" class="btn btn-primary m-2" id="signInBtn">Sign in</button> 
+                <button 
+                  type="submit" 
+                  class="btn btn-primary m-2" 
+                  id="signInBtn">Sign in</button> 
 
                 <!-- Toast Container -->
                 <div class="toast-container position-fixed top-0 end-0 p-3">
-                  <div id="signInToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                  <div 
+                    id="signInToast" 
+                    class="toast" 
+                    role="alert" 
+                    aria-live="assertive" 
+                    aria-atomic="true">
                     <div class="d-flex  align-items-center">
-                      <div class="toast-body" id="toast-body-signIn">
+                      <div 
+                        class="toast-body" 
+                        id="toast-body-signIn">
                       </div>
-                      <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                      <button 
+                        type="button" 
+                        class="btn-close me-2 m-auto" 
+                        data-bs-dismiss="toast" 
+                        aria-label="Close"></button>
                     </div>
                   </div>
                 </div>
@@ -54,84 +85,210 @@
               </div> 
             </form>
             <div class="btnContainer d-flex flex-column flex-sm-row align-items-center">
-              <button onclick="loginAsGuest()" class="btn btn-outline-secondary m-2">Sign in as guest</button>                
-              <button type="button" class="btn btn-outline-secondary m-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Register
+              <button 
+                onclick="loginAsGuest()" 
+                class="btn btn-outline-secondary m-2">Sign in as guest
+              </button>                
+              <button 
+                type="button" 
+                class="btn btn-outline-secondary m-2" 
+                data-bs-toggle="modal" 
+                data-bs-target="#staticBackdrop">Register
               </button>
             </div>
 
 
 
           <!-- Register Modal -->
-          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div 
+            class="modal fade" 
+            id="staticBackdrop" 
+            data-bs-backdrop="static" 
+            data-bs-keyboard="true" 
+            tabindex="-1" 
+            aria-labelledby="staticBackdropLabel" 
+            aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered modal-fullscreen-sm-down">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="staticBackdropLabel">Register</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <h5 
+                    class="modal-title" 
+                    id="staticBackdropLabel">Register</h5>
+                  <button 
+                    type="button" 
+                    class="btn-close" 
+                    data-bs-dismiss="modal" 
+                    aria-label="Close"></button>
                 </div>
                 <div class="modal-body ">
-                  <form id="registery" onkeyup="checkPassword()">
+                  <form 
+                    id="registery" 
+                    onkeyup="checkPassword()">
                     
                     <div class="form-floating mb-2">
-                      <input type="text" minlength="3" class="form-control" id="floatingFirstNameRegister" placeholder="First Name" required>
-                      <label class="form-label"for="floatingFirstNameRegister">First Name</label>
+                      <input 
+                        type="text" 
+                        minlength="3" 
+                        class="form-control" 
+                        id="floatingFirstNameRegister" 
+                        placeholder="First Name" 
+                        required>
+                      <label 
+                        class="form-label"
+                        for="floatingFirstNameRegister">First Name
+                      </label>
                     </div> 
                     <div class="form-floating mb-2">
-                      <input type="text" class="form-control" id="floatingLastNameRegister" placeholder="Last name" required>
-                      <label class="form-label"for="floatingLastNameRegister">Last Name</label>
+                      <input 
+                        type="text" 
+                        class="form-control" 
+                        id="floatingLastNameRegister" 
+                        placeholder="Last name" 
+                        required>
+                      <label 
+                        class="form-label"
+                        for="floatingLastNameRegister">Last Name
+                      </label>
                     </div> 
                     <div class="form-floating mb-2">
-                      <input type="email" class="form-control" id="floatingEmailRegister" placeholder="Email address" required>
-                      <label class="form-label"for="floatingEmailRegister">Email address</label>
+                      <input 
+                        type="email" 
+                        class="form-control" 
+                        id="floatingEmailRegister" 
+                        placeholder="Email address" 
+                        required>
+                      <label 
+                        class="form-label"
+                        for="floatingEmailRegister">Email address</label>
                     </div> 
                     <div class="form-floating mb-2">
-                      <input type="password" minlength="3" class="form-control" id="floatingPasswordRegister1" placeholder="Password" required>
-                      <label class="form-label"for="floatingPasswordRegister1">Password</label>
-                      <input class="mt-3" type="checkbox" onclick="showPassword()"> Show Password
+                      <input 
+                        type="password" 
+                        minlength="3" 
+                        class="form-control" 
+                        id="floatingPasswordRegister1" 
+                        placeholder="Password" 
+                        required>
+                      <label 
+                        class="form-label"
+                        for="floatingPasswordRegister1">Password</label>
+                      <input 
+                        class="mt-3" 
+                        type="checkbox" 
+                        onclick="showPassword()"> Show Password
                     </div> 
                     <div class="form-floating mb-2" >
-                      <input type="password" class="form-control" id="floatingPasswordRegister2" placeholder="repeatPassword" required>
-                      <label class="form-label"for="floatingPasswordRegister2">Repeat password</label>
+                      <input 
+                        type="password" 
+                        class="form-control" 
+                        id="floatingPasswordRegister2" 
+                        placeholder="repeatPassword" 
+                        required>
+                      <label 
+                        class="form-label"
+                        for="floatingPasswordRegister2">Repeat password
+                      </label>
                     </div> 
                                                   
-                    <fieldset class="row mb-2" onchange="highlightAvatar()">
+                    <fieldset 
+                      class="row mb-2" 
+                      onchange="highlightAvatar()">
                       <legend class="col-sm-10 pt-0">Choose Avatar</legend>
                       <div class="row row-cols-2 row-cols-sm-4">
                         <div class="form-check col col-sm-3">
-                          <input class="form-check-input d-none" type="radio" name="gridRadios" id="gridRadios1" value="1" checked>
-                          <label class="form-check-label" for="gridRadios1">
-                            <img id="worker1" src="./img/office_worker_1.jpg" class="cursor-pointer border border-3 border-danger h-50 img-fluid rounded-circle" alt="">
+                          <input 
+                            class="form-check-input d-none" 
+                            type="radio" 
+                            name="gridRadios" 
+                            id="gridRadios1" 
+                            value="1" 
+                            checked>
+                          <label 
+                            class="form-check-label" 
+                            for="gridRadios1">
+                            <img 
+                              id="worker1" 
+                              src="./img/office_worker_1.jpg" 
+                              class="cursor-pointer border border-3 border-danger h-50 img-fluid rounded-circle" 
+                              alt="">
                           </label>
                         </div>
                         <div class="form-check col col-sm-3">
-                          <input class="form-check-input d-none" type="radio" name="gridRadios" id="gridRadios2" value="3">
-                          <label class="form-check-label" for="gridRadios2">
-                            <img id="worker2" src="./img/office_worker_2.jpg" class="cursor-pointer border border-3 border-light h-50 img-fluid border border-1 rounded-circle" alt="">
+                          <input 
+                            class="form-check-input d-none" 
+                            type="radio" 
+                            name="gridRadios" 
+                            id="gridRadios2" 
+                            value="3">
+                          <label 
+                            class="form-check-label" 
+                            for="gridRadios2">
+                            <img 
+                              id="worker2" 
+                              src="./img/office_worker_2.jpg" 
+                              class="cursor-pointer border border-3 border-light h-50 img-fluid border border-1 rounded-circle" 
+                              alt="">
                           </label>
                         </div>
                         <div class="form-check col col-sm-3">
-                          <input class="form-check-input d-none" type="radio" name="gridRadios" id="gridRadios3" value="4">
-                          <label class="form-check-label" for="gridRadios3">
-                            <img id="worker3" src="./img/office_worker_3.jpg" class="cursor-pointer border border-3 border-light h-50 img-fluid border border-1 rounded-circle" alt="">
+                          <input 
+                            class="form-check-input d-none" 
+                            type="radio" 
+                            name="gridRadios" 
+                            id="gridRadios3" 
+                            value="4">
+                          <label 
+                            class="form-check-label" 
+                            for="gridRadios3">
+                            <img 
+                              id="worker3" 
+                              src="./img/office_worker_3.jpg" 
+                              class="cursor-pointer border border-3 border-light h-50 img-fluid border border-1 rounded-circle" 
+                              alt="">
                           </label>
                         </div>
                         <div class="form-check col col-sm-3">
-                          <input class="form-check-input d-none" type="radio" name="gridRadios" id="gridRadios4" value="5">
-                          <label class="form-check-label" for="gridRadios4">
-                            <img id="worker4" src="./img/office_worker_4.jpg" class="cursor-pointer border border-3 border-light h-50 img-fluid border border-1 rounded-circle" alt="">
+                          <input 
+                            class="form-check-input d-none" 
+                            type="radio" 
+                            name="gridRadios" 
+                            id="gridRadios4" 
+                            value="5">
+                          <label 
+                            class="form-check-label" 
+                            for="gridRadios4">
+                            <img 
+                              id="worker4" 
+                              src="./img/office_worker_4.jpg" 
+                              class="cursor-pointer border border-3 border-light h-50 img-fluid border border-1 rounded-circle" 
+                              alt="">
                           </label>
                         </div>
                       </div>
                     </fieldset>
                     <div class="d-flex justify-content-center">
-                      <button type="submit" class="btn btn-primary" id="registrationBtn">Complete registration</button>
+                      <button 
+                        type="submit" 
+                        class="btn btn-primary" 
+                        id="registrationBtn">Complete registration
+                      </button>
                       <!-- Toast Container -->
                 <div class="toast-container position-fixed top-0 end-0 p-3">
-                  <div id="registrationToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                  <div 
+                    id="registrationToast" 
+                    class="toast" 
+                    role="alert" 
+                    aria-live="assertive" 
+                    aria-atomic="true">
                     <div class="d-flex  align-items-center">
-                      <div class="toast-body" id="toast-body-registration"></div>
-                      <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                      <div 
+                        class="toast-body" 
+                        id="toast-body-registration"></div>
+                      <button 
+                        type="button" 
+                        class="btn-close me-2 m-auto" 
+                        data-bs-dismiss="toast" 
+                        aria-label="Close"></button>
                     </div>
                   </div>
                 </div>
@@ -148,10 +305,10 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
   crossorigin="anonymous"></script>
-    <script src="helpers.js"></script>
-    <script src="template.js"></script>
-    <script src="login.js"></script>
-    <script src="script.js"></script>    
+    <script src="./js/helpers.js"></script>
+    <script src="./js/template.js"></script>
+    <script src="./js/login.js""></script>
+    <script src="./js/script.js"></script>    
     
   </body>
 </html>

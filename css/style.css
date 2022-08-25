@@ -1,34 +1,14 @@
 /*All Colors*/
-
 .bg-grey {
   background-color: rgb(244, 243, 251) !important;
 }
-
-/*All Colors*/
 
 * {
   margin: 0;
 }
 
-.container-fluid {
-  z-index: 99;
-}
-
-.cursor-pointer {
-  cursor: pointer;
-}
-
-.category-color {
-  height: 100px;
-  width: 20px;
-}
-
-.b-style-dotted {
-  border-style: dotted;
-}
-
-.b-style-dashed {
-  border-style: dashed;
+.blue-text{
+  color: #1E3190;
 }
 
 body {
@@ -37,6 +17,18 @@ body {
   align-items: center;
   background-color: rgb(255, 255, 255);
   height: 100vh;
+}
+
+.container-fluid {
+  z-index: 99;
+}
+
+.vh-70 {
+  height: 70vh;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .main-color {
@@ -56,7 +48,7 @@ body {
 /* The navbar with its components */
 
 .navbar {
-  background-color: #1E3190;
+  background-color: #1e3190;
 }
 
 .logo {
@@ -182,7 +174,7 @@ body {
 }
 
 .card-footer {
-  border-top: 1px solid rgba(0, 0, 0, 0.176)
+  border-top: 1px solid rgba(0, 0, 0, 0.176);
 }
 
 /* The size of the avatar in task item */
@@ -278,7 +270,6 @@ body {
   }
 }
 
-
 @media (max-width: 575px) {
   .carousel {
     gap: 2px;
@@ -322,7 +313,6 @@ body {
 .carousel-control-next:hover,
 .carousel-control-prev:hover {
   opacity: 1 !important;
-
 }
 
 /* Highlight the slide column button (prev or next) on click or on drag under bs-sm-break point  */
@@ -333,9 +323,7 @@ body {
 
 /* Additional class to change the default cycle direction of bootstrap carousel
  for sliding on hover with a dragged task item over the carousel prev button  */
-@media all and (transform-3d),
-(-webkit-transform-3d) {
-
+@media all and (transform-3d), (-webkit-transform-3d) {
   .changeDirection .active.carousel-item-start,
   .changeDirection .carousel-item-prev:not(.carousel-item-end) {
     -webkit-transform: translateX(100%) !important;
@@ -377,7 +365,6 @@ body {
 
 /*---------------*/
 /* Add Task CSS */
-
 
 .user-show {
   height: 70px;
@@ -438,7 +425,7 @@ body {
   margin-bottom: 12px !important;
 }
 
-.table>tbody {
+.table > tbody {
   vertical-align: middle !important;
 }
 
