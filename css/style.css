@@ -6,6 +6,17 @@
 
 /*All Colors*/
 
+::placeholder {
+  color: #d0d0d0;
+  opacity: 1.5;
+}
+
+input.form-control::placeholder {
+  opacity: 1;
+  color: #d0d0d0;;
+}
+
+
 * {
   margin: 0;
 }
@@ -78,7 +89,7 @@ body {
 }
 
 .you-are-here {
-  color: white;
+  color: white !important;
   border-left: white;
   border-left: 8px solid white;
   margin-left: -8px;
@@ -487,3 +498,4 @@ html {
   scrollbar-width: none;
   /* Firefox */
 }
+
