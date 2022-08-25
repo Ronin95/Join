@@ -134,7 +134,8 @@ function removeHightlight(columnName) {
 }
 
 const myCarousel = new bootstrap.Carousel(document.getElementById('carousel'), {
-  interval: 350,
+  /* The speed of carousel sliding */
+  interval: 400,
   pause: false,
   wrap: true,
 });

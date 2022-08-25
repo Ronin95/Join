@@ -356,7 +356,7 @@ body {
   /* TO DO: Later to delete. */
   /* border: 1px solid black; */
   /* The speed of carousel sliding */
-  transition: all 375ms ease !important;
+  transition: all 400ms ease !important;
 }
 
 .carousel-indicators button {
