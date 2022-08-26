@@ -1,5 +1,5 @@
 let selectedUser = [];
-let formAddTask = document.getElementById('addTaskSubmit');
+let formAddTask = document.getElementById("addTaskSubmit");
 let today = new Date();
 let dd = today.getDate();
 let mm = today.getMonth() + 1;
@@ -12,12 +12,12 @@ let yyyy = today.getFullYear();
  * show a message the Message with the value for wich Member is the task added
  */
 async function addTask() {
-  allTasks = await loadFromBackend('allTasks');
-  let title = document.getElementById('title');
-  let date = document.getElementById('txtDate');
-  let category = document.getElementById('category');
-  let urgency = document.getElementById('urgency');
-  let description = document.getElementById('description');
+  allTasks = await loadFromBackend("allTasks");
+  let title = document.getElementById("title");
+  let date = document.getElementById("txtDate");
+  let category = document.getElementById("category");
+  let urgency = document.getElementById("urgency");
+  let description = document.getElementById("description");
   let newTask = {
     title: title.value,
     date: date.value,
@@ -26,12 +26,12 @@ async function addTask() {
     description: description.value,
     userForTask: selectedUser,
     id: new Date().getTime(),
-    state: 'toDo',
+    state: "toDo",
   };
   if ((newTask.date = !date.value)) {
     newTask.date = today;
   } else {
-    newTask.date = date.value.replace('.', '/');
+    newTask.date = date.value.replace(".", "/");
   }
   saveTask(newTask);
 }
@@ -43,7 +43,7 @@ async function addTask() {
  */
 function saveTask(newTask) {
   allTasks.push(newTask);
-  saveInBackend(allTasks, 'allTasks');
+  saveInBackend(allTasks, "allTasks");
 }
 
 /**
@@ -60,12 +60,12 @@ function deleteUnsafedInput() {
  * creates a new element wich show only the user who is selected
  */
 function selectUser(i) {
-  document.getElementById(`selected${i}`).classList.toggle('user-selected');
+  document.getElementById(`selected${i}`).classList.toggle("user-selected");
   selectedUser = users[i];
   document.getElementById(`user`).innerHTML = /*html*/ ` 
     <div onclick="showAllUserAndDisable()"> 
       <img title="${selectedUser.name}" id="${i}" class="user-show rounded-circle user-selected" src="${selectedUser.avatar}" alt=""></div>`;
-  document.getElementById('createTask').removeAttribute('disabled');
+  document.getElementById("createTask").removeAttribute("disabled");
 }
 
 /**
@@ -73,7 +73,7 @@ function selectUser(i) {
  */
 function showAllUserAndDisable() {
   showAllUser();
-  document.getElementById('createTask').disabled = true;
+  document.getElementById("createTask").disabled = true;
 }
 
 /**
@@ -81,35 +81,35 @@ function showAllUserAndDisable() {
  */
 
 /* HAVE TO REWRITE for the new BOOTSRAP DATE*/
-// function loadCurrentDate() {
-//   if (dd < 10) {
-//     dd = '0' + dd;
-//   }
-//   if (mm < 10) {
-//     mm = '0' + mm;
-//   }
-//   today = yyyy + '/' + mm + '/' + dd;
-//   document.getElementById('heute').innerHTML += /*html*/ `
-
-// <!--
-// <input id="txtDate" placeholder="${today}" required type="text" class="form-control text-left fs-4"> -->
-//   <!-- <input class="rounded fs-4 p-2 bs-simple w-100" id="dateTask" placeholder="${today}" class="textbox-n" type="text" onfocus="(this.type='date')" > -->
-//   `;
-// }
+function loadCurrentDate() {
+  if (dd < 10) {
+    dd = "0" + dd;
+  }
+  if (mm < 10) {
+    mm = "0" + mm;
+  }
+  today = yyyy + "/" + mm + "/" + dd;
+  document.getElementById("today").innerHTML += /*html*/ `
+  <div class="today-date d-flex justify-content-center flex-column">
+    <span class="d-flex justify-content-end ">TODAY</span>
+    <span class="today-date d-flex justify-content-center">${today} </span>
+  </div>
+  `;
+}
 
 function handleForm(event) {
-  const successToast = document.getElementById('success_task');
+  const successToast = document.getElementById("success_task");
   event.preventDefault();
   const toast = new bootstrap.Toast(successToast);
   toast.show();
   formAddTask.reset();
   showAllUser();
 }
-formAddTask.addEventListener('submit', handleForm);
+formAddTask.addEventListener("submit", handleForm);
 
 $(document).ready(function () {
-  $('.input-daterange').datepicker({
-    format: 'dd/mm/yyyy',
+  $(".input-daterange").datepicker({
+    format: "dd/mm/yyyy",
     autoclose: true,
     calendarWeeks: true,
     clearBtn: true,

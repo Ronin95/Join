@@ -45,10 +45,10 @@ body {
   height: 70vh !important;
 } /*Bitte nicht löschen. Wird benötigt für Backlog scrollen .phil*/
 
-@media (min-height: 655px){
-  .media-vh77{
-  height: 77vh !important;
-}
+@media (min-height: 655px) {
+  .media-vh77 {
+    height: 77vh !important;
+  }
 }
 
 /*------------------------------------------------------------------------------------*/
@@ -63,7 +63,7 @@ body {
 /*--------------------------------*/
 /* The navbar with its components */
 
-.z-index-100{
+.z-index-100 {
   z-index: 100 !important;
 }
 
@@ -205,6 +205,7 @@ body {
 .cardAssignedTo img {
   width: 40px;
   height: 40px;
+  background-color: rgb(162, 154, 154) !important;
 }
 
 /*------------------------------------------------------------------------------------ */
@@ -402,12 +403,14 @@ body {
 .user-show {
   height: 70px;
   cursor: pointer;
-  border: 4px solid white !important;
+  border: 3px solid white !important;
+  margin: 4px;
+  background-color: rgb(162, 154, 154) !important;
 }
 
 .user-selected {
   opacity: 1;
-  border: 4px rgba(255, 255, 255, 0.557) solid;
+  border: 3px #0D6EFD solid !important;
   display: unset !important;
 }
 
@@ -505,7 +508,6 @@ html {
   /* Firefox */
 }
 
-
 .overflow-y-scroll {
   overflow-y: scroll;
 }
@@ -513,4 +515,8 @@ html {
 /* Muss bleiben damit die Bilder zentriert sind in help html in der mobilen ansicht ab 304px */
 .width-100px {
   width: 100px;
+}
+
+.today-date {
+  font-size: 13px !important;
 }

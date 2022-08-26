@@ -68,6 +68,7 @@ async function initAddTask() {
   await currentUserImage();
   showAllUser();
   document.getElementById('addTaskNav').classList.add('you-are-here');
+  loadCurrentDate();
 }
 
 function logout() {

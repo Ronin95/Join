@@ -56,7 +56,7 @@ function showAllUser() {
   for (let i = 1; i < users.length; i++) {
     let user = users[i];
     let showUser = document.getElementById('user');
-    showUser.innerHTML += `<img title="${user.name}" id="selected${i}" onclick="selectUser(${i})" class="user-show  border border-white rounded-circle m-1" src="${user.avatar}" alt="">`;
+    showUser.innerHTML += `<img title="${user.name}" id="selected${i}" onclick="selectUser(${i})" class="user-show  border border-white rounded-circle" src="${user.avatar}" alt="">`;
   }
 }
 
