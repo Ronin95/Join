@@ -34,7 +34,7 @@ body {
   align-items: center;
   background-color: rgb(255, 255, 255);
   height: 100vh;
-  font-family: 'PT Sans', sans-serif;
+  font-family: "PT Sans", sans-serif;
 }
 
 .main-color {
@@ -92,7 +92,7 @@ body {
   object-fit: cover;
 }
 
-.board-border{
+.board-border {
   border: 1px rgb(203, 203, 203) solid;
 }
 
@@ -488,4 +488,12 @@ html {
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+}
+
+.hide-scroll-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll;
 }
