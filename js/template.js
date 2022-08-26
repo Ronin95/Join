@@ -82,7 +82,7 @@ function newTaskTemp(newTask, i) {
             id="backlogDetails${i}">
             <b class="d-block 
                       d-sm-none 
-                      blue-text 
+                      main-color 
                       text-uppercase">
               Description: 
             </b>

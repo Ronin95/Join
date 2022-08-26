@@ -13,9 +13,8 @@
 
 input.form-control::placeholder {
   opacity: 1;
-  color: #d0d0d0;;
+  color: #d0d0d0;
 }
-
 
 * {
   margin: 0;
@@ -29,19 +28,6 @@ input.form-control::placeholder {
   cursor: pointer;
 }
 
-.category-color {
-  height: 100px;
-  width: 20px;
-}
-
-.b-style-dotted {
-  border-style: dotted;
-}
-
-.b-style-dashed {
-  border-style: dashed;
-}
-
 body {
   display: flex;
   justify-content: center;
@@ -51,7 +37,7 @@ body {
 }
 
 .main-color {
-  color: #212d8d;
+  color: #2a3c95;
 }
 
 /*------------------------------------------------------------------------------------*/
@@ -67,7 +53,7 @@ body {
 /* The navbar with its components */
 
 .navbar {
-  background-color: #1E3190;
+  background-color: #1e3190;
 }
 
 .logo {
@@ -193,7 +179,7 @@ body {
 }
 
 .card-footer {
-  border-top: 1px solid rgba(0, 0, 0, 0.176)
+  border-top: 1px solid rgba(0, 0, 0, 0.176);
 }
 
 /* The size of the avatar in task item */
@@ -238,8 +224,8 @@ body {
 
 /* A select drop down user list based and modified on rules from the all task sub page */
 
-.assignedUser {}
-
+/* .assignedUser {
+} */
 
 .modalAssignedUser {
   min-height: 68px;
@@ -261,10 +247,9 @@ body {
   background-color: rgb(211, 209, 209);
 }
 
-
-.assignedToContainer {
-  /* height: 116px; */
-}
+/* .assignedToContainer {
+  height: 116px;
+} */
 
 .assignedToContainer #user {
   bottom: 0;
@@ -302,7 +287,6 @@ body {
     height: 32px;
   }
 }
-
 
 @media (max-width: 575px) {
   .carousel {
@@ -347,7 +331,6 @@ body {
 .carousel-control-next:hover,
 .carousel-control-prev:hover {
   opacity: 1 !important;
-
 }
 
 /* Highlight the slide column button (prev or next) on click or on drag under bs-sm-break point  */
@@ -358,9 +341,7 @@ body {
 
 /* Additional class to change the default cycle direction of bootstrap carousel
  for sliding on hover with a dragged task item over the carousel prev button  */
-@media all and (transform-3d),
-(-webkit-transform-3d) {
-
+@media all and (transform-3d), (-webkit-transform-3d) {
   .changeDirection .active.carousel-item-start,
   .changeDirection .carousel-item-prev:not(.carousel-item-end) {
     -webkit-transform: translateX(100%) !important;
@@ -402,7 +383,6 @@ body {
 
 /*---------------*/
 /* Add Task CSS */
-
 
 .user-show {
   height: 70px;
@@ -463,7 +443,7 @@ body {
   margin-bottom: 12px !important;
 }
 
-.table>tbody {
+.table > tbody {
   vertical-align: middle !important;
 }
 
@@ -498,4 +478,3 @@ html {
   scrollbar-width: none;
   /* Firefox */
 }
-
