@@ -103,7 +103,7 @@ function showAllUserAndDisable() {
 //   today = yyyy + '/' + mm + '/' + dd;
 //   document.getElementById('heute').innerHTML += /*html*/ `
 
-// <!-- 
+// <!--
 // <input id="txtDate" placeholder="${today}" required type="text" class="form-control text-left fs-4"> -->
 //   <!-- <input class="rounded fs-4 p-2 bs-simple w-100" id="dateTask" placeholder="${today}" class="textbox-n" type="text" onfocus="(this.type='date')" > -->
 //   `;
@@ -119,15 +119,12 @@ function handleForm(event) {
 }
 formAddTask.addEventListener('submit', handleForm);
 
-
-$(document).ready(function(){
-
+$(document).ready(function () {
   $('.input-daterange').datepicker({
-      format: 'dd/mm/yyyy',
-      autoclose: true,
-      calendarWeeks : true,
-      clearBtn: true,
-      disableTouchKeyboard: true
+    format: 'dd/mm/yyyy',
+    autoclose: true,
+    calendarWeeks: true,
+    clearBtn: true,
+    disableTouchKeyboard: true,
   });
-  
-  });
+});

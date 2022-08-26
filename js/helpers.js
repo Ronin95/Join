@@ -18,11 +18,10 @@ function checkIfLogin() {
  * Deletes the selected task from the array
  * @param {number} i indicates the location of the object in the array
  */
-function deleteTask(i) {
+function deleteTask(i, fct) {
   allTasks.splice(i, 1);
   saveInBackend(allTasks, 'allTasks');
-  allTasks = loadFromBackend('allTasks');
-  generateAllTasks();
+  fct();
 }
 
 /**

@@ -38,7 +38,6 @@ function renderColumn(columnName) {
   }
 }
 
-
 /**
  * Generate a single task item in the kanban column on board.
  *
@@ -56,8 +55,9 @@ function genHTMLBoardTaskItem(task) {
     data-bs-target="#staticBackdrop"
     onclick="openModal(${task['id']})">
         <div class="card-header p-1 fs-6">
-        <span class="badge p-1 fw-semibold" style="background-color: ${colorsCategory[task['category']]
-    }">
+        <span class="badge p-1 fw-semibold" style="background-color: ${
+          colorsCategory[task['category']]
+        }">
         ${task['category']}</span>
     </div>
         
@@ -106,7 +106,6 @@ function moveTo(state) {
   renderAllColumns();
 }
 
-
 /**
  * A w3school function: Simply integrated here.
  * Change the default behavior of the affected container (here board kanban column)
@@ -118,7 +117,6 @@ function allowDrop(ev) {
   ev.preventDefault();
 }
 
-
 /**
  * Highlight the kanban column when you hover over it with the dragged task item
  * (a corresponding class for this effect will be added to the affected column.).
@@ -128,7 +126,6 @@ function allowDrop(ev) {
 function hightlight(columnName) {
   document.getElementById(columnName).classList.add('drag-area-highlight');
 }
-
 
 /**
  * Remove the highlight effect for the kanban column when the dragged task item stop to hover it or will be dropped on it
@@ -146,8 +143,6 @@ const myCarousel = new bootstrap.Carousel(document.getElementById('carousel'), {
   pause: false,
   wrap: true,
 });
-
-
 
 let columns = [
   {
@@ -175,8 +170,8 @@ carousel.addEventListener('slid.bs.carousel', (event) => {
   let leftArrow = document.getElementById('leftArrowText');
   let rightArrow = document.getElementById('rightArrowText');
 
-  currentColumn = myCarousel._activeElement.id
-  console.log(myCarousel._activeElement.id)
+  currentColumn = myCarousel._activeElement.id;
+  console.log(myCarousel._activeElement.id);
 
   if (currentColumn == 0) {
     leftArrow.innerHTML = columns[3].name;
@@ -196,23 +191,23 @@ carousel.addEventListener('slid.bs.carousel', (event) => {
   }
 });
 
-
 function toggleClassOpenModalDropDownUserList() {
   document
     .getElementById('user')
     .classList.toggle('modal-avatar-container-open');
 }
 
-
 function highlightCarouselControl(side) {
-  document.getElementById(side + '-slide-buttom').classList.add('highlight-carousel-control');
+  document
+    .getElementById(side + '-slide-buttom')
+    .classList.add('highlight-carousel-control');
 }
-
 
 function removeHighlightCarouselControl(side) {
-  document.getElementById(side + '-slide-buttom').classList.remove('highlight-carousel-control');
+  document
+    .getElementById(side + '-slide-buttom')
+    .classList.remove('highlight-carousel-control');
 }
-
 
 let timeOut = null;
 
@@ -220,7 +215,7 @@ function highlightCarouselControlOnClick(side) {
   clearTimeout(timeOut);
   highlightCarouselControl(side);
   timeOut = setTimeout(() => {
-    removeHighlightCarouselControl(side)
+    removeHighlightCarouselControl(side);
   }, 600);
 }
 
@@ -228,10 +223,9 @@ function startSlideNext() {
   if (window.innerWidth < 576) {
     myCarousel.pause();
     myCarousel.cycle();
-    console.log('test')
+    console.log('test');
   }
 }
-
 
 function stopSlideNext() {
   if (window.innerWidth < 576) {
@@ -239,35 +233,30 @@ function stopSlideNext() {
   }
 }
 
-
 function startSlidePrev() {
   if (window.innerWidth < 576) {
     myCarousel.pause();
     myCarousel.cycle();
-    console.log('started cycling')
-    console.log('test')
+    console.log('started cycling');
+    console.log('test');
   }
 }
 
-
 function stopSlidePrev() {
   myCarousel.pause();
-  console.log('paused cycling')
+  console.log('paused cycling');
 }
-
 
 function stopSlideJustOnDrop() {
   myCarousel.pause();
   if (reversed) {
-    removedChangeDirectionClassReverseBackChildren()
+    removedChangeDirectionClassReverseBackChildren();
   }
-  removeHighlightCarouselControl('right')
-  removeHighlightCarouselControl('left')
+  removeHighlightCarouselControl('right');
+  removeHighlightCarouselControl('left');
 }
 
-
 let reversed = false;
-
 
 function addChangeDirectionClassReverseChildren() {
   document.getElementById('carousel-inner').classList.add('changeDirection');
@@ -276,7 +265,6 @@ function addChangeDirectionClassReverseChildren() {
   reversed = true;
   console.log('children reversed to order: 4--3--2--1');
 }
-
 
 function removedChangeDirectionClassReverseBackChildren() {
   document.getElementById('carousel-inner').classList.remove('changeDirection');
@@ -299,14 +287,12 @@ function correctActiveIndicator() {
 
   let wrongInd = document.getElementById(`ind${foundedIndex}`);
   wrongInd.classList.remove('active');
-  wrongInd.removeAttribute('aria-current')
-
+  wrongInd.removeAttribute('aria-current');
 
   let rightInd = document.getElementById(`ind${myCarousel._activeElement.id}`);
-  rightInd.classList.add('active')
-  rightInd.setAttribute('aria-current', 'true')
+  rightInd.classList.add('active');
+  rightInd.setAttribute('aria-current', 'true');
 }
-
 
 function reverseChildren() {
   myCarousel.pause();
@@ -315,44 +301,56 @@ function reverseChildren() {
 
   for (var i = 1; i < parentItems.childNodes.length; i++) {
     parentItems.insertBefore(parentItems.childNodes[i], parentItems.firstChild);
-    parentIndicators.insertBefore(parentIndicators.childNodes[i], parentIndicators.firstChild);
+    parentIndicators.insertBefore(
+      parentIndicators.childNodes[i],
+      parentIndicators.firstChild
+    );
   }
 }
 
 window.onresize = function () {
   if (window.innerWidth < 576) {
-    document.getElementById('carousel').setAttribute('data-bs-touch', 'true')
+    document.getElementById('carousel').setAttribute('data-bs-touch', 'true');
   } else {
-    document.getElementById('carousel').setAttribute('data-bs-touch', 'false')
+    document.getElementById('carousel').setAttribute('data-bs-touch', 'false');
   }
-}
+};
 
 function openModal(idValue) {
-  console.log('open')
-  modalGenAllUser()
-
   let task = allTasks.find((n) => n.id == idValue);
+  console.log('open');
+  modalGenAllUser(task);
+
   document.getElementById('modalTitle').value = task.title;
   document.getElementById('modalDate').value = task.date;
   document.getElementById('modalCategory').value = task.category;
   document.getElementById('modalUrgency').value = task.urgency;
   document.getElementById('modalDescription').value = task.description;
   document.getElementById('modalSelectedUser').src = task.userForTask.avatar;
+  document.getElementById('modalDeleteBtn').onclick = deleteTask(
+    idValue,
+    renderAllColumns
+  );
 }
 
 function modalShowAllUsers() {
-  document.getElementById('modalSelectedUser').classList.toggle('d-none')
-  document.getElementById('modalUserCollection').classList.toggle('d-none')
+  document.getElementById('modalSelectedUser').classList.toggle('d-none');
+  document.getElementById('modalUserCollection').classList.toggle('d-none');
 }
 
-function modalGenAllUser() {
-  let modalUserCollection = document.getElementById('modalUserCollection')
+function modalGenAllUser(task) {
+  let modalUserCollection = document.getElementById('modalUserCollection');
   modalUserCollection.innerHTML = '';
   for (let i = 0; i < users.length; i++) {
     const user = users[i];
-    modalUserCollection.innerHTML += /* html */ `
+    if (task.userForTask.avatar == user.avatar) {
+      modalUserCollection.innerHTML += /* html */ `
+       <img class="assigendToImg rounded-circle border border-4 border-primary m-1" src="${user.avatar}">
+    `;
+    } else {
+      modalUserCollection.innerHTML += /* html */ `
        <img class="assigendToImg rounded-circle border border-4 border-white m-1" src="${user.avatar}">
     `;
+    }
   }
 }
-

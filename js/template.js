@@ -104,7 +104,7 @@ function newTaskTemp(newTask, i) {
           class="btn-close
                  p-2 m-auto"
           type="button"
-          onclick="deleteTask(${i})"
+          onclick="deleteTask(${i}, generateAllTasks)"
           data-bs-dismiss="toast"
           aria-label="Close">
         </button>
