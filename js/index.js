@@ -318,17 +318,17 @@ window.onresize = function () {
 
 function openModal(idValue) {
   let task = allTasks.find((n) => n.id == idValue);
-  console.log('open');
+  let index = allTasks.indexOf(task);
   modalGenAllUser(task);
 
   document.getElementById('modalTitle').value = task.title;
-  document.getElementById('modalDate').value = task.date;
+  document.getElementById('txtDate').value = task.date;
   document.getElementById('modalCategory').value = task.category;
   document.getElementById('modalUrgency').value = task.urgency;
   document.getElementById('modalDescription').value = task.description;
   document.getElementById('modalSelectedUser').src = task.userForTask.avatar;
   document.getElementById('modalDeleteBtn').onclick = deleteTask(
-    idValue,
+    index,
     renderAllColumns
   );
 }
