@@ -106,7 +106,6 @@ tfoot tr:nth-child(2) th {
 
 .active {
   border-radius: 50% !important;
-  background-image: linear-gradient(#212d8d, #212d8d) !important;
   color: #fff !important;
 }
 

@@ -47,7 +47,7 @@ function renderColumn(columnName) {
 function genHTMLBoardTaskItem(task) {
   return /* html */ `
     <!-- a column task item -->
-    <div id="${task.id}" class="card red border-dark my-2" 
+    <div id="${task.id}" class="card red board-border my-2" 
     draggable="true" 
     ondragend="stopSlideJustOnDrop()"
     ondragstart="startDragging(${task['id']})" 
@@ -67,7 +67,7 @@ function genHTMLBoardTaskItem(task) {
         </div>
 
         <div class="card-footer bg-transparent p-1 d-flex justify-content-between align-items-center gap-1">
-            <span class="fw-semibold">${task['date']}</span>
+            <span class="fw-semibold text-dark">${task['date']}</span>
             <div class="cardAssignedTo">
                 <img 
                   src="${task.userForTask.avatar}" 
