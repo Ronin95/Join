@@ -39,9 +39,9 @@ async function initIndex() {
   await init();
   await includeHTML();
   await currentUserImage();
+  document.getElementById('navBoard').classList.add('you-are-here');
   renderAllColumns();
   showAllUser();
-  document.getElementById('navBoard').classList.add('you-are-here');
   selectUser(1);
 }
 
@@ -68,7 +68,6 @@ async function initAddTask() {
   await includeHTML();
   await currentUserImage();
   showAllUser();
-  loadCurrentDate();
   document.getElementById('addTaskNav').classList.add('you-are-here');
 }
 
