@@ -28,11 +28,11 @@
 </head>
 
 <body onload="initAddTask()" class="py-md-4">
-  <div class="app-window h-100 w-100 d-flex flex-column flex-md-row overflow-scroll">
-    <div w3-include-html="navbar.html"></div>
+  <div class="app-window h-100 w-100 d-flex flex-column flex-md-row overflow-scroll hide-scroll-bar">
+    <div w3-include-html="navbar.html" class="position-sticky top-0 z-index-100"></div>
 
     <!-- work area (right site: content of the nav-link) -->
-    <div class="p-2 p-sm-5 mb-4 w-100">
+    <div class="p-2 p-sm-5 mb-4 w-100 position-sticky top-0">
       <div class="">
         <h2>Add Task</h2>
         <p class="main-color">Learning Management System Project</p>

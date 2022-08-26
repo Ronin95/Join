@@ -42,8 +42,14 @@ body {
 }
 
 .vh-70 {
-  height: 70vh;
+  height: 70vh !important;
 } /*Bitte nicht löschen. Wird benötigt für Backlog scrollen .phil*/
+
+@media (min-height: 655px){
+  .media-vh77{
+  height: 77vh !important;
+}
+}
 
 /*------------------------------------------------------------------------------------*/
 /* The whole app window (background) with incl. the navbar and the content / sub page */
@@ -56,6 +62,10 @@ body {
 
 /*--------------------------------*/
 /* The navbar with its components */
+
+.z-index-100{
+  z-index: 100 !important;
+}
 
 .navbar {
   background-color: #1e3190;
@@ -487,6 +497,14 @@ html {
 .hide-scroll-bar::-webkit-scrollbar {
   display: none;
 }
+
+.hide-scroll-bar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
 
 .overflow-y-scroll {
   overflow-y: scroll;

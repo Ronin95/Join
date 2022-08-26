@@ -6,7 +6,7 @@ function newTaskTemp(newTask, i) {
             border-1 
             rounded 
             bg-grey 
-            mb-4">
+            mb-2">
     <div 
       style="background-color:${colorsCategory[newTask.category]}"
       title="${newTask.category}"
