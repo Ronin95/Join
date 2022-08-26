@@ -55,18 +55,6 @@ function deleteUnsafedInput() {
 }
 
 /**
- * show all User from the global JSON array - users - that can be selected for a task
- */
-function showAllUser() {
-  document.getElementById('user').innerHTML = ``;
-  for (let i = 1; i < users.length; i++) {
-    let user = users[i];
-    let showUser = document.getElementById('user');
-    showUser.innerHTML += `<img title="${user.name}" id="selected${i}" onclick="selectUser(${i})" class="user-show  border border-white rounded-circle m-1" src="${user.avatar}" alt="">`;
-  }
-}
-
-/**
  * select an avatar to choose a user to add a task
  * @param {string} i - this is the Person who is choose by clicking an avatar
  * creates a new element wich show only the user who is selected

@@ -8,7 +8,7 @@ function initBoard() {
   users = loadFromBackend('users');
   allTasks = loadFromBackend('allTasks');
   renderAllColumns();
-  showAllUser();
+  modalShowAllUser();
 }
 
 /**
@@ -144,52 +144,52 @@ const myCarousel = new bootstrap.Carousel(document.getElementById('carousel'), {
   wrap: true,
 });
 
-let columns = [
-  {
-    id: 0,
-    name: 'TO DO',
-  },
-  {
-    id: 1,
-    name: 'IN PROGRESS',
-  },
-  {
-    id: 2,
-    name: 'TESTING',
-  },
-  {
-    id: 3,
-    name: 'DONE',
-  },
-];
+// let columns = [
+//   {
+//     id: 0,
+//     name: 'TO DO',
+//   },
+//   {
+//     id: 1,
+//     name: 'IN PROGRESS',
+//   },
+//   {
+//     id: 2,
+//     name: 'TESTING',
+//   },
+//   {
+//     id: 3,
+//     name: 'DONE',
+//   },
+// ];
 
-let currentColumn;
-let carousel = document.getElementById('carousel');
+// let currentColumn;
+// let carousel = document.getElementById('carousel');
 
-carousel.addEventListener('slid.bs.carousel', (event) => {
-  let leftArrow = document.getElementById('leftArrowText');
-  let rightArrow = document.getElementById('rightArrowText');
+// carousel.addEventListener('slid.bs.carousel', (event) => {
+//   let leftArrow = document.getElementById('leftArrowText');
+//   let rightArrow = document.getElementById('rightArrowText');
 
-  currentColumn = myCarousel._activeElement.id;
-  console.log(myCarousel._activeElement.id);
+//   currentColumn = myCarousel._activeElement.id;
+//   console.log(myCarousel._activeElement.id);
 
-  if (currentColumn == 0) {
-    leftArrow.innerHTML = columns[3].name;
-    rightArrow.innerHTML = columns[1].name;
-  }
-  if (currentColumn == 1) {
-    leftArrow.innerHTML = columns[0].name;
-    rightArrow.innerHTML = columns[2].name;
-  }
-  if (currentColumn == 2) {
-    leftArrow.innerHTML = columns[1].name;
-    rightArrow.innerHTML = columns[3].name;
-  }
-  if (currentColumn == 3) {
-    leftArrow.innerHTML = columns[2].name;
-    rightArrow.innerHTML = columns[0].name;
-  }
-});
+//   if (currentColumn == 0) {
+//     leftArrow.innerHTML = columns[3].name;
+//     rightArrow.innerHTML = columns[1].name;
+//   }
+//   if (currentColumn == 1) {
+//     leftArrow.innerHTML = columns[0].name;
+//     rightArrow.innerHTML = columns[2].name;
+//   }
+//   if (currentColumn == 2) {
+//     leftArrow.innerHTML = columns[1].name;
+//     rightArrow.innerHTML = columns[3].name;
+//   }
+//   if (currentColumn == 3) {
+//     leftArrow.innerHTML = columns[2].name;
+//     rightArrow.innerHTML = columns[0].name;
+//   }
+// });
 
 function toggleClassOpenModalDropDownUserList() {
   document
@@ -318,8 +318,8 @@ window.onresize = function () {
 
 function openModal(idValue) {
   let task = allTasks.find((n) => n.id == idValue);
-  let index = allTasks.indexOf(task);
-  modalGenAllUser(task);
+  let indexTask = allTasks.findIndex((obj) => obj.id == idValue);
+  modalGenAllUser(task, idValue);
 
   document.getElementById('modalTitle').value = task.title;
   document.getElementById('modalDate').value = task.date;
@@ -327,14 +327,47 @@ function openModal(idValue) {
   document.getElementById('modalUrgency').value = task.urgency;
   document.getElementById('modalDescription').value = task.description;
   document.getElementById('modalSelectedUser').src = task.userForTask.avatar;
-  document.getElementById('modalDeleteBtn').onclick = deleteTask(
-    index,
-    renderAllColumns
-  );
-  document.getElementById('modalSaveBtn').onclick = adaptTask(
-    index,
-    renderAllColumns
-  );
+  renderButtons(indexTask);
+}
+
+function renderButtons(indexTask) {
+  document.getElementById('modalBoardBtns').innerHTML = /*html*/ `
+  <input title="Delete and close the task." id="modalDeleteBtn"
+                  class="btn btn-outline-danger p-1 p-sm-2 me-1 me-sm-3" type="button"
+                  data-bs-dismiss="modal" value="Delete" onclick="deleteTask(${indexTask}, renderAllColumns)" >
+                <div>
+                  <input title="Cancel the changes and close the task." id="modalCancelBtn"
+                    class="btn btn-outline-secondary p-1 p-sm-2 me-1 me-sm-3" type="button"
+                    data-bs-dismiss="modal" value="Cancel">
+                  <input title="Save the changes to the task and close it." id="modalSaveBtn"
+                    class="btn btn-primary p-1 p-sm-2" type="submit" value="Save" onclick="adaptTask(${indexTask}, renderAllColumns)">
+                </div>
+  `;
+}
+
+function adaptTask(indexTask, fct) {
+  allTasks[indexTask].title = document.getElementById('modalTitle').value;
+  allTasks[indexTask].date = document.getElementById('modalDate').value;
+  allTasks[indexTask].category = document.getElementById('modalCategory').value;
+  allTasks[indexTask].urgency = document.getElementById('modalUrgency').value;
+  allTasks[indexTask].description =
+    document.getElementById('modalDescription').value;
+  allTasks[indexTask].userForTask.avatar =
+    document.getElementById('modalSelectedUser').src;
+  saveInBackend(allTasks, 'allTasks');
+  fct();
+}
+
+function changeSelectedUser(i, id) {
+  let indexTask = allTasks.findIndex((obj) => obj.id == id);
+  let userTask = allTasks[indexTask].userForTask;
+  let user = users[i];
+  userTask.avatar = document.getElementById('modalSelectedUser').src;
+  userTask.email = user.email;
+  userTask.name = user.name;
+  userTask.password = user.password;
+  saveInBackend(allTasks, 'allTasks');
+  openModal(id);
 }
 
 function modalShowAllUsers() {
@@ -342,19 +375,33 @@ function modalShowAllUsers() {
   document.getElementById('modalUserCollection').classList.toggle('d-none');
 }
 
-function modalGenAllUser(task) {
+function modalGenAllUser(task, id) {
   let modalUserCollection = document.getElementById('modalUserCollection');
   modalUserCollection.innerHTML = '';
   for (let i = 0; i < users.length; i++) {
     const user = users[i];
     if (task.userForTask.avatar == user.avatar) {
       modalUserCollection.innerHTML += /* html */ `
-       <img class="assigendToImg rounded-circle border border-4 border-primary m-1" src="${user.avatar}">
+       <img class="assigendToImg rounded-circle border border-4 border-primary m-1" src="${user.avatar}" onclick="changeSelectedUser(${i}, ${id})">
     `;
     } else {
       modalUserCollection.innerHTML += /* html */ `
-       <img class="assigendToImg rounded-circle border border-4 border-white m-1" src="${user.avatar}">
+       <img class="assigendToImg rounded-circle border border-4 border-white m-1" src="${user.avatar}" onclick="changeSelectedUser(${i}, ${id})">
     `;
     }
   }
 }
+
+let myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+let formBoard = document.getElementById('boardSubmit');
+const boardToast = document.getElementById('boardToast');
+function handleForm(event) {
+  event.preventDefault();
+  const toast = new bootstrap.Toast(boardToast);
+  toast.show();
+  setTimeout(function () {
+    myModal.hide();
+  }, 2000);
+  adaptTask();
+}
+formBoard.addEventListener('submit', handleForm);

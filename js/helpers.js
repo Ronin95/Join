@@ -49,6 +49,18 @@ function loadFromBackend(key) {
 }
 
 /**
+ * show all User from the global JSON array - users - that can be selected for a task
+ */
+function showAllUser() {
+  document.getElementById('user').innerHTML = ``;
+  for (let i = 1; i < users.length; i++) {
+    let user = users[i];
+    let showUser = document.getElementById('user');
+    showUser.innerHTML += `<img title="${user.name}" id="selected${i}" onclick="selectUser(${i})" class="user-show  border border-white rounded-circle m-1" src="${user.avatar}" alt="">`;
+  }
+}
+
+/**
  * loads the avatar of the current user
  */
 async function currentUserImage() {

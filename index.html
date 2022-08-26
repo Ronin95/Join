@@ -136,7 +136,7 @@
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
 
-          <form class="d-flex justify-content-center" id="addTaskSubmit" onsubmit="addTask()">
+          <form class="d-flex justify-content-center" id="boardSubmit" onsubmit="adaptTask()">
             <div class="w-100 rounded-2 bg-grey m-0 red-modal">
               <!-- title -->
               <div class="m-2 m-sm-4">
@@ -220,22 +220,31 @@
               </div>
 
               <!-- buttons-->
-              <div class="m-2 m-sm-4 d-flex justify-content-between">
-                <input title="Delete and close the task." id="modalDeleteBtn"
-                  class="btn btn-outline-danger p-1 p-sm-2 me-1 me-sm-3" type="button"
-                  data-bs-dismiss="modal" value="Delete">
-
-                <div>
-                  <input title="Cancel the changes and close the task." id="modalCancelBtn"
-                    class="btn btn-outline-secondary p-1 p-sm-2 me-1 me-sm-3" type="button"
-                    data-bs-dismiss="modal" value="Cancel">
-                  <input title="Save the changes to the task and close it." id="modalSaveBtn"
-                    class="btn btn-primary p-1 p-sm-2" type="submit" value="Save">
-                </div>
+              <div id="modalBoardBtns" class="m-2 m-sm-4 d-flex justify-content-between">
+                
               </div>
 
             </div>
-
+            <div class="toast-container position-fixed top-0 end-0 p-3">
+              <div 
+                id="boardToast" 
+                class="toast" 
+                role="alert" 
+                aria-live="assertive" 
+                aria-atomic="true">
+                <div class="d-flex align-items-center">
+                  <div 
+                    class="toast-body" 
+                    >Changes saved!</div>
+                  <button 
+                    class="btn-close me-2 m-auto" 
+                    type="button" 
+                    data-bs-dismiss="toast" 
+                    aria-label="Close">
+                  </button>
+                </div>
+              </div>
+            </div>
           </form>
 
         </div>
@@ -248,8 +257,8 @@
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
     crossorigin="anonymous"></script>
   <script src="./js/helpers.js"></script>
-  <script src="./js/template.js"></script>
-  <script src="./js/addTask.js"></script>
+   <script src="./js/template.js"></script>
+  <!-- <script src="./js/addTask.js"></script> -->
   <script src="./js/script.js"></script>
   <script src="./js/index.js"></script>
   <script src=" ./js/DragDropTouch.js"></script>
