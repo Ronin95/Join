@@ -48,7 +48,7 @@ function renderColumn(columnName) {
 function genHTMLBoardTaskItem(task) {
   return /* html */ `
     <!-- a column task item -->
-    <div id="${task.id}" class="card red border-dark my-2" 
+    <div id="${task.id}" class="card red board-border my-2" 
     draggable="true" 
     ondragend="stopSlideJustOnDrop()"
     ondragstart="startDragging(${task['id']})" 

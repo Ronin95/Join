@@ -92,6 +92,10 @@ body {
   object-fit: cover;
 }
 
+.board-border{
+  border: 1px rgb(203, 203, 203) solid;
+}
+
 @media only screen and (max-width: 767.8px) {
   .you-are-here {
     border-left: none;
