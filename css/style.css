@@ -302,12 +302,6 @@ body {
     gap: 2px;
   }
 
-  .carousel-inner {
-    /* TO DO: Later to delete. */
-    /* width: calc(100vw - 142px) !important; */
-    /* border: 3px solid blue; */
-  }
-
   .carousel-item {
     padding: 0px !important;
   }
