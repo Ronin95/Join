@@ -149,52 +149,52 @@ const myCarousel = new bootstrap.Carousel(document.getElementById('carousel'), {
 
 
 
-let columns = [
-  {
-    id: 0,
-    name: 'TO DO',
-  },
-  {
-    id: 1,
-    name: 'IN PROGRESS',
-  },
-  {
-    id: 2,
-    name: 'TESTING',
-  },
-  {
-    id: 3,
-    name: 'DONE',
-  },
-];
+// let columns = [
+//   {
+//     id: 0,
+//     name: 'TO DO',
+//   },
+//   {
+//     id: 1,
+//     name: 'IN PROGRESS',
+//   },
+//   {
+//     id: 2,
+//     name: 'TESTING',
+//   },
+//   {
+//     id: 3,
+//     name: 'DONE',
+//   },
+// ];
 
-let currentColumn;
-let carousel = document.getElementById('carousel');
+// let currentColumn;
+// let carousel = document.getElementById('carousel');
 
-carousel.addEventListener('slid.bs.carousel', (event) => {
-  let leftArrow = document.getElementById('leftArrowText');
-  let rightArrow = document.getElementById('rightArrowText');
+// carousel.addEventListener('slid.bs.carousel', (event) => {
+//   let leftArrow = document.getElementById('leftArrowText');
+//   let rightArrow = document.getElementById('rightArrowText');
 
-  currentColumn = myCarousel._activeElement.id
-  console.log(myCarousel._activeElement.id)
+//   currentColumn = myCarousel._activeElement.id
+//   console.log(myCarousel._activeElement.id)
 
-  if (currentColumn == 0) {
-    leftArrow.innerHTML = columns[3].name;
-    rightArrow.innerHTML = columns[1].name;
-  }
-  if (currentColumn == 1) {
-    leftArrow.innerHTML = columns[0].name;
-    rightArrow.innerHTML = columns[2].name;
-  }
-  if (currentColumn == 2) {
-    leftArrow.innerHTML = columns[1].name;
-    rightArrow.innerHTML = columns[3].name;
-  }
-  if (currentColumn == 3) {
-    leftArrow.innerHTML = columns[2].name;
-    rightArrow.innerHTML = columns[0].name;
-  }
-});
+//   if (currentColumn == 0) {
+//     leftArrow.innerHTML = columns[3].name;
+//     rightArrow.innerHTML = columns[1].name;
+//   }
+//   if (currentColumn == 1) {
+//     leftArrow.innerHTML = columns[0].name;
+//     rightArrow.innerHTML = columns[2].name;
+//   }
+//   if (currentColumn == 2) {
+//     leftArrow.innerHTML = columns[1].name;
+//     rightArrow.innerHTML = columns[3].name;
+//   }
+//   if (currentColumn == 3) {
+//     leftArrow.innerHTML = columns[2].name;
+//     rightArrow.innerHTML = columns[0].name;
+//   }
+// });
 
 
 function toggleClassOpenModalDropDownUserList() {

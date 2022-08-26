@@ -300,8 +300,8 @@ body {
 
   .carousel-inner {
     /* TO DO: Later to delete. */
-    width: calc(100vw - 142px) !important;
-    border: 3px solid blue;
+    /* width: calc(100vw - 142px) !important; */
+    /* border: 3px solid blue; */
   }
 
   .carousel-item {
@@ -311,12 +311,13 @@ body {
 
 .carousel-control-next,
 .carousel-control-prev {
+  color: black;
   position: unset;
-  width: 66px;
+  width: 30px;
   margin-top: 44px;
-  background-color: rgb(33, 45, 141) !important;
+  background-color: rgba(33, 46, 141, 0.268) !important;
   /* TO DO: Later to delete. */
-  border: 3px solid yellow;
+  /* border: 3px solid yellow; */
   opacity: 1 !important;
   z-index: unset;
 }
@@ -341,7 +342,7 @@ body {
 /* Highlight the slide column button (prev or next) on click or on drag under bs-sm-break point  */
 .highlight-carousel-control {
   opacity: 1 !important;
-  background-color: #dc3545 !important;
+  background-color: #2a3c95 !important;
 }
 
 /* Additional class to change the default cycle direction of bootstrap carousel
@@ -372,7 +373,7 @@ body {
 
 .carousel-indicators button {
   background-color: white !important;
-  border: 1.8px solid black !important;
+  border: 1px solid rgb(138, 138, 138) !important;
   height: 6px !important;
 }
 
@@ -382,8 +383,9 @@ body {
 }
 
 .carousel-indicators .active {
-  background-color: black !important;
-  border-color: rgba(0, 0, 0, 0.65) !important;
+  background-color: #2a3c95 !important;
+  border-color: #2a3c95 !important;
+  border-radius: 0px !important;
 }
 
 /*---------------*/
