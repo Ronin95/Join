@@ -34,11 +34,16 @@ body {
   align-items: center;
   background-color: rgb(255, 255, 255);
   height: 100vh;
+  font-family: 'PT Sans', sans-serif;
 }
 
 .main-color {
   color: #2a3c95;
 }
+
+.vh-70 {
+  height: 70vh;
+} /*Bitte nicht löschen. Wird benötigt für Backlog scrollen .phil*/
 
 /*------------------------------------------------------------------------------------*/
 /* The whole app window (background) with incl. the navbar and the content / sub page */
