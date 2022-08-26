@@ -491,3 +491,8 @@ html {
 .overflow-y-scroll {
   overflow-y: scroll;
 }
+
+/* Muss bleiben damit die Bilder zentriert sind in help html in der mobilen ansicht ab 304px */
+.width-100px {
+  width: 100px;
+}
