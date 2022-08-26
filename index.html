@@ -11,9 +11,22 @@
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
   <link rel="stylesheet" href="./css/style.css" />
   <link rel="stylesheet" href="./css/fonts.css" />
+  <link rel="stylesheet" href="./css/datepicker.css"/>
+
+
   <script src="./js/mini_backend.js"></script>
 
   <link rel="shortcut icon" href="./img/joinlogo.png" type="image/x-icon" />
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css"> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script> -->
+
+
 </head>
 
 <body onload="initIndex()" class="py-md-4">
@@ -33,9 +46,9 @@
             onclick="highlightCarouselControlOnClick('left')">
 
             <span id="leftArrowText"
-              class="fs-6 fw-bold carousel-control-name d-flex align-items-start justify-content-center" d-flex
-              justify-content-center align-items-center">DONE</span>
-            <span id="left-arrow" class="carousel-control-prev-icon" aria-hidden="true"></span>
+              class="fs-6 fw-bold carousel-control-name d-flex align-items-start justify-content-center
+              justify-content-center text-white"></span>
+            <span id="left-arrow" class="carousel-control-prev-icon" aria-hidden="true"><br><span class="text-white" style="font-size: 10px;">Drag</span></span>
             <span class="visually-hidden">Previous</span>
           </button>
 
@@ -45,8 +58,8 @@
 
             <div id="0" class="all carousel-item active h-100">
               <div class="d-flex flex-column align-items-center h-100">
-                <span class="fw-bold my-1 column-name">TO DO</span>
-                <div id="toDoColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
+                <span class="fw-bold my-1 column-name text-dark">TO DO</span>
+                <div id="toDoColumn" class="board-column bg-grey hiddenScrollbarScrollbar flex-grow-1 w-100 px-1"
                   ondrop="moveTo('toDo'), removeHightlight('toDoColumn')"
                   ondragover="allowDrop(event), hightlight('toDoColumn')" ondragleave="removeHightlight('toDoColumn')">
                 </div>
@@ -56,7 +69,7 @@
             <div id="1" class="all carousel-item h-100">
               <div class="d-flex flex-column align-items-center h-100">
                 <span class="fw-bold my-1 column-name">IN PROGRESS</span>
-                <div id="inProgressColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
+                <div id="inProgressColumn" class="board-column bg-grey hiddenScrollbarScrollbar flex-grow-1 w-100 px-1"
                   ondrop="moveTo('inProgress'), removeHightlight('inProgressColumn')"
                   ondragover="allowDrop(event), hightlight('inProgressColumn')"
                   ondragleave="removeHightlight('inProgressColumn')">
@@ -67,7 +80,7 @@
             <div id="2" class="all carousel-item h-100">
               <div class="d-flex flex-column align-items-center h-100">
                 <span class="fw-bold my-1 column-name">TESTING</span>
-                <div id="testingColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
+                <div id="testingColumn" class="board-column bg-grey hiddenScrollbarScrollbar flex-grow-1 w-100 px-1"
                   ondrop="moveTo('testing'), removeHightlight('testingColumn')"
                   ondragover="allowDrop(event), hightlight('testingColumn')"
                   ondragleave="removeHightlight('testingColumn')">
@@ -78,7 +91,7 @@
             <div id="3" class="all carousel-item h-100">
               <div class="d-flex flex-column align-items-center h-100">
                 <span class="fw-bold my-1 column-name">DONE</span>
-                <div id="doneColumn" class="board-column bg-grey hiddeneScrollbar flex-grow-1 w-100 px-1"
+                <div id="doneColumn" class="board-column bg-grey hiddenScrollbarScrollbar flex-grow-1 w-100 px-1"
                   ondrop="moveTo('done'), removeHightlight('doneColumn')"
                   ondragover="allowDrop(event), hightlight('doneColumn')" ondragleave="removeHightlight('doneColumn')">
                 </div>
@@ -95,9 +108,8 @@
             ondragenter="startSlideNext(), console.log('enter')" onclick="highlightCarouselControlOnClick('right')">
 
             <span id="rightArrowText"
-              class="fs-6 fw-bold carousel-control-name d-flex align-items-start justify-content-center">IN
-              PROGRESS</span>
-            <span id="right-arrow" class="carousel-control-next-icon" aria-hidden="true"></span>
+              class="fs-6 fw-bold carousel-control-name d-flex align-items-start justify-content-center"></span>
+            <span id="right-arrow" class="carousel-control-next-icon" aria-hidden="true"><br><span class="text-white" style="font-size: 10px;">Drag</span></span>
             <span class="visually-hidden">Next</span>
           </button>
 
@@ -124,31 +136,48 @@
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
 
-          <form class="d-flex justify-content-cente " id="addTaskSubmit" onsubmit="addTask()">
+          <form class="d-flex justify-content-center" id="addTaskSubmit" onsubmit="addTask()">
             <div class="w-100 rounded-2 bg-grey m-0 red-modal">
               <!-- title -->
               <div class="m-2 m-sm-4">
                 <h4 class="main-color">TITLE</h4class=>
-                  <input id="modalTitle" class="rounded fs-5 p-2 bs-simple w-100" required minlength="3" id="title"
+                  <input id="modalTitle title" class="rounded fs-5 p-2 bs-simple w-100" required minlength="3"
                     placeholder="Add a title" />
               </div>
 
               <!-- date -->
-              <div class="m-2 m-sm-4">
+              <!-- <div class="m-2 m-sm-4">
                 <h4 class="main-color">DUE DATE</h4>
                 <form>
                   <div id="wichDate">
-                    <input id="modalDate" class="rounded fs-4 p-2 bs-simple w-100" placeholder="today" class="textbox-n"
+                    <input id="modalDate" class="rounded fs-4 p-2 bs-simple w-100 textbox-n" placeholder="today"                    
                       type="text" onfocus="(this.type='date')">
                   </div>
                 </form>
+              </div> -->
+
+              <div class="m-2 m-sm-4">
+                <h4 class="main-color">DUE DATE</h4>
+              <div class="container m-0 p-0">
+                <form autocomplete="off">
+                  <div class="flex-row d-flex">
+                    <div class="w-100">
+                      <div class="input-group input-daterange w-100">
+                        <input id="txtDate" placeholder="Choose date" required type="text" class="p-2 form-control text-start fs-5 rounded">
+                        <span class="fa fa-calendar" id="fa-1"></span>
+                      </div>
+                    </div>
+                  </div>
+                </form>
               </div>
+              </div>
+
 
               <!-- category -->
               <div class="m-2 m-sm-4">
                 <h4 class="main-color">CATEGORY</h4>
                 <form class="w-100">
-                  <select id="modalCategory" class="p-2 rounded fs-5 p-2 bs-simple w-100" id="category">
+                  <select id="modalCategory category" class="p-2 rounded fs-5 p-2 bs-simple w-100">
                     <option value="Sales">Sales</option>
                     <option value="IT">IT</option>
                     <option value="Production">Production</option>
@@ -163,7 +192,7 @@
               <div class="m-2 m-sm-4">
                 <h4 class="main-color">URGENCY</h4>
                 <form class="w-100">
-                  <select id="modalUrgency" class="rounded fs-5 p-2 bs-simple w-100" id="urgency">
+                  <select id="modalUrgency urgency" class="rounded fs-5 p-2 bs-simple w-100">
                     <option value="Low">Low</option>
                     <option value="Medium">Medium</option>
                     <option value="High">High</option>
@@ -174,8 +203,8 @@
               <!-- description -->
               <div class="d-flex flex-column m-2 m-sm-4">
                 <h4 class="main-color">DESCRIPTION</h4>
-                <textarea id="modalDescription" required class="rounded fs-5 p-2 bs-simple w-100 h-100" minlength="3"
-                  id="description" rows="2" cols="50" placeholder="Add your notes"></textarea>
+                <textarea id="modalDescription description" required class="rounded fs-5 p-2 bs-simple w-100 h-100" minlength="3"
+                  rows="2" cols="50" placeholder="Add your notes"></textarea>
               </div>
 
               <!-- assigned to -->
@@ -193,12 +222,12 @@
               <!-- buttons-->
               <div class="m-2 m-sm-4 d-flex justify-content-between">
                 <input title="Delete and close the task." id="modalCancelBtn"
-                  class="btn btn-outline-danger p-1 p-sm-2 me-1 me-sm-3" type="button" onclick=""
+                  class="btn btn-outline-danger p-1 p-sm-2 me-1 me-sm-3" type="button"
                   data-bs-dismiss="modal" value="Delete">
 
                 <div>
                   <input title="Cancel the changes and close the task." id="modalCancelBtn"
-                    class="btn btn-outline-secondary p-1 p-sm-2 me-1 me-sm-3" type="button" onclick=""
+                    class="btn btn-outline-secondary p-1 p-sm-2 me-1 me-sm-3" type="button"
                     data-bs-dismiss="modal" value="Cancel">
                   <input title="Save the changes to the task and close it." id="modalSaveBtn"
                     class="btn btn-primary p-1 p-sm-2" type="submit" value="Save" disabled>

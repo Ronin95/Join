@@ -88,27 +88,6 @@ function showAllUserAndDisable() {
   document.getElementById('createTask').disabled = true;
 }
 
-/**
- * load the current date, and formate it so it can use as a default value in the add Task formular
- */
-
-/* HAVE TO REWRITE for the new BOOTSRAP DATE*/
-// function loadCurrentDate() {
-//   if (dd < 10) {
-//     dd = '0' + dd;
-//   }
-//   if (mm < 10) {
-//     mm = '0' + mm;
-//   }
-//   today = yyyy + '/' + mm + '/' + dd;
-//   document.getElementById('heute').innerHTML += /*html*/ `
-
-// <!-- 
-// <input id="txtDate" placeholder="${today}" required type="text" class="form-control text-left fs-4"> -->
-//   <!-- <input class="rounded fs-4 p-2 bs-simple w-100" id="dateTask" placeholder="${today}" class="textbox-n" type="text" onfocus="(this.type='date')" > -->
-//   `;
-// }
-
 function handleForm(event) {
   const successToast = document.getElementById('success_task');
   event.preventDefault();
