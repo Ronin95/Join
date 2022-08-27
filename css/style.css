@@ -143,7 +143,7 @@ body {
 /* Allow scrolling of board kanban column */
 .board-column {
   overflow-y: auto;
-  overflow-y: overlay;
+  /* overflow-y: overlay; */
 }
 
 .column-name {
@@ -410,7 +410,7 @@ body {
 
 .user-selected {
   opacity: 1;
-  border: 3px #0D6EFD solid !important;
+  border: 3px #0d6efd solid !important;
   display: unset !important;
 }
 
@@ -520,3 +520,30 @@ html {
 .today-date {
   font-size: 13px !important;
 }
+/* 
+.arrow-up-down {
+  height: 32px !important;
+  background-color: #1e3190;
+}
+
+.position-arrow{
+  position: relative;
+bottom: 32px;
+}
+
+.scrollbar-primary{
+  background-color: hotpink !important;
+} */
+
+.scroll-index {
+  overflow-y: scroll !important;
+}
+
+.scroll-index::-webkit-scrollbar {
+  font-size: bolder;
+}
+
+/* 
+.scroll-index::-webkit-scrollbar {
+  background-color: rgba(184, 129, 129, 0.255)!important;
+} */

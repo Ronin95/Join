@@ -59,7 +59,7 @@
             <div id="0" class="all carousel-item active h-100">
               <div class="d-flex flex-column align-items-center h-100">
                 <span class="fw-bold my-1 column-name text-dark">TO DO</span>
-                <div id="toDoColumn" class="board-column bg-grey hide-scroll-bar flex-grow-1 w-100 px-1"
+                <div id="toDoColumn" class="board-column bg-grey scroll-index flex-grow-1 w-100 px-1"
                   ondrop="moveTo('toDo'), removeHightlight('toDoColumn')"
                   ondragover="allowDrop(event), hightlight('toDoColumn')" ondragleave="removeHightlight('toDoColumn')">
                 </div>
@@ -246,7 +246,6 @@
               </div>
             </div>
           </form>
-
         </div>
       </div>
     </div>
