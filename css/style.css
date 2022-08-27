@@ -147,7 +147,8 @@ body {
 }
 
 .column-name {
-  line-height: 36px;
+  line-height: 40px;
+  font-size: 25px;
 }
 
 .drag-area-highlight {
