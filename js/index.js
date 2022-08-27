@@ -434,3 +434,16 @@ let urgencyColors = {
   medium: '#eac910',
   high: '#e83b3b'
 };
+
+// approximation code for urgency color
+function urgencyCol() {
+  for (let i = 0; i < allTasks.length; i++) {
+    if (allTasks[i].urgency == 'Low') {
+      document.getElementById('boardSubmit').className = "green-modal";
+    } else if (allTasks[i].urgency == 'Medium') {
+      document.getElementById('boardSubmit').className = "yellow-modal";
+    } else if (allTasks[i].urgency == 'High') {
+      document.getElementById('boardSubmit').className = "red-modal";
+    }
+  }
+}

@@ -168,24 +168,23 @@ body {
   /* Firefox */
 }
 
-.green {
-  background: linear-gradient(-135deg, #608a32 14px, transparent 0);
+.green-modal {
+  background: linear-gradient(-135deg, #608a32 3.4%, transparent 0);
   overflow: hidden;
 }
 
-.yellow {
-  background: linear-gradient(-135deg, #eac910 14px, transparent 0);
-  overflow: hidden;
-}
-
-.red {
-  background: linear-gradient(-135deg, #e83b3b 14px, transparent 0);
+.yellow-modal {
+  background: linear-gradient(-135deg, #eac910 3.4%, transparent 0);
   overflow: hidden;
 }
 
 .red-modal {
   background: linear-gradient(-135deg, #e83b3b 3.4%, transparent 0);
   overflow: hidden;
+}
+
+.b-style-dotted {
+  border-style: dotted;
 }
 
 .card-title {
