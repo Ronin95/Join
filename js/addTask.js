@@ -69,7 +69,7 @@ function selectUser(i) {
 }
 
 /**
- * function that show all user an disable the commit button, when no single user is selected
+ * function that show all users an disables the commit button, when no single user is selected
  */
 function showAllUserAndDisable() {
   showAllUser();

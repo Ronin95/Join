@@ -47,20 +47,22 @@ function renderColumn(columnName) {
 function genHTMLBoardTaskItem(task) {
   return /* html */ `
     <!-- a column task item -->
-    <div id="${task.id}" class="card red board-border my-2" 
-    draggable="true" 
-    ondragend="stopSlideJustOnDrop()"
-    ondragstart="startDragging(${task["id"]})" 
-    data-bs-toggle="modal" 
-    data-bs-target="#staticBackdrop"
-    onclick="openModal(${task["id"]})">
+    <div 
+      id="${task.id}" 
+      class="card red board-border my-2" 
+      draggable="true" 
+      ondragend="stopSlideJustOnDrop()"
+      ondragstart="startDragging(${task["id"]})" 
+      data-bs-toggle="modal" 
+      data-bs-target="#staticBackdrop"
+      onclick="openModal(${task["id"]})">
         <div class="card-header p-1 fs-6">
-        <span class="badge p-1 fw-semibold" style="background-color: ${
-          colorsCategory[task["category"]]
-        }">
-        ${task["category"]}</span>
+        <span 
+          class="badge p-1 fw-semibold" 
+          style="background-color: ${colorsCategory[task["category"]]}">
+            ${task["category"]}
+        </span>
     </div>
-        
         <div class="card-body text-dark p-1">
             <p class="card-title fw-bold m-0">${task["title"]}</p>
             <p class="card-text d-none">${task["description"]} </p>
@@ -425,3 +427,10 @@ formBoard.addEventListener("submit", handleForm);
 
 /* Check if Scrollbar is real
  */
+
+// Urgency Colors Code
+let urgencyColors = {
+  low: '#608a32',
+  medium: '#eac910',
+  high: '#e83b3b'
+};

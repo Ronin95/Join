@@ -136,12 +136,22 @@
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
 
-          <form class="d-flex justify-content-center" id="boardSubmit" onsubmit="adaptTask()">
-            <div class="w-100 rounded-2 bg-grey m-0 red-modal">
+          <form 
+            class="d-flex justify-content-center" 
+            id="boardSubmit" 
+            onsubmit="adaptTask()">
+            <div 
+              class="w-100 rounded-2 bg-grey m-0 red-modal"
+              
+              >
               <!-- title -->
               <div class="m-2 m-sm-4">
                 <h4 class="main-color"><b>TITLE</b></h4class=>
-                  <input id="modalTitle" class="rounded fs-5 p-2 bs-simple w-100" required minlength="3"
+                  <input 
+                    id="modalTitle" 
+                    class="rounded fs-5 p-2 bs-simple w-100" 
+                    required 
+                    minlength="3"
                     placeholder="Add a title" />
               </div>
 
@@ -192,7 +202,9 @@
               <div class="m-2 m-sm-4">
                 <h4 class="main-color"><b>URGENCY</b></h4>
                 <form class="w-100">
-                  <select id="modalUrgency" class="rounded fs-5 p-2 bs-simple w-100">
+                  <select 
+                      id="modalUrgency" 
+                      class="rounded fs-5 p-2 bs-simple w-100">
                     <option value="Low">Low</option>
                     <option value="Medium">Medium</option>
                     <option value="High">High</option>

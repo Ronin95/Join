@@ -183,6 +183,11 @@ body {
   overflow: hidden;
 }
 
+.red-modal {
+  background: linear-gradient(-135deg, #e83b3b 3.4%, transparent 0);
+  overflow: hidden;
+}
+
 .card-title {
   /* TO DO: Ellipsis for only second line, if the title is longer than to card title lines */
   font-size: 1rem;
@@ -219,11 +224,6 @@ body {
 
 .yellow-modal {
   background: linear-gradient(-135deg, #eac910 3.4%, transparent 0);
-  overflow: hidden;
-}
-
-.red-modal {
-  background: linear-gradient(-135deg, #e83b3b 3.4%, transparent 0);
   overflow: hidden;
 }
 
