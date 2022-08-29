@@ -404,8 +404,8 @@ formBoard.addEventListener('submit', handleForm);
  */
 
 /**
- *
- * @param {string} taskUrgency
+ * reads the urgency and assigns a corresponding color class
+ * @param {string} taskUrgency indicates the urgency of the respective task
  */
 function urgencyCol(taskUrgency) {
   if (taskUrgency == 'High') {
