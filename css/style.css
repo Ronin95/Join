@@ -34,7 +34,7 @@ body {
   align-items: center;
   background-color: rgb(255, 255, 255);
   height: 100vh;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
 }
 
 .main-color {
@@ -168,19 +168,37 @@ body {
   /* Firefox */
 }
 
+.green {
+  background: linear-gradient(-135deg, #608a32 14px, transparent 0);
+  overflow: hidden;
+}
+
+.yellow {
+  background: linear-gradient(-135deg, #eac910 14px, transparent 0);
+  overflow: hidden;
+}
+
+.red {
+  background: linear-gradient(-135deg, #e83b3b 14px, transparent 0);
+  overflow: hidden;
+}
+
 .green-modal {
   background: linear-gradient(-135deg, #608a32 3.4%, transparent 0);
   overflow: hidden;
+  border-radius: 0.5rem;
 }
 
 .yellow-modal {
   background: linear-gradient(-135deg, #eac910 3.4%, transparent 0);
   overflow: hidden;
+  border-radius: 0.5rem;
 }
 
 .red-modal {
   background: linear-gradient(-135deg, #e83b3b 3.4%, transparent 0);
   overflow: hidden;
+  border-radius: 0.5rem;
 }
 
 .b-style-dotted {
@@ -215,16 +233,6 @@ body {
 
 /*------------------------------------------------------------------------------------ */
 /* Style for a selected task item from board kanban column in dialog window (bs-modal) */
-
-.green-modal {
-  background: linear-gradient(-135deg, #608a32 3.4%, transparent 0);
-  overflow: hidden;
-}
-
-.yellow-modal {
-  background: linear-gradient(-135deg, #eac910 3.4%, transparent 0);
-  overflow: hidden;
-}
 
 .modal-content .card-title {
   height: unset;
@@ -401,7 +409,7 @@ body {
 /* Add Task CSS */
 
 .font {
-  font-family: "PT Sans", sans-serif;
+  font-family: 'PT Sans', sans-serif;
 }
 
 .user-show {
@@ -524,20 +532,21 @@ html {
 .today-date {
   font-size: 13px !important;
 }
-/* 
+
 .arrow-up-down {
   height: 32px !important;
   background-color: #1e3190;
 }
 
-.position-arrow{
-  position: relative;
-bottom: 32px;
+.position-arrow {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }
 
-.scrollbar-primary{
+.scrollbar-primary {
   background-color: hotpink !important;
-} */
+}
 
 .scroll-index {
   overflow-y: scroll !important;
