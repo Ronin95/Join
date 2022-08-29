@@ -1,5 +1,8 @@
-/** The current dragged element (a task item of a board kanban columns) is globally saved here. */
+/** 
+ * The current dragged element (a task item of a board kanban columns) is globally saved here. 
+ */
 let currentDraggedElement;
+
 
 /**
  * The function is executed immediattasky after loading the web page.
@@ -11,6 +14,7 @@ function initBoard() {
   modalShowAllUser();
 }
 
+
 /**
  * Render all kanban columns (TO DO, IN PROGRESS etc.) on the board.
  */
@@ -20,6 +24,7 @@ function renderAllColumns() {
   renderColumn("testing");
   renderColumn("done");
 }
+
 
 /**
  * Render a single specific Kanban column on board.
@@ -37,6 +42,7 @@ function renderColumn(columnName) {
       genHTMLBoardTaskItem(task);
   }
 }
+
 
 /**
  * Generate a single task item in the kanban column on board.
@@ -81,6 +87,7 @@ function genHTMLBoardTaskItem(task) {
     `;
 }
 
+
 /**
  * Set the current dragged task item.
  *
@@ -91,6 +98,7 @@ function startDragging(id) {
   /*   document.getElementById('1660819882175').style.position = 'absolute';
     mobileDragDrop(); */
 }
+
 
 /**
  * Execute after a dragged element (here task item) is dropped
@@ -108,6 +116,7 @@ function moveTo(state) {
   renderAllColumns();
 }
 
+
 /**
  * A w3school function: Simply integrated here.
  * Change the default behavior of the affected container (here board kanban column)
@@ -119,6 +128,7 @@ function allowDrop(ev) {
   ev.preventDefault();
 }
 
+
 /**
  * Highlight the kanban column when you hover over it with the dragged task item
  * (a corresponding class for this effect will be added to the affected column.).
@@ -128,6 +138,7 @@ function allowDrop(ev) {
 function hightlight(columnName) {
   document.getElementById(columnName).classList.add("drag-area-highlight");
 }
+
 
 /**
  * Remove the highlight effect for the kanban column when the dragged task item stop to hover it or will be dropped on it
@@ -139,6 +150,10 @@ function removeHightlight(columnName) {
   document.getElementById(columnName).classList.remove("drag-area-highlight");
 }
 
+
+/**
+ * Create new bootstrap carousel object with its initial properties.
+ */
 const myCarousel = new bootstrap.Carousel(document.getElementById("carousel"), {
   /* The speed of carousel sliding */
   interval: 400,
@@ -146,73 +161,48 @@ const myCarousel = new bootstrap.Carousel(document.getElementById("carousel"), {
   wrap: true,
 });
 
-// let columns = [
-//   {
-//     id: 0,
-//     name: 'TO DO',
-//   },
-//   {
-//     id: 1,
-//     name: 'IN PROGRESS',
-//   },
-//   {
-//     id: 2,
-//     name: 'TESTING',
-//   },
-//   {
-//     id: 3,
-//     name: 'DONE',
-//   },
-// ];
 
-// let currentColumn;
-// let carousel = document.getElementById('carousel');
-
-// carousel.addEventListener('slid.bs.carousel', (event) => {
-//   let leftArrow = document.getElementById('leftArrowText');
-//   let rightArrow = document.getElementById('rightArrowText');
-
-//   currentColumn = myCarousel._activeElement.id;
-//   console.log(myCarousel._activeElement.id);
-
-//   if (currentColumn == 0) {
-//     leftArrow.innerHTML = columns[3].name;
-//     rightArrow.innerHTML = columns[1].name;
-//   }
-//   if (currentColumn == 1) {
-//     leftArrow.innerHTML = columns[0].name;
-//     rightArrow.innerHTML = columns[2].name;
-//   }
-//   if (currentColumn == 2) {
-//     leftArrow.innerHTML = columns[1].name;
-//     rightArrow.innerHTML = columns[3].name;
-//   }
-//   if (currentColumn == 3) {
-//     leftArrow.innerHTML = columns[2].name;
-//     rightArrow.innerHTML = columns[0].name;
-//   }
-// });
-
-function toggleClassOpenModalDropDownUserList() {
-  document
-    .getElementById("user")
-    .classList.toggle("modal-avatar-container-open");
-}
-
+/**
+ * Add the highlight effect to the carousel controll button.
+ * 
+ * @param {string} side - This is the one of the carousel controll buttons 
+ * (left for the reverse sliding (direction from right to left) / 
+ * right for the default bootstrap sliding (direction form left to right)). 
+ */
 function highlightCarouselControl(side) {
   document
     .getElementById(side + "-slide-buttom")
     .classList.add("highlight-carousel-control");
 }
 
+
+/**
+ * Remove the highlight effect from the carousel controll button.
+ * 
+ * @param {string} side - This is the one of the carousel controll buttons 
+ * (left for the reverse sliding (direction from right to left) / 
+ * right for the default bootstrap sliding (direction form left to right)). 
+ */
 function removeHighlightCarouselControl(side) {
   document
     .getElementById(side + "-slide-buttom")
     .classList.remove("highlight-carousel-control");
 }
 
+
+/**
+ * The variable, in which the intervall is saved after the click on one of the carousel controll buttons.
+ */
 let timeOut = null;
 
+
+/**
+ * Highlight the carousel controll button on click for the 600 miliseconds.
+ * 
+ * @param {string} side - This is the one of the carousel controll buttons 
+ * (left for the reverse sliding (direction from right to left) / 
+ * right for the default bootstrap sliding (direction form left to right)). 
+ */
 function highlightCarouselControlOnClick(side) {
   clearTimeout(timeOut);
   highlightCarouselControl(side);
@@ -221,6 +211,10 @@ function highlightCarouselControlOnClick(side) {
   }, 600);
 }
 
+
+/**
+ * Start cycling of the carousel (direction: from left to right).
+ */
 function startSlideNext() {
   if (window.innerWidth < 576) {
     myCarousel.pause();
@@ -229,28 +223,39 @@ function startSlideNext() {
   }
 }
 
+
+/**
+ * Stop cycling of the carousel (direction: from left to right).
+ */
 function stopSlideNext() {
   if (window.innerWidth < 576) {
     myCarousel.pause();
   }
 }
 
+
+/**
+ * Start reverse cycling of the carousel (direction: from right to left).
+ */
 function startSlidePrev() {
   if (window.innerWidth < 576) {
     myCarousel.pause();
     myCarousel.cycle();
-    console.log("started cycling");
-    console.log("test");
   }
 }
 
+
+/**
+ * Stop reverse sliding of the carousel (direction: from right to left).
+ */
 function stopSlidePrev() {
   myCarousel.pause();
-  console.log("paused cycling");
 }
 
 
-/* Stop sliding of the carousel, remove the 'change direction' css class (if the carousel was currently reverse sliding) and the highlight css class of the carousel control buttons. */
+/** Stop sliding of the carousel, remove the 'change direction' css class (if the carousel was currently reverse sliding) 
+ * and the highlight css class of the carousel control buttons. 
+ */
 function stopSlideJustOnDrop() {
   myCarousel.pause();
   if (reversed) {
@@ -261,7 +266,10 @@ function stopSlideJustOnDrop() {
 }
 
 
-/* The variable, in which the state is saved, if the carousel items (kanban columns) and slide indicators have been already reversed in the DOM. */
+/**
+ * The variable, in which the state is saved, if the carousel items (kanban columns) 
+ * and slide indicators have been already reversed in the DOM.
+ */
 let reversed = false;
 
 
@@ -337,6 +345,12 @@ window.onresize = function () {
   }
 };
 
+
+/**
+ * Open the selected board task item in the modal.
+ * 
+ * @param {number} idValue - This is the value of the id of the selected board task item.
+ */
 function openModal(idValue) {
   let task = allTasks.find((n) => n.id == idValue);
   let indexTask = allTasks.findIndex((obj) => obj.id == idValue);
@@ -391,11 +405,24 @@ function changeSelectedUser(i, id) {
   openModal(id);
 }
 
+
+/**
+ * Switch the view in the modal between the selected user of the task and the scrollable container with all users to select.
+ */
 function modalShowAllUsers() {
   document.getElementById("modalSelectedUser").classList.toggle("d-none");
   document.getElementById("modalUserCollection").classList.toggle("d-none");
 }
 
+
+/**
+ * Generate all user avatars for the scrollable container: all users collection, 
+ * set the blue border for avatar of the assigned user to the task, 
+ * set the white border for the rest of user avatars.
+ * 
+ * @param {JSON} task - This is the selected task with all its properties (saved in allTasks JSON).
+ * @param {number} id - This is the value of id of the selected board task item.
+ */
 function modalGenAllUser(task, id) {
   let modalUserCollection = document.getElementById("modalUserCollection");
   modalUserCollection.innerHTML = "";
