@@ -1,8 +1,7 @@
-/** 
- * The current dragged element (a task item of a board kanban columns) is globally saved here. 
+/**
+ * The current dragged element (a task item of a board kanban columns) is globally saved here.
  */
 let currentDraggedElement;
-
 
 /**
  * The function is executed immediattasky after loading the web page.
@@ -15,7 +14,6 @@ function initBoard() {
   isThereScrollBar();
 }
 
-
 /**
  * Render all kanban columns (TO DO, IN PROGRESS etc.) on the board.
  */
@@ -25,7 +23,6 @@ function renderAllColumns() {
   renderColumn('testing');
   renderColumn('done');
 }
-
 
 /**
  * Render a single specific Kanban column on board.
@@ -45,51 +42,6 @@ function renderColumn(columnName) {
   }
 }
 
-
-/**
- * Generate a single task item in the kanban column on board.
- *
- * @param {JSON} task - This is a task from allTasks array with a certain filtered category.
- * @returns - This returns the HTML code for the task item defined with the task paramter for a specific kanban column on board.
- */
-function genHTMLBoardTaskItem(task) {
-  return /* html */ `
-    <!-- a column task item -->
-    <div 
-      id="${task.id}" 
-      class="card green board-border my-2" 
-      draggable="true" 
-      ondragend="stopSlideJustOnDrop()"
-      ondragstart="startDragging(${task['id']})" 
-      data-bs-toggle="modal" 
-      data-bs-target="#staticBackdrop"
-      onclick="openModal(${task['id']})">
-        <div class="card-header p-1 fs-6">
-        <span 
-          class="badge p-1 fw-semibold" 
-          style="background-color: ${colorsCategory[task['category']]}">
-            ${task['category']}
-        </span>
-    </div>
-        <div class="card-body text-dark p-1">
-            <p class="card-title fw-bold m-0">${task['title']}</p>
-            <p class="card-text d-none">${task['description']} </p>
-        </div>
-
-        <div class="card-footer bg-transparent p-1 d-flex justify-content-between align-items-center gap-1">
-            <span class="fw-semibold text-dark">${task['date']}</span>
-            <div class="cardAssignedTo">
-                <img 
-                  src="${task.userForTask.avatar}" 
-                  class="rounded-circle"
-                />
-            </div>
-        </div>
-    </div>
-    `;
-}
-
-
 /**
  * Set the current dragged task item.
  *
@@ -97,10 +49,7 @@ function genHTMLBoardTaskItem(task) {
  */
 function startDragging(id) {
   currentDraggedElement = id;
-  /*   document.getElementById('1660819882175').style.position = 'absolute';
-    mobileDragDrop(); */
 }
-
 
 /**
  * Execute after a dragged element (here task item) is dropped
@@ -113,11 +62,8 @@ function moveTo(state) {
   let taskIndex = allTasks.find((n) => n.id == currentDraggedElement);
   taskIndex.state = state;
   saveInBackend(allTasks, 'allTasks');
-  /* Hier muss eine Save Funktion ('Änderung des allTasks Standes) erfolgen, 
-    damit die Änderung auch nach dem Reload der Seite funktioniert */
   renderAllColumns();
 }
-
 
 /**
  * A w3school function: Simply integrated here.
@@ -130,7 +76,6 @@ function allowDrop(ev) {
   ev.preventDefault();
 }
 
-
 /**
  * Highlight the kanban column when you hover over it with the dragged task item
  * (a corresponding class for this effect will be added to the affected column.).
@@ -140,7 +85,6 @@ function allowDrop(ev) {
 function hightlight(columnName) {
   document.getElementById(columnName).classList.add('drag-area-highlight');
 }
-
 
 /**
  * Remove the highlight effect for the kanban column when the dragged task item stop to hover it or will be dropped on it
@@ -152,58 +96,53 @@ function removeHightlight(columnName) {
   document.getElementById(columnName).classList.remove('drag-area-highlight');
 }
 
-
 /**
  * Create new bootstrap carousel object with its initial properties.
  */
-const myCarousel = new bootstrap.Carousel(document.getElementById("carousel"), {
+const myCarousel = new bootstrap.Carousel(document.getElementById('carousel'), {
   /* The speed of carousel sliding */
   interval: 400,
   pause: false,
   wrap: true,
 });
 
-
 /**
  * Add the highlight effect to the carousel controll button.
- * 
- * @param {string} side - This is the one of the carousel controll buttons 
- * (left for the reverse sliding (direction from right to left) / 
- * right for the default bootstrap sliding (direction form left to right)). 
+ *
+ * @param {string} side - This is the one of the carousel controll buttons
+ * (left for the reverse sliding (direction from right to left) /
+ * right for the default bootstrap sliding (direction form left to right)).
  */
 function highlightCarouselControl(side) {
   document
-    .getElementById(side + '-slide-buttom')
+    .getElementById(side + '-slide-button')
     .classList.add('highlight-carousel-control');
 }
 
-
 /**
  * Remove the highlight effect from the carousel controll button.
- * 
- * @param {string} side - This is the one of the carousel controll buttons 
- * (left for the reverse sliding (direction from right to left) / 
- * right for the default bootstrap sliding (direction form left to right)). 
+ *
+ * @param {string} side - This is the one of the carousel controll buttons
+ * (left for the reverse sliding (direction from right to left) /
+ * right for the default bootstrap sliding (direction form left to right)).
  */
 function removeHighlightCarouselControl(side) {
   document
-    .getElementById(side + '-slide-buttom')
+    .getElementById(side + '-slide-button')
     .classList.remove('highlight-carousel-control');
 }
-
 
 /**
  * The variable, in which the intervall is saved after the click on one of the carousel controll buttons.
  */
 let timeOut = null;
 
-
 /**
  * Highlight the carousel controll button on click for the 600 miliseconds.
- * 
- * @param {string} side - This is the one of the carousel controll buttons 
- * (left for the reverse sliding (direction from right to left) / 
- * right for the default bootstrap sliding (direction form left to right)). 
+ *
+ * @param {string} side - This is the one of the carousel controll buttons
+ * (left for the reverse sliding (direction from right to left) /
+ * right for the default bootstrap sliding (direction form left to right)).
  */
 function highlightCarouselControlOnClick(side) {
   clearTimeout(timeOut);
@@ -212,7 +151,6 @@ function highlightCarouselControlOnClick(side) {
     removeHighlightCarouselControl(side);
   }, 600);
 }
-
 
 /**
  * Start cycling of the carousel (direction: from left to right).
@@ -225,7 +163,6 @@ function startSlideNext() {
   }
 }
 
-
 /**
  * Stop cycling of the carousel (direction: from left to right).
  */
@@ -234,7 +171,6 @@ function stopSlideNext() {
     myCarousel.pause();
   }
 }
-
 
 /**
  * Start reverse cycling of the carousel (direction: from right to left).
@@ -246,7 +182,6 @@ function startSlidePrev() {
   }
 }
 
-
 /**
  * Stop reverse sliding of the carousel (direction: from right to left).
  */
@@ -254,9 +189,8 @@ function stopSlidePrev() {
   myCarousel.pause();
 }
 
-
-/** Stop sliding of the carousel, remove the 'change direction' css class (if the carousel was currently reverse sliding) 
- * and the highlight css class of the carousel control buttons. 
+/** Stop sliding of the carousel, remove the 'change direction' css class (if the carousel was currently reverse sliding)
+ * and the highlight css class of the carousel control buttons.
  */
 function stopSlideJustOnDrop() {
   myCarousel.pause();
@@ -267,9 +201,8 @@ function stopSlideJustOnDrop() {
   removeHighlightCarouselControl('left');
 }
 
-
 /**
- * The variable, in which the state is saved, if the carousel items (kanban columns) 
+ * The variable, in which the state is saved, if the carousel items (kanban columns)
  * and slide indicators have been already reversed in the DOM.
  */
 let reversed = false;
@@ -342,10 +275,9 @@ window.onresize = function () {
   }
 };
 
-
 /**
  * Open the selected board task item in the modal.
- * 
+ *
  * @param {number} idValue - This is the value of the id of the selected board task item.
  */
 function openModal(idValue) {
@@ -360,25 +292,6 @@ function openModal(idValue) {
   document.getElementById('modalSelectedUser').src = task.userForTask.avatar;
   renderButtons(indexTask);
   urgencyCol(task.urgency);
-}
-
-/**
- * creates the buttons for the modal in the board with onclick functions
- * @param {number} indexTask the location of the task in alltasks
- */
-function renderButtons(indexTask) {
-  document.getElementById('modalBoardBtns').innerHTML = /*html*/ `
-  <input title="Delete and close the task." id="modalDeleteBtn"
-                  class="btn btn-outline-danger p-1 p-sm-2 me-1 me-sm-3" type="button"
-                  data-bs-dismiss="modal" value="Delete" onclick="deleteTask(${indexTask}, renderAllColumns)" >
-                <div>
-                  <input title="Cancel the changes and close the task." id="modalCancelBtn"
-                    class="btn btn-outline-secondary p-1 p-sm-2 me-1 me-sm-3" type="button"
-                    data-bs-dismiss="modal" value="Cancel">
-                  <input title="Save the changes to the task and close it." id="modalSaveBtn"
-                    class="btn btn-primary p-1 p-sm-2" type="submit" value="Save" onclick="adaptTask(${indexTask}, renderAllColumns)">
-                </div>
-  `;
 }
 
 /**
@@ -417,7 +330,6 @@ function changeSelectedUser(i, id) {
   openModal(id);
 }
 
-
 /**
  * Switch the view in the modal between the selected user of the task and the scrollable container with all users to select.
  */
@@ -426,12 +338,11 @@ function modalShowAllUsers() {
   document.getElementById('modalUserCollection').classList.toggle('d-none');
 }
 
-
 /**
- * Generate all user avatars for the scrollable container: all users collection, 
- * set the blue border for avatar of the assigned user to the task, 
+ * Generate all user avatars for the scrollable container: all users collection,
+ * set the blue border for avatar of the assigned user to the task,
  * set the white border for the rest of user avatars.
- * 
+ *
  * @param {JSON} task - This is the selected task with all its properties (saved in allTasks JSON).
  * @param {number} id - This is the value of id of the selected board task item.
  */

@@ -413,10 +413,10 @@ body {
 }
 
 .user-show {
-  height: 70px;
-  cursor: pointer;
+  height: 65px;
+  width: 65px;
+  object-fit: contain;
   border: 3px solid white !important;
-  margin: 4px;
   background-color: rgb(162, 154, 154) !important;
 }
 
@@ -562,7 +562,3 @@ html {
 } */
 
 /* Just Testing again something */
-
-body.dragging {
-  touch-actions: pinch-zoom;
-}

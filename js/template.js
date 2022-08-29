@@ -11,7 +11,7 @@ function newTaskTemp(newTask, i) {
           <div>
             <img
               src="${newTask.userForTask.avatar}"
-              class="user-show m-sm-3 m-2 rounded-circle"
+              class="user-show cursor-pointer m-sm-3 m-2 rounded-circle"
             />
           </div>
           <div class="d-flex  flex-column  align-items-center  align-items-sm-start mb-2  mb-sm-0">
@@ -49,10 +49,84 @@ function newTaskTemp(newTask, i) {
           class="btn-close p-2 m-auto"
           type="button"
           onclick="deleteTask(${i}, generateAllTasks)"
-          data-bs-dismiss="toast"
           aria-label="Close">
         </button>
       </div>
   </div>
   `;
+}
+
+/**
+ * Generate a single task item in the kanban column on board.
+ *
+ * @param {JSON} task - This is a task from allTasks array with a certain filtered category.
+ * @returns - This returns the HTML code for the task item defined with the task paramter for a specific kanban column on board.
+ */
+function genHTMLBoardTaskItem(task) {
+  return /* html */ `
+    <!-- a column task item -->
+    <div 
+      id="${task.id}" 
+      class="card green board-border my-2" 
+      draggable="true" 
+      ondragend="stopSlideJustOnDrop()"
+      ondragstart="startDragging(${task['id']})" 
+      data-bs-toggle="modal" 
+      data-bs-target="#staticBackdrop"
+      onclick="openModal(${task['id']})">
+        <div class="card-header p-1 fs-6">
+        <span 
+          class="badge p-1 fw-semibold" 
+          style="background-color: ${colorsCategory[task['category']]}">
+            ${task['category']}
+        </span>
+    </div>
+        <div class="card-body text-dark p-1">
+            <p class="card-title fw-bold m-0">${task['title']}</p>
+            <p class="card-text d-none">${task['description']} </p>
+        </div>
+
+        <div class="card-footer bg-transparent p-1 d-flex justify-content-between align-items-center gap-1">
+            <span class="fw-semibold text-dark">${task['date']}</span>
+            <div class="cardAssignedTo">
+                <img 
+                  src="${task.userForTask.avatar}" 
+                  class="rounded-circle"
+                />
+            </div>
+        </div>
+    </div>
+    `;
+}
+
+/**
+ * creates the buttons for the modal in the board with onclick functions
+ * @param {number} indexTask the location of the task in alltasks
+ */
+function renderButtons(indexTask) {
+  document.getElementById('modalBoardBtns').innerHTML = /*html*/ `
+  <input title="Delete and close the task." id="modalDeleteBtn"
+                  class="btn btn-outline-danger p-1 p-sm-2 me-1 me-sm-3" type="button"
+                  data-bs-dismiss="modal" value="Delete" onclick="deleteTask(${indexTask}, renderAllColumns)" >
+                <div>
+                  <input title="Cancel the changes and close the task." id="modalCancelBtn"
+                    class="btn btn-outline-secondary p-1 p-sm-2 me-1 me-sm-3" type="button"
+                    data-bs-dismiss="modal" value="Cancel">
+                  <input title="Save the changes to the task and close it." id="modalSaveBtn"
+                    class="btn btn-primary p-1 p-sm-2" type="submit" value="Save" onclick="adaptTask(${indexTask}, renderAllColumns)">
+                </div>
+  `;
+}
+
+function generateUsers(user) {
+  return /*html*/ `
+  <img 
+    title="${user.name}" 
+    id="selected${i}" 
+    onclick="selectUser(${i})" 
+    class="user-show cursor-pointer  border border-white rounded-circle" 
+    src="${user.avatar}" 
+    alt=""
+  />
+`;
 }
