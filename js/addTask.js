@@ -1,5 +1,5 @@
 let selectedUser = [];
-let formAddTask = document.getElementById('addTaskSubmit');
+let formAddTask = document.getElementById("addTaskSubmit");
 let today = new Date();
 let dd = today.getDate();
 let mm = today.getMonth() + 1;
@@ -12,12 +12,12 @@ let yyyy = today.getFullYear();
  * show a message the Message with the value for wich Member is the task added
  */
 async function addTask() {
-  allTasks = await loadFromBackend('allTasks');
-  let title = document.getElementById('title');
-  let date = document.getElementById('txtDate');
-  let category = document.getElementById('category');
-  let urgency = document.getElementById('urgency');
-  let description = document.getElementById('description');
+  allTasks = await loadFromBackend("allTasks");
+  let title = document.getElementById("title");
+  let date = document.getElementById("txtDate");
+  let category = document.getElementById("category");
+  let urgency = document.getElementById("urgency");
+  let description = document.getElementById("description");
   let newTask = {
     title: title.value,
     date: date.value,
@@ -26,12 +26,12 @@ async function addTask() {
     description: description.value,
     userForTask: selectedUser,
     id: new Date().getTime(),
-    state: 'toDo',
+    state: "toDo",
   };
   if ((newTask.date = !date.value)) {
     newTask.date = today;
   } else {
-    newTask.date = date.value.replace('.', '/');
+    newTask.date = date.value.replace(".", "/");
   }
   saveTask(newTask);
 }
@@ -43,7 +43,7 @@ async function addTask() {
  */
 function saveTask(newTask) {
   allTasks.push(newTask);
-  saveInBackend(allTasks, 'allTasks');
+  saveInBackend(allTasks, "allTasks");
 }
 
 /**
@@ -55,58 +55,64 @@ function deleteUnsafedInput() {
 }
 
 /**
- * show all User from the global JSON array - users - that can be selected for a task
- */
-function showAllUser() {
-  document.getElementById('user').innerHTML = ``;
-  for (let i = 1; i < users.length; i++) {
-    let user = users[i];
-    let showUser = document.getElementById('user');
-    showUser.innerHTML += `<img title="${user.name}" id="selected${i}" onclick="selectUser(${i})" class="user-show  border border-white rounded-circle m-1" src="${user.avatar}" alt="">`;
-  }
-}
-
-/**
  * select an avatar to choose a user to add a task
  * @param {string} i - this is the Person who is choose by clicking an avatar
  * creates a new element wich show only the user who is selected
  */
 function selectUser(i) {
-  document.getElementById(`selected${i}`).classList.toggle('user-selected');
+  document.getElementById(`selected${i}`).classList.toggle("user-selected");
   selectedUser = users[i];
   document.getElementById(`user`).innerHTML = /*html*/ ` 
     <div onclick="showAllUserAndDisable()"> 
       <img title="${selectedUser.name}" id="${i}" class="user-show rounded-circle user-selected" src="${selectedUser.avatar}" alt=""></div>`;
-  document.getElementById('createTask').removeAttribute('disabled');
+  document.getElementById("createTask").removeAttribute("disabled");
 }
 
 /**
- * function that show all user an disable the commit button, when no single user is selected
+ * function that show all users an disables the commit button, when no single user is selected
  */
 function showAllUserAndDisable() {
   showAllUser();
-  document.getElementById('createTask').disabled = true;
+  document.getElementById("createTask").disabled = true;
+}
+
+/**
+ * load the current date, and formate it so it can use as a default value in the add Task formular
+ */
+
+/* HAVE TO REWRITE for the new BOOTSRAP DATE*/
+function loadCurrentDate() {
+  if (dd < 10) {
+    dd = "0" + dd;
+  }
+  if (mm < 10) {
+    mm = "0" + mm;
+  }
+  today = yyyy + "/" + mm + "/" + dd;
+  document.getElementById("today").innerHTML += /*html*/ `
+  <div class="today-date d-flex justify-content-center flex-column">
+    <span class="d-flex justify-content-end ">TODAY</span>
+    <span class="today-date d-flex justify-content-center">${today} </span>
+  </div>
+  `;
 }
 
 function handleForm(event) {
-  const successToast = document.getElementById('success_task');
+  const successToast = document.getElementById("success_task");
   event.preventDefault();
   const toast = new bootstrap.Toast(successToast);
   toast.show();
   formAddTask.reset();
   showAllUser();
 }
-formAddTask.addEventListener('submit', handleForm);
+formAddTask.addEventListener("submit", handleForm);
 
-
-$(document).ready(function(){
-
-  $('.input-daterange').datepicker({
-      format: 'dd/mm/yyyy',
-      autoclose: true,
-      calendarWeeks : true,
-      clearBtn: true,
-      disableTouchKeyboard: true
+$(document).ready(function () {
+  $(".input-daterange").datepicker({
+    format: "dd/mm/yyyy",
+    autoclose: true,
+    calendarWeeks: true,
+    clearBtn: true,
+    disableTouchKeyboard: true,
   });
-  
-  });
+});

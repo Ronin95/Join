@@ -58,8 +58,8 @@
 
             <div id="0" class="all carousel-item active h-100">
               <div class="d-flex flex-column align-items-center h-100">
-                <span class="fw-bold my-1 column-name text-dark">TO DO</span>
-                <div id="toDoColumn" class="board-column bg-grey hiddenScrollbarScrollbar flex-grow-1 w-100 px-1"
+                <span class="fw-bold my-1 column-name text-dark"><b>TO DO</b></span>
+                <div id="toDoColumn" class="board-column bg-grey scroll-index flex-grow-1 w-100 px-1"
                   ondrop="moveTo('toDo'), removeHightlight('toDoColumn')"
                   ondragover="allowDrop(event), hightlight('toDoColumn')" ondragleave="removeHightlight('toDoColumn')">
                 </div>
@@ -68,7 +68,7 @@
 
             <div id="1" class="all carousel-item h-100">
               <div class="d-flex flex-column align-items-center h-100">
-                <span class="fw-bold my-1 column-name">IN PROGRESS</span>
+                <span class="fw-bold my-1 column-name text-dark"><b>IN PROGRESS</b></span>
                 <div id="inProgressColumn" class="board-column bg-grey hiddenScrollbarScrollbar flex-grow-1 w-100 px-1"
                   ondrop="moveTo('inProgress'), removeHightlight('inProgressColumn')"
                   ondragover="allowDrop(event), hightlight('inProgressColumn')"
@@ -79,7 +79,7 @@
 
             <div id="2" class="all carousel-item h-100">
               <div class="d-flex flex-column align-items-center h-100">
-                <span class="fw-bold my-1 column-name">TESTING</span>
+                <span class="fw-bold my-1 column-name text-dark"><b>TESTING</b></span>
                 <div id="testingColumn" class="board-column bg-grey hiddenScrollbarScrollbar flex-grow-1 w-100 px-1"
                   ondrop="moveTo('testing'), removeHightlight('testingColumn')"
                   ondragover="allowDrop(event), hightlight('testingColumn')"
@@ -90,7 +90,7 @@
 
             <div id="3" class="all carousel-item h-100">
               <div class="d-flex flex-column align-items-center h-100">
-                <span class="fw-bold my-1 column-name">DONE</span>
+                <span class="fw-bold my-1 column-name text-dark"><b>DONE</b></span>
                 <div id="doneColumn" class="board-column bg-grey hiddenScrollbarScrollbar flex-grow-1 w-100 px-1"
                   ondrop="moveTo('done'), removeHightlight('doneColumn')"
                   ondragover="allowDrop(event), hightlight('doneColumn')" ondragleave="removeHightlight('doneColumn')">
@@ -131,17 +131,24 @@
 
     <!-- Modal -->
     <!-- Am Ende Modal noch unnötige Klassen checken / löschen / cleanen -->
-    <div class="modal fade" id="staticBackdrop" data-bs-keyboard="true" tabindex="-1"
-      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdrop" data-bs-keyboard="true" tabindex="-1"aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
-
-          <form class="d-flex justify-content-center" id="addTaskSubmit" onsubmit="addTask()">
-            <div class="w-100 rounded-2 bg-grey m-0 red-modal">
+          <form 
+            class="d-flex justify-content-center" 
+            id="boardSubmit" 
+            onsubmit="adaptTask()">
+            <div 
+              class="w-100 rounded-2 bg-grey m-0 green-modal b-style-dotted"
+              >
               <!-- title -->
               <div class="m-2 m-sm-4">
-                <h4 class="main-color">TITLE</h4class=>
-                  <input id="modalTitle title" class="rounded fs-5 p-2 bs-simple w-100" required minlength="3"
+                <h4 class="main-color"><b>TITLE</b></h4class=>
+                  <input 
+                    id="modalTitle" 
+                    class="rounded fs-5 p-2 bs-simple w-100" 
+                    required 
+                    minlength="3"
                     placeholder="Add a title" />
               </div>
 
@@ -157,13 +164,13 @@
               </div> -->
 
               <div class="m-2 m-sm-4">
-                <h4 class="main-color">DUE DATE</h4>
+                <h4 class="main-color"><b>DUE DATE</b></h4>
               <div class="container m-0 p-0">
                 <form autocomplete="off">
                   <div class="flex-row d-flex">
                     <div class="w-100">
                       <div class="input-group input-daterange w-100">
-                        <input id="txtDate" placeholder="Choose date" required type="text" class="p-2 form-control text-start fs-5 rounded">
+                        <input id="modalDate" placeholder="Choose date" required type="text" class="p-2 form-control text-start fs-5 rounded">
                         <span class="fa fa-calendar" id="fa-1"></span>
                       </div>
                     </div>
@@ -175,9 +182,9 @@
 
               <!-- category -->
               <div class="m-2 m-sm-4">
-                <h4 class="main-color">CATEGORY</h4>
+                <h4 class="main-color"><b>CATEGORY</b></h4>
                 <form class="w-100">
-                  <select id="modalCategory category" class="p-2 rounded fs-5 p-2 bs-simple w-100">
+                  <select id="modalCategory" class="p-2 rounded fs-5 p-2 bs-simple w-100">
                     <option value="Sales">Sales</option>
                     <option value="IT">IT</option>
                     <option value="Production">Production</option>
@@ -190,9 +197,11 @@
 
               <!-- urgency -->
               <div class="m-2 m-sm-4">
-                <h4 class="main-color">URGENCY</h4>
+                <h4 class="main-color"><b>URGENCY</b></h4>
                 <form class="w-100">
-                  <select id="modalUrgency urgency" class="rounded fs-5 p-2 bs-simple w-100">
+                  <select 
+                      id="modalUrgency" 
+                      class="rounded fs-5 p-2 bs-simple w-100">
                     <option value="Low">Low</option>
                     <option value="Medium">Medium</option>
                     <option value="High">High</option>
@@ -202,14 +211,14 @@
 
               <!-- description -->
               <div class="d-flex flex-column m-2 m-sm-4">
-                <h4 class="main-color">DESCRIPTION</h4>
-                <textarea id="modalDescription description" required class="rounded fs-5 p-2 bs-simple w-100 h-100" minlength="3"
+                <h4 class="main-color"><b>DESCRIPTION</b></h4>
+                <textarea id="modalDescription" required class="rounded fs-5 p-2 bs-simple w-100 h-100" minlength="3"
                   rows="2" cols="50" placeholder="Add your notes"></textarea>
               </div>
 
               <!-- assigned to -->
               <div class="m-2 m-sm-4">
-                <h4 class="main-color mb-1">ASSIGNED TO</h4>
+                <h4 class="main-color mb-1"><b>ASSIGNED TO</b></h4>
                 <div id="modalAssignedUser" class="w-100 position-relative modalAssignedUser"
                   onclick="modalShowAllUsers()">
                   <img id="modalSelectedUser" class="assigendToImg rounded-circle border border-4 border-primary m-1"
@@ -220,24 +229,32 @@
               </div>
 
               <!-- buttons-->
-              <div class="m-2 m-sm-4 d-flex justify-content-between">
-                <input title="Delete and close the task." id="modalCancelBtn"
-                  class="btn btn-outline-danger p-1 p-sm-2 me-1 me-sm-3" type="button"
-                  data-bs-dismiss="modal" value="Delete">
-
-                <div>
-                  <input title="Cancel the changes and close the task." id="modalCancelBtn"
-                    class="btn btn-outline-secondary p-1 p-sm-2 me-1 me-sm-3" type="button"
-                    data-bs-dismiss="modal" value="Cancel">
-                  <input title="Save the changes to the task and close it." id="modalSaveBtn"
-                    class="btn btn-primary p-1 p-sm-2" type="submit" value="Save" disabled>
-                </div>
+              <div id="modalBoardBtns" class="m-2 m-sm-4 d-flex justify-content-between">
+                
               </div>
 
             </div>
-
+            <div class="toast-container position-fixed top-0 end-0 p-3">
+              <div 
+                id="boardToast" 
+                class="toast" 
+                role="alert" 
+                aria-live="assertive" 
+                aria-atomic="true">
+                <div class="d-flex align-items-center">
+                  <div 
+                    class="toast-body" 
+                    >Changes saved!</div>
+                  <button 
+                    class="btn-close me-2 m-auto" 
+                    type="button" 
+                    data-bs-dismiss="toast" 
+                    aria-label="Close">
+                  </button>
+                </div>
+              </div>
+            </div>
           </form>
-
         </div>
       </div>
     </div>
@@ -248,8 +265,8 @@
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
     crossorigin="anonymous"></script>
   <script src="./js/helpers.js"></script>
-  <script src="./js/template.js"></script>
-  <script src="./js/addTask.js"></script>
+   <script src="./js/template.js"></script>
+  <!-- <script src="./js/addTask.js"></script> -->
   <script src="./js/script.js"></script>
   <script src="./js/index.js"></script>
   <script src=" ./js/DragDropTouch.js"></script>

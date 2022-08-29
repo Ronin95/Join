@@ -34,7 +34,7 @@ body {
   align-items: center;
   background-color: rgb(255, 255, 255);
   height: 100vh;
-  font-family: 'PT Sans', sans-serif;
+  font-family: "PT Sans", sans-serif;
 }
 
 .main-color {
@@ -42,8 +42,14 @@ body {
 }
 
 .vh-70 {
-  height: 70vh;
+  height: 70vh !important;
 } /*Bitte nicht löschen. Wird benötigt für Backlog scrollen .phil*/
+
+@media (min-height: 655px) {
+  .media-vh77 {
+    height: 77vh !important;
+  }
+}
 
 /*------------------------------------------------------------------------------------*/
 /* The whole app window (background) with incl. the navbar and the content / sub page */
@@ -56,6 +62,10 @@ body {
 
 /*--------------------------------*/
 /* The navbar with its components */
+
+.z-index-100 {
+  z-index: 100 !important;
+}
 
 .navbar {
   background-color: #1e3190;
@@ -92,7 +102,7 @@ body {
   object-fit: cover;
 }
 
-.board-border{
+.board-border {
   border: 1px rgb(203, 203, 203) solid;
 }
 
@@ -133,11 +143,12 @@ body {
 /* Allow scrolling of board kanban column */
 .board-column {
   overflow-y: auto;
-  overflow-y: overlay;
+  /* overflow-y: overlay; */
 }
 
 .column-name {
-  line-height: 36px;
+  line-height: 40px;
+  font-size: 25px;
 }
 
 .drag-area-highlight {
@@ -157,19 +168,23 @@ body {
   /* Firefox */
 }
 
-.green {
-  background: linear-gradient(-135deg, #608a32 14px, transparent 0);
+.green-modal {
+  background: linear-gradient(-135deg, #608a32 3.4%, transparent 0);
   overflow: hidden;
 }
 
-.yellow {
-  background: linear-gradient(-135deg, #eac910 14px, transparent 0);
+.yellow-modal {
+  background: linear-gradient(-135deg, #eac910 3.4%, transparent 0);
   overflow: hidden;
 }
 
-.red {
-  background: linear-gradient(-135deg, #e83b3b 14px, transparent 0);
+.red-modal {
+  background: linear-gradient(-135deg, #e83b3b 3.4%, transparent 0);
   overflow: hidden;
+}
+
+.b-style-dotted {
+  border-style: dotted;
 }
 
 .card-title {
@@ -195,6 +210,7 @@ body {
 .cardAssignedTo img {
   width: 40px;
   height: 40px;
+  background-color: rgb(162, 154, 154) !important;
 }
 
 /*------------------------------------------------------------------------------------ */
@@ -207,11 +223,6 @@ body {
 
 .yellow-modal {
   background: linear-gradient(-135deg, #eac910 3.4%, transparent 0);
-  overflow: hidden;
-}
-
-.red-modal {
-  background: linear-gradient(-135deg, #e83b3b 3.4%, transparent 0);
   overflow: hidden;
 }
 
@@ -302,12 +313,6 @@ body {
     gap: 2px;
   }
 
-  .carousel-inner {
-    /* TO DO: Later to delete. */
-    /* width: calc(100vw - 142px) !important; */
-    /* border: 3px solid blue; */
-  }
-
   .carousel-item {
     padding: 0px !important;
   }
@@ -395,15 +400,21 @@ body {
 /*---------------*/
 /* Add Task CSS */
 
+.font {
+  font-family: "PT Sans", sans-serif;
+}
+
 .user-show {
   height: 70px;
   cursor: pointer;
-  border: 4px solid white !important;
+  border: 3px solid white !important;
+  margin: 4px;
+  background-color: rgb(162, 154, 154) !important;
 }
 
 .user-selected {
   opacity: 1;
-  border: 4px rgba(255, 255, 255, 0.557) solid;
+  border: 3px #0d6efd solid !important;
   display: unset !important;
 }
 
@@ -489,3 +500,56 @@ html {
   scrollbar-width: none;
   /* Firefox */
 }
+
+.hide-scroll-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scroll-bar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll;
+}
+
+/* Muss bleiben damit die Bilder zentriert sind in help html in der mobilen ansicht ab 304px */
+.width-100px {
+  width: 100px;
+}
+
+.today-date {
+  font-size: 13px !important;
+}
+/* 
+.arrow-up-down {
+  height: 32px !important;
+  background-color: #1e3190;
+}
+
+.position-arrow{
+  position: relative;
+bottom: 32px;
+}
+
+.scrollbar-primary{
+  background-color: hotpink !important;
+} */
+
+.scroll-index {
+  overflow-y: scroll !important;
+}
+
+.scroll-index::-webkit-scrollbar {
+  font-size: bolder;
+}
+
+/* 
+.scroll-index::-webkit-scrollbar {
+  background-color: rgba(184, 129, 129, 0.255)!important;
+} */
+
+/* Just Testing again something */

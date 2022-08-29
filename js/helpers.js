@@ -18,11 +18,10 @@ function checkIfLogin() {
  * Deletes the selected task from the array
  * @param {number} i indicates the location of the object in the array
  */
-function deleteTask(i) {
+function deleteTask(i, fct) {
   allTasks.splice(i, 1);
   saveInBackend(allTasks, 'allTasks');
-  allTasks = loadFromBackend('allTasks');
-  generateAllTasks();
+  fct();
 }
 
 /**
@@ -46,6 +45,27 @@ function loadFromBackend(key) {
     return JSON.parse(asString);
   } else {
     return [];
+  }
+}
+
+/**
+ * show all User from the global JSON array - users - that can be selected for a task
+ */
+function showAllUser() {
+  document.getElementById('user').innerHTML = ``;
+  for (let i = 1; i < users.length; i++) {
+    let user = users[i];
+    let showUser = document.getElementById('user');
+    showUser.innerHTML += /*html*/`
+      <img 
+        title="${user.name}" 
+        id="selected${i}" 
+        onclick="selectUser(${i})" 
+        class="user-show  border border-white rounded-circle" 
+        src="${user.avatar}" 
+        alt=""
+      />
+    `;
   }
 }
 
