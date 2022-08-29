@@ -249,6 +249,8 @@ function stopSlidePrev() {
   console.log("paused cycling");
 }
 
+
+/* Stop sliding of the carousel, remove the 'change direction' css class (if the carousel was currently reverse sliding) and the highlight css class of the carousel control buttons. */
 function stopSlideJustOnDrop() {
   myCarousel.pause();
   if (reversed) {
@@ -258,8 +260,12 @@ function stopSlideJustOnDrop() {
   removeHighlightCarouselControl("left");
 }
 
+
+/* The variable, in which the state is saved, if the carousel items (kanban columns) and slide indicators have been already reversed in the DOM. */
 let reversed = false;
 
+
+/* Add the class 'change direction' changing the directon of the bootstrap default function cycling to from right to left. */
 function addChangeDirectionClassReverseChildren() {
   document.getElementById("carousel-inner").classList.add("changeDirection");
   console.log("ADDED class");
@@ -268,34 +274,43 @@ function addChangeDirectionClassReverseChildren() {
   console.log("children reversed to order: 4--3--2--1");
 }
 
+
+/* Remove the css class 'change direction' changing the directon of the bootstrap default function cycling to from right to left. */
 function removedChangeDirectionClassReverseBackChildren() {
   document.getElementById("carousel-inner").classList.remove("changeDirection");
-  console.log("REMOVED class");
   reverseChildren();
   reversed = false;
-  console.log("children reversed BACK to ORIGINAL order: 1--2--3--4");
-
   correctActiveIndicator();
 }
 
+
+/**
+ * Correct the false active slide indicator to the right one 
+ * (after execution of carousel reverse sliding with help of default bootstrap fuctions
+ * and prevous reversing the order of the carousel items (kanban columns) and slide indicatos in the DOM). 
+ */
 function correctActiveIndicator() {
   let foundedIndex;
+  /* Find the false active slide indicator */
   for (let i = 0; i < 4; i++) {
     let value = document.getElementById(`ind${i}`).className;
     if (value == "active") {
       foundedIndex = i;
     }
   }
-
+  /* Remove the css class 'active' and the value 'true'of the bootstrap aria-current attribute of the false slide indicator and add them to the right one. */
   let wrongInd = document.getElementById(`ind${foundedIndex}`);
   wrongInd.classList.remove("active");
   wrongInd.removeAttribute("aria-current");
-
   let rightInd = document.getElementById(`ind${myCarousel._activeElement.id}`);
   rightInd.classList.add("active");
   rightInd.setAttribute("aria-current", "true");
 }
 
+
+/**
+ * Reverse the order of the carousel items (kanban columns) and slide indicators for the reverse cyclling.
+ */
 function reverseChildren() {
   myCarousel.pause();
   let parentItems = document.getElementById("carousel-inner");
@@ -310,6 +325,10 @@ function reverseChildren() {
   }
 }
 
+
+/**
+ * Change the value of the boostrap data attribute of the carousel according to the bs-sm-break point. Turn on / off the carousel swipping.
+ */
 window.onresize = function () {
   if (window.innerWidth < 576) {
     document.getElementById("carousel").setAttribute("data-bs-touch", "true");
