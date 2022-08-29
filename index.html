@@ -1,233 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Join</title>
-    <!-- CSS only -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/fonts.css" />
-    <link rel="stylesheet" href="./css/datepicker.css" />
 
-    <script src="./js/mini_backend.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/fonts.css" />
+  <link rel="stylesheet" href="./css/datepicker.css" />
 
-    <link rel="shortcut icon" href="./img/joinlogo.png" type="image/x-icon" />
+  <script src="./js/mini_backend.js"></script>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css"
-    />
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">
+  <link rel="shortcut icon" href="./img/joinlogo.png" type="image/x-icon" />
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" />
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css"> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script> -->
-  </head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script> -->
+</head>
 
-  <body onload="initIndex()" class="py-md-4">
-    <div class="app-window h-100 w-100 d-flex flex-column flex-md-row">
-      <div w3-include-html="navbar.html"></div>
+<body onload="initIndex()" class="py-md-4 is-dragging">
+  <div class="app-window h-100 w-100 d-flex flex-column flex-md-row">
+    <div w3-include-html="navbar.html"></div>
 
-      <!-- work area (right site: content of the nav-link) -->
-      <div class="d-flex flex-grow-1 overflow-hidden">
-        <div class="w-100 py-sm-4">
-          <div
-            id="carousel"
-            class="carousel slide h-100 d-flex justify-content-between"
-            data-bs-touch="false"
-          >
-            <button
-              id="left-slide-buttom"
-              class="d-sm-none carousel-control-prev d-flex flex-column"
-              type="button"
-              data-bs-target="#carousel"
-              data-bs-slide="prev"
-              ondragover="highlightCarouselControl('left'), console.log('over')"
-              ondragleave="stopSlidePrev(), removedChangeDirectionClassReverseBackChildren(), removeHighlightCarouselControl('left'), console.log('leave')"
-              ondragenter="addChangeDirectionClassReverseChildren(); startSlidePrev(), console.log('enter')"
-              onclick="highlightCarouselControlOnClick('left')"
-            >
-              <span
-                id="leftArrowText"
-                class="fs-6 fw-bold carousel-control-name d-flex align-items-start justify-content-center justify-content-center text-white"
-              ></span>
-              <span
-                id="left-arrow"
-                class="carousel-control-prev-icon"
-                aria-hidden="true"
-                ><br /><span class="text-white" style="font-size: 10px"
-                  >Drag</span
-                ></span
-              >
-              <span class="visually-hidden">Previous</span>
-            </button>
+    <!-- work area (right site: content of the nav-link) -->
+    <div class="d-flex flex-grow-1 overflow-hidden">
+      <div class="w-100 py-sm-4">
+        <div id="carousel" class="carousel slide h-100 d-flex justify-content-between" data-bs-touch="false">
+          <button id="left-slide-buttom" class="d-sm-none carousel-control-prev d-flex flex-column" type="button"
+            data-bs-target="#carousel" data-bs-slide="prev"
+            ondragover="highlightCarouselControl('left'), console.log('over')"
+            ondragleave="stopSlidePrev(), removedChangeDirectionClassReverseBackChildren(), removeHighlightCarouselControl('left'), console.log('leave')"
+            ondragenter="addChangeDirectionClassReverseChildren(); startSlidePrev(), console.log('enter')"
+            onclick="highlightCarouselControlOnClick('left')">
+            <span id="leftArrowText"
+              class="fs-6 fw-bold carousel-control-name d-flex align-items-start justify-content-center justify-content-center text-white"></span>
+            <span id="left-arrow" class="carousel-control-prev-icon" aria-hidden="true"><br /><span class="text-white"
+                style="font-size: 10px">Drag</span></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
 
-            <div
-              id="carousel-inner"
-              class="carousel-inner d-sm-flex align-items-sm-center justify-content-sm-center"
-            >
-              <div id="0" class="all carousel-item active h-100">
-                <div class="d-flex flex-column align-items-center h-100">
-                  <span class="fw-bold my-1 column-name text-dark"
-                    ><b>TO DO</b></span
-                  >
-                  <div
-                    id="toDoColumn"
-                    class="board-column bg-grey scroll-index flex-grow-1 w-100 px-1"
-                    ondrop="moveTo('toDo'), removeHightlight('toDoColumn')"
-                    ondragover="allowDrop(event), hightlight('toDoColumn')"
-                    ondragleave="removeHightlight('toDoColumn')"
-                  ></div>
-                </div>
-              </div>
-
-              <div id="1" class="all carousel-item h-100">
-                <div class="d-flex flex-column align-items-center h-100">
-                  <span class="fw-bold my-1 column-name text-dark"
-                    ><b>IN PROGRESS</b></span
-                  >
-                  <div
-                    id="inProgressColumn"
-                    class="board-column bg-grey hiddenScrollbarScrollbar flex-grow-1 w-100 px-1"
-                    ondrop="moveTo('inProgress'), removeHightlight('inProgressColumn')"
-                    ondragover="allowDrop(event), hightlight('inProgressColumn')"
-                    ondragleave="removeHightlight('inProgressColumn')"
-                  ></div>
-                </div>
-              </div>
-
-              <div id="2" class="all carousel-item h-100">
-                <div class="d-flex flex-column align-items-center h-100">
-                  <span class="fw-bold my-1 column-name text-dark"
-                    ><b>TESTING</b></span
-                  >
-                  <div
-                    id="testingColumn"
-                    class="board-column bg-grey hiddenScrollbarScrollbar flex-grow-1 w-100 px-1"
-                    ondrop="moveTo('testing'), removeHightlight('testingColumn')"
-                    ondragover="allowDrop(event), hightlight('testingColumn')"
-                    ondragleave="removeHightlight('testingColumn')"
-                  ></div>
-                </div>
-              </div>
-
-              <div id="3" class="all carousel-item h-100">
-                <div class="d-flex flex-column align-items-center h-100">
-                  <span class="fw-bold my-1 column-name text-dark"
-                    ><b>DONE</b></span
-                  >
-                  <div
-                    id="doneColumn"
-                    class="board-column bg-grey hiddenScrollbarScrollbar flex-grow-1 w-100 px-1"
-                    ondrop="moveTo('done'), removeHightlight('doneColumn')"
-                    ondragover="allowDrop(event), hightlight('doneColumn')"
-                    ondragleave="removeHightlight('doneColumn')"
-                  ></div>
+          <div id="carousel-inner" class="carousel-inner d-sm-flex align-items-sm-center justify-content-sm-center">
+            <div id="0" class="all carousel-item active h-100">
+              <div class="d-flex flex-column align-items-center h-100">
+                <span class="fw-bold my-1 column-name text-dark"><b>TO DO</b></span>
+                <div id="toDoColumn" class="board-column bg-grey scroll-index flex-grow-1 w-100 px-1"
+                  ondrop="moveTo('toDo'), removeHightlight('toDoColumn')"
+                  ondragover="allowDrop(event), hightlight('toDoColumn')" ondragleave="removeHightlight('toDoColumn')">
                 </div>
               </div>
             </div>
 
-            <button
-              id="right-slide-buttom"
-              class="d-sm-none carousel-control-next d-flex flex-column"
-              type="button"
-              data-bs-target="#carousel"
-              data-bs-slide="next"
-              ondragover="highlightCarouselControl('right'), console.log('over')"
-              ondragleave="stopSlideNext(), removeHighlightCarouselControl('right'), console.log('leave')"
-              ondragenter="startSlideNext(), console.log('enter')"
-              onclick="highlightCarouselControlOnClick('right')"
-            >
-              <span
-                id="rightArrowText"
-                class="fs-6 fw-bold carousel-control-name d-flex align-items-start justify-content-center"
-              ></span>
-              <span
-                id="right-arrow"
-                class="carousel-control-next-icon"
-                aria-hidden="true"
-                ><br /><span class="text-white" style="font-size: 10px"
-                  >Drag</span
-                ></span
-              >
-              <span class="visually-hidden">Next</span>
-            </button>
-
-            <div id="carousel-indicators" class="d-sm-none carousel-indicators">
-              <button
-                id="ind0"
-                type="button"
-                data-bs-target="#carousel"
-                data-bs-slide-to="0"
-                class="active"
-                aria-current="true"
-                aria-label="Slide 0"
-              ></button>
-              <button
-                id="ind1"
-                type="button"
-                data-bs-target="#carousel"
-                data-bs-slide-to="1"
-                aria-label="Slide 1"
-              ></button>
-              <button
-                id="ind2"
-                type="button"
-                data-bs-target="#carousel"
-                data-bs-slide-to="2"
-                aria-label="Slide 2"
-              ></button>
-              <button
-                id="ind3"
-                type="button"
-                data-bs-target="#carousel"
-                data-bs-slide-to="3"
-                aria-label="Slide 3"
-              ></button>
+            <div id="1" class="all carousel-item h-100">
+              <div class="d-flex flex-column align-items-center h-100">
+                <span class="fw-bold my-1 column-name text-dark"><b>IN PROGRESS</b></span>
+                <div id="inProgressColumn" class="board-column bg-grey hiddenScrollbarScrollbar flex-grow-1 w-100 px-1"
+                  ondrop="moveTo('inProgress'), removeHightlight('inProgressColumn')"
+                  ondragover="allowDrop(event), hightlight('inProgressColumn')"
+                  ondragleave="removeHightlight('inProgressColumn')"></div>
+              </div>
             </div>
+
+            <div id="2" class="all carousel-item h-100">
+              <div class="d-flex flex-column align-items-center h-100">
+                <span class="fw-bold my-1 column-name text-dark"><b>TESTING</b></span>
+                <div id="testingColumn" class="board-column bg-grey hiddenScrollbarScrollbar flex-grow-1 w-100 px-1"
+                  ondrop="moveTo('testing'), removeHightlight('testingColumn')"
+                  ondragover="allowDrop(event), hightlight('testingColumn')"
+                  ondragleave="removeHightlight('testingColumn')"></div>
+              </div>
+            </div>
+
+            <div id="3" class="all carousel-item h-100">
+              <div class="d-flex flex-column align-items-center h-100">
+                <span class="fw-bold my-1 column-name text-dark"><b>DONE</b></span>
+                <div id="doneColumn" class="board-column bg-grey hiddenScrollbarScrollbar flex-grow-1 w-100 px-1"
+                  ondrop="moveTo('done'), removeHightlight('doneColumn')"
+                  ondragover="allowDrop(event), hightlight('doneColumn')" ondragleave="removeHightlight('doneColumn')">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button id="right-slide-buttom" class="d-sm-none carousel-control-next d-flex flex-column" type="button"
+            data-bs-target="#carousel" data-bs-slide="next"
+            ondragover="highlightCarouselControl('right'), console.log('over')"
+            ondragleave="stopSlideNext(), removeHighlightCarouselControl('right'), console.log('leave')"
+            ondragenter="startSlideNext(), console.log('enter')" onclick="highlightCarouselControlOnClick('right')">
+            <span id="rightArrowText"
+              class="fs-6 fw-bold carousel-control-name d-flex align-items-start justify-content-center"></span>
+            <span id="right-arrow" class="carousel-control-next-icon" aria-hidden="true"><br /><span class="text-white"
+                style="font-size: 10px">Drag</span></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+
+          <div id="carousel-indicators" class="d-sm-none carousel-indicators">
+            <button id="ind0" type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 0"></button>
+            <button id="ind1" type="button" data-bs-target="#carousel" data-bs-slide-to="1"
+              aria-label="Slide 1"></button>
+            <button id="ind2" type="button" data-bs-target="#carousel" data-bs-slide-to="2"
+              aria-label="Slide 2"></button>
+            <button id="ind3" type="button" data-bs-target="#carousel" data-bs-slide-to="3"
+              aria-label="Slide 3"></button>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- Modal -->
-      <!-- Am Ende Modal noch unnötige Klassen checken / löschen / cleanen -->
-      <div
-        class="modal fade"
-        id="staticBackdrop"
-        data-bs-keyboard="true"
-        tabindex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-          <div class="modal-content">
-            <form
-              class="d-flex justify-content-center"
-              id="boardSubmit"
-              onsubmit="adaptTask()"
-            >
-              <div id="boardUrgency" class="w-100 rounded-2 bg-grey m-0">
-                <!-- title -->
-                <div class="m-2 m-sm-4">
-                  <h4 class="main-color"><b>TITLE</b></h4>
-                  <input
-                    id="modalTitle"
-                    class="rounded fs-5 p-2 bs-simple w-100"
-                    required
-                    minlength="3"
-                    placeholder="Add a title"
-                  />
-                </div>
+    <!-- Modal -->
+    <!-- Am Ende Modal noch unnötige Klassen checken / löschen / cleanen -->
+    <div class="modal fade" id="staticBackdrop" data-bs-keyboard="true" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <form class="d-flex justify-content-center" id="boardSubmit" onsubmit="adaptTask()">
+            <div id="boardUrgency" class="w-100 rounded-2 bg-grey m-0">
+              <!-- title -->
+              <div class="m-2 m-sm-4">
+                <h4 class="main-color"><b>TITLE</b></h4>
+                <input id="modalTitle" class="rounded fs-5 p-2 bs-simple w-100" required minlength="3"
+                  placeholder="Add a title" />
+              </div>
 
-                <!-- date -->
-                <!-- <div class="m-2 m-sm-4">
+              <!-- date -->
+              <!-- <div class="m-2 m-sm-4">
                 <h4 class="main-color">DUE DATE</h4>
                 <form>
                   <div id="wichDate">
@@ -237,137 +141,96 @@
                 </form>
               </div> -->
 
-                <div class="m-2 m-sm-4">
-                  <h4 class="main-color"><b>DUE DATE</b></h4>
-                  <div class="container m-0 p-0">
-                    <form autocomplete="off">
-                      <div class="flex-row d-flex">
-                        <div class="w-100">
-                          <div class="input-group input-daterange w-100">
-                            <input
-                              id="modalDate"
-                              placeholder="Choose date"
-                              required
-                              type="text"
-                              class="p-2 form-control text-start fs-5 rounded"
-                            />
-                            <span class="fa fa-calendar" id="fa-1"></span>
-                          </div>
+              <div class="m-2 m-sm-4">
+                <h4 class="main-color"><b>DUE DATE</b></h4>
+                <div class="container m-0 p-0">
+                  <form autocomplete="off">
+                    <div class="flex-row d-flex">
+                      <div class="w-100">
+                        <div class="input-group input-daterange w-100">
+                          <input id="modalDate" placeholder="Choose date" required type="text"
+                            class="p-2 form-control text-start fs-5 rounded" />
+                          <span class="fa fa-calendar" id="fa-1"></span>
                         </div>
                       </div>
-                    </form>
-                  </div>
-                </div>
-
-                <!-- category -->
-                <div class="m-2 m-sm-4">
-                  <h4 class="main-color"><b>CATEGORY</b></h4>
-                  <form class="w-100">
-                    <select
-                      id="modalCategory"
-                      class="p-2 rounded fs-5 p-2 bs-simple w-100"
-                    >
-                      <option value="Sales">Sales</option>
-                      <option value="IT">IT</option>
-                      <option value="Production">Production</option>
-                      <option value="Management">Management</option>
-                      <option value="Design">Design</option>
-                      <option value="Marketing">Marketing</option>
-                    </select>
+                    </div>
                   </form>
                 </div>
-
-                <!-- urgency -->
-                <div class="m-2 m-sm-4">
-                  <h4 class="main-color"><b>URGENCY</b></h4>
-                  <form class="w-100">
-                    <select
-                      id="modalUrgency"
-                      class="rounded fs-5 p-2 bs-simple w-100"
-                    >
-                      <option value="Low">Low</option>
-                      <option value="Medium">Medium</option>
-                      <option value="High">High</option>
-                    </select>
-                  </form>
-                </div>
-
-                <!-- description -->
-                <div class="d-flex flex-column m-2 m-sm-4">
-                  <h4 class="main-color"><b>DESCRIPTION</b></h4>
-                  <textarea
-                    id="modalDescription"
-                    required
-                    class="rounded fs-5 p-2 bs-simple w-100 h-100"
-                    minlength="3"
-                    rows="2"
-                    cols="50"
-                    placeholder="Add your notes"
-                  ></textarea>
-                </div>
-
-                <!-- assigned to -->
-                <div class="m-2 m-sm-4">
-                  <h4 class="main-color mb-1"><b>ASSIGNED TO</b></h4>
-                  <div
-                    id="modalAssignedUser"
-                    class="w-100 position-relative modalAssignedUser"
-                    onclick="modalShowAllUsers()"
-                  >
-                    <img
-                      id="modalSelectedUser"
-                      class="assigendToImg rounded-circle border border-4 border-primary m-1"
-                      src="img/lukas.png"
-                    />
-                    <div
-                      id="modalUserCollection"
-                      class="d-none modal-user-collection d-flex flex-column rounded"
-                    ></div>
-                  </div>
-                </div>
-
-                <!-- buttons-->
-                <div
-                  id="modalBoardBtns"
-                  class="m-2 m-sm-4 d-flex justify-content-between"
-                ></div>
               </div>
-              <div class="toast-container position-fixed top-0 end-0 p-3">
-                <div
-                  id="boardToast"
-                  class="toast"
-                  role="alert"
-                  aria-live="assertive"
-                  aria-atomic="true"
-                >
-                  <div class="d-flex align-items-center">
-                    <div class="toast-body">Changes saved!</div>
-                    <button
-                      class="btn-close me-2 m-auto"
-                      type="button"
-                      data-bs-dismiss="toast"
-                      aria-label="Close"
-                    ></button>
-                  </div>
+
+              <!-- category -->
+              <div class="m-2 m-sm-4">
+                <h4 class="main-color"><b>CATEGORY</b></h4>
+                <form class="w-100">
+                  <select id="modalCategory" class="p-2 rounded fs-5 p-2 bs-simple w-100">
+                    <option value="Sales">Sales</option>
+                    <option value="IT">IT</option>
+                    <option value="Production">Production</option>
+                    <option value="Management">Management</option>
+                    <option value="Design">Design</option>
+                    <option value="Marketing">Marketing</option>
+                  </select>
+                </form>
+              </div>
+
+              <!-- urgency -->
+              <div class="m-2 m-sm-4">
+                <h4 class="main-color"><b>URGENCY</b></h4>
+                <form class="w-100">
+                  <select id="modalUrgency" class="rounded fs-5 p-2 bs-simple w-100">
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                  </select>
+                </form>
+              </div>
+
+              <!-- description -->
+              <div class="d-flex flex-column m-2 m-sm-4">
+                <h4 class="main-color"><b>DESCRIPTION</b></h4>
+                <textarea id="modalDescription" required class="rounded fs-5 p-2 bs-simple w-100 h-100" minlength="3"
+                  rows="2" cols="50" placeholder="Add your notes"></textarea>
+              </div>
+
+              <!-- assigned to -->
+              <div class="m-2 m-sm-4">
+                <h4 class="main-color mb-1"><b>ASSIGNED TO</b></h4>
+                <div id="modalAssignedUser" class="w-100 position-relative modalAssignedUser"
+                  onclick="modalShowAllUsers()">
+                  <img id="modalSelectedUser" class="assigendToImg rounded-circle border border-4 border-primary m-1"
+                    src="img/lukas.png" />
+                  <div id="modalUserCollection" class="d-none modal-user-collection d-flex flex-column rounded"></div>
                 </div>
               </div>
-            </form>
-          </div>
+
+              <!-- buttons-->
+              <div id="modalBoardBtns" class="m-2 m-sm-4 d-flex justify-content-between"></div>
+            </div>
+            <div class="toast-container position-fixed top-0 end-0 p-3">
+              <div id="boardToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex align-items-center">
+                  <div class="toast-body">Changes saved!</div>
+                  <button class="btn-close me-2 m-auto" type="button" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- JavaScript Bundle with Popper -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-      crossorigin="anonymous"
-    ></script>
-    <script src="./js/helpers.js"></script>
-    <script src="./js/template.js"></script>
-    <!-- <script src="./js/addTask.js"></script> -->
-    <script src="./js/script.js"></script>
-    <script src="./js/index.js"></script>
-    <script src=" ./js/DragDropTouch.js"></script>
-  </body>
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+  <script src="./js/helpers.js"></script>
+  <script src="./js/template.js"></script>
+  <!-- <script src="./js/addTask.js"></script> -->
+  <script src="./js/script.js"></script>
+  <script src="./js/index.js"></script>
+  <script src=" ./js/DragDropTouch.js"></script>
+</body>
+
 </html>
