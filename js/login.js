@@ -77,6 +77,11 @@ function login(email, password, toastBody) {
   validationLogin(checkEmail, checkPassword, toastBody);
 }
 
+/**
+ * selects the desired container using the id and inserts a string as the toast message
+ * @param {number} containerId id of the container
+ * @param {string} text insert the text to be loaded into the toast
+ */
 function toastForEvent(containerId, text) {
   let toastBody = document.getElementById(containerId);
   toastBody.innerHTML = '';
@@ -145,8 +150,6 @@ function saveRegristration() {
   users.push(registration);
   saveInBackend(users, 'users');
 }
-
-function clearRegistery(firstName, lastName, email, password, avatar) {}
 
 /**
  * checks which element was chosen as avatar
@@ -222,7 +225,11 @@ if (toastTrigger1) {
 let myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
 let formRegistery = document.getElementById('registery');
 const registrationToast = document.getElementById('registrationToast');
-function handleForm(event) {
+/**
+ * when the form is submitted, the function is executed. It shows the toast, saves the registered user and closes the modal after 2 seconds.
+ * @param {event} event returns the event
+ */
+function handleFormLogin(event) {
   event.preventDefault();
   toastForEvent('toast-body-registration', 'Registration completed!');
   const toast = new bootstrap.Toast(registrationToast);
@@ -233,4 +240,4 @@ function handleForm(event) {
     myModal.hide();
   }, 2000);
 }
-formRegistery.addEventListener('submit', handleForm);
+formRegistery.addEventListener('submit', handleFormLogin);
