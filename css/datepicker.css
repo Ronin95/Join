@@ -7,11 +7,11 @@
 }
 
 .form-control-placeholder {
-    position: absolute;
-    top: -10px !important;
-    padding: 12px 2px 0 2px;
-    opacity: 0.1;
-    color: #e1e1e1;
+  position: absolute;
+  top: -10px !important;
+  padding: 12px 2px 0 2px;
+  opacity: 0.1;
+  color: #e1e1e1;
 }
 
 #end-p {
@@ -20,18 +20,17 @@
 
 .form-control:focus + .form-control-placeholder,
 .form-control:valid + .form-control-placeholder {
-    font-size: 95%;
-    top: 10px;
-    transform: translate3d(0, -100%, 0);
-    opacity: 1;
+  font-size: 95%;
+  top: 10px;
+  transform: translate3d(0, -100%, 0);
+  opacity: 1;
 }
 
-
 button:focus {
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    outline-width: 0;
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  outline-width: 0;
 }
 
 .datepicker {
@@ -42,8 +41,8 @@ button:focus {
 }
 
 .datepicker-dropdown {
-  border-right: #1976D2;
-  border-left: #1976D2;
+  border-right: #1976d2;
+  border-left: #1976d2;
 }
 
 .datepicker-dropdown.datepicker-orient-left:before {
@@ -52,16 +51,17 @@ button:focus {
 
 .datepicker-dropdown.datepicker-orient-left:after {
   left: calc(50% - 5px) !important;
-  border-bottom-color: #1976D2;
+  border-bottom-color: #1976d2;
 }
 
 .datepicker-dropdown.datepicker-orient-right:after {
-  border-bottom-color: #1976D2;
+  border-bottom-color: #1976d2;
 }
 
-.datepicker table tr td.today, span.focused {
+.datepicker table tr td.today,
+span.focused {
   border-radius: 50% !important;
-  background-image: linear-gradient(#FFF3E0, #FFE0B2);
+  background-image: linear-gradient(#fff3e0, #ffe0b2);
 }
 
 thead tr:nth-child(2) {
@@ -74,32 +74,42 @@ tbody tr td {
 
 tfoot tr:nth-child(2) th {
   padding: 10px !important;
-  border-top: 1px solid #CFD8DC !important;
+  border-top: 1px solid #cfd8dc !important;
 }
 
 .cw {
   font-size: 14px !important;
-  background-color: #E8EAF6 !important;
+  background-color: #e8eaf6 !important;
   border-radius: 0px !important;
   padding: 0px 20px !important;
   margin-right: 10px solid #fff !important;
 }
 
-.old, .day, .new {
+.old,
+.day,
+.new {
   width: 40px !important;
   height: 40px !important;
   border-radius: 0px !important;
 }
 
-.day.old, .day.new {
-  color: #E0E0E0 !important;
+.day.old,
+.day.new {
+  color: #e0e0e0 !important;
 }
 
-.day.old:hover, .day.new:hover {
+.day.old:hover,
+.day.new:hover {
   border-radius: 50% !important;
 }
 
-.old-day:hover, .day:hover, .new-day:hover, .month:hover, .year:hover, .decade:hover, .century:hover {
+.old-day:hover,
+.day:hover,
+.new-day:hover,
+.month:hover,
+.year:hover,
+.decade:hover,
+.century:hover {
   border-radius: 50% !important;
   background-color: #eee;
 }
@@ -109,16 +119,19 @@ tfoot tr:nth-child(2) th {
   color: #fff !important;
 }
 
-.range-start, .range-end {
+.range-start,
+.range-end {
   border-radius: 50% !important;
   background-image: linear-gradient(#212d8d, #212d8d) !important;
 }
 
 .range {
-  background-color: #E3F2FD !important;
+  background-color: #e3f2fd !important;
 }
 
-.prev, .next, .datepicker-switch {
+.prev,
+.next,
+.datepicker-switch {
   border-radius: 0 !important;
   padding: 10px 10px 10px 10px !important;
   font-size: 18px;
@@ -126,7 +139,9 @@ tfoot tr:nth-child(2) th {
   color: #fff;
 }
 
-.prev:hover, .next:hover, .datepicker-switch:hover {
+.prev:hover,
+.next:hover,
+.datepicker-switch:hover {
   background-color: inherit !important;
   opacity: 1;
 }

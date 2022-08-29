@@ -1,18 +1,5 @@
 let currentUser = [];
-
-/* General all posible variables / arrays like categories, users, avatars etc., which are used in every sub page und script */
-/* Lukas 11.08: Sollen wir auch die Kategorien zentalisieren, ähnlich wie bei users und selectedUser, 
-oder soll ein lokales Board Array sein.
-Ich brauch auch hier
-*/
 let allCategories = ['IT', 'Sales', 'Management', 'Production', 'Marketing'];
-
-/* Wenn der gleiche Style für die Kategorien Items/Badges noch irgendwo genasuo wie 
-im Board bei den Task Items im Card Header benutzt wird, 
-dann sollte es auch als ein general Array zentralisiert werden. 
- */
-/* let bsClassesForCategory = ['secondary', 'primary', 'danger', 'success', 'warning', 'info',]; */
-
 let colorsCategory = {
   Sales: '#DC5445',
   IT: '#5F61B3',
@@ -21,7 +8,6 @@ let colorsCategory = {
   Design: '#BBD686',
   Marketing: '#EEF1BD',
 };
-
 let users = [];
 
 async function init() {
@@ -40,8 +26,6 @@ async function initIndex() {
   await currentUserImage();
   document.getElementById('navBoard').classList.add('you-are-here');
   renderAllColumns();
-  showAllUser();
-  selectUser(1);
 }
 
 async function initHelp() {
@@ -69,12 +53,6 @@ async function initAddTask() {
   showAllUser();
   document.getElementById('addTaskNav').classList.add('you-are-here');
   loadCurrentDate();
-}
-
-function logout() {
-  localStorage.setItem('isLoggedIn', false);
-  localStorage.removeItem('currentUser');
-  location.href = 'login.html';
 }
 
 async function includeHTML() {

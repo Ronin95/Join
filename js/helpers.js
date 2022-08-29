@@ -56,16 +56,7 @@ function showAllUser() {
   for (let i = 1; i < users.length; i++) {
     let user = users[i];
     let showUser = document.getElementById('user');
-    showUser.innerHTML += /*html*/`
-      <img 
-        title="${user.name}" 
-        id="selected${i}" 
-        onclick="selectUser(${i})" 
-        class="user-show  border border-white rounded-circle" 
-        src="${user.avatar}" 
-        alt=""
-      />
-    `;
+    showUser.innerHTML += generateUsers(user);
   }
 }
 
@@ -76,4 +67,13 @@ async function currentUserImage() {
   currentUser = localStorage.getItem('currentUser');
   let currentUserProfile = document.getElementById('currentUser');
   currentUserProfile.src = users[currentUser].avatar;
+}
+
+/**
+ * logout the user and return to the login.html
+ */
+function logout() {
+  localStorage.setItem('isLoggedIn', false);
+  localStorage.removeItem('currentUser');
+  location.href = 'login.html';
 }
