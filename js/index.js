@@ -306,15 +306,19 @@ function adaptTask(indexTask, fct) {
   allTasks[indexTask].urgency = document.getElementById('modalUrgency').value;
   allTasks[indexTask].description =
     document.getElementById('modalDescription').value;
-  allTasks[indexTask].userForTask.avatar = './' + getRightSrcOfImg();
+  allTasks[indexTask].userForTask.avatar = getRightSrcOfImg();
   saveInBackend(allTasks, 'allTasks');
   fct();
 }
 
+/**
+ * changes a relative link to an absolute link
+ * @returns gives an absolute link
+ */
 function getRightSrcOfImg() {
   let imgSrc = document.getElementById('modalSelectedUser').src;
   let indexSrc = imgSrc.indexOf('img');
-  return imgSrc.substring(indexSrc, imgSrc.length);
+  return './' + imgSrc.substring(indexSrc, imgSrc.length);
 }
 
 /**
@@ -360,13 +364,9 @@ function modalGenAllUser(task, id) {
   for (let i = 0; i < users.length; i++) {
     const user = users[i];
     if (task.userForTask.avatar == user.avatar) {
-      modalUserCollection.innerHTML += /* html */ `
-       <img class="assigendToImg rounded-circle border border-4 border-primary m-1" src="${user.avatar}" onclick="changeSelectedUser(${i}, ${id})">
-    `;
+      modalUserCollection.innerHTML += blueBorderImg(user, i, id);
     } else {
-      modalUserCollection.innerHTML += /* html */ `
-       <img class="assigendToImg rounded-circle border border-4 border-white m-1" src="${user.avatar}" onclick="changeSelectedUser(${i}, ${id})">
-    `;
+      modalUserCollection.innerHTML += whiteBorderImg(user, i, id);
     }
   }
 }
@@ -375,7 +375,7 @@ let myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
 let formBoard = document.getElementById('boardSubmit');
 const boardToast = document.getElementById('boardToast');
 /**
- * when the form is submitted, the function is executed. It shows the toast, specifies the change and closes the modal after 2 seconds.
+ * when the form is submitted, the function is executed. It shows the toast and closes the modal after 2 seconds.
  * @param {event} event returns the event
  */
 function handleForm(event) {
