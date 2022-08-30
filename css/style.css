@@ -58,6 +58,8 @@ body {
 
 .app-window {
   background: rgb(255, 255, 255);
+  max-width: 100vw !important;
+  max-height: 100vh !important;
   /* later to delete */
   border: 3px solid red !important;
 }
@@ -235,6 +237,15 @@ body {
 
 /*------------------------------------------------------------------------------------ */
 /* Style for a selected task item from board kanban column in dialog window (bs-modal) */
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.modal-backdrop {
+  background-color: unset !important;
+  width: 0px !important;
+}
 
 .modal-content .card-title {
   height: unset;
@@ -484,6 +495,10 @@ body {
 /*Check Button only*/
 .succes-arrow {
   position: fixed;
+  width: auto;
+  padding: 12px;
+  right: 4vw;
+  bottom: 4vw;
 }
 
 .safe-color {
@@ -567,6 +582,10 @@ html {
 
 /* Just Testing again something */
 
-.board-column {
-  touch-action: pan-y !important;
+body {
+  /* touch-action: none !important; */
+}
+
+.app-window {
+  /* max-height: calc(100% - 80px) !important; */
 }

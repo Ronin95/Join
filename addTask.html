@@ -24,117 +24,119 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script> -->
 
-
+  <!-- safe-area css -->
+  <link rel=" stylesheet" href="./css/safe-area.css">
 </head>
 
 <body onload="initAddTask()" class="py-md-4">
-  <div class="app-window h-100 w-100 d-flex flex-column flex-md-row overflow-scroll hide-scroll-bar">
-    <div w3-include-html="navbar.html" class="position-sticky top-0 z-index-100"></div>
+  <div id="safeArea">
+    <div class="app-window h-100 w-100 d-flex flex-column flex-md-row overflow-hidden">
+      <div w3-include-html="navbar.html" class="position-sticky top-0 z-index-100"></div>
 
-    <!-- work area (right site: content of the nav-link) -->
-    <div class="p-2 p-sm-5 mb-4 w-100 position-sticky top-0">
-      <div class="">
-        <h2><b>Add Task</b></h2>
-        <p class="main-color">Learning Management System Project</p>
-      </div>
-      <form class="d-flex justify-content-center" id="addTaskSubmit" onsubmit="addTask()">
-        <div class="w-100 rounded-2 bg-grey m-0">
-          <div class="d-flex align-items-center flex-column flex-sm-row">
-            <div class="w-75 m-2 m-sm-4">
-              <h3 class="main-color"><b>TITLE</b></h3>
-              <input class="rounded fs-4 p-2 bs-simple w-100" required minlength="3" id="title"
-                placeholder="Add a title" />
-            </div>
-            <div class="w-75 m-2 m-sm-4">
-              <h3 class="main-color d-flex flex-row justify-content-between align-items-center"><b>DUE DATE</b><span class="d-flex justify-content-center" id="today"></span></h3>
+      <!-- work area (right site: content of the nav-link) -->
+      <div class="p-2 p-sm-5 mb-4 w-100 position-sticky top-0 overflow-scroll">
+        <div class="">
+          <h2><b>Add Task</b></h2>
+          <p class="main-color">Learning Management System Project</p>
+        </div>
+        <form class="d-flex justify-content-center" id="addTaskSubmit" onsubmit="addTask()">
+          <div class="w-100 rounded-2 bg-grey m-0">
+            <div class="d-flex align-items-center flex-column flex-sm-row">
+              <div class="w-75 m-2 m-sm-4">
+                <h3 class="main-color"><b>TITLE</b></h3>
+                <input class="rounded fs-4 p-2 bs-simple w-100" required minlength="3" id="title"
+                  placeholder="Add a title" />
+              </div>
+              <div class="w-75 m-2 m-sm-4">
+                <h3 class="main-color d-flex flex-row justify-content-between align-items-center"><b>DUE DATE</b><span
+                    class="d-flex justify-content-center" id="today"></span></h3>
 
 
-              <!-- Bootstrap DatePicker 2 -->
-              <div class="container p-0 w-100">
-                <form autocomplete="off">
-                  <div class="flex-row d-flex">
-                    <div class="w-100">
-                      <div class="input-group input-daterange">
-                        <input id="txtDate" placeholder="Choose date" required type="text"
-                          class="form-control text-start fs-4 rounded p-2">
-                        <span class="fa fa-calendar" id="fa-1"></span>
+                <!-- Bootstrap DatePicker 2 -->
+                <div class="container p-0 w-100">
+                  <form autocomplete="off">
+                    <div class="flex-row d-flex">
+                      <div class="w-100">
+                        <div class="input-group input-daterange">
+                          <input id="txtDate" placeholder="Choose date" required type="text"
+                            class="form-control text-start fs-4 rounded p-2">
+                          <span class="fa fa-calendar" id="fa-1"></span>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </form>
+                </div>
+                <!-- Bootstrap DatePicker 2 -->
+
+              </div>
+            </div>
+            <div class="d-flex align-items-center flex-column flex-sm-row">
+              <div class="w-75 m-2 m-sm-4">
+                <h3 class="main-color"><b>CATEGORY</b></h3>
+                <form class="w-100">
+                  <select class="p-2 rounded fs-4 p-2 bs-simple w-100" id="category">
+                    <option value="Sales">Sales</option>
+                    <option value="IT">IT</option>
+                    <option value="Production">Production</option>
+                    <option value="Management">Management</option>
+                    <option value="Design">Design</option>
+                    <option value="Marketing">Marketing</option>
+                  </select>
                 </form>
               </div>
-              <!-- Bootstrap DatePicker 2 -->
+              <div class="w-75 m-2 m-sm-4">
+                <h3 class="main-color"><b>URGENCY</b></h3>
+                <form class="w-100">
+                  <select class="rounded fs-4 p-2 bs-simple w-100" id="urgency">
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                  </select>
+                </form>
+              </div>
+            </div>
+            <div class="d-flex align-items-center align-items-sm-start flex-column flex-sm-row">
+              <div class="w-75 m-2 m-sm-4">
+                <h3 class="main-color"><b>DESCRIPTION</b></h3>
+                <textarea required class="rounded fs-4 p-2 bs-simple w-100 font" minlength="3" id="description"
+                  placeholder="Add your notes"></textarea>
+              </div>
+              <div class="w-75 m-2 m-sm-4">
+                <h3 class="main-color"><b>ASSIGNED TO</b></h3>
 
-            </div>
-          </div>
-          <div class="d-flex align-items-center flex-column flex-sm-row">
-            <div class="w-75 m-2 m-sm-4">
-              <h3 class="main-color"><b>CATEGORY</b></h3>
-              <form class="w-100">
-                <select class="p-2 rounded fs-4 p-2 bs-simple w-100" id="category">
-                  <option value="Sales">Sales</option>
-                  <option value="IT">IT</option>
-                  <option value="Production">Production</option>
-                  <option value="Management">Management</option>
-                  <option value="Design">Design</option>
-                  <option value="Marketing">Marketing</option>
-                </select>
-              </form>
-            </div>
-            <div class="w-75 m-2 m-sm-4">
-              <h3 class="main-color"><b>URGENCY</b></h3>
-              <form class="w-100">
-                <select class="rounded fs-4 p-2 bs-simple w-100" id="urgency">
-                  <option value="Low">Low</option>
-                  <option value="Medium">Medium</option>
-                  <option value="High">High</option>
-                </select>
-              </form>
-            </div>
-          </div>
-          <div class="d-flex align-items-center align-items-sm-start flex-column flex-sm-row">
-            <div class="w-75 m-2 m-sm-4">
-              <h3 class="main-color"><b>DESCRIPTION</b></h3>
-              <textarea required class="rounded fs-4 p-2 bs-simple w-100 font" minlength="3" id="description"
-                placeholder="Add your notes"></textarea>
-            </div>
-            <div class="w-75 m-2 m-sm-4">
-              <h3 class="main-color"><b>ASSIGNED TO</b></h3>
+                <div id="user" class="w-100 p-2 flex-media">
+                </div>
 
-              <div id="user" class="w-100 p-2 flex-media">
               </div>
 
             </div>
+            <div class="buttons-Task m-2 m-sm-4 d-flex justify-content-center">
 
-          </div>
-          <div class="buttons-Task m-2 m-sm-4 d-flex justify-content-center">
+              <input title="Clear your input" id="clearInput" class="btn btn-secondary clear-button me-2" type="button"
+                onclick="deleteUnsafedInput()" value="Clear">
+              <input title="Create a new task" id="createTask" class="btn btn-primary" type="submit" value="Create"
+                disabled>
 
-            <input title="Clear your input" id="clearInput" class="btn btn-secondary clear-button me-2" type="button"
-              onclick="deleteUnsafedInput()" value="Clear">
-            <input title="Create a new task" id="createTask" class="btn btn-primary" type="submit" value="Create"
-              disabled>
-
-          </div>
-      </form>
-    </div>
-  </div>
-
-  </div>
-  <div id="success_task" class="toast succes-arrow" role="alert" aria-atomic="true" style="width: auto; padding: 12px;">
-    <div class="d-flex justify-content-around align-items-center p-2 flex-column">
-      <strong class="fs-6">New Task added</strong>
-      <div class="mt-2 pt-2 ">
-        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">
-          Close
-        </button>
-        <a href="index.html">
-          <button type="button" class="btn btn-primary btn-sm">
-            Go to Board
-          </button>
-        </a>
+            </div>
+        </form>
       </div>
     </div>
 
+    <div id="success_task" class="toast succes-arrow" role="alert" aria-atomic="true">
+      <div class="d-flex justify-content-around align-items-center p-2 flex-column">
+        <strong class="fs-6">New Task added</strong>
+        <div class="mt-2 pt-2 ">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">
+            Close
+          </button>
+          <a href="index.html">
+            <button type="button" class="btn btn-primary btn-sm">
+              Go to Board
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- JavaScript Bundle with Popper -->
