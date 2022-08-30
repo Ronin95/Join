@@ -389,28 +389,6 @@ function handleForm(event) {
 
 formBoard.addEventListener('submit', handleForm);
 
-/* Check if Scrollbar is real
- */
-
-// function isThereScrollBar() {
-//   var div = document.getElementById('toDoColumn');
-//   var hs = div.scrollWidth > div.clientWidth;
-//   var vs = div.scrollHeight > div.clientHeight;
-
-//   console.log(hs, vs);
-
-//   if (!vs) {
-//     console.log('nothing to do');
-//   } else {
-//     div.innerHTML += `<div id="arrowShow" class="position-arrow w-100">
-//   <div class="d-flex justify-content-center"><img class="h-100 rounded arrow-up-down" src="./img/arrow-down.png" alt=""></div>
-//   </div>`;
-//   }
-// }
-
-/* Check if Scrollbar is real
- */
-
 /**
  * reads the urgency and assigns a corresponding color class
  * @param {string} taskUrgency indicates the urgency of the respective task

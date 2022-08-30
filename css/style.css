@@ -35,6 +35,7 @@ body {
   background-color: rgb(255, 255, 255);
   height: 100vh;
   font-family: 'PT Sans', sans-serif;
+  touch-action: none !important;
 }
 
 .main-color {
@@ -147,7 +148,7 @@ body {
 /* Allow scrolling of board kanban column */
 .board-column {
   overflow-y: auto;
-  /* overflow-y: overlay; */
+  overflow-y: overlay;
 }
 
 .column-name {
@@ -539,10 +540,6 @@ html {
   /* Firefox */
 }
 
-.overflow-y-scroll {
-  overflow-y: scroll;
-}
-
 /* Muss bleiben damit die Bilder zentriert sind in help html in der mobilen ansicht ab 304px */
 .width-100px {
   width: 100px;
@@ -550,42 +547,4 @@ html {
 
 .today-date {
   font-size: 13px !important;
-}
-
-.arrow-up-down {
-  height: 32px !important;
-  background-color: #1e3190;
-}
-
-.position-arrow {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-}
-
-.scrollbar-primary {
-  background-color: hotpink !important;
-}
-
-.scroll-index {
-  overflow-y: scroll !important;
-}
-
-.scroll-index::-webkit-scrollbar {
-  font-size: bolder;
-}
-
-/* 
-.scroll-index::-webkit-scrollbar {
-  background-color: rgba(184, 129, 129, 0.255)!important;
-} */
-
-/* Just Testing again something */
-
-body {
-  /* touch-action: none !important; */
-}
-
-.app-window {
-  /* max-height: calc(100% - 80px) !important; */
 }

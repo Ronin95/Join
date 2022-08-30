@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="./css/fonts.css" />
     <link rel="stylesheet" href="./css/datepicker.css" />
 
-    <script src="./js/mini_backend.js"></script>
+  <script src="./js/mini_backend.js"></script>
 
     <link rel="shortcut icon" href="./img/joinlogo.png" type="image/x-icon" />
 
@@ -26,29 +26,25 @@
     />
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css"> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script> -->
-  </head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script> -->
 
-  <body onload="initIndex()" class="py-md-4 is-dragging">
-    <div class="app-window h-100 w-100 d-flex flex-column flex-md-row">
+  <!-- safe-area css -->
+  <link rel=" stylesheet" href="./css/safe-area.css">
+</head>
+
+<body onload="initIndex()" class="py-md-4">
+  <div id="safeArea">
+    <div class="app-window h-100 w-100 d-flex flex-column flex-md-row overflow-hidden">
       <div w3-include-html="navbar.html"></div>
 
-      <!-- work area (right site: content of the nav-link) -->
+      <!-- #region work area (right site: content of the nav-link) -->
       <div class="d-flex flex-grow-1 overflow-hidden">
         <div class="w-100 py-sm-4">
-          <div.car
-            id="carousel"
-            class="carousel slide h-100 d-flex justify-content-between"
-            data-bs-touch="false"
-          >
-            <button
-              id="left-slide-button"
-              class="d-sm-none mt-0 carousel-control-prev d-flex flex-column"
-              type="button"
-              data-bs-target="#carousel"
-              data-bs-slide="prev"
+          <div.car id="carousel" class="carousel slide h-100 d-flex justify-content-between" data-bs-touch="false">
+            <button id="left-slide-button" class="d-sm-none mt-0 carousel-control-prev d-flex flex-column" type="button"
+              data-bs-target="#carousel" data-bs-slide="prev"
               ondragover="highlightCarouselControl('left'), console.log('over')"
               ondragleave="stopSlidePrev(), removedChangeDirectionClassReverseBackChildren(), removeHighlightCarouselControl('left'), console.log('leave')"
               ondragenter="addChangeDirectionClassReverseChildren(); startSlidePrev(), console.log('enter')"
@@ -69,10 +65,7 @@
               <span class="visually-hidden">Previous</span>
             </button>
 
-            <div
-              id="carousel-inner"
-              class="carousel-inner d-sm-flex align-items-sm-center justify-content-sm-center"
-            >
+            <div id="carousel-inner" class="carousel-inner d-sm-flex align-items-sm-center justify-content-sm-center">
               <div id="0" class="all carousel-item active h-100">
                 <div class="d-flex flex-column align-items-center h-100">
                   <span class="fw-bold fs-5 my-1 column-name text-dark"
@@ -88,6 +81,7 @@
                 </div>
               </div>
 
+              <!-- carousel-item: IN PROGRESS-column -->
               <div id="1" class="all carousel-item h-100">
                 <div class="d-flex flex-column align-items-center h-100">
                   <span class="fw-bold fs-5 my-1 column-name text-dark"
@@ -103,6 +97,7 @@
                 </div>
               </div>
 
+              <!-- carousel-item: TESTING-column -->
               <div id="2" class="all carousel-item h-100">
                 <div class="d-flex flex-column align-items-center h-100">
                   <span class="fw-bold fs-5 my-1 column-name text-dark"
@@ -118,6 +113,7 @@
                 </div>
               </div>
 
+              <!-- carousel-item: DONE column -->
               <div id="3" class="all carousel-item h-100">
                 <div class="d-flex flex-column align-items-center h-100">
                   <span class="fw-bold fs-5 my-1 column-name text-dark"
@@ -128,18 +124,14 @@
                     class="board-column bg-grey hiddenScrollbarScrollbar flex-grow-1 w-100 px-1"
                     ondrop="moveTo('done'), removeHightlight('doneColumn')"
                     ondragover="allowDrop(event), hightlight('doneColumn')"
-                    ondragleave="removeHightlight('doneColumn')"
-                  ></div>
+                    ondragleave="removeHightlight('doneColumn')">
+                  </div>
                 </div>
               </div>
-            </div>
+            <!-- endregion carousel inner with slide columns -->
 
-            <button
-              id="right-slide-button"
-              class="d-sm-none mt-0 carousel-control-next d-flex flex-column"
-              type="button"
-              data-bs-target="#carousel"
-              data-bs-slide="next"
+            <button id="right-slide-button" class="d-sm-none mt-0 carousel-control-next d-flex flex-column"
+              type="button" data-bs-target="#carousel" data-bs-slide="next"
               ondragover="highlightCarouselControl('right'), console.log('over')"
               ondragleave="stopSlideNext(), removeHighlightCarouselControl('right'), console.log('leave')"
               ondragenter="startSlideNext(), console.log('enter')"
@@ -160,6 +152,7 @@
               <span class="visually-hidden">Next</span>
             </button>
 
+            <!-- carousel indicators -->
             <div id="carousel-indicators" class="d-sm-none carousel-indicators">
               <button
                 id="ind0"
@@ -193,20 +186,16 @@
               ></button>
             </div>
           </div.car>
+          <!-- endregion carousel -->
         </div>
       </div>
+      <!-- endregion work area (right site: content of the nav-link) -->
 
       <!-- Modal -->
       <!-- Am Ende Modal noch unnötige Klassen checken / löschen / cleanen -->
-      <div
-        class="modal fade"
-        id="staticBackdrop"
-        data-bs-keyboard="true"
-        tabindex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal fade" id="staticBackdrop" data-bs-keyboard="true" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <form
               class="d-flex justify-content-center"
@@ -214,6 +203,7 @@
               onsubmit="adaptTask()"
             >
               <div id="boardUrgency" class="w-100 rounded-2 bg-grey m-0">
+
                 <!-- title -->
                 <div class="m-2 m-sm-4">
                   <h4 class="main-color"><b>TITLE</b></h4>
@@ -227,16 +217,6 @@
                 </div>
 
                 <!-- date -->
-                <!-- <div class="m-2 m-sm-4">
-                <h4 class="main-color">DUE DATE</h4>
-                <form>
-                  <div id="wichDate">
-                    <input id="modalDate" class="rounded fs-4 p-2 bs-simple w-100 textbox-n" placeholder="today"                    
-                      type="text" onfocus="(this.type='date')"> 
-                  </div>
-                </form>
-              </div> -->
-
                 <div class="m-2 m-sm-4">
                   <h4 class="main-color"><b>DUE DATE</b></h4>
                   <div class="container m-0 p-0">
@@ -332,6 +312,8 @@
                   class="m-2 m-sm-4 d-flex justify-content-between"
                 ></div>
               </div>
+
+              <!-- toast -->
               <div class="toast-container position-fixed top-0 end-0 p-3">
                 <div
                   id="boardToast"
@@ -351,23 +333,26 @@
                   </div>
                 </div>
               </div>
+
             </form>
           </div>
+
         </div>
       </div>
-    </div>
 
-    <!-- JavaScript Bundle with Popper -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-      crossorigin="anonymous"
-    ></script>
-    <script src="./js/helpers.js"></script>
-    <script src="./js/template.js"></script>
-    <!-- <script src="./js/addTask.js"></script> -->
-    <script src="./js/script.js"></script>
-    <script src=" ./js/DragDropTouch.js"></script>
-    <script src="./js/index.js"></script>
-  </body>
+    </div>
+  </div>
+
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+  <script src="./js/helpers.js"></script>
+  <script src="./js/template.js"></script>
+  <!-- <script src="./js/addTask.js"></script> -->
+  <script src="./js/script.js"></script>
+  <script src=" ./js/DragDropTouch.js"></script>
+  <script src="./js/index.js"></script>
+</body>
 </html>
