@@ -105,16 +105,30 @@ function genHTMLBoardTaskItem(task) {
  */
 function renderButtons(indexTask) {
   document.getElementById('modalBoardBtns').innerHTML = /*html*/ `
-  <input title="Delete and close the task." id="modalDeleteBtn"
-                  class="btn btn-outline-danger p-1 p-sm-2 me-1 me-sm-3" type="button"
-                  data-bs-dismiss="modal" value="Delete" onclick="deleteTask(${indexTask}, renderAllColumns)" >
-                <div>
-                  <input title="Cancel the changes and close the task." id="modalCancelBtn"
-                    class="btn btn-outline-secondary p-1 p-sm-2 me-1 me-sm-3" type="button"
-                    data-bs-dismiss="modal" value="Cancel">
-                  <input title="Save the changes to the task and close it." id="modalSaveBtn"
-                    class="btn btn-primary p-1 p-sm-2" type="submit" value="Save" onclick="adaptTask(${indexTask}, renderAllColumns)">
-                </div>
+  <input 
+    title="Delete and close the task." 
+    id="modalDeleteBtn"
+    class="btn btn-outline-danger p-1 p-sm-2 me-1 me-sm-3" 
+    type="button"
+    data-bs-dismiss="modal" 
+    value="Delete" 
+    onclick="deleteTask(${indexTask}, renderAllColumns)" >
+  <div>
+    <input 
+      title="Cancel the changes and close the task." 
+      id="modalCancelBtn"
+      class="btn btn-outline-secondary p-1 p-sm-2 me-1 me-sm-3" 
+      type="button"
+      data-bs-dismiss="modal" 
+      value="Cancel">
+    <input 
+      title="Save the changes to the task and close it." 
+      id="modalSaveBtn"
+      class="btn btn-primary p-1 p-sm-2" 
+      type="submit" 
+      value="Save" 
+      onclick="adaptTask(${indexTask}, renderAllColumns)">
+  </div>
   `;
 }
 
