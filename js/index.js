@@ -300,16 +300,21 @@ function openModal(idValue) {
  * @param {string} fct function name
  */
 function adaptTask(indexTask, fct) {
-  allTasks[indexTask].title = document.getElementById('modalTitle').value;
+  allTasks[indexTask].title = document.getElementById('modalTitle').value || '';
   allTasks[indexTask].date = document.getElementById('modalDate').value;
   allTasks[indexTask].category = document.getElementById('modalCategory').value;
   allTasks[indexTask].urgency = document.getElementById('modalUrgency').value;
   allTasks[indexTask].description =
     document.getElementById('modalDescription').value;
-  allTasks[indexTask].userForTask.avatar =
-    document.getElementById('modalSelectedUser').src;
+  allTasks[indexTask].userForTask.avatar = './' + getRightSrcOfImg();
   saveInBackend(allTasks, 'allTasks');
   fct();
+}
+
+function getRightSrcOfImg() {
+  let imgSrc = document.getElementById('modalSelectedUser').src;
+  let indexSrc = imgSrc.indexOf('img');
+  return imgSrc.substring(indexSrc, imgSrc.length);
 }
 
 /**
@@ -321,7 +326,10 @@ function changeSelectedUser(i, id) {
   let indexTask = allTasks.findIndex((obj) => obj.id == id);
   let userTask = allTasks[indexTask].userForTask;
   let user = users[i];
-  document.getElementById('modalSelectedUser').src = user.avatar;
+  let imgSrc = document.getElementById('modalSelectedUser').src;
+  let indexSrc = imgSrc.indexOf('img');
+  let imgSubstring = imgSrc.substring(indexSrc, imgSrc.length);
+  imgSubstring = user.avatar;
   userTask.avatar = user.avatar;
   userTask.email = user.email;
   userTask.name = user.name;
@@ -377,7 +385,6 @@ function handleForm(event) {
   setTimeout(function () {
     myModal.hide();
   }, 2000);
-  adaptTask();
 }
 
 formBoard.addEventListener('submit', handleForm);
@@ -433,12 +440,10 @@ function urgencyBoard(taskUrgency, id) {
   }
 }
 
-
-
-document.documentElement.addEventListener("touchstart", function() {
-  console.log('test')
+document.documentElement.addEventListener('touchstart', function () {
+  console.log('test');
 });
 
-console.log(DragDropTouch)
+console.log(DragDropTouch);
 DragDropTouch.DragDropTouch._ISPRESSHOLDMODE = true;
-console.log(DragDropTouch.DragDropTouch._ISPRESSHOLDMODE)
+console.log(DragDropTouch.DragDropTouch._ISPRESSHOLDMODE);
