@@ -434,11 +434,11 @@ function urgencyBoard(taskUrgency, id) {
 }
 
 
-
-document.documentElement.addEventListener("touchstart", function() {
-  console.log('test')
-});
-
-console.log(DragDropTouch)
+/**
+ * Set the property of the drag drop touch javascript add-on, 
+ * that the dragging should firstly start after a little stronger press and hold of the finger
+ * and not on a short and weak one, 
+ * which would produce touch intepratations errors 
+ * with the default scroll funcionality on touch events on mobile devices. 
+ */
 DragDropTouch.DragDropTouch._ISPRESSHOLDMODE = true;
-console.log(DragDropTouch.DragDropTouch._ISPRESSHOLDMODE)
