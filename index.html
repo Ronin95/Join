@@ -10,8 +10,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
   <link rel="stylesheet" href="./css/style.css" />
-  <link rel="stylesheet" href="./css/fonts.css" />
-  <link rel="stylesheet" href="./css/datepicker.css" />
+  <link rel="stylesheet" href="./css/media.css" />
+  <link rel="stylesheet" href="./css/datepicker.css">
 
   <script src="./js/mini_backend.js"></script>
 
@@ -24,20 +24,25 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script> -->
-
   <!-- safe-area css -->
-  <link rel=" stylesheet" href="./css/safe-area.css">
+  <link rel="stylesheet" href="./css/safe-area.css">
 </head>
 
 <body onload="initIndex()" class="py-md-4">
+  <!-- #region save area -->
   <div id="safeArea">
-    <div class="app-window h-100 w-100 d-flex flex-column flex-md-row overflow-hidden">
-      <div w3-include-html="navbar.html"></div>
 
-      <!-- work area (right site: content of the nav-link) -->
+    <!-- #region app window -->
+    <div class="app-window h-100 w-100 d-flex flex-column flex-md-row overflow-hidden">
+      <div w3-include-html="navbar.html" class="position-sticky top-0 z-index-100"></div>
+
+      <!-- #region work area (right site: content of the nav-link) -->
       <div class="d-flex flex-grow-1 overflow-hidden">
         <div class="w-100 py-sm-4">
+          <!-- #region carousel -->
           <div.car id="carousel" class="carousel slide h-100 d-flex justify-content-between" data-bs-touch="false">
+
+            <!-- carousel controll prev button -->
             <button id="left-slide-button" class="d-sm-none mt-0 carousel-control-prev d-flex flex-column" type="button"
               data-bs-target="#carousel" data-bs-slide="prev"
               ondragover="highlightCarouselControl('left'), console.log('over')"
@@ -51,7 +56,10 @@
               <span class="visually-hidden">Previous</span>
             </button>
 
+            <!-- #region carousel inner with slide columns -->
             <div id="carousel-inner" class="carousel-inner d-sm-flex align-items-sm-center justify-content-sm-center">
+
+              <!-- carousel-item: TO DO-column -->
               <div id="0" class="all carousel-item active h-100">
                 <div class="d-flex flex-column align-items-center h-100">
                   <span class="fw-bold fs-5 my-1 column-name text-dark">TO DO</span>
@@ -63,6 +71,7 @@
                 </div>
               </div>
 
+              <!-- carousel-item: IN PROGRESS-column -->
               <div id="1" class="all carousel-item h-100">
                 <div class="d-flex flex-column align-items-center h-100">
                   <span class="fw-bold fs-5 my-1 column-name text-dark">IN PROGRESS</span>
@@ -74,6 +83,7 @@
                 </div>
               </div>
 
+              <!-- carousel-item: TESTING-column -->
               <div id="2" class="all carousel-item h-100">
                 <div class="d-flex flex-column align-items-center h-100">
                   <span class="fw-bold fs-5 my-1 column-name text-dark">TESTING</span>
@@ -84,6 +94,7 @@
                 </div>
               </div>
 
+              <!-- carousel-item: DONE column -->
               <div id="3" class="all carousel-item h-100">
                 <div class="d-flex flex-column align-items-center h-100">
                   <span class="fw-bold fs-5 my-1 column-name text-dark">DONE</span>
@@ -95,7 +106,9 @@
                 </div>
               </div>
             </div>
+            <!-- endregion carousel inner with slide columns -->
 
+            <!-- carousel controll next button -->
             <button id="right-slide-button" class="d-sm-none mt-0 carousel-control-next d-flex flex-column"
               type="button" data-bs-target="#carousel" data-bs-slide="next"
               ondragover="highlightCarouselControl('right'), console.log('over')"
@@ -108,6 +121,7 @@
               <span class="visually-hidden">Next</span>
             </button>
 
+            <!-- carousel indicators -->
             <div id="carousel-indicators" class="d-sm-none carousel-indicators">
               <button id="ind0" type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active"
                 aria-current="true" aria-label="Slide 0"></button>
@@ -120,17 +134,19 @@
             </div>
 
           </div.car>
+          <!-- endregion carousel -->
         </div>
       </div>
+      <!-- endregion work area (right site: content of the nav-link) -->
 
-      <!-- Modal -->
-      <!-- Am Ende Modal noch unnötige Klassen checken / löschen / cleanen -->
+      <!-- #region modal -->
       <div class="modal fade" id="staticBackdrop" data-bs-keyboard="true" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <form class="d-flex justify-content-center" id="boardSubmit" onsubmit="adaptTask()">
               <div id="boardUrgency" class="w-100 rounded-2 bg-grey m-0">
+
                 <!-- title -->
                 <div class="m-2 m-sm-4">
                   <h4 class="main-color"><b>TITLE</b></h4>
@@ -139,16 +155,6 @@
                 </div>
 
                 <!-- date -->
-                <!-- <div class="m-2 m-sm-4">
-                <h4 class="main-color">DUE DATE</h4>
-                <form>
-                  <div id="wichDate">
-                    <input id="modalDate" class="rounded fs-4 p-2 bs-simple w-100 textbox-n" placeholder="today"                    
-                      type="text" onfocus="(this.type='date')"> 
-                  </div>
-                </form>
-              </div> -->
-
                 <div class="m-2 m-sm-4">
                   <h4 class="main-color"><b>DUE DATE</b></h4>
                   <div class="container m-0 p-0">
@@ -215,6 +221,8 @@
                 <!-- buttons-->
                 <div id="modalBoardBtns" class="m-2 m-sm-4 d-flex justify-content-between"></div>
               </div>
+
+              <!-- toast -->
               <div class="toast-container position-fixed top-0 end-0 p-3">
                 <div id="boardToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
                   <div class="d-flex align-items-center">
@@ -224,14 +232,18 @@
                   </div>
                 </div>
               </div>
+
             </form>
           </div>
+
         </div>
       </div>
-
+      <!-- #endregion modal -->
     </div>
-  </div>
+    <!-- #endregion app window -->
 
+  </div>
+  <!-- endregion save area -->
 
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
@@ -239,9 +251,9 @@
     crossorigin="anonymous"></script>
   <script src="./js/helpers.js"></script>
   <script src="./js/template.js"></script>
-  <!-- <script src="./js/addTask.js"></script> -->
   <script src="./js/script.js"></script>
   <script src=" ./js/DragDropTouch.js"></script>
   <script src="./js/index.js"></script>
 </body>
+
 </html>
