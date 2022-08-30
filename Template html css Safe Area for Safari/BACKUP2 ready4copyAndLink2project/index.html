@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- the property viewport-fit-cover has to be added to the viewport attributes in order the env(safe.are.inset-*) works -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0; viewport-fit=cover">
+    <title>Template for the CSS Only automatic matching Safe Area for Safari browser.</title>
+
+    <!-- bootstrap@5.2.0-beta1 -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons via CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <!-- custom CSS showInfoFktnNotExists-->
+    <link rel="stylesheet" href="styleDialogFktnNotExist.css">
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- safe-area css -->
+    <link rel=" stylesheet" href="safe-area.css">
+
+</head>
+
+<body>
+    <!-- <div id="unsafeArea"></div> -->
+
+    <!-- safe area = the area that will not be cut by the search bar in the Safari browser after the loading of the page. 
+        After scrolling up / srolling away the search bar the height of safe area / app window 
+        will automaticly increase to the full height of the device WITHOUT JS / CSS ONLY!!
+        (rules for that in safe-area.css file).  -->
+    <div id="safeArea">
+        <h1>Safe Area</h1>
+    </div>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
