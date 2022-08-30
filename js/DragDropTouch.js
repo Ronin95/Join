@@ -189,7 +189,7 @@ var DragDropTouch;
                         this._dragSource = src;
                         this._ptDown = this._getPoint(e);
                         this._lastTouch = e;
-                        e.preventDefault();
+                        // e.preventDefault();  /* Lukas 30.08.2022: This has to be commented out in order scroll function works on mobile devices.*/
                         // show context menu if the user hasn't started dragging after a while
                         setTimeout(function () {
                             if (_this._dragSource == src && _this._img == null) {

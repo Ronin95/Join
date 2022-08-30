@@ -43,7 +43,9 @@ body {
 
 .vh-70 {
   height: 70vh !important;
-} /*Bitte nicht löschen. Wird benötigt für Backlog scrollen .phil*/
+}
+
+/*Bitte nicht löschen. Wird benötigt für Backlog scrollen .phil*/
 
 @media (min-height: 655px) {
   .media-vh77 {
@@ -364,7 +366,9 @@ body {
 
 /* Additional class to change the default cycle direction of bootstrap carousel
  for sliding on hover with a dragged task item over the carousel prev button  */
-@media all and (transform-3d), (-webkit-transform-3d) {
+@media all and (transform-3d),
+(-webkit-transform-3d) {
+
   .changeDirection .active.carousel-item-start,
   .changeDirection .carousel-item-prev:not(.carousel-item-end) {
     -webkit-transform: translateX(100%) !important;
@@ -473,7 +477,7 @@ body {
   margin-bottom: 12px !important;
 }
 
-.table > tbody {
+.table>tbody {
   vertical-align: middle !important;
 }
 
@@ -562,3 +566,7 @@ html {
 } */
 
 /* Just Testing again something */
+
+.board-column {
+  touch-action: pan-y !important;
+}

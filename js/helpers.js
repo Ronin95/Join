@@ -56,7 +56,7 @@ function showAllUser() {
   for (let i = 1; i < users.length; i++) {
     let user = users[i];
     let showUser = document.getElementById('user');
-    showUser.innerHTML += generateUsers(user);
+    showUser.innerHTML += generateUsers(user, i);
   }
 }
 

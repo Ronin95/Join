@@ -379,6 +379,7 @@ function handleForm(event) {
   }, 2000);
   adaptTask();
 }
+
 formBoard.addEventListener('submit', handleForm);
 
 /* Check if Scrollbar is real
@@ -431,3 +432,13 @@ function urgencyBoard(taskUrgency, id) {
     document.getElementById(id).classList.add('green');
   }
 }
+
+
+
+document.documentElement.addEventListener("touchstart", function() {
+  console.log('test')
+});
+
+console.log(DragDropTouch)
+DragDropTouch.DragDropTouch._ISPRESSHOLDMODE = true;
+console.log(DragDropTouch.DragDropTouch._ISPRESSHOLDMODE)

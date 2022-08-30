@@ -33,7 +33,7 @@
       <!-- work area (right site: content of the nav-link) -->
       <div class="d-flex flex-grow-1 overflow-hidden">
         <div class="w-100 py-sm-4">
-          <div
+          <div.car
             id="carousel"
             class="carousel slide h-100 d-flex justify-content-between"
             data-bs-touch="false"
@@ -188,50 +188,7 @@
               ></button>
             </div>
 
-            <div id="2" class="all carousel-item h-100">
-              <div class="d-flex flex-column align-items-center h-100">
-                <span class="fw-bold my-1 column-name text-dark"><b>TESTING</b></span>
-                <div id="testingColumn" class="board-column bg-grey hiddenScrollbarScrollbar flex-grow-1 w-100 px-1"
-                  ondrop="moveTo('testing'), removeHightlight('testingColumn')"
-                  ondragover="allowDrop(event), hightlight('testingColumn')"
-                  ondragleave="removeHightlight('testingColumn')"></div>
-              </div>
-            </div>
-
-            <div id="3" class="all carousel-item h-100">
-              <div class="d-flex flex-column align-items-center h-100">
-                <span class="fw-bold my-1 column-name text-dark"><b>DONE</b></span>
-                <div id="doneColumn" class="board-column bg-grey hiddenScrollbarScrollbar flex-grow-1 w-100 px-1"
-                  ondrop="moveTo('done'), removeHightlight('doneColumn')"
-                  ondragover="allowDrop(event), hightlight('doneColumn')" ondragleave="removeHightlight('doneColumn')">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <button id="right-slide-buttom" class="d-sm-none carousel-control-next d-flex flex-column" type="button"
-            data-bs-target="#carousel" data-bs-slide="next"
-            ondragover="highlightCarouselControl('right'), console.log('over')"
-            ondragleave="stopSlideNext(), removeHighlightCarouselControl('right'), console.log('leave')"
-            ondragenter="startSlideNext(), console.log('enter')" onclick="highlightCarouselControlOnClick('right')">
-            <span id="rightArrowText"
-              class="fs-6 fw-bold carousel-control-name d-flex align-items-start justify-content-center"></span>
-            <span id="right-arrow" class="carousel-control-next-icon" aria-hidden="true"><br /><span class="text-white"
-                style="font-size: 10px">Drag</span></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-
-          <div id="carousel-indicators" class="d-sm-none carousel-indicators">
-            <button id="ind0" type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active"
-              aria-current="true" aria-label="Slide 0"></button>
-            <button id="ind1" type="button" data-bs-target="#carousel" data-bs-slide-to="1"
-              aria-label="Slide 1"></button>
-            <button id="ind2" type="button" data-bs-target="#carousel" data-bs-slide-to="2"
-              aria-label="Slide 2"></button>
-            <button id="ind3" type="button" data-bs-target="#carousel" data-bs-slide-to="3"
-              aria-label="Slide 3"></button>
-          </div>
-        </div>
+        </div.car>
       </div>
     </div>
 
@@ -349,8 +306,8 @@
   <script src="./js/template.js"></script>
   <!-- <script src="./js/addTask.js"></script> -->
   <script src="./js/script.js"></script>
-  <script src="./js/index.js"></script>
   <script src=" ./js/DragDropTouch.js"></script>
+  <script src="./js/index.js"></script>
 </body>
 
 </html>

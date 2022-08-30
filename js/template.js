@@ -118,7 +118,7 @@ function renderButtons(indexTask) {
   `;
 }
 
-function generateUsers(user) {
+function generateUsers(user, i) {
   return /*html*/ `
   <img 
     title="${user.name}" 
