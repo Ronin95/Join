@@ -291,6 +291,7 @@ function openModal(idValue) {
   document.getElementById('modalSelectedUser').src = task.userForTask.avatar;
   renderButtons(indexTask);
   urgencyCol(task.urgency);
+  modalHideAllUsers();
 }
 
 /**
@@ -355,6 +356,15 @@ function modalShowAllUsers() {
   document.getElementById('modalSelectedUser').classList.toggle('d-none');
   document.getElementById('modalUserCollection').classList.toggle('d-none');
 }
+
+/**
+ * Hide the open drop down menu of all user avatars in the modal.
+ */
+ function modalHideAllUsers() {
+  document.getElementById('modalSelectedUser').classList.remove('d-none');
+  document.getElementById('modalUserCollection').classList.add('d-none');
+}
+
 
 /**
  * Generate all user avatars for the scrollable container: all users collection,
