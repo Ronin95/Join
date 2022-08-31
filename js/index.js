@@ -257,10 +257,7 @@ function reverseChildren() {
 
   for (var i = 1; i < parentItems.childNodes.length; i++) {
     parentItems.insertBefore(parentItems.childNodes[i], parentItems.firstChild);
-    parentIndicators.insertBefore(
-      parentIndicators.childNodes[i],
-      parentIndicators.firstChild
-    );
+    parentIndicators.insertBefore(parentIndicators.childNodes[i], parentIndicators.firstChild);
   }
 }
 
