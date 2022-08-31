@@ -420,3 +420,16 @@ function urgencyBoard(taskUrgency, id) {
  * with the default scroll funcionality on touch events on mobile devices. 
  */
 DragDropTouch.DragDropTouch._ISPRESSHOLDMODE = true;
+
+
+
+/* element is an HTML element You want catch the touch */
+document.documentElement.addEventListener('touchstart', function (e) {
+  document.documentElement.style.overflow = 'hidden';
+  console.log('drag start')
+});
+
+document.documentElement.addEventListener('touchend', function (e) {
+  document.documentElement.style.overflow = 'auto';
+  console.log('drag end')
+});

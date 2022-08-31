@@ -73,7 +73,8 @@ function genHTMLBoardTaskItem(task) {
       ondragstart="startDragging(${task['id']})" 
       data-bs-toggle="modal" 
       data-bs-target="#staticBackdrop"
-      onclick="openModal(${task['id']})">
+      onclick="openModal(${task['id']})"
+      style="touch-action: none">
         <div class="card-header p-1 fs-6">
         <span 
           class="badge p-1 fw-semibold" 
