@@ -336,18 +336,17 @@ function changeSelectedUser(i, id) {
   userTask.name = user.name;
   userTask.password = user.password;
   saveInBackend(allTasks, 'allTasks');
-  changeModalAvatarAfterSelect(user)
+  changeModalAvatarAfterSelect(user);
 }
 
 /**
- * Change the user avatar in the modal after selection of one of the user avatars from the drop down menu. 
- * 
+ * Change the user avatar in the modal after selection of one of the user avatars from the drop down menu.
+ *
  * @param {JSON} user - This is the selected user from the drop dowm menu in the modal.
  */
 function changeModalAvatarAfterSelect(user) {
   document.getElementById('modalSelectedUser').src = user.avatar;
 }
-
 
 /**
  * Switch the view in the modal between the selected user of the task and the scrollable container with all users to select.
@@ -368,7 +367,7 @@ function modalShowAllUsers() {
 function modalGenAllUser(task, id) {
   let modalUserCollection = document.getElementById('modalUserCollection');
   modalUserCollection.innerHTML = '';
-  for (let i = 0; i < users.length; i++) {
+  for (let i = 1; i < users.length; i++) {
     const user = users[i];
     if (task.userForTask.avatar == user.avatar) {
       modalUserCollection.innerHTML += blueBorderImg(user, i, id);
@@ -407,6 +406,6 @@ window.onresize = function () {
   if (window.innerWidth < 576) {
     DragDropTouch.DragDropTouch._ISPRESSHOLDMODE = true;
   } else {
-    DragDropTouch.DragDropTouch._ISPRESSHOLDMODE = false;;
+    DragDropTouch.DragDropTouch._ISPRESSHOLDMODE = false;
   }
 };
