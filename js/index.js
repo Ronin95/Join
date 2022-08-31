@@ -157,9 +157,10 @@ function highlightCarouselControlOnClick(side) {
  */
 function startSlideNext() {
   if (window.innerWidth < 576) {
-    myCarousel.pause();
+    console.log('in')
+    // myCarousel.pause();
     myCarousel.cycle();
-    console.log('test');
+    console.log('next cycling');
   }
 }
 
@@ -177,7 +178,7 @@ function stopSlideNext() {
  */
 function startSlidePrev() {
   if (window.innerWidth < 576) {
-    myCarousel.pause();
+    // myCarousel.pause();
     myCarousel.cycle();
   }
 }
@@ -210,10 +211,8 @@ let reversed = false;
 /* Add the class 'change direction' changing the directon of the bootstrap default function cycling to from right to left. */
 function addChangeDirectionClassReverseChildren() {
   document.getElementById('carousel-inner').classList.add('changeDirection');
-  console.log('ADDED class');
   reverseChildren();
   reversed = true;
-  console.log('children reversed to order: 4--3--2--1');
 }
 
 /* Remove the css class 'change direction' changing the directon of the bootstrap default function cycling to from right to left. */
@@ -415,10 +414,6 @@ function urgencyBoard(taskUrgency, id) {
   }
 }
 
-document.documentElement.addEventListener('touchstart', function () {
-  console.log('test');
-});
-
 /**
  * Set the property of the drag drop touch javascript add-on, 
  * that the dragging should firstly start after a little stronger press and hold of the finger
@@ -427,16 +422,3 @@ document.documentElement.addEventListener('touchstart', function () {
  * with the default scroll funcionality on touch events on mobile devices. 
  */
 DragDropTouch.DragDropTouch._ISPRESSHOLDMODE = true;
-
-
-
-/* element is an HTML element You want catch the touch */
-document.documentElement.addEventListener('touchstart', function (e) {
-  document.documentElement.style.overflow = 'hidden';
-  console.log('drag start')
-});
-
-document.documentElement.addEventListener('touchend', function (e) {
-  document.documentElement.style.overflow = 'auto';
-  console.log('drag end')
-});
