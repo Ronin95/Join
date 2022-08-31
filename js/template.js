@@ -1,3 +1,9 @@
+/**
+ * template for creating a task
+ * @param {Array} newTask new generated task
+ * @param {number} i marks the position of the task in the array allTasks
+ * @returns html code
+ */
 function newTaskTemp(newTask, i) {
   return /*html*/ `
   <div class="d-flex position-relative align-items-sm-center border-1 rounded bg-grey mb-2">
@@ -133,6 +139,12 @@ function renderButtons(indexTask) {
   `;
 }
 
+/**
+ * creates an avatar for each user
+ * @param {object} user user contains all information about a user
+ * @param {number} i marks the position of the user in the array users
+ * @returns html code
+ */
 function generateUsers(user, i) {
   return /*html*/ `
   <img 
@@ -143,5 +155,31 @@ function generateUsers(user, i) {
     src="${user.avatar}" 
     alt=""
   />
+`;
+}
+
+/**
+ * creates an image with a blue frame for viewing in modal
+ * @param {string} user user contains all information about a user
+ * @param {number} i marks the position of user in the array users
+ * @param {number} id of the task
+ * @returns html code
+ */
+function blueBorderImg(user, i, id) {
+  return /* html */ `
+<img class="assigendToImg rounded-circle border border-4 border-primary m-1" src="${user.avatar}" onclick="changeSelectedUser(${i}, ${id})">
+`;
+}
+
+/**
+ * creates an image with a white frame for viewing in modal
+ * @param {string} user user contains all information about a user
+ * @param {number} i marks the position of user in the array users
+ * @param {number} id of the task
+ * @returns html code
+ */
+function whiteBorderImg(user, i, id) {
+  return /* html */ `
+  <img class="assigendToImg rounded-circle border border-4 border-white m-1" src="${user.avatar}" onclick="changeSelectedUser(${i}, ${id})">
 `;
 }
