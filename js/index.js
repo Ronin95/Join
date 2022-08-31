@@ -336,8 +336,18 @@ function changeSelectedUser(i, id) {
   userTask.name = user.name;
   userTask.password = user.password;
   saveInBackend(allTasks, 'allTasks');
-  openModal(id);
+  changeModalAvatarAfterSelect(user)
 }
+
+/**
+ * Change the user avatar in the modal after selection of one of the user avatars from the drop down menu. 
+ * 
+ * @param {JSON} user - This is the selected user from the drop dowm menu in the modal.
+ */
+function changeModalAvatarAfterSelect(user) {
+  document.getElementById('modalSelectedUser').src = user.avatar;
+}
+
 
 /**
  * Switch the view in the modal between the selected user of the task and the scrollable container with all users to select.
@@ -393,4 +403,10 @@ formBoard.addEventListener('submit', handleForm);
  * which would produce touch intepratations errors
  * with the default scroll funcionality on touch events on mobile devices.
  */
-DragDropTouch.DragDropTouch._ISPRESSHOLDMODE = true;
+window.onresize = function () {
+  if (window.innerWidth < 576) {
+    DragDropTouch.DragDropTouch._ISPRESSHOLDMODE = true;
+  } else {
+    DragDropTouch.DragDropTouch._ISPRESSHOLDMODE = false;;
+  }
+};

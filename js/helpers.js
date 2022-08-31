@@ -106,3 +106,11 @@ function urgencyBoard(taskUrgency, id) {
     document.getElementById(id).classList.add('green');
   }
 }
+
+/**
+ * Change the color in the top right corner of the triagle according to the selected urgency in the modal.
+ */
+function changeModalUrgencyColor() {
+  let urgency = document.getElementById('modalUrgency').value;
+  urgencyCol(urgency);
+}
