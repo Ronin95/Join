@@ -375,6 +375,30 @@ body {
   margin-bottom: -12px;
 }
 
+/* Hide scrollbar for Chrome,Safari and Opera  */
+html::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+html {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.hide-scroll-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scroll-bar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
 .today-date {
   font-size: 0.75rem !important;
 }

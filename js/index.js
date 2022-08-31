@@ -157,7 +157,7 @@ function highlightCarouselControlOnClick(side) {
  */
 function startSlideNext() {
   if (window.innerWidth < 576) {
-    console.log('in')
+    console.log('in');
     // myCarousel.pause();
     myCarousel.cycle();
     console.log('next cycling');
@@ -256,7 +256,10 @@ function reverseChildren() {
 
   for (var i = 1; i < parentItems.childNodes.length; i++) {
     parentItems.insertBefore(parentItems.childNodes[i], parentItems.firstChild);
-    parentIndicators.insertBefore(parentIndicators.childNodes[i], parentIndicators.firstChild);
+    parentIndicators.insertBefore(
+      parentIndicators.childNodes[i],
+      parentIndicators.firstChild
+    );
   }
 }
 
@@ -326,10 +329,8 @@ function changeSelectedUser(i, id) {
   let indexTask = allTasks.findIndex((obj) => obj.id == id);
   let userTask = allTasks[indexTask].userForTask;
   let user = users[i];
-  let imgSrc = document.getElementById('modalSelectedUser').src;
-  let indexSrc = imgSrc.indexOf('img');
-  let imgSubstring = imgSrc.substring(indexSrc, imgSrc.length);
-  imgSubstring = user.avatar;
+  let imgSrc = getRightSrcOfImg();
+  imgSrc = user.avatar;
   userTask.avatar = user.avatar;
   userTask.email = user.email;
   userTask.name = user.name;
@@ -386,39 +387,10 @@ function handleForm(event) {
 formBoard.addEventListener('submit', handleForm);
 
 /**
- * reads the urgency and assigns a corresponding color class
- * @param {string} taskUrgency indicates the urgency of the respective task
- */
-function urgencyCol(taskUrgency) {
-  if (taskUrgency == 'High') {
-    document.getElementById('boardUrgency').className = 'red-modal';
-  } else if (taskUrgency == 'Medium') {
-    document.getElementById('boardUrgency').className = 'yellow-modal';
-  } else {
-    document.getElementById('boardUrgency').className = 'green-modal';
-  }
-}
-
-/**
- * reads the urgency and assigns a corresponding class
- * @param {string} taskUrgency indicates the urgency of the respective task
- * @param {*} id indicates the id of the respective task
- */
-function urgencyBoard(taskUrgency, id) {
-  if (taskUrgency == 'High') {
-    document.getElementById(id).classList.add('red');
-  } else if (taskUrgency == 'Medium') {
-    document.getElementById(id).classList.add('yellow');
-  } else {
-    document.getElementById(id).classList.add('green');
-  }
-}
-
-/**
- * Set the property of the drag drop touch javascript add-on, 
+ * Set the property of the drag drop touch javascript add-on,
  * that the dragging should firstly start after a little stronger press and hold of the finger
- * and not on a short and weak one, 
- * which would produce touch intepratations errors 
- * with the default scroll funcionality on touch events on mobile devices. 
+ * and not on a short and weak one,
+ * which would produce touch intepratations errors
+ * with the default scroll funcionality on touch events on mobile devices.
  */
 DragDropTouch.DragDropTouch._ISPRESSHOLDMODE = true;

@@ -37,7 +37,7 @@ function saveInBackend(json, key) {
 /**
  * downloads the data matching the key
  * @param {string} key the key with which something was saved in the backend
- * @returns gibt ein JSON zurück
+ * @returns a JSON
  */
 function loadFromBackend(key) {
   let asString = backend.getItem(key);
@@ -76,4 +76,33 @@ function logout() {
   localStorage.setItem('isLoggedIn', false);
   localStorage.removeItem('currentUser');
   location.href = 'login.html';
+}
+
+/**
+ * reads the urgency and assigns a corresponding color class
+ * @param {string} taskUrgency indicates the urgency of the respective task
+ */
+function urgencyCol(taskUrgency) {
+  if (taskUrgency == 'High') {
+    document.getElementById('boardUrgency').className = 'red-modal';
+  } else if (taskUrgency == 'Medium') {
+    document.getElementById('boardUrgency').className = 'yellow-modal';
+  } else {
+    document.getElementById('boardUrgency').className = 'green-modal';
+  }
+}
+
+/**
+ * reads the urgency and assigns a corresponding class
+ * @param {string} taskUrgency indicates the urgency of the respective task
+ * @param {*} id indicates the id of the respective task
+ */
+function urgencyBoard(taskUrgency, id) {
+  if (taskUrgency == 'High') {
+    document.getElementById(id).classList.add('red');
+  } else if (taskUrgency == 'Medium') {
+    document.getElementById(id).classList.add('yellow');
+  } else {
+    document.getElementById(id).classList.add('green');
+  }
 }

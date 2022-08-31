@@ -18,18 +18,18 @@
 
 @media only screen and (max-width: 767px) {
   .you-are-here {
-    border-left: none;
-    margin-left: 0px;
+    border-left: none !important;
+    margin-left: 0px !important;
   }
 
   .navbar-nav a:hover {
-    border-left: none;
-    border-bottom: transparent;
-    margin-left: 0px;
+    border-left: none !important;
+    border-bottom: transparent !important;
+    margin-left: 0px !important;
   }
 
   .logo {
-    height: 40px;
+    height: 40px !important;
   }
 
   .avatar-board {
@@ -42,8 +42,8 @@
   }
 
   .avatar-board img {
-    height: 40px;
-    width: 40px;
+    height: 40px !important;
+    width: 40px !important;
   }
 
   .cardAssignedTo img {
@@ -78,7 +78,7 @@
   }
 
   .navbar-border {
-    border-left: none;
+    border-left: none !important;
   }
 
   .carousel {
