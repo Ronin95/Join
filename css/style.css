@@ -89,7 +89,7 @@ body {
   position: fixed !important;
   top: 0 !important;
   /* later to delete */
-  border: 3px solid red !important;
+  /* border: 3px solid red !important; */
 }
 
 /*--------------------------------*/
