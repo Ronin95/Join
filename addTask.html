@@ -28,13 +28,13 @@
   <link rel="stylesheet" href="./css/safe-area.css">
 </head>
 
-<body onload="initAddTask()" class="py-md-4">
+<body onload="initAddTask()">
   <div id="safeArea">
     <div class="app-window h-100 w-100 d-flex flex-column flex-md-row overflow-hidden">
-      <div w3-include-html="navbar.html" class="position-sticky top-0 z-index-100"></div>
+      <div w3-include-html="navbar.html" class="py-md-4 top-0 z-index-100"></div>
 
       <!-- work area (right site: content of the nav-link) -->
-      <div class="p-2 p-sm-5 mb-4 w-100 position-sticky top-0 overflow-scroll">
+      <div class="p-2 p-sm-5 mb-4 w-100 position-sticky top-0 overflow-scroll hiddenScrollbar">
         <div>
           <h2><strong>Add Task</strong></h2>
           <p class="main-color">Learning Management System Project</p>
@@ -122,7 +122,7 @@
       </div>
     </div>
 
-    <div id="success_task" class="toast succes-arrow" role="alert" aria-atomic="true">
+    <div id="success_task" class="toast succes-arrow position-fixed" role="alert" aria-atomic="true">
       <div class="d-flex justify-content-around align-items-center p-2 flex-column">
         <strong class="fs-6">New Task added</strong>
         <div class="mt-2 pt-2 ">
