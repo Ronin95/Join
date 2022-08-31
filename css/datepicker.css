@@ -18,8 +18,8 @@
   left: calc(50% + 4px);
 }
 
-.form-control:focus + .form-control-placeholder,
-.form-control:valid + .form-control-placeholder {
+.form-control:focus+.form-control-placeholder,
+.form-control:valid+.form-control-placeholder {
   font-size: 95%;
   top: 10px;
   transform: translate3d(0, -100%, 0);
@@ -153,5 +153,26 @@ tfoot tr:nth-child(2) th {
 
   .datepicker-dropdown.datepicker-orient-right:after {
     right: calc(50% - 5px);
+  }
+}
+
+.datepicker {
+ position: fixed !important;
+}
+
+.datepicker-days {
+  border: 3px solid rgba(0, 0, 0, 0.575);
+}
+
+@media screen and (max-width: 575px) {
+  .datepicker {
+    left: 16px !important;
+    right: 16px;
+    margin: auto;
+    max-width: fit-content;
+  }
+
+  .table-condensed td {
+    padding: 2px !important;
   }
 }
