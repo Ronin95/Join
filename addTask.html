@@ -34,21 +34,21 @@
       <div w3-include-html="navbar.html" class="py-md-4 top-0 z-index-100"></div>
 
       <!-- work area (right site: content of the nav-link) -->
-      <div class="p-2 p-sm-5 mb-4 w-100 position-sticky top-0 overflow-scroll hiddenScrollbar">
+      <div class="my-md-4 p-2 p-sm-5 w-100 position-sticky top-0 overflow-scroll hiddenScrollbar">
         <div>
           <h2><strong>Add Task</strong></h2>
           <p class="main-color">Learning Management System Project</p>
         </div>
-        <form class="d-flex justify-content-center" id="addTaskSubmit" onsubmit="addTask()">
+        <form class="d-flex vh-70 overflow-auto hiddenScrollbar justify-content-center" id="addTaskSubmit" onsubmit="addTask()">
           <div class="w-100 rounded-2 bg-grey m-0">
             <div class="d-flex align-items-center flex-column flex-sm-row">
               <div class="w-75 m-2 m-sm-4">
-                <h3 class="main-color"><b>TITLE</b></h3>
+                <h3 class="main-color fs-5"><strong>TITLE</strong></h3>
                 <input class="rounded fs-4 p-2 bs-simple w-100" required minlength="3" id="title"
                   placeholder="Add a title" />
               </div>
               <div class="w-75 m-2 m-sm-4">
-                <h3 class="main-color d-flex flex-row justify-content-between align-items-center"><b>DUE DATE</b><span
+                <h3 class="main-color fs-5 d-flex flex-row justify-content-between align-items-center"><strong>DUE DATE</strong><span
                     class="d-flex justify-content-center" id="today"></span></h3>
 
 
@@ -72,7 +72,7 @@
             </div>
             <div class="d-flex align-items-center flex-column flex-sm-row">
               <div class="w-75 m-2 m-sm-4">
-                <h3 class="main-color"><b>CATEGORY</b></h3>
+                <h3 class="main-color fs-5"><strong>CATEGORY</strong></h3>
                 <form class="w-100">
                   <select class="p-2 rounded fs-4 p-2 bs-simple w-100" id="category">
                     <option value="Sales">Sales</option>
@@ -85,7 +85,7 @@
                 </form>
               </div>
               <div class="w-75 m-2 m-sm-4">
-                <h3 class="main-color"><b>URGENCY</b></h3>
+                <h3 class="main-color fs-5"><strong>URGENCY</strong></h3>
                 <form class="w-100">
                   <select class="rounded fs-4 p-2 bs-simple w-100" id="urgency">
                     <option value="Low">Low</option>
@@ -97,12 +97,12 @@
             </div>
             <div class="d-flex align-items-center align-items-sm-start flex-column flex-sm-row">
               <div class="w-75 m-2 m-sm-4">
-                <h3 class="main-color"><b>DESCRIPTION</b></h3>
+                <h3 class="main-color fs-5"><strong>DESCRIPTION</strong></h3>
                 <textarea required class="rounded fs-4 p-2 bs-simple w-100 font" minlength="3" id="description"
                   placeholder="Add your notes"></textarea>
               </div>
               <div class="w-75 m-2 m-sm-4">
-                <h3 class="main-color"><b>ASSIGNED TO</b></h3>
+                <h3 class="main-color fs-5"><strong>ASSIGNED TO</strong></h3>
 
                 <div id="user" class="w-100 p-2 flex-media">
                 </div>
