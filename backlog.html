@@ -25,15 +25,12 @@
   <body onload="initBacklog()">
     <div id="safeArea">
       <div
-        class="app-window h-100 w-100 d-flex flex-column flex-md-row overflow-hidden"
+        class="py-md-4 app-window h-100 w-100 d-flex flex-column flex-md-row overflow-hidden"
       >
-        <div
-          w3-include-html="navbar.html"
-          class="py-md-4 top-0 z-index-100"
-        ></div>
+        <div w3-include-html="navbar.html" class="top-0 z-index-100"></div>
 
         <!-- work area (right site: content of the nav-link) -->
-        <div class="p-2 pt-0 pb-0 mt-2 p-sm-5 h-100 w-100">
+        <div class="px-4 pt-4 overflow-hidden h-100 w-100">
           <div class="d-flex position-sticky top-0 z-index-100 bg-white">
             <div
               class="w-100 d-flex justify-content-sm-between justify-content-start align-items-sm-center flex-column flex-sm-row z-index-100"
@@ -56,15 +53,19 @@
           <div>
             <div class="d-flex justify-content-between">
               <div>
-                <h3 class="main-color fw-bold d-none d-sm-block">
+                <h3 class="main-color fw-bold fs-5 d-none d-sm-block">
                   ASSIGNED TO
                 </h3>
               </div>
               <div>
-                <h3 class="d-none fw-bold d-sm-block main-color">CATEGORY</h3>
+                <h3 class="d-none fw-bold fs-5 d-sm-block main-color">
+                  CATEGORY
+                </h3>
               </div>
               <div>
-                <h3 class="d-none fw-bold d-sm-block main-color">DETAILS</h3>
+                <h3 class="d-none fw-bold fs-5 d-sm-block main-color">
+                  DETAILS
+                </h3>
               </div>
             </div>
             <div
