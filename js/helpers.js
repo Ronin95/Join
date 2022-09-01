@@ -1,7 +1,7 @@
 /**
  * Checks whether the visitor is logged in and whether the login period has not expired.
  */
-function checkIfLogin() {
+ function checkIfLogin() {
   let check = JSON.parse(localStorage.getItem('isLoggedIn'));
   let hours = 1;
   let now = new Date().getTime();

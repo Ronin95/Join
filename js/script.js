@@ -26,7 +26,7 @@ async function initIndex() {
   await currentUserImage();
   document.getElementById('navBoard').classList.add('you-are-here');
   renderAllColumns();
-  // configDragDropPressHoldMode();
+  configDragDropPressHoldMode();
 }
 
 async function initHelp() {

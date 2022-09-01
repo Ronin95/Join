@@ -266,13 +266,13 @@ function reverseChildren() {
 /**
  * Change the value of the boostrap data attribute of the carousel according to the bs-sm-break point. Turn on / off the carousel swipping.
  */
-window.onresize = function () {
+window.addEventListener("resize", function () {
   if (window.innerWidth < 576) {
     document.getElementById('carousel').setAttribute('data-bs-touch', 'true');
   } else {
     document.getElementById('carousel').setAttribute('data-bs-touch', 'false');
   }
-};
+});
 
 /**
  * Open the selected board task item in the modal.
@@ -412,7 +412,7 @@ formBoard.addEventListener('submit', handleForm);
  * which would produce touch intepratations errors
  * with the default scroll funcionality on touch events on mobile devices.
  */
-window.onresize = configDragDropPressHoldMode();
+window.addEventListener("resize", configDragDropPressHoldMode);
 
 function configDragDropPressHoldMode() {
   if (window.innerWidth < 576) {
@@ -420,5 +420,5 @@ function configDragDropPressHoldMode() {
   } else {
     DragDropTouch.DragDropTouch._ISPRESSHOLDMODE = false;
   }
-  console.log(DragDropTouch.DragDropTouch._ISPRESSHOLDMODE);
-}
+  console.log(DragDropTouch.DragDropTouch._ISPRESSHOLDMODE)
+};
