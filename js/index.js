@@ -360,7 +360,7 @@ function modalShowAllUsers() {
 /**
  * Hide the open drop down menu of all user avatars in the modal.
  */
- function modalHideAllUsers() {
+function modalHideAllUsers() {
   document.getElementById('modalSelectedUser').classList.remove('d-none');
   document.getElementById('modalUserCollection').classList.add('d-none');
 }
@@ -412,10 +412,13 @@ formBoard.addEventListener('submit', handleForm);
  * which would produce touch intepratations errors
  * with the default scroll funcionality on touch events on mobile devices.
  */
-window.onresize = function () {
+window.onresize = configDragDropPressHoldMode();
+
+function configDragDropPressHoldMode() {
   if (window.innerWidth < 576) {
     DragDropTouch.DragDropTouch._ISPRESSHOLDMODE = true;
   } else {
     DragDropTouch.DragDropTouch._ISPRESSHOLDMODE = false;
   }
-};
+  console.log(DragDropTouch.DragDropTouch._ISPRESSHOLDMODE);
+}
