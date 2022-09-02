@@ -73,7 +73,7 @@ body {
   align-items: center;
   background-color: rgb(255, 255, 255);
   height: 100vh;
-  font-family: 'PT Sans', sans-serif;
+  font-family: "PT Sans", sans-serif;
   touch-action: none !important;
 }
 
@@ -153,7 +153,7 @@ body {
 }
 
 .drag-area-highlight {
-  background-color: rgba(0, 0, 0, 0.2) !important;
+  background-color: var(--main-color) !important;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -167,6 +167,10 @@ body {
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+}
+
+.card {
+  background-color: white;
 }
 
 .card-title {
@@ -264,7 +268,7 @@ body {
 .carousel-control-prev {
   color: black;
   position: unset;
-  width: 30px;
+  width: 16vw;
   margin-top: 44px;
   background-color: rgba(33, 46, 141, 0.268) !important;
   opacity: 1 !important;
@@ -321,7 +325,7 @@ body {
 /* Add Task CSS */
 
 .font {
-  font-family: 'PT Sans', sans-serif;
+  font-family: "PT Sans", sans-serif;
 }
 
 .user-show {
@@ -429,11 +433,11 @@ html {
   }
 }
 
-.door-out:hover{
-cursor: pointer;
-transform: scale(1.1);
+.door-out:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
-.door-out{
+.door-out {
   transition: all ease-in-out 0.4s;
 }
