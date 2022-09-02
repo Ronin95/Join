@@ -82,19 +82,20 @@ function showAllUserAndDisable() {
 
 /* HAVE TO REWRITE for the new BOOTSRAP DATE*/
 function loadCurrentDate() {
-  if (dd < 10) {
+  if (/^\d$/.test(dd)) {
     dd = '0' + dd;
   }
-  if (mm < 10) {
+  if (/^\d$/.test(mm)) {
     mm = '0' + mm;
   }
-  today = yyyy + '/' + mm + '/' + dd;
-  document.getElementById('today').innerHTML += /*html*/ `
-  <div class="today-date d-flex justify-content-center flex-column">
-    <span class="d-flex justify-content-end ">TODAY</span>
-    <span class="today-date d-flex justify-content-center">${today} </span>
-  </div>
-  `;
+  today = dd + '/' + mm + '/' + yyyy;
+  document.getElementById('txtDate').value = today;
+  // document.getElementById('today').innerHTML += /*html*/ `
+  // <div class="today-date d-flex justify-content-center flex-column">
+  //   <span class="d-flex justify-content-end ">TODAY</span>
+  //   <span class="today-date d-flex justify-content-center">${today} </span>
+  // </div>
+  // `;
 }
 
 function handleForm(event) {
@@ -104,5 +105,7 @@ function handleForm(event) {
   toast.show();
   formAddTask.reset();
   showAllUser();
+  console.log(today, dd.length, mm.length);
+  loadCurrentDate();
 }
 formAddTask.addEventListener('submit', handleForm);
