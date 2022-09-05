@@ -1,10 +1,10 @@
 /**
- * template for creating a task
+ * Template for creating a task
  * @param {Array} newTask new generated task
  * @param {number} i marks the position of the task in the array allTasks
- * @returns html code
+ * @returns {HTMLElement} html code
  */
- function newTaskTemp(newTask, i) {
+function newTaskTemp(newTask, i) {
   return /*html*/ `
   <div class="d-flex position-relative align-items-sm-center border-1 rounded bg-grey mb-2">
     <div 
@@ -64,9 +64,8 @@
 
 /**
  * Generate a single task item in the kanban column on board.
- *
  * @param {JSON} task - This is a task from allTasks array with a certain filtered category.
- * @returns - This returns the HTML code for the task item defined with the task paramter for a specific kanban column on board.
+ * @returns {HTMLElement} - This returns the HTML code for the task item defined with the task paramter for a specific kanban column on board.
  */
 function genHTMLBoardTaskItem(task) {
   return /* html */ `
@@ -76,24 +75,24 @@ function genHTMLBoardTaskItem(task) {
       class="card green board-border my-2" 
       draggable="true" 
       ondragend="stopSlideJustOnDrop()"
-      ondragstart="startDragging(${task['id']})" 
+      ondragstart="startDragging(${task["id"]})" 
       data-bs-toggle="modal" 
       data-bs-target="#staticBackdrop"
-      onclick="openModal(${task['id']})">
+      onclick="openModal(${task["id"]})">
         <div class="card-header p-1 fs-6">
         <span 
           class="badge p-1 fw-semibold" 
-          style="background-color: ${colorsCategory[task['category']]}">
-            ${task['category']}
+          style="background-color: ${colorsCategory[task["category"]]}">
+            ${task["category"]}
         </span>
     </div>
         <div class="card-body text-dark p-1">
-            <p class="card-title fw-bold m-0">${task['title']}</p>
-            <p class="card-text d-none">${task['description']} </p>
+            <p class="card-title fw-bold m-0">${task["title"]}</p>
+            <p class="card-text d-none">${task["description"]} </p>
         </div>
 
         <div class="card-footer bg-transparent p-1 d-flex justify-content-between align-items-center gap-1">
-            <span class="fw-semibold text-dark">${task['date']}</span>
+            <span class="fw-semibold text-dark">${task["date"]}</span>
             <div class="cardAssignedTo">
                 <img 
                   src="${task.userForTask.avatar}" 
@@ -110,7 +109,7 @@ function genHTMLBoardTaskItem(task) {
  * @param {number} indexTask the location of the task in alltasks
  */
 function renderButtons(indexTask) {
-  document.getElementById('modalBoardBtns').innerHTML = /*html*/ `
+  document.getElementById("modalBoardBtns").innerHTML = /*html*/ `
   <input 
     title="Delete and close the task." 
     id="modalDeleteBtn"
@@ -139,10 +138,10 @@ function renderButtons(indexTask) {
 }
 
 /**
- * creates an avatar for each user
+ * Creates an avatar for each user.
  * @param {object} user user contains all information about a user
  * @param {number} i marks the position of the user in the array users
- * @returns html code
+ * @returns {HTMLImageElement} html code
  */
 function generateUsers(user, i) {
   return /*html*/ `
@@ -158,11 +157,11 @@ function generateUsers(user, i) {
 }
 
 /**
- * creates an image with a blue frame for viewing in modal
+ * Creates an image with a blue frame for viewing in modal.
  * @param {string} user user contains all information about a user
  * @param {number} i marks the position of user in the array users
  * @param {number} id of the task
- * @returns html code
+ * @returns {HTMLImageElement} html code
  */
 function blueBorderImg(user, i, id) {
   return /* html */ `
@@ -171,11 +170,11 @@ function blueBorderImg(user, i, id) {
 }
 
 /**
- * creates an image with a white frame for viewing in modal
+ * Creates an image with a white frame for viewing in modal.
  * @param {string} user user contains all information about a user
  * @param {number} i marks the position of user in the array users
  * @param {number} id of the task
- * @returns html code
+ * @returns {HTMLImageElement} html code
  */
 function whiteBorderImg(user, i, id) {
   return /* html */ `

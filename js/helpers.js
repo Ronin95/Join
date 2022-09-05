@@ -35,9 +35,9 @@ function saveInBackend(json, key) {
 }
 
 /**
- * downloads the data matching the key
+ * Downloads the data matching the key.
  * @param {string} key the key with which something was saved in the backend
- * @returns a JSON
+ * @returns {JSON|Array} a JSON or an empty Array
  */
 function loadFromBackend(key) {
   let asString = backend.getItem(key);

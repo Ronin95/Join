@@ -6,10 +6,10 @@ let mm = today.getMonth() + 1;
 let yyyy = today.getFullYear();
 
 /**
- * add a new task, by getting the values from document by id
- * safe in the JSON new Task
- * clear the input
- * show a message the Message with the value for wich Member is the task added
+ * Add a new task, by getting the values from document by id.
+ * Safe in the JSON new Task.
+ * Clear the input.
+ * Show a message the Message with the value for wich Member is the task added.
  */
 async function addTask() {
   allTasks = await loadFromBackend("allTasks");
@@ -29,11 +29,11 @@ async function addTask() {
 }
 
 /**
- * this is a function to get the new Date from value 
- * @param {string} newTask 
- * @param {number} date 
+ * this is a function to get the new Date from value
+ * @param {string} newTask
+ * @param {number} date
  */
-function getDate(newTask, date){
+function getDate(newTask, date) {
   if ((newTask.date = !date.value)) {
     newTask.date = today;
   } else {
@@ -42,9 +42,9 @@ function getDate(newTask, date){
 }
 
 /**
- * this is a function that return the document
- * @param {string} id 
- * @returns the id from the element
+ * This is a function that returns a HTML Element with a certain id.
+ * @param {string} id
+ * @returns {HTMLElement} the id from the element
  */
 function getInputValue(id) {
   return document.getElementById(id).value;
