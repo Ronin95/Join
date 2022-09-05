@@ -167,12 +167,25 @@ function removeHeight(id) {
  * Show the logout button.
  */
 function showExitDoor() {
-  document.getElementById("door").classList.add("door-visible");
+  if (window.innerWidth >= 767) {
+    document.getElementById("door").classList.add("door-visible");
+  }
 }
 
 /**
  * Hide the logout button.
  */
 function hideExitDoor() {
-  document.getElementById("door").classList.remove("door-visible");
+  if (window.innerWidth >= 767) {
+    document.getElementById("door").classList.remove("door-visible");
+  }
+}
+
+/**
+ * Switch the visbility of the logout button.
+ */
+function switchExitDoor() {
+  if (window.innerWidth < 768) {
+    document.getElementById("door").classList.toggle("door-visible");
+  }
 }
