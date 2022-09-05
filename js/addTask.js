@@ -13,27 +13,41 @@ let yyyy = today.getFullYear();
  */
 async function addTask() {
   allTasks = await loadFromBackend("allTasks");
-  let title = document.getElementById("title");
   let date = document.getElementById("txtDate");
-  let category = document.getElementById("category");
-  let urgency = document.getElementById("urgency");
-  let description = document.getElementById("description");
   let newTask = {
-    title: title.value,
+    title: getInputValue("title"),
     date: date.value,
-    category: category.value,
-    urgency: urgency.value,
-    description: description.value,
+    category: getInputValue("category"),
+    urgency: getInputValue("urgency"),
+    description: getInputValue("description"),
     userForTask: selectedUser,
     id: new Date().getTime(),
     state: "toDo",
   };
+  getDate(newTask, date);
+  saveTask(newTask);
+}
+
+/**
+ * this is a function to get the new Date from value 
+ * @param {string} newTask 
+ * @param {number} date 
+ */
+function getDate(newTask, date){
   if ((newTask.date = !date.value)) {
     newTask.date = today;
   } else {
     newTask.date = date.value.replace(".", "/");
   }
-  saveTask(newTask);
+}
+
+/**
+ * this is a function that return the document
+ * @param {string} id 
+ * @returns the id from the element
+ */
+function getInputValue(id) {
+  return document.getElementById(id).value;
 }
 
 /**
