@@ -24,10 +24,3 @@ function filterNames() {
     }
   }
 }
-
-// window.addEventListener('resize', () => {
-//   let windowHeight = window.innerHeight;
-//   console.log(windowHeight);
-//   let freshTask = document.getElementById('freshTask');
-//   freshTask.style.height = `calc(${windowHeight}px - 35vh`;
-// });

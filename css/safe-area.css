@@ -18,7 +18,6 @@ body {
     }
 
     #safeArea {
-        /* at default state !important to see at the beginning the safe area --> in project use your custom background-color */
         background-color: black !important;
 
         display: flex;

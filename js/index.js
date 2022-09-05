@@ -7,8 +7,8 @@ let currentDraggedElement;
  * The function is executed immediattasky after loading the web page.
  */
 function initBoard() {
-  users = loadFromBackend('users');
-  allTasks = loadFromBackend('allTasks');
+  users = loadFromBackend("users");
+  allTasks = loadFromBackend("allTasks");
   renderAllColumns();
   modalShowAllUser();
   isThereScrollBar();
@@ -18,10 +18,10 @@ function initBoard() {
  * Render all kanban columns (TO DO, IN PROGRESS etc.) on the board.
  */
 function renderAllColumns() {
-  renderColumn('toDo');
-  renderColumn('inProgress');
-  renderColumn('testing');
-  renderColumn('done');
+  renderColumn("toDo");
+  renderColumn("inProgress");
+  renderColumn("testing");
+  renderColumn("done");
 }
 
 /**
@@ -32,8 +32,8 @@ function renderAllColumns() {
  * This is also the id of the kanban column on the board, where the filtered task are placed as a task HTML-taskement.
  */
 function renderColumn(columnName) {
-  let filteredWithSameState = allTasks.filter((a) => a['state'] == columnName);
-  document.getElementById(`${columnName}Column`).innerHTML = '';
+  let filteredWithSameState = allTasks.filter((a) => a["state"] == columnName);
+  document.getElementById(`${columnName}Column`).innerHTML = "";
   for (let index = 0; index < filteredWithSameState.length; index++) {
     const task = filteredWithSameState[index];
     document.getElementById(`${columnName}Column`).innerHTML +=
@@ -61,7 +61,7 @@ function startDragging(id) {
 function moveTo(state) {
   let taskIndex = allTasks.find((n) => n.id == currentDraggedElement);
   taskIndex.state = state;
-  saveInBackend(allTasks, 'allTasks');
+  saveInBackend(allTasks, "allTasks");
   renderAllColumns();
 }
 
@@ -83,7 +83,7 @@ function allowDrop(ev) {
  * @param {string} columnName - This is the name of the board kanban column, which should be highlighted
  */
 function hightlight(columnName) {
-  document.getElementById(columnName).classList.add('drag-area-highlight');
+  document.getElementById(columnName).classList.add("drag-area-highlight");
 }
 
 /**
@@ -93,13 +93,13 @@ function hightlight(columnName) {
  * @param {string} columnName - This is the name of the board kanban column, for which the highlicht effect should be removed.
  */
 function removeHightlight(columnName) {
-  document.getElementById(columnName).classList.remove('drag-area-highlight');
+  document.getElementById(columnName).classList.remove("drag-area-highlight");
 }
 
 /**
  * Create new bootstrap carousel object with its initial properties.
  */
-const myCarousel = new bootstrap.Carousel(document.getElementById('carousel'), {
+const myCarousel = new bootstrap.Carousel(document.getElementById("carousel"), {
   /* The speed of carousel sliding */
   interval: 400,
   pause: false,
@@ -115,8 +115,8 @@ const myCarousel = new bootstrap.Carousel(document.getElementById('carousel'), {
  */
 function highlightCarouselControl(side) {
   document
-    .getElementById(side + '-slide-button')
-    .classList.add('highlight-carousel-control');
+    .getElementById(side + "-slide-button")
+    .classList.add("highlight-carousel-control");
 }
 
 /**
@@ -128,8 +128,8 @@ function highlightCarouselControl(side) {
  */
 function removeHighlightCarouselControl(side) {
   document
-    .getElementById(side + '-slide-button')
-    .classList.remove('highlight-carousel-control');
+    .getElementById(side + "-slide-button")
+    .classList.remove("highlight-carousel-control");
 }
 
 /**
@@ -157,10 +157,7 @@ function highlightCarouselControlOnClick(side) {
  */
 function startSlideNext() {
   if (window.innerWidth < 576) {
-    console.log('in');
-    // myCarousel.pause();
     myCarousel.cycle();
-    console.log('next cycling');
   }
 }
 
@@ -178,7 +175,6 @@ function stopSlideNext() {
  */
 function startSlidePrev() {
   if (window.innerWidth < 576) {
-    // myCarousel.pause();
     myCarousel.cycle();
   }
 }
@@ -198,8 +194,8 @@ function stopSlideJustOnDrop() {
   if (reversed) {
     removedChangeDirectionClassReverseBackChildren();
   }
-  removeHighlightCarouselControl('right');
-  removeHighlightCarouselControl('left');
+  removeHighlightCarouselControl("right");
+  removeHighlightCarouselControl("left");
 }
 
 /**
@@ -210,14 +206,14 @@ let reversed = false;
 
 /* Add the class 'change direction' changing the directon of the bootstrap default function cycling to from right to left. */
 function addChangeDirectionClassReverseChildren() {
-  document.getElementById('carousel-inner').classList.add('changeDirection');
+  document.getElementById("carousel-inner").classList.add("changeDirection");
   reverseChildren();
   reversed = true;
 }
 
 /* Remove the css class 'change direction' changing the directon of the bootstrap default function cycling to from right to left. */
 function removedChangeDirectionClassReverseBackChildren() {
-  document.getElementById('carousel-inner').classList.remove('changeDirection');
+  document.getElementById("carousel-inner").classList.remove("changeDirection");
   reverseChildren();
   reversed = false;
   correctActiveIndicator();
@@ -233,17 +229,17 @@ function correctActiveIndicator() {
   /* Find the false active slide indicator */
   for (let i = 0; i < 4; i++) {
     let value = document.getElementById(`ind${i}`).className;
-    if (value == 'active') {
+    if (value == "active") {
       foundedIndex = i;
     }
   }
   /* Remove the css class 'active' and the value 'true'of the bootstrap aria-current attribute of the false slide indicator and add them to the right one. */
   let wrongInd = document.getElementById(`ind${foundedIndex}`);
-  wrongInd.classList.remove('active');
-  wrongInd.removeAttribute('aria-current');
+  wrongInd.classList.remove("active");
+  wrongInd.removeAttribute("aria-current");
   let rightInd = document.getElementById(`ind${myCarousel._activeElement.id}`);
-  rightInd.classList.add('active');
-  rightInd.setAttribute('aria-current', 'true');
+  rightInd.classList.add("active");
+  rightInd.setAttribute("aria-current", "true");
 }
 
 /**
@@ -251,8 +247,8 @@ function correctActiveIndicator() {
  */
 function reverseChildren() {
   myCarousel.pause();
-  let parentItems = document.getElementById('carousel-inner');
-  let parentIndicators = document.getElementById('carousel-indicators');
+  let parentItems = document.getElementById("carousel-inner");
+  let parentIndicators = document.getElementById("carousel-indicators");
 
   for (var i = 1; i < parentItems.childNodes.length; i++) {
     parentItems.insertBefore(parentItems.childNodes[i], parentItems.firstChild);
@@ -268,9 +264,9 @@ function reverseChildren() {
  */
 window.addEventListener("resize", function () {
   if (window.innerWidth < 576) {
-    document.getElementById('carousel').setAttribute('data-bs-touch', 'true');
+    document.getElementById("carousel").setAttribute("data-bs-touch", "true");
   } else {
-    document.getElementById('carousel').setAttribute('data-bs-touch', 'false');
+    document.getElementById("carousel").setAttribute("data-bs-touch", "false");
   }
 });
 
@@ -283,12 +279,12 @@ function openModal(idValue) {
   let task = allTasks.find((n) => n.id == idValue);
   let indexTask = allTasks.findIndex((obj) => obj.id == idValue);
   modalGenAllUser(task, idValue);
-  document.getElementById('modalTitle').value = task.title;
-  document.getElementById('modalDate').value = task.date;
-  document.getElementById('modalCategory').value = task.category;
-  document.getElementById('modalUrgency').value = task.urgency;
-  document.getElementById('modalDescription').value = task.description;
-  document.getElementById('modalSelectedUser').src = task.userForTask.avatar;
+  document.getElementById("modalTitle").value = task.title;
+  document.getElementById("modalDate").value = task.date;
+  document.getElementById("modalCategory").value = task.category;
+  document.getElementById("modalUrgency").value = task.urgency;
+  document.getElementById("modalDescription").value = task.description;
+  document.getElementById("modalSelectedUser").src = task.userForTask.avatar;
   renderButtons(indexTask);
   urgencyCol(task.urgency);
   modalHideAllUsers();
@@ -300,14 +296,14 @@ function openModal(idValue) {
  * @param {string} fct function name
  */
 function adaptTask(indexTask, fct) {
-  allTasks[indexTask].title = document.getElementById('modalTitle').value || '';
-  allTasks[indexTask].date = document.getElementById('modalDate').value;
-  allTasks[indexTask].category = document.getElementById('modalCategory').value;
-  allTasks[indexTask].urgency = document.getElementById('modalUrgency').value;
+  allTasks[indexTask].title = document.getElementById("modalTitle").value || "";
+  allTasks[indexTask].date = document.getElementById("modalDate").value;
+  allTasks[indexTask].category = document.getElementById("modalCategory").value;
+  allTasks[indexTask].urgency = document.getElementById("modalUrgency").value;
   allTasks[indexTask].description =
-    document.getElementById('modalDescription').value;
+    document.getElementById("modalDescription").value;
   allTasks[indexTask].userForTask.avatar = getRightSrcOfImg();
-  saveInBackend(allTasks, 'allTasks');
+  saveInBackend(allTasks, "allTasks");
   fct();
 }
 
@@ -316,9 +312,9 @@ function adaptTask(indexTask, fct) {
  * @returns gives an absolute link
  */
 function getRightSrcOfImg() {
-  let imgSrc = document.getElementById('modalSelectedUser').src;
-  let indexSrc = imgSrc.indexOf('img');
-  return './' + imgSrc.substring(indexSrc, imgSrc.length);
+  let imgSrc = document.getElementById("modalSelectedUser").src;
+  let indexSrc = imgSrc.indexOf("img");
+  return "./" + imgSrc.substring(indexSrc, imgSrc.length);
 }
 
 /**
@@ -336,7 +332,7 @@ function changeSelectedUser(i, id) {
   userTask.email = user.email;
   userTask.name = user.name;
   userTask.password = user.password;
-  saveInBackend(allTasks, 'allTasks');
+  saveInBackend(allTasks, "allTasks");
   changeModalAvatarAfterSelect(user);
 }
 
@@ -346,25 +342,24 @@ function changeSelectedUser(i, id) {
  * @param {JSON} user - This is the selected user from the drop dowm menu in the modal.
  */
 function changeModalAvatarAfterSelect(user) {
-  document.getElementById('modalSelectedUser').src = user.avatar;
+  document.getElementById("modalSelectedUser").src = user.avatar;
 }
 
 /**
  * Switch the view in the modal between the selected user of the task and the scrollable container with all users to select.
  */
 function modalShowAllUsers() {
-  document.getElementById('modalSelectedUser').classList.toggle('d-none');
-  document.getElementById('modalUserCollection').classList.toggle('d-none');
+  document.getElementById("modalSelectedUser").classList.toggle("d-none");
+  document.getElementById("modalUserCollection").classList.toggle("d-none");
 }
 
 /**
  * Hide the open drop down menu of all user avatars in the modal.
  */
 function modalHideAllUsers() {
-  document.getElementById('modalSelectedUser').classList.remove('d-none');
-  document.getElementById('modalUserCollection').classList.add('d-none');
+  document.getElementById("modalSelectedUser").classList.remove("d-none");
+  document.getElementById("modalUserCollection").classList.add("d-none");
 }
-
 
 /**
  * Generate all user avatars for the scrollable container: all users collection,
@@ -375,8 +370,8 @@ function modalHideAllUsers() {
  * @param {number} id - This is the value of id of the selected board task item.
  */
 function modalGenAllUser(task, id) {
-  let modalUserCollection = document.getElementById('modalUserCollection');
-  modalUserCollection.innerHTML = '';
+  let modalUserCollection = document.getElementById("modalUserCollection");
+  modalUserCollection.innerHTML = "";
   for (let i = 1; i < users.length; i++) {
     const user = users[i];
     if (task.userForTask.avatar == user.avatar) {
@@ -387,9 +382,9 @@ function modalGenAllUser(task, id) {
   }
 }
 
-let myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
-let formBoard = document.getElementById('boardSubmit');
-const boardToast = document.getElementById('boardToast');
+let myModal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
+let formBoard = document.getElementById("boardSubmit");
+const boardToast = document.getElementById("boardToast");
 /**
  * when the form is submitted, the function is executed. It shows the toast and closes the modal after 2 seconds.
  * @param {event} event returns the event
@@ -403,7 +398,7 @@ function handleForm(event) {
   }, 2000);
 }
 
-formBoard.addEventListener('submit', handleForm);
+formBoard.addEventListener("submit", handleForm);
 
 /**
  * Set the property of the drag drop touch javascript add-on,
@@ -420,5 +415,4 @@ function configDragDropPressHoldMode() {
   } else {
     DragDropTouch.DragDropTouch._ISPRESSHOLDMODE = false;
   }
-  console.log(DragDropTouch.DragDropTouch._ISPRESSHOLDMODE)
-};
+}

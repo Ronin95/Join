@@ -24,7 +24,14 @@
   <body onload="initHelp()">
     <div id="safeArea">
       <div
-        class="app-window h-100 w-100 d-flex flex-column flex-md-row overflow-hidden"
+        class="
+          app-window
+          h-100
+          w-100
+          d-flex
+          flex-column flex-md-row
+          overflow-hidden
+        "
       >
         <div w3-include-html="navbar.html" class="top-0 z-index-100"></div>
 
@@ -34,8 +41,11 @@
             <h2><strong>Help</strong></h2>
             <p class="main-color">Learning Management System Project</p>
 
-            <div class="text-center">
-              <div class="vh-70 overflow-auto hiddenScrollbar">
+            <div class="text-center" id="helpScrollbarContent1">
+              <div
+                class="vh-70 overflow-auto hiddenScrollbar"
+                id="helpScrollbarContent2"
+              >
                 <p class="m-0 m-sm-4">
                   Kanban is a popular Lean workflow management method for
                   defining, managing, and improving services that deliver

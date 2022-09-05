@@ -81,8 +81,6 @@ body {
   max-height: 70vh !important;
 }
 
-/*Bitte nicht löschen. Wird benötigt für Backlog scrollen .phil*/
-
 /*------------------------------------------------------------------------------------*/
 /* The whole app window (background) with incl. the navbar and the content / sub page */
 
@@ -92,7 +90,6 @@ body {
   max-height: 100vh !important;
   position: fixed !important;
   top: 0 !important;
-  /* later to delete */
   /* border: 3px solid red !important; */
 }
 
@@ -132,6 +129,28 @@ body {
   height: 68px;
   width: 68px;
   object-fit: cover;
+}
+
+.door {
+  width: 64px !important;
+  height: 64px !important;
+}
+
+.door-out:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.door-out {
+  transition: all ease-in-out 0.4s;
+}
+
+.hide {
+  display: none;
+}
+
+.door-visible {
+  display: block !important;
 }
 
 /*-------------------------*/
@@ -174,7 +193,6 @@ body {
 }
 
 .card-title {
-  /* TO DO: Ellipsis for only second line, if the title is longer than to card title lines */
   font-size: 1rem;
   height: 48px;
   white-space: nowrap;
@@ -300,8 +318,8 @@ body {
 
 .carousel-item {
   padding: 8px;
-  transition: all 400ms ease !important;
   /* The speed of carousel sliding */
+  transition: all 400ms ease !important;
 }
 
 .carousel-indicators button {
@@ -431,13 +449,4 @@ html {
   100% {
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
   }
-}
-
-.door-out:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-}
-
-.door-out {
-  transition: all ease-in-out 0.4s;
 }
