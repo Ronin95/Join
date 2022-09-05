@@ -119,7 +119,6 @@ function handleForm(event) {
   toast.show();
   formAddTask.reset();
   showAllUser();
-  console.log(today, dd.length, mm.length);
   loadCurrentDate();
 }
 formAddTask.addEventListener("submit", handleForm);

@@ -45,13 +45,10 @@ function verifyNull() {
     .toLowerCase();
   let password = document.getElementById('floatingPassword').value.trim();
   if (!email.length && !password.length) {
-    console.log('Please enter something');
     toastForEvent('toast-body-signIn', 'Please enter something!');
   } else if (!email.length) {
-    console.log('Please enter password!');
     toastForEvent('toast-body-signIn', 'Please enter email!');
   } else if (!password.length) {
-    console.log('Please enter password');
     toastForEvent('toast-body-signIn', 'Please enter password!');
   } else {
     login(email, password);

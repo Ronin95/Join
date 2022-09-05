@@ -157,10 +157,8 @@ function highlightCarouselControlOnClick(side) {
  */
 function startSlideNext() {
   if (window.innerWidth < 576) {
-    console.log('in');
     // myCarousel.pause();
     myCarousel.cycle();
-    console.log('next cycling');
   }
 }
 
