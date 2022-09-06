@@ -54,8 +54,8 @@ function verifyNull() {
 
 /**
  * Checks if the entered email address and password match the array 'users'. If so, loginAsUser() is executed.
- * @param {email} email
- * @param {password} password
+ * @param {email} email - The e-mail address of the logging user.
+ * @param {password} password - The password of the logging user.
  */
 function login(email, password, toastBody) {
   let checkEmail = false;
@@ -73,9 +73,9 @@ function login(email, password, toastBody) {
 }
 
 /**
- * selects the desired container using the id and inserts a string as the toast message
- * @param {number} containerId id of the container
- * @param {string} text insert the text to be loaded into the toast
+ * Selects the desired container using the id and inserts a string as the toast message.
+ * @param {number} containerId - The id of the container.
+ * @param {string} text - The text inserted to be loaded into the toast
  */
 function toastForEvent(containerId, text) {
   let toastBody = document.getElementById(containerId);
@@ -84,9 +84,9 @@ function toastForEvent(containerId, text) {
 }
 
 /**
- * validated the email and password and redirected to index.html if this is the case
- * @param {boolean} checkEmail
- * @param {boolean} checkPassword
+ * Validates the email and password and redirects to index.html if this is the case.
+ * @param {boolean} checkEmail - The result of the e-mail address validation of the login to the app.
+ * @param {boolean} checkPassword - The result of the password validation of the login to the app.
  */
 function validationLogin(checkEmail, checkPassword, toastBody) {
   if (checkEmail && checkPassword) {
@@ -106,16 +106,16 @@ function validationLogin(checkEmail, checkPassword, toastBody) {
 }
 
 /**
- * pushes in currentUser the logged in user
- * @param {number} i - reference which user is logged in
+ * Pushes in currentUser the logged in user
+ * @param {number} i - The reference which user is logged in.
  */
 function loginAsUser(i) {
   localStorage.setItem("currentUser", i);
 }
 
 /**
- * pushes in currentUser the logged in user
- * @param {number} i - reference which user is logged in
+ * Pushes in currentUser the logged in users
+ * @param {number} i - The reference which user is logged in.
  */
 function loginAsGuest() {
   document.getElementById("floatingEmail").value = "guest@join.org";
@@ -125,7 +125,7 @@ function loginAsGuest() {
 }
 
 /**
- * saves the information in the JSON 'users' as a new user
+ * Saves the information in the JSON 'users' as a new user.
  */
 function saveRegristration() {
   users = loadFromBackend("users");
@@ -145,8 +145,8 @@ function saveRegristration() {
 }
 
 /**
- * Checks which element was chosen as avatar.
- * @returns {HTMLElement} The chosen element.
+ * Checks which HTML element was chosen as avatar.
+ * @returns {HTMLElement} The return value is the chosen HTML element as avatar.
  */
 function checkSelectedAvatar() {
   for (let i = 1; i < 5; i++) {
@@ -158,7 +158,7 @@ function checkSelectedAvatar() {
 }
 
 /**
- * checks whether both password are identical
+ * Checks whether both password are identical.
  */
 function checkPassword() {
   let password1 = document.getElementById("floatingPasswordRegister1");
@@ -173,7 +173,7 @@ function checkPassword() {
 }
 
 /**
- * shows & hide password by checkbox
+ * Shows and hides password by checkbox.
  */
 function showPassword() {
   let passwords = document.querySelectorAll('input[placeholder="Password"]');
@@ -187,7 +187,7 @@ function showPassword() {
 }
 
 /**
- * highlights the chosen avatar
+ * Highlights the chosen avatar.
  */
 function highlightAvatar() {
   for (let i = 1; i < 5; i++) {
@@ -203,7 +203,7 @@ function highlightAvatar() {
 }
 
 /**
- * When you click on the trigger (sign in button), a toast is output after the input has been checked.
+ * The toast output after the input has been checked after the click on the trigger (here: sign in button).
  */
 const toastTrigger1 = document.getElementById("signInBtn");
 const toastLiveExample1 = document.getElementById("signInToast");
@@ -215,11 +215,26 @@ if (toastTrigger1) {
   });
 }
 
-let myModal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
-let formRegistery = document.getElementById("registery");
-const registrationToast = document.getElementById("registrationToast");
 /**
- * when the form is submitted, the function is executed. It shows the toast, saves the registered user and closes the modal after 2 seconds.
+ * This is a bootstrap modal object used on the the login page.
+ * @type {Object}
+ * */
+let myModal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
+
+/**
+ * The HTML form element defining the type and scope of the HTML validation of the login modal.
+ * @type {HTMLFormElement}
+ * */
+let formRegistery = document.getElementById("registery");
+
+/**
+ * The HTML element of the bootstrap toast on the login page.
+ * @type {HTMLElement}
+ * */
+const registrationToast = document.getElementById("registrationToast");
+
+/**
+ * When the form is submitted, the function is executed. It shows the toast, saves the registered user and closes the modal after 2 seconds.
  * @param {event} event returns the event
  */
 function handleFormLogin(event) {
@@ -233,4 +248,11 @@ function handleFormLogin(event) {
     myModal.hide();
   }, 2000);
 }
+
+/**
+ * Listener of the HTML form validation element of the modal on the login page,
+ * which 'listens' to the submit event of it and executes the function handleFormLogin().
+ *
+ * @listens {event} submit - This is the submit event of the HTML form validation element of the modal on the login page.
+ */
 formRegistery.addEventListener("submit", handleFormLogin);

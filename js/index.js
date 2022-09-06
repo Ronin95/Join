@@ -1,5 +1,5 @@
 /**
- * The current dragged element (a task item of a board kanban columns) is globally saved here.
+ * Memory for the current dragged element (a task item of a board kanban columns).
  * @type {number}
  */
 let currentDraggedElement;
@@ -16,7 +16,7 @@ function initBoard() {
 }
 
 /**
- * Renders all kanban columns (TO DO, IN PROGRESS etc.) on the board.
+ * Renders all kanban columns (TO DO, IN PROGRESS etc.) in the board.
  */
 function renderAllColumns() {
   renderColumn("toDo");
@@ -26,10 +26,10 @@ function renderAllColumns() {
 }
 
 /**
- * Renders a single specific Kanban column on board.
+ * Renders a single specific Kanban column in the board.
  * @param {string} columnName - This is the value of the state property in allTask JSON (according ).
- * The tasks are filtered accordingly to this from allTasks array. /
- * This is also the id of the kanban column on the board, where the filtered task are placed as a task HTML-taskement.
+ * The tasks are filtered accordingly to this from allTasks JSON. /
+ * This is also the id of the kanban column in the board, where the filtered task are placed as a task HTML-taskement.
  */
 function renderColumn(columnName) {
   let filteredWithSameState = allTasks.filter((a) => a["state"] == columnName);
@@ -64,7 +64,7 @@ function moveTo(state) {
 }
 
 /**
- * A w3school function: Simply integrated here.
+ * A w3school function: Just integrated here.
  * Changes the default behavior of the affected container (here board kanban column)
  * and gives the permission to drop another HTML element over the affected container.
  * @param {Event} ev - This is an event, if the a dragged element (her task item) is over (hovering) the affected container (here board kanban column).
@@ -93,7 +93,7 @@ function removeHightlight(columnName) {
 
 /**
  * This is a bootstrap carousel object with its initial properties.
- * @type {object}
+ * @type {Object}
  */
 const myCarousel = new bootstrap.Carousel(document.getElementById("carousel"), {
   /* The speed of carousel sliding */
@@ -106,7 +106,7 @@ const myCarousel = new bootstrap.Carousel(document.getElementById("carousel"), {
  * Adds the highlight effect to the carousel controll button.
  * @param {string} side - This is the one of the carousel controll buttons
  * (left for the reverse sliding (direction from right to left) /
- * right for the default bootstrap sliding (direction form left to right)).
+ * right for the default bootstrap sliding (direction from left to right)).
  */
 function highlightCarouselControl(side) {
   document
@@ -118,7 +118,7 @@ function highlightCarouselControl(side) {
  * Removes the highlight effect from the carousel controll button.
  * @param {string} side - This is the one of the carousel controll buttons
  * (left for the reverse sliding (direction from right to left) /
- * right for the default bootstrap sliding (direction form left to right)).
+ * right for the default bootstrap sliding (direction from left to right)).
  */
 function removeHighlightCarouselControl(side) {
   document
@@ -127,7 +127,7 @@ function removeHighlightCarouselControl(side) {
 }
 
 /**
- * The variable, in which the intervall is saved after the click on one of the carousel controll buttons.
+ * Memory for the intervall saved after the click on one of the carousel controll buttons.
  * @type {?number}
  */
 let timeOut = null;
@@ -136,7 +136,7 @@ let timeOut = null;
  * Highlights the carousel controll button on click for the 600 miliseconds.
  * @param {string} side - This is the one of the carousel controll buttons
  * (left for the reverse sliding (direction from right to left) /
- * right for the default bootstrap sliding (direction form left to right)).
+ * right for the default bootstrap sliding (direction from left to right)).
  */
 function highlightCarouselControlOnClick(side) {
   clearTimeout(timeOut);
@@ -194,7 +194,7 @@ function stopSlideJustOnDrop() {
 }
 
 /**
- * The variable, in which the state is saved, if the carousel items (kanban columns)
+ * Memory for the state, if the carousel items (kanban columns)
  * and slide indicators have been already reversed in the DOM.
  * @type {boolean}
  */
@@ -257,6 +257,8 @@ function reverseChildren() {
 
 /**
  * Changes the value of the boostrap data attribute of the carousel according to the bs-sm-break point. Turn on / off the carousel swipping.
+ *
+ * @listens {event} resize - This is the resize event of the application window.
  */
 window.addEventListener("resize", function () {
   if (window.innerWidth < 576) {
@@ -287,8 +289,9 @@ function openModal(idValue) {
 
 /**
  * Saves all changes in the open modal.
- * @param {number} indexTask the location of the task in alltasks
- * @param {string} fct function name
+ * 
+ * @param {number} indexTask - This is the location of the task in alltasks.
+ * @param {string} fct - This is the function name.
  */
 function adaptTask(indexTask, fct) {
   allTasks[indexTask].title = document.getElementById("modalTitle").value || "";
@@ -304,7 +307,7 @@ function adaptTask(indexTask, fct) {
 
 /**
  * Changes a relative link to an absolute link.
- * @returns {string} gives an absolute link
+ * @returns {string} This returns an absolute link.
  */
 function getRightSrcOfImg() {
   let imgSrc = document.getElementById("modalSelectedUser").src;
@@ -313,9 +316,9 @@ function getRightSrcOfImg() {
 }
 
 /**
- * Changes the assigned user in the task
- * @param {number} i selected user
- * @param {number} id id of the selected task
+ * Changes the assigned user in the task 222.
+ * @param {number} i - This is the selected user.
+ * @param {number} id - This is the id of the selected task.
  */
 function changeSelectedUser(i, id) {
   let indexTask = allTasks.findIndex((obj) => obj.id == id);
@@ -357,8 +360,8 @@ function modalHideAllUsers() {
 
 /**
  * Generates all user avatars for the scrollable container: all users collection,
- * set the blue border for avatar of the assigned user to the task,
- * set the white border for the rest of user avatars.
+ * sets the blue border for avatar of the assigned user to the task,
+ * sets the white border for the rest of user avatars.
  * @param {JSON} task - This is the selected task with all its properties (saved in allTasks JSON).
  * @param {number} id - This is the value of id of the selected board task item.
  */
@@ -375,11 +378,22 @@ function modalGenAllUser(task, id) {
   }
 }
 
-let myModal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
-let formBoard = document.getElementById("boardSubmit");
-const boardToast = document.getElementById("boardToast");
 /**
- * when the form is submitted, the function is executed. It shows the toast and closes the modal after 2 seconds.
+ * The HTML form element defining the type and scope of the HTML validation of the board modal.
+ * @type {HTMLFormElement}
+ */
+let formBoard = document.getElementById("boardSubmit");
+
+/**
+ * Listener of the HTML form validation element of the modal in the board,
+ * which 'listens' to the submit event of it and executes the function handleForm().
+ *
+ * @listens {event} submit - This is the submit event of the HTML form validation element of the modal in the board.
+ */
+formBoard.addEventListener("submit", handleForm);
+
+/**
+ * When the form is submitted, the function is executed. It shows the toast and closes the modal after 1 second.
  * @param {event} event returns the event
  */
 function handleForm(event) {
@@ -388,10 +402,20 @@ function handleForm(event) {
   toast.show();
   setTimeout(function () {
     myModal.hide();
-  }, 2000);
+  }, 1000);
 }
 
-formBoard.addEventListener("submit", handleForm);
+/**
+ * The toast used while closing the modal.
+ * @type {HTMLElement}
+ */
+const boardToast = document.getElementById("boardToast");
+
+/**
+ * This is a bootstrap modal object used in the board (Posibile Edition of the task in the board modal).
+ * @type {Object}
+ */
+let myModal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
 
 /**
  * Sets the property of the drag drop touch javascript add-on,
@@ -399,6 +423,8 @@ formBoard.addEventListener("submit", handleForm);
  * and not on a short and weak one,
  * which would produce touch intepratations errors
  * with the default scroll funcionality on touch events on mobile devices.
+ *
+ * @listens resize - This is the resize event of the application window.
  */
 window.addEventListener("resize", configDragDropPressHoldMode);
 

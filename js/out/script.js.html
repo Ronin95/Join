@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: addTask.js</title>
+    <title>JSDoc: Source: script.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: addTask.js</h1>
+    <h1 class="page-title">Source: script.js</h1>
 
     
 
@@ -27,159 +27,120 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Memory for the selected user in the add task.
- * @type {JSON}
+ * Memory for the current logged in user..
+ * @type {number} 
  */
-let selectedUser = [];
+let currentUser = [];
 
 /**
- * The HTML form element defining the type and scope of the HTML validation of the add task formular.
- * @type {HTMLFormElement}
+ * Memory for all posible task categories.
+ * @type {Array} 
  */
-let formAddTask = document.getElementById("addTaskSubmit");
+let allCategories = ["IT", "Sales", "Management", "Production", "Marketing"];
 
 /**
- * Memory for today.
- * @type {Date}
+ * Memory for all colors of task categories.
+ * @type {Array} 
  */
-let today = new Date();
+let colorsCategory = {
+  Sales: "#DC5445",
+  IT: "#5F61B3",
+  Production: "#C4A381",
+  Management: "#E9E265",
+  Design: "#BBD686",
+  Marketing: "#EEF1BD",
+};
 
 /**
- * Memory for the number of days of today's date.
- * @type {number}
+ * Memory for users saved in the backend server.
+ * @type {JSON} 
  */
-let dd = today.getDate();
+let users = [];
 
 /**
- * Memory for the number of months of today's date.
- * @type {number}
+ * Initially executed while loading the login page. Downloads the 'users' and 'allTasks' JSON from backend server.
  */
-let mm = today.getMonth() + 1;
-
-/**
- * Memory for the year of the today's date.
- * @type {number}
- */
-let yyyy = today.getFullYear();
-
-/**
- * Adds a new task by getting the values from document by id.
- * Safes it in the JSON newTask.
- * Clears the input.
- * Shows a message with the value for wich member is the task added.
- */
-async function addTask() {
-  allTasks = await loadFromBackend("allTasks");
-  let date = document.getElementById("txtDate");
-  let newTask = {
-    title: getInputValue("title"),
-    date: date.value,
-    category: getInputValue("category"),
-    urgency: getInputValue("urgency"),
-    description: getInputValue("description"),
-    userForTask: selectedUser,
-    id: new Date().getTime(),
-    state: "toDo",
-  };
-  getDate(newTask, date);
-  saveTask(newTask);
+async function init() {
+  await setURL(
+    "https://gruppe-293-join.developerakademie.net/smallest_backend_ever"
+  );
+  await downloadFromServer();
+  users = (await JSON.parse(backend.getItem("users"))) || [];
+  allTasks = (await JSON.parse(backend.getItem("allTasks"))) || [];
 }
 
 /**
- * Gets the value of the date from the add task formular.
- * @param {JSON} newTask - The JSON array of a new created task.
- * @param {number} date - The due date of the new created task.
+ * Initially executed while loading the board page. 
  */
-function getDate(newTask, date) {
-  if ((newTask.date = !date.value)) {
-    newTask.date = today;
-  } else {
-    newTask.date = date.value.replace(".", "/");
-  }
+async function initIndex() {
+  checkIfLogin();
+  await init();
+  await includeHTML();
+  await currentUserImage();
+  document.getElementById("navBoard").classList.add("you-are-here");
+  renderAllColumns();
+  configDragDropPressHoldMode();
 }
 
 /**
- * This returns a HTML element with a certain id.
- * @param {string} id - The value of id.
- * @returns {HTMLElement} The id from the HTML element.
+ * Initially executed while loading the help page. 
  */
-function getInputValue(id) {
-  return document.getElementById(id).value;
+async function initHelp() {
+  checkIfLogin();
+  await init();
+  await includeHTML();
+  await currentUserImage();
+  document.getElementById("navHelp").classList.add("you-are-here");
+  setHeight("helpScrollbarContent1");
+  setHeight("helpScrollbarContent2");
 }
 
 /**
- * Saves the new task and push it to the JSON allTasks.
- * @param {JSON} newTask - The JSON array task that will be stored..
+ * Initially executed while loading the backlog page. 
  */
-function saveTask(newTask) {
-  allTasks.push(newTask);
-  saveInBackend(allTasks, "allTasks");
+async function initBacklog() {
+  checkIfLogin();
+  await init();
+  await includeHTML();
+  await currentUserImage();
+  generateAllTasks();
+  document.getElementById("navInBacklog").classList.add("you-are-here");
+  setHeight("freshTask");
 }
 
 /**
- * Deletes unsafed values from the inputs if the written or clicked inputs are not really want to add.
+ * Initially executed while loading the add task page. 
  */
-function deleteUnsafedInput() {
-  formAddTask.reset();
+async function initAddTask() {
+  checkIfLogin();
+  await init();
+  await includeHTML();
+  await currentUserImage();
   showAllUser();
-}
-
-/**
- * Selects an avatar to choose a user to add a task.
- * Creates a new element which shows only the user who is selected.
- * @param {string} i - The person who is chosen by clicking an avatar.
- */
-function selectUser(i) {
-  document.getElementById(`selected${i}`).classList.toggle("user-selected");
-  selectedUser = users[i];
-  document.getElementById(`user`).innerHTML = /*html*/ ` 
-    &lt;div onclick="showAllUserAndDisable()"> 
-      &lt;img title="${selectedUser.name}" id="${i}" class="user-show cursor-pointer rounded-circle user-selected" src="${selectedUser.avatar}" alt="">&lt;/div>`;
-  document.getElementById("createTask").removeAttribute("disabled");
-}
-
-/**
- * Shows all users and disables the commit button, when no single user is selected.
- */
-function showAllUserAndDisable() {
-  showAllUser();
-  document.getElementById("createTask").disabled = true;
-}
-
-/**
- * Loads the current date and formats it so it can be used as a default value in the add task formular.
- */
-function loadCurrentDate() {
-  if (/^\d$/.test(dd)) {
-    dd = "0" + dd;
-  }
-  if (/^\d$/.test(mm)) {
-    mm = "0" + mm;
-  }
-  today = dd + "/" + mm + "/" + yyyy;
-  document.getElementById("txtDate").value = today;
-}
-
-/**
- * Listener of the HTML form validation element of the add task formular,
- * which 'listens' to the submit event of it and executes the function handleForm().
- * @fires handleForm - Test
- * @callback - aaaaaaaaaaaaa
- */
-formAddTask.addEventListener("submit", handleForm);
-
-/**
- * When the form is submitted, the function is executed. It shows the toast and reset the add task formular.
- * @param {event} event returns the event
- */
-function handleForm(event) {
-  const successToast = document.getElementById("success_task");
-  event.preventDefault();
-  const toast = new bootstrap.Toast(successToast);
-  toast.show();
-  formAddTask.reset();
-  showAllUser();
+  document.getElementById("addTaskNav").classList.add("you-are-here");
   loadCurrentDate();
+  if (window.innerWidth &lt; 503) {
+    setHeight("addTaskSubmit");
+  } else {
+    removeHeight("addTaskSubmit");
+  }
+}
+
+/**
+ * Initially executed while loading every sub page (board, backlog, add task, help). Inserts the navbar html template to all mentioned before sub pages.
+ */
+async function includeHTML() {
+  let includeElements = document.querySelectorAll("[w3-include-html]");
+  for (let i = 0; i &lt; includeElements.length; i++) {
+    const element = includeElements[i];
+    file = element.getAttribute("w3-include-html");
+    let resp = await fetch(file);
+    if (resp.ok) {
+      element.innerHTML = await resp.text();
+    } else {
+      element.innerHTML = "Page not found";
+    }
+  }
 }</code></pre>
         </article>
     </section>

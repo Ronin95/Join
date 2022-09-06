@@ -15,8 +15,8 @@ function checkIfLogin() {
 }
 
 /**
- * Deletes the selected task from the array
- * @param {number} i indicates the location of the object in the array
+ * Deletes the selected task from the array.
+ * @param {number} i This is the location of the object in the array.
  */
 function deleteTask(i, fct) {
   allTasks.splice(i, 1);
@@ -25,9 +25,9 @@ function deleteTask(i, fct) {
 }
 
 /**
- * converts the JSON into a string and stores it in the backend
- * @param {object} json
- * @param {string} key
+ * Converts the JSON into a string and stores it in the backend.
+ * @param {Object} json - This is the JSON converted to string and stores on the backend server.
+ * @param {string} key - Under this key the above converted JSON to string in saved on the backend server.
  */
 function saveInBackend(json, key) {
   let asString = JSON.stringify(json);
@@ -36,8 +36,8 @@ function saveInBackend(json, key) {
 
 /**
  * Downloads the data matching the key.
- * @param {string} key the key with which something was saved in the backend
- * @returns {JSON|Array} a JSON or an empty Array
+ * @param {string} key - This is the key with which something was saved in the backend.
+ * @returns {JSON|Array} This is the return value: a JSON or an empty Array.
  */
 function loadFromBackend(key) {
   let asString = backend.getItem(key);
@@ -49,7 +49,7 @@ function loadFromBackend(key) {
 }
 
 /**
- * show all User from the global JSON array - users - that can be selected for a task
+ * Shows all sser from the global JSON array - users - that can be selected for a task.
  */
 function showAllUser() {
   document.getElementById("user").innerHTML = ``;
@@ -61,7 +61,7 @@ function showAllUser() {
 }
 
 /**
- * loads the avatar of the current user
+ * Loads the avatar of the current user.
  */
 async function currentUserImage() {
   currentUser = localStorage.getItem("currentUser");
@@ -70,7 +70,7 @@ async function currentUserImage() {
 }
 
 /**
- * logout the user and return to the login.html
+ * Logs out the user and returns to the login.html.
  */
 function logout() {
   localStorage.setItem("isLoggedIn", false);
@@ -79,8 +79,8 @@ function logout() {
 }
 
 /**
- * reads the urgency and assigns a corresponding color class
- * @param {string} taskUrgency indicates the urgency of the respective task
+ * Reads the urgency and assigns a corresponding color class.
+ * @param {string} taskUrgency  This is the urgency of the respective task.
  */
 function urgencyCol(taskUrgency) {
   if (taskUrgency == "High") {
@@ -93,9 +93,9 @@ function urgencyCol(taskUrgency) {
 }
 
 /**
- * reads the urgency and assigns a corresponding class
- * @param {string} taskUrgency indicates the urgency of the respective task
- * @param {string} id indicates the id of the respective task
+ * Reads the urgency and assigns a corresponding class.
+ * @param {string} taskUrgency  This is the urgency of the respective task.
+ * @param {string} id  This is the id of the respective task.
  */
 function urgencyBoard(taskUrgency, id) {
   if (taskUrgency == "High") {
@@ -108,7 +108,7 @@ function urgencyBoard(taskUrgency, id) {
 }
 
 /**
- * Change the color in the top right corner of the triagle according to the selected urgency in the modal.
+ * Changes the color in the top right corner of the triagle according to the selected urgency in the modal.
  */
 function changeModalUrgencyColor() {
   let urgency = document.getElementById("modalUrgency").value;
@@ -116,7 +116,9 @@ function changeModalUrgencyColor() {
 }
 
 /**
- * Set dynamically the height of the scrollbar content of the sub pages (Backlog, Add Task, Help) on resize of the window.
+ * Sets dynamically the height of the scrollbar content of the sub pages (Backlog, Add Task, Help) on resize of the window.
+ * 
+ * @fires resize - This is the resize event of the application window.
  */
 window.addEventListener("resize", function () {
   setHeight("freshTask");
@@ -132,7 +134,7 @@ window.addEventListener("resize", function () {
 });
 
 /**
- * Set the height of the scrollbar content of the sub spages (Backlog, Add Task, Help).
+ * Sets the height of the scrollbar content of the sub spages (Backlog, Add Task, Help).
  *
  * @param {string} id - This is the id of the html element for which the height is set.
  */
@@ -149,7 +151,7 @@ function setHeight(id) {
 }
 
 /**
- * Remove the height of the scrollbar content of the sub page (Add Task).
+ * Removes the height of the scrollbar content of the sub page (add task).
  *
  * @param {string} id - This is the id of the html element for which the height is removed.
  */
@@ -164,7 +166,7 @@ function removeHeight(id) {
 }
 
 /**
- * Show the logout button.
+ * Shows the logout button.
  */
 function showExitDoor() {
   if (window.innerWidth >= 767) {
@@ -173,7 +175,7 @@ function showExitDoor() {
 }
 
 /**
- * Hide the logout button.
+ * Hides the logout button.
  */
 function hideExitDoor() {
   if (window.innerWidth >= 767) {
@@ -182,7 +184,7 @@ function hideExitDoor() {
 }
 
 /**
- * Switch the visbility of the logout button.
+ * Switches the visbility of the logout button.
  */
 function switchExitDoor() {
   if (window.innerWidth < 768) {

@@ -1,8 +1,8 @@
 /**
- * Template for creating a task
- * @param {Array} newTask new generated task
- * @param {number} i marks the position of the task in the array allTasks
- * @returns {HTMLElement} html code
+ * Template for creating a task in the backlog.
+ * @param {Array} newTask - This is new generated task.
+ * @param {number} i - This marks the position of the task in the JSON allTasks.
+ * @returns {HTMLElement} The return value is HTML Element of the new task (one line) in the backlog.
  */
 function newTaskTemp(newTask, i) {
   return /*html*/ `
@@ -63,9 +63,9 @@ function newTaskTemp(newTask, i) {
 }
 
 /**
- * Generate a single task item in the kanban column on board.
+ * Generate a single task item in the kanban column in the board.
  * @param {JSON} task - This is a task from allTasks array with a certain filtered category.
- * @returns {HTMLElement} - This returns the HTML code for the task item defined with the task paramter for a specific kanban column on board.
+ * @returns {HTMLElement} This returns the HTML code for the task item defined with the task paramter for a specific kanban column in the board.
  */
 function genHTMLBoardTaskItem(task) {
   return /* html */ `
@@ -105,8 +105,8 @@ function genHTMLBoardTaskItem(task) {
 }
 
 /**
- * creates the buttons for the modal in the board with onclick functions
- * @param {number} indexTask the location of the task in alltasks
+ * Creates the buttons for the modal in the board with onclick functions.
+ * @param {number} indexTask - This is the location of the task in alltasks JSON.
  */
 function renderButtons(indexTask) {
   document.getElementById("modalBoardBtns").innerHTML = /*html*/ `
@@ -138,10 +138,10 @@ function renderButtons(indexTask) {
 }
 
 /**
- * Creates an avatar for each user.
- * @param {object} user user contains all information about a user
- * @param {number} i marks the position of the user in the array users
- * @returns {HTMLImageElement} html code
+ * Creates an avatar for each user on the add task sub page.
+ * @param {Object} user - This contains all information about a user.
+ * @param {number} i - This marks the position of the user in the array users.
+ * @returns {HTMLImageElement} The return value is the HTML Element of an user avatar with its attributes.
  */
 function generateUsers(user, i) {
   return /*html*/ `
@@ -149,7 +149,7 @@ function generateUsers(user, i) {
     title="${user.name}" 
     id="selected${i}" 
     onclick="selectUser(${i})" 
-    class="user-show cursor-pointer  border border-white rounded-circle" 
+    class="user-show cursor-pointer border border-white rounded-circle" 
     src="${user.avatar}" 
     alt=""
   />
@@ -157,11 +157,11 @@ function generateUsers(user, i) {
 }
 
 /**
- * Creates an image with a blue frame for viewing in modal.
- * @param {string} user user contains all information about a user
- * @param {number} i marks the position of user in the array users
- * @param {number} id of the task
- * @returns {HTMLImageElement} html code
+ * Creates an avatar image with a blue frame for viewing in the modal in the board.
+ * @param {string} user - This contains all information about a user.
+ * @param {number} i - This marks the position of user in the array users.
+ * @param {number} id - This is the id of the task.
+ * @returns {HTMLImageElement} The return value is a HTML image element of the selected user (its avatar) with a blue border.
  */
 function blueBorderImg(user, i, id) {
   return /* html */ `
@@ -170,11 +170,11 @@ function blueBorderImg(user, i, id) {
 }
 
 /**
- * Creates an image with a white frame for viewing in modal.
- * @param {string} user user contains all information about a user
- * @param {number} i marks the position of user in the array users
- * @param {number} id of the task
- * @returns {HTMLImageElement} html code
+ * Creates an avatar image with a white frame for viewing in the modal in the board.
+ * @param {string} user - This contains all information about a user.
+ * @param {number} i - This marks the position of user in the array users.
+ * @param {number} id - This is the id of the task.
+ * @returns {HTMLImageElement} The return value is a HTML image element of the selected user (its avatar) with a white border.
  */
 function whiteBorderImg(user, i, id) {
   return /* html */ `

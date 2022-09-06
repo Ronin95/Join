@@ -1,5 +1,19 @@
+/**
+ * Memory for the current logged in user..
+ * @type {number} 
+ */
 let currentUser = [];
+
+/**
+ * Memory for all posible task categories.
+ * @type {Array} 
+ */
 let allCategories = ["IT", "Sales", "Management", "Production", "Marketing"];
+
+/**
+ * Memory for all colors of task categories.
+ * @type {Array} 
+ */
 let colorsCategory = {
   Sales: "#DC5445",
   IT: "#5F61B3",
@@ -8,8 +22,16 @@ let colorsCategory = {
   Design: "#BBD686",
   Marketing: "#EEF1BD",
 };
+
+/**
+ * Memory for users saved in the backend server.
+ * @type {JSON} 
+ */
 let users = [];
 
+/**
+ * Initially executed while loading the login page. Downloads the 'users' and 'allTasks' JSON from backend server.
+ */
 async function init() {
   await setURL(
     "https://gruppe-293-join.developerakademie.net/smallest_backend_ever"
@@ -19,6 +41,9 @@ async function init() {
   allTasks = (await JSON.parse(backend.getItem("allTasks"))) || [];
 }
 
+/**
+ * Initially executed while loading the board page. 
+ */
 async function initIndex() {
   checkIfLogin();
   await init();
@@ -29,6 +54,9 @@ async function initIndex() {
   configDragDropPressHoldMode();
 }
 
+/**
+ * Initially executed while loading the help page. 
+ */
 async function initHelp() {
   checkIfLogin();
   await init();
@@ -39,6 +67,9 @@ async function initHelp() {
   setHeight("helpScrollbarContent2");
 }
 
+/**
+ * Initially executed while loading the backlog page. 
+ */
 async function initBacklog() {
   checkIfLogin();
   await init();
@@ -49,6 +80,9 @@ async function initBacklog() {
   setHeight("freshTask");
 }
 
+/**
+ * Initially executed while loading the add task page. 
+ */
 async function initAddTask() {
   checkIfLogin();
   await init();
@@ -64,6 +98,9 @@ async function initAddTask() {
   }
 }
 
+/**
+ * Initially executed while loading every sub page (board, backlog, add task, help). Inserts the navbar html template to all mentioned before sub pages.
+ */
 async function includeHTML() {
   let includeElements = document.querySelectorAll("[w3-include-html]");
   for (let i = 0; i < includeElements.length; i++) {

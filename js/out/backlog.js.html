@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: addTask.js</title>
+    <title>JSDoc: Source: backlog.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: addTask.js</h1>
+    <h1 class="page-title">Source: backlog.js</h1>
 
     
 
@@ -27,159 +27,36 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Memory for the selected user in the add task.
- * @type {JSON}
+ * Generates all tasks in the backlog.
  */
-let selectedUser = [];
-
-/**
- * The HTML form element defining the type and scope of the HTML validation of the add task formular.
- * @type {HTMLFormElement}
- */
-let formAddTask = document.getElementById("addTaskSubmit");
-
-/**
- * Memory for today.
- * @type {Date}
- */
-let today = new Date();
-
-/**
- * Memory for the number of days of today's date.
- * @type {number}
- */
-let dd = today.getDate();
-
-/**
- * Memory for the number of months of today's date.
- * @type {number}
- */
-let mm = today.getMonth() + 1;
-
-/**
- * Memory for the year of the today's date.
- * @type {number}
- */
-let yyyy = today.getFullYear();
-
-/**
- * Adds a new task by getting the values from document by id.
- * Safes it in the JSON newTask.
- * Clears the input.
- * Shows a message with the value for wich member is the task added.
- */
-async function addTask() {
-  allTasks = await loadFromBackend("allTasks");
-  let date = document.getElementById("txtDate");
-  let newTask = {
-    title: getInputValue("title"),
-    date: date.value,
-    category: getInputValue("category"),
-    urgency: getInputValue("urgency"),
-    description: getInputValue("description"),
-    userForTask: selectedUser,
-    id: new Date().getTime(),
-    state: "toDo",
-  };
-  getDate(newTask, date);
-  saveTask(newTask);
-}
-
-/**
- * Gets the value of the date from the add task formular.
- * @param {JSON} newTask - The JSON array of a new created task.
- * @param {number} date - The due date of the new created task.
- */
-function getDate(newTask, date) {
-  if ((newTask.date = !date.value)) {
-    newTask.date = today;
-  } else {
-    newTask.date = date.value.replace(".", "/");
+function generateAllTasks() {
+  allTasks = loadFromBackend("allTasks");
+  let backlogContainer = document.getElementById("freshTask");
+  backlogContainer.innerHTML = "";
+  for (let i = 0; i &lt; allTasks.length; i++) {
+    let newTask = allTasks[i];
+    backlogContainer.innerHTML += newTaskTemp(newTask, i);
   }
 }
 
 /**
- * This returns a HTML element with a certain id.
- * @param {string} id - The value of id.
- * @returns {HTMLElement} The id from the HTML element.
+ * Filters and renders all task in the backlog according to search criteria. Seach criteria can only be the name of the user or the task category.
  */
-function getInputValue(id) {
-  return document.getElementById(id).value;
-}
-
-/**
- * Saves the new task and push it to the JSON allTasks.
- * @param {JSON} newTask - The JSON array task that will be stored..
- */
-function saveTask(newTask) {
-  allTasks.push(newTask);
-  saveInBackend(allTasks, "allTasks");
-}
-
-/**
- * Deletes unsafed values from the inputs if the written or clicked inputs are not really want to add.
- */
-function deleteUnsafedInput() {
-  formAddTask.reset();
-  showAllUser();
-}
-
-/**
- * Selects an avatar to choose a user to add a task.
- * Creates a new element which shows only the user who is selected.
- * @param {string} i - The person who is chosen by clicking an avatar.
- */
-function selectUser(i) {
-  document.getElementById(`selected${i}`).classList.toggle("user-selected");
-  selectedUser = users[i];
-  document.getElementById(`user`).innerHTML = /*html*/ ` 
-    &lt;div onclick="showAllUserAndDisable()"> 
-      &lt;img title="${selectedUser.name}" id="${i}" class="user-show cursor-pointer rounded-circle user-selected" src="${selectedUser.avatar}" alt="">&lt;/div>`;
-  document.getElementById("createTask").removeAttribute("disabled");
-}
-
-/**
- * Shows all users and disables the commit button, when no single user is selected.
- */
-function showAllUserAndDisable() {
-  showAllUser();
-  document.getElementById("createTask").disabled = true;
-}
-
-/**
- * Loads the current date and formats it so it can be used as a default value in the add task formular.
- */
-function loadCurrentDate() {
-  if (/^\d$/.test(dd)) {
-    dd = "0" + dd;
+function filterNames() {
+  let search = document.getElementById("searchTask").value;
+  search = search.toLowerCase();
+  document.getElementById("freshTask").innerHTML = ``;
+  for (let i = 0; i &lt; allTasks.length; i++) {
+    let newTask = allTasks[i];
+    let name = allTasks[i].userForTask.name;
+    let category = allTasks[i].category;
+    if (
+      name.toLowerCase().includes(search) ||
+      category.toLowerCase().includes(search)
+    ) {
+      document.getElementById("freshTask").innerHTML += newTaskTemp(newTask, i);
+    }
   }
-  if (/^\d$/.test(mm)) {
-    mm = "0" + mm;
-  }
-  today = dd + "/" + mm + "/" + yyyy;
-  document.getElementById("txtDate").value = today;
-}
-
-/**
- * Listener of the HTML form validation element of the add task formular,
- * which 'listens' to the submit event of it and executes the function handleForm().
- * @fires handleForm - Test
- * @callback - aaaaaaaaaaaaa
- */
-formAddTask.addEventListener("submit", handleForm);
-
-/**
- * When the form is submitted, the function is executed. It shows the toast and reset the add task formular.
- * @param {event} event returns the event
- */
-function handleForm(event) {
-  const successToast = document.getElementById("success_task");
-  event.preventDefault();
-  const toast = new bootstrap.Toast(successToast);
-  toast.show();
-  formAddTask.reset();
-  showAllUser();
-  loadCurrentDate();
 }</code></pre>
         </article>
     </section>

@@ -1,15 +1,44 @@
+/**
+ * Memory for the selected user in the add task.
+ * @type {JSON}
+ */
 let selectedUser = [];
+
+/**
+ * The HTML form element defining the type and scope of the HTML validation of the add task formular.
+ * @type {HTMLFormElement}
+ */
 let formAddTask = document.getElementById("addTaskSubmit");
+
+/**
+ * Memory for today.
+ * @type {Date}
+ */
 let today = new Date();
+
+/**
+ * Memory for the number of days of today's date.
+ * @type {number}
+ */
 let dd = today.getDate();
+
+/**
+ * Memory for the number of months of today's date.
+ * @type {number}
+ */
 let mm = today.getMonth() + 1;
+
+/**
+ * Memory for the year of the today's date.
+ * @type {number}
+ */
 let yyyy = today.getFullYear();
 
 /**
- * Add a new task, by getting the values from document by id.
- * Safe in the JSON new Task.
- * Clear the input.
- * Show a message the Message with the value for wich Member is the task added.
+ * Adds a new task by getting the values from document by id.
+ * Safes it in the JSON newTask.
+ * Clears the input.
+ * Shows a message with the value for wich member is the task added.
  */
 async function addTask() {
   allTasks = await loadFromBackend("allTasks");
@@ -29,9 +58,9 @@ async function addTask() {
 }
 
 /**
- * this is a function to get the new Date from value
- * @param {string} newTask
- * @param {number} date
+ * Gets the value of the date from the add task formular.
+ * @param {JSON} newTask - The JSON array of a new created task.
+ * @param {number} date - The due date of the new created task.
  */
 function getDate(newTask, date) {
   if ((newTask.date = !date.value)) {
@@ -42,18 +71,17 @@ function getDate(newTask, date) {
 }
 
 /**
- * This is a function that returns a HTML Element with a certain id.
- * @param {string} id
- * @returns {HTMLElement} the id from the element
+ * This returns a HTML element with a certain id.
+ * @param {string} id - The value of id.
+ * @returns {HTMLElement} The id from the HTML element.
  */
 function getInputValue(id) {
   return document.getElementById(id).value;
 }
 
 /**
- * save the new Task and push it to the JSON all Task
- * @param {string} newTask - This ist the JSON array that will be created
- * push the newTask into allTasks JSON array
+ * Saves the new task and push it to the JSON allTasks.
+ * @param {JSON} newTask - The JSON array task that will be stored..
  */
 function saveTask(newTask) {
   allTasks.push(newTask);
@@ -61,7 +89,7 @@ function saveTask(newTask) {
 }
 
 /**
- * delete unsafed values from the inputs if the written or clicked are not really want to add
+ * Deletes unsafed values from the inputs if the written or clicked inputs are not really want to add.
  */
 function deleteUnsafedInput() {
   formAddTask.reset();
@@ -69,9 +97,9 @@ function deleteUnsafedInput() {
 }
 
 /**
- * select an avatar to choose a user to add a task
- * @param {string} i - this is the Person who is choose by clicking an avatar
- * creates a new element wich show only the user who is selected
+ * Selects an avatar to choose a user to add a task.
+ * Creates a new element which shows only the user who is selected.
+ * @param {string} i - The person who is chosen by clicking an avatar.
  */
 function selectUser(i) {
   document.getElementById(`selected${i}`).classList.toggle("user-selected");
@@ -83,7 +111,7 @@ function selectUser(i) {
 }
 
 /**
- * function that show all users an disables the commit button, when no single user is selected
+ * Shows all users and disables the commit button, when no single user is selected.
  */
 function showAllUserAndDisable() {
   showAllUser();
@@ -91,7 +119,7 @@ function showAllUserAndDisable() {
 }
 
 /**
- * load the current date, and formate it so it can use as a default value in the add Task formular
+ * Loads the current date and formats it so it can be used as a default value in the add task formular.
  */
 function loadCurrentDate() {
   if (/^\d$/.test(dd)) {
@@ -104,6 +132,18 @@ function loadCurrentDate() {
   document.getElementById("txtDate").value = today;
 }
 
+/**
+ * Listener of the HTML form validation element of the add task formular,
+ * which 'listens' to the submit event of it and executes the function handleForm().
+ *
+ * @listens submit - The submit event of the HTML form validation element of the add task formular.
+ */
+formAddTask.addEventListener("submit", handleForm);
+
+/**
+ * When the form is submitted, the function is executed. It shows the toast and reset the add task formular.
+ * @param {event} event returns the event
+ */
 function handleForm(event) {
   const successToast = document.getElementById("success_task");
   event.preventDefault();
@@ -113,4 +153,3 @@ function handleForm(event) {
   showAllUser();
   loadCurrentDate();
 }
-formAddTask.addEventListener("submit", handleForm);
