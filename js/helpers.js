@@ -115,7 +115,7 @@ function changeModalUrgencyColor() {
   urgencyCol(urgency);
 }
 
-/* TODO: */
+/* TODO: Frage 2: addEventListener von einem window Objekt und einer Funktion ohne Klammern (definiert woanders) */
 /**
  * Sets dynamically the height of the scrollbar content of the sub pages (Backlog, Add Task, Help) on resize of the window.
  *

@@ -1,3 +1,4 @@
+/* TODO: Frage 6 */
 // BACKUP of 'users' JSON in case it will be deleted from brackend server.
 /* users = [
   {
@@ -144,6 +145,7 @@ function saveRegristration() {
   saveInBackend(users, "users");
 }
 
+/* TODO: Frage 10: returns */
 /**
  * Checks which HTML element was chosen as avatar.
  * @returns {HTMLElement} The chosen HTML element as avatar.
@@ -202,7 +204,7 @@ function highlightAvatar() {
   }
 }
 
-/* TODO: */
+/* TODO: Frage 17: Direkte Ausführung in js Datei */
 /**
  * The toast output after the input has been checked after the click on the trigger (here: sign in button).
  */
@@ -216,7 +218,7 @@ if (toastTrigger1) {
   });
 }
 
-/* TODO: */
+/* TODO: Frage 2:  Instanz von einem Objekt / Klasse / JS Model (ich kenn nocht nicht die richtige Begrifflichkeit) */
 /**
  * The bootstrap modal object used on the the login page.
  * @type {Object}
@@ -235,24 +237,25 @@ let formRegistery = document.getElementById("registery");
  */
 const registrationToast = document.getElementById("registrationToast");
 
-/* TODO: */
+/* TODO: Frage 1: Ein Event als Parameter in eine üblich JS Funktion, s. Bsp 
+*/
 /**
  * When the form is submitted, the function is executed. It shows the toast, saves the registered user and closes the modal after 2 seconds.
  * @param {Event} event The returned Event, which will be prevented.
  */
 function handleFormLogin(event) {
-  event.preventDefault();
-  toastForEvent("toast-body-registration", "Registration completed!");
-  const toast = new bootstrap.Toast(registrationToast);
-  toast.show();
+  event.preventDefault(); /* TODO: Frage 11 */
+  toastForEvent("toast-body-registration", "Registration completed!"); 
+  const toast = new bootstrap.Toast(registrationToast); /* TODO: Frage 13 */
+  toast.show(); /* TODO: Frage 13 */
   saveRegristration();
-  formRegistery.reset();
+  formRegistery.reset(); /* TODO: Frage 14 */
   setTimeout(function () {
     myModal.hide();
   }, 2000);
 }
 
-/* TODO: */
+/* TODO: Frage 2: addEventListener bei einer gloablen Variable */
 /**
  * Listener of the HTML form validation element of the modal on the login page,
  * which 'listens' to the submit event of it and executes the function handleFormLogin().

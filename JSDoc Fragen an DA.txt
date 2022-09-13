@@ -1,8 +1,6 @@
 Allg. Wie kommentiert/dokumentiert man (die richtige Syntax?) mittels JSDoc die folgenden Fälle:
 
 1. Ein Event als Parameter in eine üblich JS Funktion, s. Bsp
-index.js
-Zele 416 function handleForm(event)
 
 - Reicht dort einfach ein allgemeiner @param tag {Event} oder soll ein konkreter eventtyp tag wie z.B. {DragEvent}?
 - Es ist quasi eine übliche JSDoc Dokumentation einer Funktion mit einem Parameter mittels @param, 
@@ -129,7 +127,6 @@ const toast = new bootstrap.Toast(successToast);
 15. Wie lange soll maximal einem JSDoc eine Zeile sein, inklsuive der tag wie @param {type} [deafult value] etc.?
 
 16. Wie soll so etwas in JSDoc dokumentiert werden?
-
       $(document).ready(function () {
          $('.input-daterange').datepicker({
             format: 'dd/mm/yyyy',
@@ -150,3 +147,6 @@ const toast = new bootstrap.Toast(successToast);
          toast.show();
       });
       }
+
+18. Wie soll Multi-Zeilen-Block von einem @param formatiert werden? Soll die zweite, dritte etc. Zeile direkt unter @param weiter laufen? Oder soll erst zu
+einem Punkt (Ende vom @param, @tape, Parameter-Name) tabuliert werden?

@@ -133,7 +133,7 @@ function loadCurrentDate() {
   document.getElementById("txtDate").value = today;
 }
 
-/* TODO: */
+/* TODO:Frage 2: addEventListener bei einer gloablen Variable */
 /**
  * Listener of the HTML form validation element of the add task formular,
  * which 'listens' to the submit event of it and executes the function handleForm().
@@ -143,7 +143,7 @@ function loadCurrentDate() {
  */
 formAddTask.addEventListener("submit", handleForm);
 
-/* TODO: */
+/* TODO: Frage 1: Ein Event als Parameter in eine üblich JS Funktion, s. Bsp */
 /**
  * When the form is submitted, the function is executed. It shows the toast and reset the add task formular.
  * @param {Event} event - The returned event, which will be prevented.

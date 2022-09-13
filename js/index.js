@@ -64,7 +64,7 @@ function moveTo(state) {
   renderAllColumns();
 }
 
-/* TODO: */
+/* TODO: Frage 1: in Event als Parameter in eine üblich JS Funktion, s. Bsp */
 /**
  * A w3school function: Just integrated here.
  * Changes the default behavior of the affected container (here board kanban column)
@@ -93,7 +93,8 @@ function removeHightlight(columnName) {
   document.getElementById(columnName).classList.remove("drag-area-highlight");
 }
 
-/* TODO: */
+/* TODO: Frage 3: Instanz von einem Objekt / Klasse / JS Model aber mit direkt eine Funktion hinterm dem Punkt */
+/* TODO: Frage 15: max. Länge JSDoc */
 /**
  * The bootstrap carousel object with its initial properties.
  * @type {Object}
@@ -139,6 +140,7 @@ function removeHighlightCarouselControl(side) {
  */
 let timeOut = null;
 
+/* TODO: Frage 18: Format bei Multi-Zeilenblock vom @param */
 /**
  * Highlights the carousel controll button on click for the 600 miliseconds.
  * @param {string} side - The one of the carousel controll buttons
@@ -263,7 +265,7 @@ function reverseChildren() {
   }
 }
 
-/* TODO: */
+/* TODO: Frage 2: addEventListener von einem window Objekt und einer direkt hier definierten Funktion */
 /**
  * Changes the value of the boostrap data attribute of the carousel according to the bs-sm-break point. Turn on / off the carousel swipping.
  *
@@ -386,7 +388,7 @@ function modalGenAllUser(task, id) {
     }
   }
 }
-/* TODO: */
+/* TODO: HTML-Element als globale Variable */
 /**
  * The HTML form element defining the type and scope of the HTML validation of the board modal.
  * @type {HTMLFormElement}
@@ -401,7 +403,7 @@ let formBoard = document.getElementById("boardSubmit");
  */
 formBoard.addEventListener("submit", handleForm);
 
-/* TODO: */
+/* TODO: Frage 1: Allg. Wie kommentiert/dokumentiert man (die richtige Syntax?) mittels JSDoc die folgenden Fälle: */
 /**
  * When the form is submitted, the function is executed. It shows the toast and closes the modal after 1 second.
  * @param {event} event returns the event
@@ -421,14 +423,14 @@ function handleForm(event) {
  */
 const boardToast = document.getElementById("boardToast");
 
-/* TODO: */
+/* TODO: Frage 2: addEventListener bei einer gloablen Variable */
 /**
  * The bootstrap modal object used in the board (posibile edition of the task in the board modal).
  * @type {Object}
  */
 let myModal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
 
-/* TODO: */
+/* TODO: Frage 2: addEventListener von einem window Objekt und einer Funktion ohne Klammern (definiert woanders) */
 /**
  * Sets the property of the drag drop touch javascript add-on,
  * that the dragging should firstly start after a little stronger press and hold of the finger

@@ -1,3 +1,4 @@
+/* TODO: Frage 5: globale / lokale Variablen*/
 /**
  * Memory for the current logged in user..
  * @type {number}
