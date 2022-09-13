@@ -60,17 +60,17 @@ a)
           definiert wird? Wie sieht die Syntax, die @tags für diesen Fall aus?
 
 
-2) Instanz von einem Objekt / Klasse / JS Model (ich kenn nocht nicht die richtige Begrifflichkeit)
+3) Instanz von einem Objekt / Klasse / JS Model (ich kenn nocht nicht die richtige Begrifflichkeit)
    - mit Parametern
    - Initialwerten
 
-3) Instanz von einem Objekt / Klasse / JS Model aber mit direkt eine Funktion hinterm dem Punkt
+4) Instanz von einem Objekt / Klasse / JS Model aber mit direkt einer Funktion hinterm dem Punkt
    - mit Parametern
    - Initialwerten
 
-4) JS Kommentare innerhalb einer Funktion (nicht drüber)
+5) JSDoc Kommentare innerhalb einer Funktion (nicht drüber)
 
-5) Sollen alle globalen / bzw. lokalen Vairialen (nur innerhalb Funtionen) mit @tags
+6) Sollen alle globalen / bzw. lokalen Vairialen (nur innerhalb Funtionen) mit @tags
    - @type
    - @default (Wert)
    - @const
@@ -78,17 +78,17 @@ a)
 
    - sollen festzugewiesene HTMLElemente als Viariablen mit JSDoc kommentiert werden?
 
-6) Sollen JSONs (wenn das eine Mischung aus JSONS, Array, Strings, Funktionen etc. --> 2,3 stufig verschachtelt) 
+7) Sollen JSONs (wenn das eine Mischung aus JSONS, Array, Strings, Funktionen etc. --> 2,3 stufig verschachtelt) 
 in Script auch im JSDoc Standard mit tags wie @Objekt @property {type --> zu jeder JSON-Property} kommteriert werden?
 Oder reicht hier eindeutiger Namen? --> Potenzial für sehr langes Kommentar.
 
-7) Soll zwischen Description und dem ersten weiterem @tag wie z.B. @param eine leere Zeile bleiblen oder nicht?
+8) Soll zwischen Description und dem ersten weiterem @tag wie z.B. @param eine leere Zeile bleiblen oder nicht?
 Bei ca. 400 Zeilen Code und 20-30 Funktionen würde diese Abständen schon 20-30 Zeilen Code nehmen.
 --> JSDoc Doku ist auf ihrer Webseite mit Beispieln auch nicht konsistent und macht bei vielen Beispielen
 keinen Zeilenabstand.
 
-8. Wie soll gramatikalisch die Description formuliert sein?
-   - im Imperativ wie z.B. Creates a new objekt of .....
+9) Wie soll gramatikalisch die Description formuliert sein?
+   - im Imperativ wie z.B. Create a new objekt of .....
    - oder Simple Past - dritte Person (It = fuction) zB. Creates a new Objekt?
    - oder ein Nomen aus dem Verb? Creating, Removing, Calculating of ....
 
@@ -98,35 +98,35 @@ keinen Zeilenabstand.
 
    Was ist zu empfehlen?
 
-9. Wie soll gramatikalisch die Descritpion für ein @param aussehen? Bei JSDoc Doku in Webbeispielen gibt
+10) Wie soll gramatikalisch die Descritpion für ein @param aussehen? Bei JSDoc Doku in Webbeispielen gibt
 es auch keine klare Linie.
  - Soll es mit einem - und Großbuchstaben anfangen oder nur mit einem Leerzeichen getrennt werden?
- - Soll es immer mit einem Großbuchstaben und einem Punkt anfangen, obwohl es in einigen Beispielen
+ - Soll es immer mit einem Großbuchstaben anfangen und einem Punkt enden, obwohl es in einigen Beispielen
  in JSDoc Doku und im Web kein Satz ist.
  - Soll das immer mit This is ... anfangen oder kann darauf verzichtet werden. Sonst hat man bei 50, 100 Paramtern in der Doku
   immer den gleichen sich wiederholenden Satz in der Tabelle an der Stelle Description des Parameters.
   Oder reicht vollkommen aus z.B. The number of the ....
   Was ist zu empfehlen?
 
-10. Wie soll die Syntax bei einem @returns aussehen? Bei JSDoc Doku wir da kein - gesetzt, nur im Gegensatz zu einem @param
+11). Wie soll die Syntax bei einem @returns aussehen? Bei JSDoc Doku wir da kein - gesetzt, nur im Gegensatz zu einem @param
 direkt die Description mit Gro0buchstaben und einem Punkt am Ende definiert.
 - soll hier auch der @type tag verwendet werden (Empfehlung?)
 
-11. Wie würde man so entwas kommentieren?
+12). Wie würde man so entwas kommentieren?
   event.preventDefault();
 
-12. Wie würde man so entwas kommentieren? (Contante, Instanz, Klasse, Objektfunktion mit Parameter als HTML Objekt)  
-const toast = new bootstrap.Toast(successToast);
+13) Wie würde man so entwas kommentieren? (Contante, Instanz, Klasse, Objektfunktion mit Parameter als HTML Objekt)  
+  const toast = new bootstrap.Toast(registrationToast);
 
-13. Wie würde man so entwas kommentieren? (Instanziertes Objekt mit seiner eingen Funktion)
+14) Wie würde man so entwas kommentieren? (Instanziertes Objekt mit seiner eingen Funktion)
     toast.show();
 
-14. Wie würde man so entwas kommentieren? (Ein HTML-Element gespeichert in einer lokalen Variable mit einer Funktion von einem Objekt)
+15) Wie würde man so entwas kommentieren? (Ein HTML-Element gespeichert in einer lokalen Variable mit einer Funktion von einem Objekt)
    formAddTask.reset();
 
-15. Wie lange soll maximal einem JSDoc eine Zeile sein, inklsuive der tag wie @param {type} [deafult value] etc.?
+16) Wie lange soll maximal einem JSDoc eine Zeile sein, inklsuive der tag wie @param {type} [deafult value] etc.?
 
-16. Wie soll so etwas in JSDoc dokumentiert werden?
+17) Wie soll so etwas in JSDoc dokumentiert werden?
       $(document).ready(function () {
          $('.input-daterange').datepicker({
             format: 'dd/mm/yyyy',
@@ -137,7 +137,7 @@ const toast = new bootstrap.Toast(successToast);
          });
       });
 
-17. Wie soll man so etwas direkt ausgeführt in inder JS-Datei (ohne dafür eine Funktion zu definieren) mittesls JSDoc kommentieren?
+18) Wie soll man so etwas direkt ausgeführt in inder JS-Datei (ohne dafür eine Funktion zu definieren) mittesls JSDoc kommentieren?
       const toastTrigger1 = document.getElementById("signInBtn");
       const toastLiveExample1 = document.getElementById("signInToast");
       if (toastTrigger1) {
@@ -148,5 +148,14 @@ const toast = new bootstrap.Toast(successToast);
       });
       }
 
-18. Wie soll Multi-Zeilen-Block von einem @param formatiert werden? Soll die zweite, dritte etc. Zeile direkt unter @param weiter laufen? Oder soll erst zu
+19) Wie soll Multi-Zeilen-Block von einem @param formatiert werden? Soll die zweite, dritte etc. Zeile direkt unter @param weiter laufen? Oder soll erst zu
 einem Punkt (Ende vom @param, @tape, Parameter-Name) tabuliert werden?
+
+Loom Video: https://www.loom.com/share/bd06c3c619e24220ba2f248d556dcda7
+Loom Video: https://www.loom.com/share/b38d4a3d6d764a68a17b457f53ef60db
+Loom Video: https://www.loom.com/share/4a5a670d5fc24a82b9fb3b849eb95f6c
+Loom Video: https://www.loom.com/share/e01c69a6656e4c8ea112c7dbc71de809
+Loom Video: https://www.loom.com/share/224e232dd8724209b9713256a54a87ec
+Loom Video: https://www.loom.com/share/66ea7722c82c49db8e4c002fa0c0a093
+Loom Video: https://www.loom.com/share/68ef9e642153480aba7e15667cc641ed
+Loom Video: https://www.loom.com/share/b645e7bfd47b4e8594ed50d2e5e48e70
