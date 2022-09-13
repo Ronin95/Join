@@ -268,7 +268,7 @@ function reverseChildren() {
 /* TODO: Frage 2: addEventListener von einem window Objekt und einer direkt hier definierten Funktion */
 /**
  * Changes the value of the boostrap data attribute of the carousel according to the bs-sm-break point. Turn on / off the carousel swipping.
- * @event abc asjhgdfkjhgdfkjhgdfkghdkjg
+ * @event abc Testbescheibung des Events abc
  * @listens string resize - The resize event of the application window.
  */
 window.addEventListener("resize", function () {
