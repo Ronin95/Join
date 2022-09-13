@@ -93,8 +93,8 @@ function removeHightlight(columnName) {
   document.getElementById(columnName).classList.remove("drag-area-highlight");
 }
 
-/* TODO: Frage 3: Instanz von einem Objekt / Klasse / JS Model aber mit direkt eine Funktion hinterm dem Punkt */
-/* TODO: Frage 15: max. Länge JSDoc */
+/* TODO: Frage 4: Instanz von einem Objekt / Klasse / JS Model aber mit direkt eine Funktion hinterm dem Punkt */
+/* TODO: Frage 16: max. Länge JSDoc */
 /**
  * The bootstrap carousel object with its initial properties.
  * @type {Object}
@@ -140,7 +140,7 @@ function removeHighlightCarouselControl(side) {
  */
 let timeOut = null;
 
-/* TODO: Frage 18: Format bei Multi-Zeilenblock vom @param */
+/* TODO: Frage 19: Format bei Multi-Zeilenblock vom @param */
 /**
  * Highlights the carousel controll button on click for the 600 miliseconds.
  * @param {string} side - The one of the carousel controll buttons
@@ -268,8 +268,8 @@ function reverseChildren() {
 /* TODO: Frage 2: addEventListener von einem window Objekt und einer direkt hier definierten Funktion */
 /**
  * Changes the value of the boostrap data attribute of the carousel according to the bs-sm-break point. Turn on / off the carousel swipping.
- *
- * @listens {event} resize - The resize event of the application window.
+ * @event abc asjhgdfkjhgdfkjhgdfkghdkjg
+ * @listens string resize - The resize event of the application window.
  */
 window.addEventListener("resize", function () {
   if (window.innerWidth < 576) {

@@ -1,4 +1,4 @@
-/* TODO: Frage 6 */
+/* TODO: Frage 7 */
 // BACKUP of 'users' JSON in case it will be deleted from brackend server.
 /* users = [
   {
@@ -145,7 +145,7 @@ function saveRegristration() {
   saveInBackend(users, "users");
 }
 
-/* TODO: Frage 10: returns */
+/* TODO: Frage 11: returns */
 /**
  * Checks which HTML element was chosen as avatar.
  * @returns {HTMLElement} The chosen HTML element as avatar.
@@ -204,7 +204,7 @@ function highlightAvatar() {
   }
 }
 
-/* TODO: Frage 17: Direkte Ausführung in js Datei */
+/* TODO: Frage 18: Direkte Ausführung in js Datei */
 /**
  * The toast output after the input has been checked after the click on the trigger (here: sign in button).
  */
@@ -218,7 +218,7 @@ if (toastTrigger1) {
   });
 }
 
-/* TODO: Frage 2:  Instanz von einem Objekt / Klasse / JS Model (ich kenn nocht nicht die richtige Begrifflichkeit) */
+/* TODO: Frage 3:  Instanz von einem Objekt / Klasse / JS Model (ich kenn nocht nicht die richtige Begrifflichkeit) */
 /**
  * The bootstrap modal object used on the the login page.
  * @type {Object}
@@ -244,12 +244,12 @@ const registrationToast = document.getElementById("registrationToast");
  * @param {Event} event The returned Event, which will be prevented.
  */
 function handleFormLogin(event) {
-  event.preventDefault(); /* TODO: Frage 11 */
+  event.preventDefault(); /* TODO: Frage 12 */
   toastForEvent("toast-body-registration", "Registration completed!"); 
   const toast = new bootstrap.Toast(registrationToast); /* TODO: Frage 13 */
-  toast.show(); /* TODO: Frage 13 */
+  toast.show(); /* TODO: Frage 14 */
   saveRegristration();
-  formRegistery.reset(); /* TODO: Frage 14 */
+  formRegistery.reset(); /* TODO: Frage 15 */
   setTimeout(function () {
     myModal.hide();
   }, 2000);
