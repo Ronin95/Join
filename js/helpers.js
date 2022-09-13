@@ -16,7 +16,7 @@ function checkIfLogin() {
 
 /**
  * Deletes the selected task from the array.
- * @param {number} i This is the location of the object in the array.
+ * @param {number} i - The location of the object in the array.
  */
 function deleteTask(i, fct) {
   allTasks.splice(i, 1);
@@ -26,7 +26,7 @@ function deleteTask(i, fct) {
 
 /**
  * Converts the JSON into a string and stores it in the backend.
- * @param {Object} json - This is the JSON converted to string and stores on the backend server.
+ * @param {Object} json - The JSON converted to string and stores on the backend server.
  * @param {string} key - Under this key the above converted JSON to string in saved on the backend server.
  */
 function saveInBackend(json, key) {
@@ -36,8 +36,8 @@ function saveInBackend(json, key) {
 
 /**
  * Downloads the data matching the key.
- * @param {string} key - This is the key with which something was saved in the backend.
- * @returns {JSON|Array} This is the return value: a JSON or an empty Array.
+ * @param {string} key - The key with which something was saved in the backend.
+ * @returns {JSON|Array} The JSON or an empty Array.
  */
 function loadFromBackend(key) {
   let asString = backend.getItem(key);
@@ -49,7 +49,7 @@ function loadFromBackend(key) {
 }
 
 /**
- * Shows all sser from the global JSON array - users - that can be selected for a task.
+ * Shows all users from the global JSON array 'users' that can be selected for a task.
  */
 function showAllUser() {
   document.getElementById("user").innerHTML = ``;
@@ -80,7 +80,7 @@ function logout() {
 
 /**
  * Reads the urgency and assigns a corresponding color class.
- * @param {string} taskUrgency  This is the urgency of the respective task.
+ * @param {string} taskUrgency  - The urgency of the respective task.
  */
 function urgencyCol(taskUrgency) {
   if (taskUrgency == "High") {
@@ -94,8 +94,8 @@ function urgencyCol(taskUrgency) {
 
 /**
  * Reads the urgency and assigns a corresponding class.
- * @param {string} taskUrgency  This is the urgency of the respective task.
- * @param {string} id  This is the id of the respective task.
+ * @param {string} taskUrgency  - The urgency of the respective task.
+ * @param {string} id  - The id of the respective task.
  */
 function urgencyBoard(taskUrgency, id) {
   if (taskUrgency == "High") {
@@ -115,10 +115,11 @@ function changeModalUrgencyColor() {
   urgencyCol(urgency);
 }
 
+/* TODO: */
 /**
  * Sets dynamically the height of the scrollbar content of the sub pages (Backlog, Add Task, Help) on resize of the window.
- * 
- * @fires resize - This is the resize event of the application window.
+ *
+ * @listens resize - The resize event of the application window.
  */
 window.addEventListener("resize", function () {
   setHeight("freshTask");
@@ -136,7 +137,7 @@ window.addEventListener("resize", function () {
 /**
  * Sets the height of the scrollbar content of the sub spages (Backlog, Add Task, Help).
  *
- * @param {string} id - This is the id of the html element for which the height is set.
+ * @param {string} id - The id of the html element for which the height is set.
  */
 function setHeight(id) {
   let elToFind = document.getElementById(id);
@@ -153,7 +154,7 @@ function setHeight(id) {
 /**
  * Removes the height of the scrollbar content of the sub page (add task).
  *
- * @param {string} id - This is the id of the html element for which the height is removed.
+ * @param {string} id - The id of the html element for which the height is removed.
  */
 function removeHeight(id) {
   let elToFind = document.getElementById(id);

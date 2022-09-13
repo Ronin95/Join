@@ -37,7 +37,7 @@ function setURL(url) {
 
 async function loadJSONFromServer() {
   let response = await fetch(
-    BASE_SERVER_URL + '/nocors.php?json=database&noache=' + new Date().getTime()
+    BASE_SERVER_URL + "/nocors.php?json=database&noache=" + new Date().getTime()
   );
   return await response.text();
 }
@@ -49,10 +49,10 @@ function loadJSONFromServerOld() {
     let serverURL =
       proxy +
       BASE_SERVER_URL +
-      '/nocors.php?json=database&noache=' +
+      "/nocors.php?json=database&noache=" +
       new Date().getTime();
 
-    xhttp.open('GET', serverURL);
+    xhttp.open("GET", serverURL);
 
     xhttp.onreadystatechange = function (oEvent) {
       if (xhttp.readyState === 4) {
@@ -64,7 +64,7 @@ function loadJSONFromServerOld() {
       }
     };
 
-    xhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhttp.send();
   });
 }
@@ -76,8 +76,8 @@ function saveJSONToServer() {
   return new Promise(function (resolve, reject) {
     let xhttp = new XMLHttpRequest();
     let proxy = determineProxySettings();
-    let serverURL = proxy + BASE_SERVER_URL + '/save_json.php';
-    xhttp.open('POST', serverURL);
+    let serverURL = proxy + BASE_SERVER_URL + "/save_json.php";
+    xhttp.open("POST", serverURL);
 
     xhttp.onreadystatechange = function (oEvent) {
       if (xhttp.readyState === 4) {
@@ -89,17 +89,17 @@ function saveJSONToServer() {
       }
     };
 
-    xhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhttp.send(JSON.stringify(jsonFromServer));
   });
 }
 
 function determineProxySettings() {
-  return '';
+  return "";
 
-  if (window.location.href.indexOf('.developerakademie.com') > -1) {
-    return '';
+  if (window.location.href.indexOf(".developerakademie.com") > -1) {
+    return "";
   } else {
-    return 'https://cors-anywhere.herokuapp.com/';
+    return "https://cors-anywhere.herokuapp.com/";
   }
 }

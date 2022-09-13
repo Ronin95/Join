@@ -1,18 +1,19 @@
 /**
  * Memory for the current logged in user..
- * @type {number} 
+ * @type {number}
+ * @default
  */
 let currentUser = [];
 
 /**
  * Memory for all posible task categories.
- * @type {Array} 
+ * @type {string[]}
  */
 let allCategories = ["IT", "Sales", "Management", "Production", "Marketing"];
 
 /**
  * Memory for all colors of task categories.
- * @type {Array} 
+ * @type {JSON}
  */
 let colorsCategory = {
   Sales: "#DC5445",
@@ -25,7 +26,8 @@ let colorsCategory = {
 
 /**
  * Memory for users saved in the backend server.
- * @type {JSON} 
+ * @type {JSON}
+ * @default
  */
 let users = [];
 
@@ -42,7 +44,7 @@ async function init() {
 }
 
 /**
- * Initially executed while loading the board page. 
+ * Initially executed while loading the board page.
  */
 async function initIndex() {
   checkIfLogin();
@@ -55,7 +57,7 @@ async function initIndex() {
 }
 
 /**
- * Initially executed while loading the help page. 
+ * Initially executed while loading the help page.
  */
 async function initHelp() {
   checkIfLogin();
@@ -68,7 +70,7 @@ async function initHelp() {
 }
 
 /**
- * Initially executed while loading the backlog page. 
+ * Initially executed while loading the backlog page.
  */
 async function initBacklog() {
   checkIfLogin();
@@ -81,7 +83,7 @@ async function initBacklog() {
 }
 
 /**
- * Initially executed while loading the add task page. 
+ * Initially executed while loading the add task page.
  */
 async function initAddTask() {
   checkIfLogin();

@@ -1,4 +1,4 @@
-// BACKUP of users JSON in case it will be deleted from brackend server.
+// BACKUP of 'users' JSON in case it will be deleted from brackend server.
 /* users = [
   {
     name: 'Guest',
@@ -146,7 +146,7 @@ function saveRegristration() {
 
 /**
  * Checks which HTML element was chosen as avatar.
- * @returns {HTMLElement} The return value is the chosen HTML element as avatar.
+ * @returns {HTMLElement} The chosen HTML element as avatar.
  */
 function checkSelectedAvatar() {
   for (let i = 1; i < 5; i++) {
@@ -202,6 +202,7 @@ function highlightAvatar() {
   }
 }
 
+/* TODO: */
 /**
  * The toast output after the input has been checked after the click on the trigger (here: sign in button).
  */
@@ -215,27 +216,29 @@ if (toastTrigger1) {
   });
 }
 
+/* TODO: */
 /**
- * This is a bootstrap modal object used on the the login page.
+ * The bootstrap modal object used on the the login page.
  * @type {Object}
- * */
+ */
 let myModal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
 
 /**
  * The HTML form element defining the type and scope of the HTML validation of the login modal.
  * @type {HTMLFormElement}
- * */
+ */
 let formRegistery = document.getElementById("registery");
 
 /**
  * The HTML element of the bootstrap toast on the login page.
  * @type {HTMLElement}
- * */
+ */
 const registrationToast = document.getElementById("registrationToast");
 
+/* TODO: */
 /**
  * When the form is submitted, the function is executed. It shows the toast, saves the registered user and closes the modal after 2 seconds.
- * @param {event} event returns the event
+ * @param {Event} event The returned Event, which will be prevented.
  */
 function handleFormLogin(event) {
   event.preventDefault();
@@ -249,10 +252,11 @@ function handleFormLogin(event) {
   }, 2000);
 }
 
+/* TODO: */
 /**
  * Listener of the HTML form validation element of the modal on the login page,
  * which 'listens' to the submit event of it and executes the function handleFormLogin().
  *
- * @listens {event} submit - This is the submit event of the HTML form validation element of the modal on the login page.
+ * @listens {event} submit - The submit event of the HTML form validation element of the modal on the login page.
  */
 formRegistery.addEventListener("submit", handleFormLogin);

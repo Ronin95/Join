@@ -1,6 +1,7 @@
 /**
  * Memory for the selected user in the add task.
  * @type {JSON}
+ * @default
  */
 let selectedUser = [];
 
@@ -35,9 +36,9 @@ let mm = today.getMonth() + 1;
 let yyyy = today.getFullYear();
 
 /**
- * Adds a new task by getting the values from document by id.
- * Safes it in the JSON newTask.
- * Clears the input.
+ * Adds a new task by getting the values from document by id.<br>
+ * Safes it in the JSON 'newTask'.<br>
+ * Clears the input.<br>
  * Shows a message with the value for wich member is the task added.
  */
 async function addTask() {
@@ -80,7 +81,7 @@ function getInputValue(id) {
 }
 
 /**
- * Saves the new task and push it to the JSON allTasks.
+ * Saves the new task and push it to the JSON 'allTasks'.
  * @param {JSON} newTask - The JSON array task that will be stored..
  */
 function saveTask(newTask) {
@@ -97,7 +98,7 @@ function deleteUnsafedInput() {
 }
 
 /**
- * Selects an avatar to choose a user to add a task.
+ * Selects an avatar to choose a user to add a task.<br>
  * Creates a new element which shows only the user who is selected.
  * @param {string} i - The person who is chosen by clicking an avatar.
  */
@@ -132,17 +133,20 @@ function loadCurrentDate() {
   document.getElementById("txtDate").value = today;
 }
 
+/* TODO: */
 /**
  * Listener of the HTML form validation element of the add task formular,
  * which 'listens' to the submit event of it and executes the function handleForm().
  *
  * @listens submit - The submit event of the HTML form validation element of the add task formular.
+ * 
  */
 formAddTask.addEventListener("submit", handleForm);
 
+/* TODO: */
 /**
  * When the form is submitted, the function is executed. It shows the toast and reset the add task formular.
- * @param {event} event returns the event
+ * @param {Event} event - The returned event, which will be prevented.
  */
 function handleForm(event) {
   const successToast = document.getElementById("success_task");

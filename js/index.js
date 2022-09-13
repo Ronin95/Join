@@ -1,6 +1,7 @@
 /**
  * Memory for the current dragged element (a task item of a board kanban columns).
  * @type {number}
+ * @default undefined
  */
 let currentDraggedElement;
 
@@ -27,8 +28,8 @@ function renderAllColumns() {
 
 /**
  * Renders a single specific Kanban column in the board.
- * @param {string} columnName - This is the value of the state property in allTask JSON (according ).
- * The tasks are filtered accordingly to this from allTasks JSON. /
+ * @param {string} columnName - The value of the state property in 'allTask' JSON.
+ * The tasks are filtered accordingly to this from 'allTasks' JSON. /
  * This is also the id of the kanban column in the board, where the filtered task are placed as a task HTML-taskement.
  */
 function renderColumn(columnName) {
@@ -44,7 +45,7 @@ function renderColumn(columnName) {
 
 /**
  * Sets the current dragged task item.
- * @param {number} id - This is a unique id of the task item.
+ * @param {number} id - The unique id of the task item.
  */
 function startDragging(id) {
   currentDraggedElement = id;
@@ -54,7 +55,7 @@ function startDragging(id) {
  * Executes after a dragged element (here task item) is dropped
  * on the affected container (here board kanban column).
  * Changes the state (to do / in progress / testing / done) for the affected task item.
- * @param {string} state - This is the name of the board kanban column and the completion process of the affected task item.
+ * @param {string} state - The name of the board kanban column and the completion process of the affected task item.
  */
 function moveTo(state) {
   let taskIndex = allTasks.find((n) => n.id == currentDraggedElement);
@@ -63,11 +64,12 @@ function moveTo(state) {
   renderAllColumns();
 }
 
+/* TODO: */
 /**
  * A w3school function: Just integrated here.
  * Changes the default behavior of the affected container (here board kanban column)
  * and gives the permission to drop another HTML element over the affected container.
- * @param {Event} ev - This is an event, if the a dragged element (her task item) is over (hovering) the affected container (here board kanban column).
+ * @param {Event} ev - Then event, if the a dragged element (her task item) is over (hovering) the affected container (here board kanban column).
  */
 function allowDrop(ev) {
   ev.preventDefault();
@@ -76,24 +78,28 @@ function allowDrop(ev) {
 /**
  * Highlights the kanban column when you hover over it with the dragged task item
  * (a corresponding class for this effect will be added to the affected column.).
- * @param {string} columnName - This is the name of the board kanban column, which should be highlighted
+ * @param {string} columnName - The name of the board kanban column, which should be highlighted
  */
 function hightlight(columnName) {
   document.getElementById(columnName).classList.add("drag-area-highlight");
 }
 
 /**
- * Removes the highlight effect for the kanban column when the dragged task item stop to hover it or will be dropped on it
+ * Removes the highlight effect for the kanban column when the dragged task item stop to hover it or will be dropped on it <br>
  * (a corresponding class for this effect will be removed from the affected colum).
- * @param {string} columnName - This is the name of the board kanban column, for which the highlicht effect should be removed.
+ * @param {string} columnName - The name of the board kanban column, for which the highlicht effect should be removed.
  */
 function removeHightlight(columnName) {
   document.getElementById(columnName).classList.remove("drag-area-highlight");
 }
 
+/* TODO: */
 /**
- * This is a bootstrap carousel object with its initial properties.
+ * The bootstrap carousel object with its initial properties.
  * @type {Object}
+ * @property {number} interval - The amount of time to delay between automatically cycling an item.
+ * @property {string|boolean} pause - If set to "hover", pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on mouseleave. If set to false, hovering over the carousel won’t pause it. On touch-enabled devices, when set to "hover", cycling will pause on touchend (once the user finished interacting with the carousel) for two intervals, before automatically resuming. This is in addition to the mouse behavior.
+ * @property {boolean} wrap - Whether the carousel should cycle continuously or have hard stops.
  */
 const myCarousel = new bootstrap.Carousel(document.getElementById("carousel"), {
   /* The speed of carousel sliding */
@@ -104,7 +110,7 @@ const myCarousel = new bootstrap.Carousel(document.getElementById("carousel"), {
 
 /**
  * Adds the highlight effect to the carousel controll button.
- * @param {string} side - This is the one of the carousel controll buttons
+ * @param {string} side - The one of the carousel controll buttons
  * (left for the reverse sliding (direction from right to left) /
  * right for the default bootstrap sliding (direction from left to right)).
  */
@@ -116,7 +122,7 @@ function highlightCarouselControl(side) {
 
 /**
  * Removes the highlight effect from the carousel controll button.
- * @param {string} side - This is the one of the carousel controll buttons
+ * @param {string} side - The one of the carousel controll buttons
  * (left for the reverse sliding (direction from right to left) /
  * right for the default bootstrap sliding (direction from left to right)).
  */
@@ -129,12 +135,13 @@ function removeHighlightCarouselControl(side) {
 /**
  * Memory for the intervall saved after the click on one of the carousel controll buttons.
  * @type {?number}
+ * @default null
  */
 let timeOut = null;
 
 /**
  * Highlights the carousel controll button on click for the 600 miliseconds.
- * @param {string} side - This is the one of the carousel controll buttons
+ * @param {string} side - The one of the carousel controll buttons
  * (left for the reverse sliding (direction from right to left) /
  * right for the default bootstrap sliding (direction from left to right)).
  */
@@ -197,6 +204,7 @@ function stopSlideJustOnDrop() {
  * Memory for the state, if the carousel items (kanban columns)
  * and slide indicators have been already reversed in the DOM.
  * @type {boolean}
+ * @default false
  */
 let reversed = false;
 
@@ -255,10 +263,11 @@ function reverseChildren() {
   }
 }
 
+/* TODO: */
 /**
  * Changes the value of the boostrap data attribute of the carousel according to the bs-sm-break point. Turn on / off the carousel swipping.
  *
- * @listens {event} resize - This is the resize event of the application window.
+ * @listens {event} resize - The resize event of the application window.
  */
 window.addEventListener("resize", function () {
   if (window.innerWidth < 576) {
@@ -270,7 +279,7 @@ window.addEventListener("resize", function () {
 
 /**
  * Opens the selected board task item in the modal.
- * @param {number} idValue - This is the value of the id of the selected board task item.
+ * @param {number} idValue - The value of the id of the selected board task item.
  */
 function openModal(idValue) {
   let task = allTasks.find((n) => n.id == idValue);
@@ -289,9 +298,9 @@ function openModal(idValue) {
 
 /**
  * Saves all changes in the open modal.
- * 
- * @param {number} indexTask - This is the location of the task in alltasks.
- * @param {string} fct - This is the function name.
+ *
+ * @param {number} indexTask - The location of the task in alltasks.
+ * @param {string} fct - The function name.
  */
 function adaptTask(indexTask, fct) {
   allTasks[indexTask].title = document.getElementById("modalTitle").value || "";
@@ -307,7 +316,7 @@ function adaptTask(indexTask, fct) {
 
 /**
  * Changes a relative link to an absolute link.
- * @returns {string} This returns an absolute link.
+ * @returns {string} An absolute link.
  */
 function getRightSrcOfImg() {
   let imgSrc = document.getElementById("modalSelectedUser").src;
@@ -316,9 +325,9 @@ function getRightSrcOfImg() {
 }
 
 /**
- * Changes the assigned user in the task 222.
- * @param {number} i - This is the selected user.
- * @param {number} id - This is the id of the selected task.
+ * Changes the assigned user in the task.
+ * @param {number} i - The selected user.
+ * @param {number} id - The id of the selected task.
  */
 function changeSelectedUser(i, id) {
   let indexTask = allTasks.findIndex((obj) => obj.id == id);
@@ -336,7 +345,7 @@ function changeSelectedUser(i, id) {
 
 /**
  * Changes the user avatar in the modal after selection of one of the user avatars from the drop down menu.
- * @param {JSON} user - This is the selected user from the drop dowm menu in the modal.
+ * @param {JSON} user - The selected user from the drop dowm menu in the modal.
  */
 function changeModalAvatarAfterSelect(user) {
   document.getElementById("modalSelectedUser").src = user.avatar;
@@ -362,8 +371,8 @@ function modalHideAllUsers() {
  * Generates all user avatars for the scrollable container: all users collection,
  * sets the blue border for avatar of the assigned user to the task,
  * sets the white border for the rest of user avatars.
- * @param {JSON} task - This is the selected task with all its properties (saved in allTasks JSON).
- * @param {number} id - This is the value of id of the selected board task item.
+ * @param {JSON} task - The selected task with all its properties (saved in 'allTasks' JSON).
+ * @param {number} id - The value of id of the selected board task item.
  */
 function modalGenAllUser(task, id) {
   let modalUserCollection = document.getElementById("modalUserCollection");
@@ -377,7 +386,7 @@ function modalGenAllUser(task, id) {
     }
   }
 }
-
+/* TODO: */
 /**
  * The HTML form element defining the type and scope of the HTML validation of the board modal.
  * @type {HTMLFormElement}
@@ -388,10 +397,11 @@ let formBoard = document.getElementById("boardSubmit");
  * Listener of the HTML form validation element of the modal in the board,
  * which 'listens' to the submit event of it and executes the function handleForm().
  *
- * @listens {event} submit - This is the submit event of the HTML form validation element of the modal in the board.
+ * @listens {event} submit - The submit event of the HTML form validation element of the modal in the board.
  */
 formBoard.addEventListener("submit", handleForm);
 
+/* TODO: */
 /**
  * When the form is submitted, the function is executed. It shows the toast and closes the modal after 1 second.
  * @param {event} event returns the event
@@ -406,25 +416,29 @@ function handleForm(event) {
 }
 
 /**
- * The toast used while closing the modal.
+ * The toast used while closing the modal in the board.
  * @type {HTMLElement}
  */
 const boardToast = document.getElementById("boardToast");
 
+/* TODO: */
 /**
- * This is a bootstrap modal object used in the board (Posibile Edition of the task in the board modal).
+ * The bootstrap modal object used in the board (posibile edition of the task in the board modal).
  * @type {Object}
  */
 let myModal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
 
+/* TODO: */
 /**
  * Sets the property of the drag drop touch javascript add-on,
  * that the dragging should firstly start after a little stronger press and hold of the finger
  * and not on a short and weak one,
  * which would produce touch intepratations errors
  * with the default scroll funcionality on touch events on mobile devices.
- *
- * @listens resize - This is the resize event of the application window.
+ * @name addEventListener
+ * @function
+ * @global
+ * @param {string} resize - The resize event of the application window.
  */
 window.addEventListener("resize", configDragDropPressHoldMode);
 
