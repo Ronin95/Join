@@ -65,7 +65,8 @@ function newTaskTemp(newTask, i) {
 /**
  * Generates a single task item in the kanban column in the board.
  * @param {JSON} task - The task from allTasks array with a certain filtered category.
- * @returns {HTMLElement} The HTML code for the task item defined with the task paramter for a specific kanban column in the board.
+ * @returns {HTMLElement} The HTML code for the task item defined with the task paramter
+ * for a specific kanban column in the board.
  */
 function genHTMLBoardTaskItem(task) {
   return /* html */ `

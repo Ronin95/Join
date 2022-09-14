@@ -27,7 +27,7 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Memory for the current dragged element (a task item of a board kanban columns).
+ * The current dragged element (a task item of a board kanban columns).
  * @type {number}
  * @default undefined
  */
@@ -64,10 +64,10 @@ function renderColumn(columnName) {
   let filteredWithSameState = allTasks.filter((a) => a["state"] == columnName);
   document.getElementById(`${columnName}Column`).innerHTML = "";
   for (let index = 0; index &lt; filteredWithSameState.length; index++) {
-    const task = filteredWithSameState[index];
+    const TASK = filteredWithSameState[index];
     document.getElementById(`${columnName}Column`).innerHTML +=
-      genHTMLBoardTaskItem(task);
-    urgencyBoard(task.urgency, task.id);
+      genHTMLBoardTaskItem(TASK);
+    urgencyBoard(TASK.urgency, TASK.id);
   }
 }
 
@@ -92,12 +92,11 @@ function moveTo(state) {
   renderAllColumns();
 }
 
-/* TODO: Frage 1: in Event als Parameter in eine üblich JS Funktion, s. Bsp */
 /**
  * A w3school function: Just integrated here.
  * Changes the default behavior of the affected container (here board kanban column)
  * and gives the permission to drop another HTML element over the affected container.
- * @param {Event} ev - Then event, if the a dragged element (her task item) is over (hovering) the affected container (here board kanban column).
+ * @param {DragEvent} ev - Then event, if the a dragged element (her task item) is over (hovering) the affected container (here board kanban column).
  */
 function allowDrop(ev) {
   ev.preventDefault();
@@ -121,27 +120,31 @@ function removeHightlight(columnName) {
   document.getElementById(columnName).classList.remove("drag-area-highlight");
 }
 
-/* TODO: Frage 4: Instanz von einem Objekt / Klasse / JS Model aber mit direkt eine Funktion hinterm dem Punkt */
-/* TODO: Frage 16: max. Länge JSDoc */
 /**
- * The bootstrap carousel object with its initial properties.
- * @type {Object}
- * @property {number} interval - The amount of time to delay between automatically cycling an item.
- * @property {string|boolean} pause - If set to "hover", pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on mouseleave. If set to false, hovering over the carousel won’t pause it. On touch-enabled devices, when set to "hover", cycling will pause on touchend (once the user finished interacting with the carousel) for two intervals, before automatically resuming. This is in addition to the mouse behavior.
- * @property {boolean} wrap - Whether the carousel should cycle continuously or have hard stops.
+ * The initial properties for the above instance of bootstrap carousel as a JSON.
  */
-const myCarousel = new bootstrap.Carousel(document.getElementById("carousel"), {
-  /* The speed of carousel sliding */
-  interval: 400,
-  pause: false,
-  wrap: true,
-});
+const MY_CAROUSEL_OPTIONS = {
+  interval: 400, // The amount of time to delay between automatically cycling an item = The speed of carousel sliding.
+  pause: false, // If set to "hover", pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on mouseleave. If set to false, hovering over the carousel won’t pause it. On touch-enabled devices, when set to "hover", cycling will pause on touchend (once the user finished interacting with the carousel) for two intervals, before automatically resuming. This is in addition to the mouse behavior.
+  wrap: true, // Whether the carousel should cycle continuously or have hard stops.
+};
+
+/**
+ * The instance of bootstrap carousel object with its initial properties.
+ */
+const MY_CAROUSEL = new bootstrap.Carousel(
+  document.getElementById("carousel"),
+  MY_CAROUSEL_OPTIONS
+);
 
 /**
  * Adds the highlight effect to the carousel controll button.
  * @param {string} side - The one of the carousel controll buttons
  * (left for the reverse sliding (direction from right to left) /
  * right for the default bootstrap sliding (direction from left to right)).
+ */
+/**
+ *
  */
 function highlightCarouselControl(side) {
   document
@@ -162,13 +165,12 @@ function removeHighlightCarouselControl(side) {
 }
 
 /**
- * Memory for the intervall saved after the click on one of the carousel controll buttons.
+ * The intervall saved after the click on one of the carousel controll buttons.
  * @type {?number}
  * @default null
  */
 let timeOut = null;
 
-/* TODO: Frage 19: Format bei Multi-Zeilenblock vom @param */
 /**
  * Highlights the carousel controll button on click for the 600 miliseconds.
  * @param {string} side - The one of the carousel controll buttons
@@ -188,7 +190,7 @@ function highlightCarouselControlOnClick(side) {
  */
 function startSlideNext() {
   if (window.innerWidth &lt; 576) {
-    myCarousel.cycle();
+    MY_CAROUSEL.cycle();
   }
 }
 
@@ -197,7 +199,7 @@ function startSlideNext() {
  */
 function stopSlideNext() {
   if (window.innerWidth &lt; 576) {
-    myCarousel.pause();
+    MY_CAROUSEL.pause();
   }
 }
 
@@ -206,7 +208,7 @@ function stopSlideNext() {
  */
 function startSlidePrev() {
   if (window.innerWidth &lt; 576) {
-    myCarousel.cycle();
+    MY_CAROUSEL.cycle();
   }
 }
 
@@ -214,7 +216,7 @@ function startSlidePrev() {
  * Stops reverse sliding of the carousel (direction: from right to left).
  */
 function stopSlidePrev() {
-  myCarousel.pause();
+  MY_CAROUSEL.pause();
 }
 
 /**
@@ -222,7 +224,7 @@ function stopSlidePrev() {
  * and the highlight css class of the carousel control buttons.
  */
 function stopSlideJustOnDrop() {
-  myCarousel.pause();
+  MY_CAROUSEL.pause();
   if (reversed) {
     removedChangeDirectionClassReverseBackChildren();
   }
@@ -231,21 +233,22 @@ function stopSlideJustOnDrop() {
 }
 
 /**
- * Memory for the state, if the carousel items (kanban columns)
- * and slide indicators have been already reversed in the DOM.
- * @type {boolean}
- * @default false
+ * Memory for the state, if the carousel items (kanban columns) and slide indicators have been already reversed in the DOM.
  */
 let reversed = false;
 
-/* Adds the class 'change direction' changing the directon of the bootstrap default function cycling to from right to left. */
+/**
+ * Adds the class 'change direction' changing the directon of the bootstrap default function cycling to from right to left.
+ */
 function addChangeDirectionClassReverseChildren() {
   document.getElementById("carousel-inner").classList.add("changeDirection");
   reverseChildren();
   reversed = true;
 }
 
-/* Removes the css class 'change direction' changing the directon of the bootstrap default function cycling to from right to left. */
+/**
+ * Removes the css class 'change direction' changing the directon of the bootstrap default function cycling to from right to left.
+ */
 function removedChangeDirectionClassReverseBackChildren() {
   document.getElementById("carousel-inner").classList.remove("changeDirection");
   reverseChildren();
@@ -271,7 +274,7 @@ function correctActiveIndicator() {
   let wrongInd = document.getElementById(`ind${foundedIndex}`);
   wrongInd.classList.remove("active");
   wrongInd.removeAttribute("aria-current");
-  let rightInd = document.getElementById(`ind${myCarousel._activeElement.id}`);
+  let rightInd = document.getElementById(`ind${MY_CAROUSEL._activeElement.id}`);
   rightInd.classList.add("active");
   rightInd.setAttribute("aria-current", "true");
 }
@@ -280,7 +283,7 @@ function correctActiveIndicator() {
  * Reverses the order of the carousel items (kanban columns) and slide indicators for the reverse cyclling.
  */
 function reverseChildren() {
-  myCarousel.pause();
+  MY_CAROUSEL.pause();
   let parentItems = document.getElementById("carousel-inner");
   let parentIndicators = document.getElementById("carousel-indicators");
 
@@ -293,19 +296,18 @@ function reverseChildren() {
   }
 }
 
-/* TODO: Frage 2: addEventListener von einem window Objekt und einer direkt hier definierten Funktion */
+window.addEventListener("resize", () => setDataBsTouchOnWinResize());
+
 /**
- * Changes the value of the boostrap data attribute of the carousel according to the bs-sm-break point. Turn on / off the carousel swipping.
- * @event abc Testbescheibung des Events abc
- * @listens string resize - The resize event of the application window.
+ * Sets the data-bs-touch attribute to true, if the window width is less than 576px, otherwise set it to false.
  */
-window.addEventListener("resize", function () {
+function setDataBsTouchOnWinResize() {
   if (window.innerWidth &lt; 576) {
     document.getElementById("carousel").setAttribute("data-bs-touch", "true");
   } else {
     document.getElementById("carousel").setAttribute("data-bs-touch", "false");
   }
-});
+}
 
 /**
  * Opens the selected board task item in the modal.
@@ -408,69 +410,46 @@ function modalGenAllUser(task, id) {
   let modalUserCollection = document.getElementById("modalUserCollection");
   modalUserCollection.innerHTML = "";
   for (let i = 1; i &lt; users.length; i++) {
-    const user = users[i];
-    if (task.userForTask.avatar == user.avatar) {
-      modalUserCollection.innerHTML += blueBorderImg(user, i, id);
+    const USER = users[i];
+    if (task.userForTask.avatar == USER.avatar) {
+      modalUserCollection.innerHTML += blueBorderImg(USER, i, id);
     } else {
-      modalUserCollection.innerHTML += whiteBorderImg(user, i, id);
+      modalUserCollection.innerHTML += whiteBorderImg(USER, i, id);
     }
   }
 }
-/* TODO: HTML-Element als globale Variable */
+
 /**
  * The HTML form element defining the type and scope of the HTML validation of the board modal.
- * @type {HTMLFormElement}
  */
 let formBoard = document.getElementById("boardSubmit");
 
-/**
- * Listener of the HTML form validation element of the modal in the board,
- * which 'listens' to the submit event of it and executes the function handleForm().
- *
- * @listens {event} submit - The submit event of the HTML form validation element of the modal in the board.
- */
-formBoard.addEventListener("submit", handleForm);
-
-/* TODO: Frage 1: Allg. Wie kommentiert/dokumentiert man (die richtige Syntax?) mittels JSDoc die folgenden Fälle: */
-/**
- * When the form is submitted, the function is executed. It shows the toast and closes the modal after 1 second.
- * @param {event} event returns the event
- */
-function handleForm(event) {
-  event.preventDefault();
-  const toast = new bootstrap.Toast(boardToast);
-  toast.show();
-  setTimeout(function () {
-    myModal.hide();
-  }, 1000);
-}
+formBoard.addEventListener("submit", () => handleFormIndex());
 
 /**
  * The toast used while closing the modal in the board.
- * @type {HTMLElement}
  */
-const boardToast = document.getElementById("boardToast");
+const BOARD_TOAST = document.getElementById("boardToast");
 
-/* TODO: Frage 2: addEventListener bei einer gloablen Variable */
 /**
- * The bootstrap modal object used in the board (posibile edition of the task in the board modal).
- * @type {Object}
+ * The instance of a bootstrap modal object used in the board (posibile edition of the task in the board modal).
  */
-let myModal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
+const MY_MODAL = new bootstrap.Modal(document.getElementById("staticBackdrop"));
 
-/* TODO: Frage 2: addEventListener von einem window Objekt und einer Funktion ohne Klammern (definiert woanders) */
 /**
- * Sets the property of the drag drop touch javascript add-on,
- * that the dragging should firstly start after a little stronger press and hold of the finger
- * and not on a short and weak one,
- * which would produce touch intepratations errors
- * with the default scroll funcionality on touch events on mobile devices.
- * @name addEventListener
- * @function
- * @global
- * @param {string} resize - The resize event of the application window.
+ * Shows the toast and closes the modal after 1 second.
+ * @param {SubmitEvent} event - The returned event, which will be prevented.
  */
-window.addEventListener("resize", configDragDropPressHoldMode);
+function handleFormIndex(event) {
+  event.preventDefault();
+  const TOAST = new bootstrap.Toast(BOARD_TOAST);
+  TOAST.show();
+  setTimeout(function () {
+    MY_MODAL.hide();
+  }, 1000);
+}
+
+window.addEventListener("resize", () => configDragDropPressHoldMode());
 
 /**
  * Changes the conditions of the start of the dragging for smartphones.
@@ -492,13 +471,13 @@ function configDragDropPressHoldMode() {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Events</h3><ul><li><a href="global.html#event:abcTestbescheibungdesEventsabc">abc Testbescheibung des Events abc</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adaptTask">adaptTask</a></li><li><a href="global.html#addEventListener">addEventListener</a></li><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#allCategories">allCategories</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#blueBorderImg">blueBorderImg</a></li><li><a href="global.html#boardToast">boardToast</a></li><li><a href="global.html#changeModalAvatarAfterSelect">changeModalAvatarAfterSelect</a></li><li><a href="global.html#changeModalUrgencyColor">changeModalUrgencyColor</a></li><li><a href="global.html#changeSelectedUser">changeSelectedUser</a></li><li><a href="global.html#checkIfLogin">checkIfLogin</a></li><li><a href="global.html#checkPassword">checkPassword</a></li><li><a href="global.html#checkSelectedAvatar">checkSelectedAvatar</a></li><li><a href="global.html#colorsCategory">colorsCategory</a></li><li><a href="global.html#configDragDropPressHoldMode">configDragDropPressHoldMode</a></li><li><a href="global.html#correctActiveIndicator">correctActiveIndicator</a></li><li><a href="global.html#currentDraggedElement">currentDraggedElement</a></li><li><a href="global.html#currentUser">currentUser</a></li><li><a href="global.html#currentUserImage">currentUserImage</a></li><li><a href="global.html#dd">dd</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#deleteUnsafedInput">deleteUnsafedInput</a></li><li><a href="global.html#filterNames">filterNames</a></li><li><a href="global.html#formAddTask">formAddTask</a></li><li><a href="global.html#formBoard">formBoard</a></li><li><a href="global.html#formRegistery">formRegistery</a></li><li><a href="global.html#generateAllTasks">generateAllTasks</a></li><li><a href="global.html#generateUsers">generateUsers</a></li><li><a href="global.html#genHTMLBoardTaskItem">genHTMLBoardTaskItem</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getDate">getDate</a></li><li><a href="global.html#getInputValue">getInputValue</a></li><li><a href="global.html#getRightSrcOfImg">getRightSrcOfImg</a></li><li><a href="global.html#handleForm">handleForm</a></li><li><a href="global.html#handleFormLogin">handleFormLogin</a></li><li><a href="global.html#hideExitDoor">hideExitDoor</a></li><li><a href="global.html#highlightAvatar">highlightAvatar</a></li><li><a href="global.html#highlightCarouselControl">highlightCarouselControl</a></li><li><a href="global.html#highlightCarouselControlOnClick">highlightCarouselControlOnClick</a></li><li><a href="global.html#hightlight">hightlight</a></li><li><a href="global.html#includeHTML">includeHTML</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initAddTask">initAddTask</a></li><li><a href="global.html#initBacklog">initBacklog</a></li><li><a href="global.html#initBoard">initBoard</a></li><li><a href="global.html#initHelp">initHelp</a></li><li><a href="global.html#initIndex">initIndex</a></li><li><a href="global.html#loadCurrentDate">loadCurrentDate</a></li><li><a href="global.html#loadFromBackend">loadFromBackend</a></li><li><a href="global.html#loadJSONFromServer">loadJSONFromServer</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#loginAsGuest">loginAsGuest</a></li><li><a href="global.html#loginAsUser">loginAsUser</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#mm">mm</a></li><li><a href="global.html#modalGenAllUser">modalGenAllUser</a></li><li><a href="global.html#modalHideAllUsers">modalHideAllUsers</a></li><li><a href="global.html#modalShowAllUsers">modalShowAllUsers</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#myCarousel">myCarousel</a></li><li><a href="global.html#myModal">myModal</a></li><li><a href="global.html#newTaskTemp">newTaskTemp</a></li><li><a href="global.html#openModal">openModal</a></li><li><a href="global.html#registrationToast">registrationToast</a></li><li><a href="global.html#removeHeight">removeHeight</a></li><li><a href="global.html#removeHighlightCarouselControl">removeHighlightCarouselControl</a></li><li><a href="global.html#removeHightlight">removeHightlight</a></li><li><a href="global.html#renderAllColumns">renderAllColumns</a></li><li><a href="global.html#renderButtons">renderButtons</a></li><li><a href="global.html#renderColumn">renderColumn</a></li><li><a href="global.html#reverseChildren">reverseChildren</a></li><li><a href="global.html#reversed">reversed</a></li><li><a href="global.html#saveInBackend">saveInBackend</a></li><li><a href="global.html#saveJSONToServer">saveJSONToServer</a></li><li><a href="global.html#saveRegristration">saveRegristration</a></li><li><a href="global.html#saveTask">saveTask</a></li><li><a href="global.html#selectedUser">selectedUser</a></li><li><a href="global.html#selectUser">selectUser</a></li><li><a href="global.html#setHeight">setHeight</a></li><li><a href="global.html#showAllUser">showAllUser</a></li><li><a href="global.html#showAllUserAndDisable">showAllUserAndDisable</a></li><li><a href="global.html#showExitDoor">showExitDoor</a></li><li><a href="global.html#showPassword">showPassword</a></li><li><a href="global.html#startDragging">startDragging</a></li><li><a href="global.html#startSlideNext">startSlideNext</a></li><li><a href="global.html#startSlidePrev">startSlidePrev</a></li><li><a href="global.html#stopSlideJustOnDrop">stopSlideJustOnDrop</a></li><li><a href="global.html#stopSlideNext">stopSlideNext</a></li><li><a href="global.html#stopSlidePrev">stopSlidePrev</a></li><li><a href="global.html#switchExitDoor">switchExitDoor</a></li><li><a href="global.html#timeOut">timeOut</a></li><li><a href="global.html#toastForEvent">toastForEvent</a></li><li><a href="global.html#toastTrigger1">toastTrigger1</a></li><li><a href="global.html#today">today</a></li><li><a href="global.html#urgencyBoard">urgencyBoard</a></li><li><a href="global.html#urgencyCol">urgencyCol</a></li><li><a href="global.html#users">users</a></li><li><a href="global.html#validationLogin">validationLogin</a></li><li><a href="global.html#verifyNull">verifyNull</a></li><li><a href="global.html#whiteBorderImg">whiteBorderImg</a></li><li><a href="global.html#yyyy">yyyy</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#adaptTask">adaptTask</a></li><li><a href="global.html#addChangeDirectionClassReverseChildren">addChangeDirectionClassReverseChildren</a></li><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#allCategories">allCategories</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#blueBorderImg">blueBorderImg</a></li><li><a href="global.html#BOARD_TOAST">BOARD_TOAST</a></li><li><a href="global.html#changeModalAvatarAfterSelect">changeModalAvatarAfterSelect</a></li><li><a href="global.html#changeModalUrgencyColor">changeModalUrgencyColor</a></li><li><a href="global.html#changeSelectedUser">changeSelectedUser</a></li><li><a href="global.html#checkIfLogin">checkIfLogin</a></li><li><a href="global.html#checkPassword">checkPassword</a></li><li><a href="global.html#checkSelectedAvatar">checkSelectedAvatar</a></li><li><a href="global.html#colorsCategory">colorsCategory</a></li><li><a href="global.html#configDragDropPressHoldMode">configDragDropPressHoldMode</a></li><li><a href="global.html#correctActiveIndicator">correctActiveIndicator</a></li><li><a href="global.html#currentDraggedElement">currentDraggedElement</a></li><li><a href="global.html#currentUser">currentUser</a></li><li><a href="global.html#currentUserImage">currentUserImage</a></li><li><a href="global.html#DATE_PICKER_SETTINGS">DATE_PICKER_SETTINGS</a></li><li><a href="global.html#dd">dd</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#deleteUnsafedInput">deleteUnsafedInput</a></li><li><a href="global.html#filterNames">filterNames</a></li><li><a href="global.html#formBoard">formBoard</a></li><li><a href="global.html#formRegistery">formRegistery</a></li><li><a href="global.html#generateAllTasks">generateAllTasks</a></li><li><a href="global.html#generateUsers">generateUsers</a></li><li><a href="global.html#genHTMLBoardTaskItem">genHTMLBoardTaskItem</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getDate">getDate</a></li><li><a href="global.html#getInputValue">getInputValue</a></li><li><a href="global.html#getRightSrcOfImg">getRightSrcOfImg</a></li><li><a href="global.html#handleFormAddTask">handleFormAddTask</a></li><li><a href="global.html#handleFormIndex">handleFormIndex</a></li><li><a href="global.html#handleFormLogin">handleFormLogin</a></li><li><a href="global.html#hideExitDoor">hideExitDoor</a></li><li><a href="global.html#highlightAvatar">highlightAvatar</a></li><li><a href="global.html#highlightCarouselControl">highlightCarouselControl</a></li><li><a href="global.html#highlightCarouselControlOnClick">highlightCarouselControlOnClick</a></li><li><a href="global.html#hightlight">hightlight</a></li><li><a href="global.html#includeHTML">includeHTML</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initAddTask">initAddTask</a></li><li><a href="global.html#initBacklog">initBacklog</a></li><li><a href="global.html#initBoard">initBoard</a></li><li><a href="global.html#initHelp">initHelp</a></li><li><a href="global.html#initIndex">initIndex</a></li><li><a href="global.html#loadCurrentDate">loadCurrentDate</a></li><li><a href="global.html#loadFromBackend">loadFromBackend</a></li><li><a href="global.html#loadJSONFromServer">loadJSONFromServer</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#loginAsGuest">loginAsGuest</a></li><li><a href="global.html#loginAsUser">loginAsUser</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#mm">mm</a></li><li><a href="global.html#modalGenAllUser">modalGenAllUser</a></li><li><a href="global.html#modalHideAllUsers">modalHideAllUsers</a></li><li><a href="global.html#modalShowAllUsers">modalShowAllUsers</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#MY_CAROUSEL">MY_CAROUSEL</a></li><li><a href="global.html#MY_CAROUSEL_OPTIONS">MY_CAROUSEL_OPTIONS</a></li><li><a href="global.html#MY_MODAL">MY_MODAL</a></li><li><a href="global.html#MY_MODAL_LOGIN">MY_MODAL_LOGIN</a></li><li><a href="global.html#newTaskTemp">newTaskTemp</a></li><li><a href="global.html#openModal">openModal</a></li><li><a href="global.html#REGISTRATION_TOAST">REGISTRATION_TOAST</a></li><li><a href="global.html#removedChangeDirectionClassReverseBackChildren">removedChangeDirectionClassReverseBackChildren</a></li><li><a href="global.html#removeHeight">removeHeight</a></li><li><a href="global.html#removeHighlightCarouselControl">removeHighlightCarouselControl</a></li><li><a href="global.html#removeHightlight">removeHightlight</a></li><li><a href="global.html#renderAllColumns">renderAllColumns</a></li><li><a href="global.html#renderButtons">renderButtons</a></li><li><a href="global.html#renderColumn">renderColumn</a></li><li><a href="global.html#reverseChildren">reverseChildren</a></li><li><a href="global.html#reversed">reversed</a></li><li><a href="global.html#saveInBackend">saveInBackend</a></li><li><a href="global.html#saveJSONToServer">saveJSONToServer</a></li><li><a href="global.html#saveRegristration">saveRegristration</a></li><li><a href="global.html#saveTask">saveTask</a></li><li><a href="global.html#selectedUser">selectedUser</a></li><li><a href="global.html#selectUser">selectUser</a></li><li><a href="global.html#setDataBsTouchOnWinResize">setDataBsTouchOnWinResize</a></li><li><a href="global.html#setDatePickerSettings">setDatePickerSettings</a></li><li><a href="global.html#setHeight">setHeight</a></li><li><a href="global.html#setScrollbarHeightOfContentContainerOnSubPages">setScrollbarHeightOfContentContainerOnSubPages</a></li><li><a href="global.html#showAllUser">showAllUser</a></li><li><a href="global.html#showAllUserAndDisable">showAllUserAndDisable</a></li><li><a href="global.html#showExitDoor">showExitDoor</a></li><li><a href="global.html#showPassword">showPassword</a></li><li><a href="global.html#showToastOnSingIn">showToastOnSingIn</a></li><li><a href="global.html#startDragging">startDragging</a></li><li><a href="global.html#startSlideNext">startSlideNext</a></li><li><a href="global.html#startSlidePrev">startSlidePrev</a></li><li><a href="global.html#stopSlideJustOnDrop">stopSlideJustOnDrop</a></li><li><a href="global.html#stopSlideNext">stopSlideNext</a></li><li><a href="global.html#stopSlidePrev">stopSlidePrev</a></li><li><a href="global.html#switchExitDoor">switchExitDoor</a></li><li><a href="global.html#timeOut">timeOut</a></li><li><a href="global.html#TOAST_LIVE_EXAMPLE1">TOAST_LIVE_EXAMPLE1</a></li><li><a href="global.html#TOAST_TRIGGER1">TOAST_TRIGGER1</a></li><li><a href="global.html#toastForEvent">toastForEvent</a></li><li><a href="global.html#today">today</a></li><li><a href="global.html#urgencyBoard">urgencyBoard</a></li><li><a href="global.html#urgencyCol">urgencyCol</a></li><li><a href="global.html#users">users</a></li><li><a href="global.html#validationLogin">validationLogin</a></li><li><a href="global.html#verifyNull">verifyNull</a></li><li><a href="global.html#whiteBorderImg">whiteBorderImg</a></li><li><a href="global.html#yyyy">yyyy</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Tue Sep 13 2022 15:06:25 GMT+0200 (Mitteleuropäische Sommerzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Sep 14 2022 19:57:18 GMT+0200 (Mitteleuropäische Sommerzeit)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -80,7 +80,7 @@ function logout() {
 
 /**
  * Reads the urgency and assigns a corresponding color class.
- * @param {string} taskUrgency  - The urgency of the respective task.
+ * @param {string} taskUrgency - The urgency of the respective task.
  */
 function urgencyCol(taskUrgency) {
   if (taskUrgency == "High") {
@@ -94,8 +94,8 @@ function urgencyCol(taskUrgency) {
 
 /**
  * Reads the urgency and assigns a corresponding class.
- * @param {string} taskUrgency  - The urgency of the respective task.
- * @param {string} id  - The id of the respective task.
+ * @param {string} taskUrgency - The urgency of the respective task.
+ * @param {string} id - The id of the respective task.
  */
 function urgencyBoard(taskUrgency, id) {
   if (taskUrgency == "High") {
@@ -115,13 +115,15 @@ function changeModalUrgencyColor() {
   urgencyCol(urgency);
 }
 
-/* TODO: Frage 2: addEventListener von einem window Objekt und einer Funktion ohne Klammern (definiert woanders) */
+window.addEventListener("resize", () =>
+  setScrollbarHeightOfContentContainerOnSubPages()
+);
+
 /**
- * Sets dynamically the height of the scrollbar content of the sub pages (Backlog, Add Task, Help) on resize of the window.
- *
- * @listens resize - The resize event of the application window.
+ * Sets the scrollbar height of the content container on the sub pages onload of the sub page
+ * and after every resizing of the app window.
  */
-window.addEventListener("resize", function () {
+function setScrollbarHeightOfContentContainerOnSubPages() {
   setHeight("freshTask");
 
   if (window.innerWidth < 503) {
@@ -132,11 +134,10 @@ window.addEventListener("resize", function () {
 
   setHeight("helpScrollbarContent1");
   setHeight("helpScrollbarContent2");
-});
+}
 
 /**
  * Sets the height of the scrollbar content of the sub spages (Backlog, Add Task, Help).
- *
  * @param {string} id - The id of the html element for which the height is set.
  */
 function setHeight(id) {
@@ -153,7 +154,6 @@ function setHeight(id) {
 
 /**
  * Removes the height of the scrollbar content of the sub page (add task).
- *
  * @param {string} id - The id of the html element for which the height is removed.
  */
 function removeHeight(id) {

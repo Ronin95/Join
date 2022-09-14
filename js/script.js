@@ -1,20 +1,15 @@
-/* TODO: Frage 6: globale / lokale Variablen*/
 /**
- * Memory for the current logged in user..
- * @type {number}
- * @default
+ * The current logged in user.
  */
 let currentUser = [];
 
 /**
- * Memory for all posible task categories.
- * @type {string[]}
+ * All posible task categories.
  */
 let allCategories = ["IT", "Sales", "Management", "Production", "Marketing"];
 
 /**
- * Memory for all colors of task categories.
- * @type {JSON}
+ * All colors of task categories.
  */
 let colorsCategory = {
   Sales: "#DC5445",
@@ -26,9 +21,7 @@ let colorsCategory = {
 };
 
 /**
- * Memory for users saved in the backend server.
- * @type {JSON}
- * @default
+ * The Users saved in the backend server.
  */
 let users = [];
 
@@ -102,18 +95,19 @@ async function initAddTask() {
 }
 
 /**
- * Initially executed while loading every sub page (board, backlog, add task, help). Inserts the navbar html template to all mentioned before sub pages.
+ * Initially executed while loading every sub page (board, backlog, add task, help). 
+ * Inserts the navbar html template to all mentioned before sub pages.
  */
 async function includeHTML() {
   let includeElements = document.querySelectorAll("[w3-include-html]");
   for (let i = 0; i < includeElements.length; i++) {
-    const element = includeElements[i];
-    file = element.getAttribute("w3-include-html");
+    const ELEMENT = includeElements[i];
+    file = ELEMENT.getAttribute("w3-include-html");
     let resp = await fetch(file);
     if (resp.ok) {
-      element.innerHTML = await resp.text();
+      ELEMENT.innerHTML = await resp.text();
     } else {
-      element.innerHTML = "Page not found";
+      ELEMENT.innerHTML = "Page not found";
     }
   }
 }

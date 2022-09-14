@@ -12,7 +12,8 @@ function generateAllTasks() {
 }
 
 /**
- * Filters and renders all task in the backlog according to search criteria. Seach criteria can only be the name of the user or the task category.
+ * Filters and renders all task in the backlog according to search criteria.
+ * Seach criteria can only be the name of the user or the task category.
  */
 function filterNames() {
   let search = document.getElementById("searchTask").value;

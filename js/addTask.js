@@ -1,36 +1,29 @@
 /**
- * Memory for the selected user in the add task.
- * @type {JSON}
- * @default
+ * The selected user in the add task.
  */
 let selectedUser = [];
 
-/**
- * The HTML form element defining the type and scope of the HTML validation of the add task formular.
- * @type {HTMLFormElement}
- */
 let formAddTask = document.getElementById("addTaskSubmit");
 
 /**
- * Memory for today.
- * @type {Date}
+ * The today's date
  */
 let today = new Date();
 
 /**
- * Memory for the number of days of today's date.
+ * The number of days of today's date.
  * @type {number}
  */
 let dd = today.getDate();
 
 /**
- * Memory for the number of months of today's date.
+ * The number of months of today's date.
  * @type {number}
  */
 let mm = today.getMonth() + 1;
 
 /**
- * Memory for the year of the today's date.
+ * The year of the today's date.
  * @type {number}
  */
 let yyyy = today.getFullYear();
@@ -100,7 +93,7 @@ function deleteUnsafedInput() {
 /**
  * Selects an avatar to choose a user to add a task.<br>
  * Creates a new element which shows only the user who is selected.
- * @param {string} i - The person who is chosen by clicking an avatar.
+ * @param {string} i - The person, who is chosen by clicking an avatar.
  */
 function selectUser(i) {
   document.getElementById(`selected${i}`).classList.toggle("user-selected");
@@ -133,26 +126,17 @@ function loadCurrentDate() {
   document.getElementById("txtDate").value = today;
 }
 
-/* TODO:Frage 2: addEventListener bei einer gloablen Variable */
-/**
- * Listener of the HTML form validation element of the add task formular,
- * which 'listens' to the submit event of it and executes the function handleForm().
- *
- * @listens submit - The submit event of the HTML form validation element of the add task formular.
- * 
- */
-formAddTask.addEventListener("submit", handleForm);
+formAddTask.addEventListener("submit", () => handleFormAddTask());
 
-/* TODO: Frage 1: Ein Event als Parameter in eine üblich JS Funktion, s. Bsp */
 /**
- * When the form is submitted, the function is executed. It shows the toast and reset the add task formular.
- * @param {Event} event - The returned event, which will be prevented.
+ * Shows the toast and resets the add task formular.
+ * @param {SubmitEvent} event - The returned event, which will be prevented.
  */
-function handleForm(event) {
-  const successToast = document.getElementById("success_task");
+function handleFormAddTask(event) {
+  const SUCCESS_TOAST = document.getElementById("success_task");
   event.preventDefault();
-  const toast = new bootstrap.Toast(successToast);
-  toast.show();
+  const TOAST_ADDTASK = new bootstrap.Toast(SUCCESS_TOAST);
+  TOAST_ADDTASK.show();
   formAddTask.reset();
   showAllUser();
   loadCurrentDate();

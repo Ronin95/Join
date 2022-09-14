@@ -1,5 +1,5 @@
 /**
- * Memory for the current dragged element (a task item of a board kanban columns).
+ * The current dragged element (a task item of a board kanban columns).
  * @type {number}
  * @default undefined
  */
@@ -36,10 +36,10 @@ function renderColumn(columnName) {
   let filteredWithSameState = allTasks.filter((a) => a["state"] == columnName);
   document.getElementById(`${columnName}Column`).innerHTML = "";
   for (let index = 0; index < filteredWithSameState.length; index++) {
-    const task = filteredWithSameState[index];
+    const TASK = filteredWithSameState[index];
     document.getElementById(`${columnName}Column`).innerHTML +=
-      genHTMLBoardTaskItem(task);
-    urgencyBoard(task.urgency, task.id);
+      genHTMLBoardTaskItem(TASK);
+    urgencyBoard(TASK.urgency, TASK.id);
   }
 }
 
@@ -64,12 +64,11 @@ function moveTo(state) {
   renderAllColumns();
 }
 
-/* TODO: Frage 1: in Event als Parameter in eine üblich JS Funktion, s. Bsp */
 /**
  * A w3school function: Just integrated here.
  * Changes the default behavior of the affected container (here board kanban column)
  * and gives the permission to drop another HTML element over the affected container.
- * @param {Event} ev - Then event, if the a dragged element (her task item) is over (hovering) the affected container (here board kanban column).
+ * @param {DragEvent} ev - Then event, if the a dragged element (her task item) is over (hovering) the affected container (here board kanban column).
  */
 function allowDrop(ev) {
   ev.preventDefault();
@@ -93,27 +92,31 @@ function removeHightlight(columnName) {
   document.getElementById(columnName).classList.remove("drag-area-highlight");
 }
 
-/* TODO: Frage 4: Instanz von einem Objekt / Klasse / JS Model aber mit direkt eine Funktion hinterm dem Punkt */
-/* TODO: Frage 16: max. Länge JSDoc */
 /**
- * The bootstrap carousel object with its initial properties.
- * @type {Object}
- * @property {number} interval - The amount of time to delay between automatically cycling an item.
- * @property {string|boolean} pause - If set to "hover", pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on mouseleave. If set to false, hovering over the carousel won’t pause it. On touch-enabled devices, when set to "hover", cycling will pause on touchend (once the user finished interacting with the carousel) for two intervals, before automatically resuming. This is in addition to the mouse behavior.
- * @property {boolean} wrap - Whether the carousel should cycle continuously or have hard stops.
+ * The initial properties for the above instance of bootstrap carousel as a JSON.
  */
-const myCarousel = new bootstrap.Carousel(document.getElementById("carousel"), {
-  /* The speed of carousel sliding */
-  interval: 400,
-  pause: false,
-  wrap: true,
-});
+const MY_CAROUSEL_OPTIONS = {
+  interval: 400, // The amount of time to delay between automatically cycling an item = The speed of carousel sliding.
+  pause: false, // If set to "hover", pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on mouseleave. If set to false, hovering over the carousel won’t pause it. On touch-enabled devices, when set to "hover", cycling will pause on touchend (once the user finished interacting with the carousel) for two intervals, before automatically resuming. This is in addition to the mouse behavior.
+  wrap: true, // Whether the carousel should cycle continuously or have hard stops.
+};
+
+/**
+ * The instance of bootstrap carousel object with its initial properties.
+ */
+const MY_CAROUSEL = new bootstrap.Carousel(
+  document.getElementById("carousel"),
+  MY_CAROUSEL_OPTIONS
+);
 
 /**
  * Adds the highlight effect to the carousel controll button.
  * @param {string} side - The one of the carousel controll buttons
  * (left for the reverse sliding (direction from right to left) /
  * right for the default bootstrap sliding (direction from left to right)).
+ */
+/**
+ *
  */
 function highlightCarouselControl(side) {
   document
@@ -134,13 +137,12 @@ function removeHighlightCarouselControl(side) {
 }
 
 /**
- * Memory for the intervall saved after the click on one of the carousel controll buttons.
+ * The intervall saved after the click on one of the carousel controll buttons.
  * @type {?number}
  * @default null
  */
 let timeOut = null;
 
-/* TODO: Frage 19: Format bei Multi-Zeilenblock vom @param */
 /**
  * Highlights the carousel controll button on click for the 600 miliseconds.
  * @param {string} side - The one of the carousel controll buttons
@@ -160,7 +162,7 @@ function highlightCarouselControlOnClick(side) {
  */
 function startSlideNext() {
   if (window.innerWidth < 576) {
-    myCarousel.cycle();
+    MY_CAROUSEL.cycle();
   }
 }
 
@@ -169,7 +171,7 @@ function startSlideNext() {
  */
 function stopSlideNext() {
   if (window.innerWidth < 576) {
-    myCarousel.pause();
+    MY_CAROUSEL.pause();
   }
 }
 
@@ -178,7 +180,7 @@ function stopSlideNext() {
  */
 function startSlidePrev() {
   if (window.innerWidth < 576) {
-    myCarousel.cycle();
+    MY_CAROUSEL.cycle();
   }
 }
 
@@ -186,7 +188,7 @@ function startSlidePrev() {
  * Stops reverse sliding of the carousel (direction: from right to left).
  */
 function stopSlidePrev() {
-  myCarousel.pause();
+  MY_CAROUSEL.pause();
 }
 
 /**
@@ -194,7 +196,7 @@ function stopSlidePrev() {
  * and the highlight css class of the carousel control buttons.
  */
 function stopSlideJustOnDrop() {
-  myCarousel.pause();
+  MY_CAROUSEL.pause();
   if (reversed) {
     removedChangeDirectionClassReverseBackChildren();
   }
@@ -203,21 +205,22 @@ function stopSlideJustOnDrop() {
 }
 
 /**
- * Memory for the state, if the carousel items (kanban columns)
- * and slide indicators have been already reversed in the DOM.
- * @type {boolean}
- * @default false
+ * Memory for the state, if the carousel items (kanban columns) and slide indicators have been already reversed in the DOM.
  */
 let reversed = false;
 
-/* Adds the class 'change direction' changing the directon of the bootstrap default function cycling to from right to left. */
+/**
+ * Adds the class 'change direction' changing the directon of the bootstrap default function cycling to from right to left.
+ */
 function addChangeDirectionClassReverseChildren() {
   document.getElementById("carousel-inner").classList.add("changeDirection");
   reverseChildren();
   reversed = true;
 }
 
-/* Removes the css class 'change direction' changing the directon of the bootstrap default function cycling to from right to left. */
+/**
+ * Removes the css class 'change direction' changing the directon of the bootstrap default function cycling to from right to left.
+ */
 function removedChangeDirectionClassReverseBackChildren() {
   document.getElementById("carousel-inner").classList.remove("changeDirection");
   reverseChildren();
@@ -243,7 +246,7 @@ function correctActiveIndicator() {
   let wrongInd = document.getElementById(`ind${foundedIndex}`);
   wrongInd.classList.remove("active");
   wrongInd.removeAttribute("aria-current");
-  let rightInd = document.getElementById(`ind${myCarousel._activeElement.id}`);
+  let rightInd = document.getElementById(`ind${MY_CAROUSEL._activeElement.id}`);
   rightInd.classList.add("active");
   rightInd.setAttribute("aria-current", "true");
 }
@@ -252,7 +255,7 @@ function correctActiveIndicator() {
  * Reverses the order of the carousel items (kanban columns) and slide indicators for the reverse cyclling.
  */
 function reverseChildren() {
-  myCarousel.pause();
+  MY_CAROUSEL.pause();
   let parentItems = document.getElementById("carousel-inner");
   let parentIndicators = document.getElementById("carousel-indicators");
 
@@ -265,19 +268,18 @@ function reverseChildren() {
   }
 }
 
-/* TODO: Frage 2: addEventListener von einem window Objekt und einer direkt hier definierten Funktion */
+window.addEventListener("resize", () => setDataBsTouchOnWinResize());
+
 /**
- * Changes the value of the boostrap data attribute of the carousel according to the bs-sm-break point. Turn on / off the carousel swipping.
- * @event abc Testbescheibung des Events abc
- * @listens string resize - The resize event of the application window.
+ * Sets the data-bs-touch attribute to true, if the window width is less than 576px, otherwise set it to false.
  */
-window.addEventListener("resize", function () {
+function setDataBsTouchOnWinResize() {
   if (window.innerWidth < 576) {
     document.getElementById("carousel").setAttribute("data-bs-touch", "true");
   } else {
     document.getElementById("carousel").setAttribute("data-bs-touch", "false");
   }
-});
+}
 
 /**
  * Opens the selected board task item in the modal.
@@ -380,69 +382,46 @@ function modalGenAllUser(task, id) {
   let modalUserCollection = document.getElementById("modalUserCollection");
   modalUserCollection.innerHTML = "";
   for (let i = 1; i < users.length; i++) {
-    const user = users[i];
-    if (task.userForTask.avatar == user.avatar) {
-      modalUserCollection.innerHTML += blueBorderImg(user, i, id);
+    const USER = users[i];
+    if (task.userForTask.avatar == USER.avatar) {
+      modalUserCollection.innerHTML += blueBorderImg(USER, i, id);
     } else {
-      modalUserCollection.innerHTML += whiteBorderImg(user, i, id);
+      modalUserCollection.innerHTML += whiteBorderImg(USER, i, id);
     }
   }
 }
-/* TODO: HTML-Element als globale Variable */
+
 /**
  * The HTML form element defining the type and scope of the HTML validation of the board modal.
- * @type {HTMLFormElement}
  */
 let formBoard = document.getElementById("boardSubmit");
 
-/**
- * Listener of the HTML form validation element of the modal in the board,
- * which 'listens' to the submit event of it and executes the function handleForm().
- *
- * @listens {event} submit - The submit event of the HTML form validation element of the modal in the board.
- */
-formBoard.addEventListener("submit", handleForm);
-
-/* TODO: Frage 1: Allg. Wie kommentiert/dokumentiert man (die richtige Syntax?) mittels JSDoc die folgenden Fälle: */
-/**
- * When the form is submitted, the function is executed. It shows the toast and closes the modal after 1 second.
- * @param {event} event returns the event
- */
-function handleForm(event) {
-  event.preventDefault();
-  const toast = new bootstrap.Toast(boardToast);
-  toast.show();
-  setTimeout(function () {
-    myModal.hide();
-  }, 1000);
-}
+formBoard.addEventListener("submit", () => handleFormIndex());
 
 /**
  * The toast used while closing the modal in the board.
- * @type {HTMLElement}
  */
-const boardToast = document.getElementById("boardToast");
+const BOARD_TOAST = document.getElementById("boardToast");
 
-/* TODO: Frage 4:  Instanz von einem Objekt / Klasse / JS Model aber mit direkt eine Funktion hinterm dem Punkt */
 /**
- * The bootstrap modal object used in the board (posibile edition of the task in the board modal).
- * @type {Object}
+ * The instance of a bootstrap modal object used in the board (posibile edition of the task in the board modal).
  */
-let myModal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
+const MY_MODAL = new bootstrap.Modal(document.getElementById("staticBackdrop"));
 
-/* TODO: Frage 2: addEventListener von einem window Objekt und einer Funktion ohne Klammern (definiert woanders) */
 /**
- * Sets the property of the drag drop touch javascript add-on,
- * that the dragging should firstly start after a little stronger press and hold of the finger
- * and not on a short and weak one,
- * which would produce touch intepratations errors
- * with the default scroll funcionality on touch events on mobile devices.
- * @name addEventListener
- * @function
- * @global
- * @param {string} resize - The resize event of the application window.
+ * Shows the toast and closes the modal after 1 second.
+ * @param {SubmitEvent} event - The returned event, which will be prevented.
  */
-window.addEventListener("resize", configDragDropPressHoldMode);
+function handleFormIndex(event) {
+  event.preventDefault();
+  const TOAST = new bootstrap.Toast(BOARD_TOAST);
+  TOAST.show();
+  setTimeout(function () {
+    MY_MODAL.hide();
+  }, 1000);
+}
+
+window.addEventListener("resize", () => configDragDropPressHoldMode());
 
 /**
  * Changes the conditions of the start of the dragging for smartphones.

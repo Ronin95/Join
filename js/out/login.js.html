@@ -26,8 +26,7 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/* TODO: Frage 7 */
-// BACKUP of 'users' JSON in case it will be deleted from brackend server.
+            <pre class="prettyprint source linenums"><code>// BACKUP of 'users' JSON in case it will be deleted from brackend server.
 /* users = [
   {
     name: 'Guest',
@@ -173,7 +172,6 @@ function saveRegristration() {
   saveInBackend(users, "users");
 }
 
-/* TODO: Frage 11: returns */
 /**
  * Checks which HTML element was chosen as avatar.
  * @returns {HTMLElement} The chosen HTML element as avatar.
@@ -232,65 +230,64 @@ function highlightAvatar() {
   }
 }
 
-/* TODO: Frage 18: Direkte Ausführung in js Datei */
 /**
- * The toast output after the input has been checked after the click on the trigger (here: sign in button).
+ * The sing in button as the trigger to output a toast after the input on the login page has been checked.
  */
-const toastTrigger1 = document.getElementById("signInBtn");
-const toastLiveExample1 = document.getElementById("signInToast");
-if (toastTrigger1) {
-  toastTrigger1.addEventListener("click", () => {
-    verifyNull();
-    const toast = new bootstrap.Toast(toastLiveExample1);
-    toast.show();
-  });
+const TOAST_TRIGGER1 = document.getElementById("signInBtn");
+
+/**
+ * The toast output after the input on the login page has been checked after the click on the trigger (here: sign in button).
+ */
+const TOAST_LIVE_EXAMPLE1 = document.getElementById("signInToast");
+
+if (TOAST_TRIGGER1) {
+  TOAST_TRIGGER1.addEventListener("click", () => showToastOnSingIn());
 }
 
-/* TODO: Frage 3:  Instanz von einem Objekt / Klasse / JS Model (ich kenn nocht nicht die richtige Begrifflichkeit) */
+/**
+ * Shows the toast on the login page after signing in.
+ */
+function showToastOnSingIn() {
+  verifyNull();
+  const TOAST_LOGIN = new bootstrap.Toast(TOAST_LIVE_EXAMPLE1);
+  TOAST_LOGIN.show();
+}
+
 /**
  * The bootstrap modal object used on the the login page.
- * @type {Object}
  */
-let myModal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
+const MY_MODAL_LOGIN = new bootstrap.Modal(
+  document.getElementById("staticBackdrop")
+);
 
 /**
  * The HTML form element defining the type and scope of the HTML validation of the login modal.
- * @type {HTMLFormElement}
  */
 let formRegistery = document.getElementById("registery");
 
+formRegistery.addEventListener("submit", () => handleFormLogin(event));
+
 /**
  * The HTML element of the bootstrap toast on the login page.
- * @type {HTMLElement}
  */
-const registrationToast = document.getElementById("registrationToast");
+const REGISTRATION_TOAST = document.getElementById("registrationToast");
 
-/* TODO: Frage 1: Ein Event als Parameter in eine üblich JS Funktion, s. Bsp 
-*/
 /**
- * When the form is submitted, the function is executed. It shows the toast, saves the registered user and closes the modal after 2 seconds.
- * @param {Event} event The returned Event, which will be prevented.
+ * Shows the toast, saves the registered user and closes the modal after 2 seconds.
+ * @param {SubmitEvent} event - The returned event, which will be prevented.
  */
 function handleFormLogin(event) {
-  event.preventDefault(); /* TODO: Frage 12 */
-  toastForEvent("toast-body-registration", "Registration completed!"); 
-  const toast = new bootstrap.Toast(registrationToast); /* TODO: Frage 13 */
-  toast.show(); /* TODO: Frage 14 */
+  event.preventDefault();
+  toastForEvent("toast-body-registration", "Registration completed!");
+  const TOAST_LOGIN_HANDLE = new bootstrap.Toast(REGISTRATION_TOAST);
+  TOAST_LOGIN_HANDLE.show();
   saveRegristration();
-  formRegistery.reset(); /* TODO: Frage 15 */
+  formRegistery.reset();
   setTimeout(function () {
-    myModal.hide();
+    MY_MODAL_LOGIN.hide();
   }, 2000);
 }
-
-/* TODO: Frage 2: addEventListener bei einer gloablen Variable */
-/**
- * Listener of the HTML form validation element of the modal on the login page,
- * which 'listens' to the submit event of it and executes the function handleFormLogin().
- *
- * @listens {event} submit - The submit event of the HTML form validation element of the modal on the login page.
- */
-formRegistery.addEventListener("submit", handleFormLogin);</code></pre>
+</code></pre>
         </article>
     </section>
 
@@ -300,13 +297,13 @@ formRegistery.addEventListener("submit", handleFormLogin);</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Events</h3><ul><li><a href="global.html#event:abcTestbescheibungdesEventsabc">abc Testbescheibung des Events abc</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adaptTask">adaptTask</a></li><li><a href="global.html#addEventListener">addEventListener</a></li><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#allCategories">allCategories</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#blueBorderImg">blueBorderImg</a></li><li><a href="global.html#boardToast">boardToast</a></li><li><a href="global.html#changeModalAvatarAfterSelect">changeModalAvatarAfterSelect</a></li><li><a href="global.html#changeModalUrgencyColor">changeModalUrgencyColor</a></li><li><a href="global.html#changeSelectedUser">changeSelectedUser</a></li><li><a href="global.html#checkIfLogin">checkIfLogin</a></li><li><a href="global.html#checkPassword">checkPassword</a></li><li><a href="global.html#checkSelectedAvatar">checkSelectedAvatar</a></li><li><a href="global.html#colorsCategory">colorsCategory</a></li><li><a href="global.html#configDragDropPressHoldMode">configDragDropPressHoldMode</a></li><li><a href="global.html#correctActiveIndicator">correctActiveIndicator</a></li><li><a href="global.html#currentDraggedElement">currentDraggedElement</a></li><li><a href="global.html#currentUser">currentUser</a></li><li><a href="global.html#currentUserImage">currentUserImage</a></li><li><a href="global.html#dd">dd</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#deleteUnsafedInput">deleteUnsafedInput</a></li><li><a href="global.html#filterNames">filterNames</a></li><li><a href="global.html#formAddTask">formAddTask</a></li><li><a href="global.html#formBoard">formBoard</a></li><li><a href="global.html#formRegistery">formRegistery</a></li><li><a href="global.html#generateAllTasks">generateAllTasks</a></li><li><a href="global.html#generateUsers">generateUsers</a></li><li><a href="global.html#genHTMLBoardTaskItem">genHTMLBoardTaskItem</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getDate">getDate</a></li><li><a href="global.html#getInputValue">getInputValue</a></li><li><a href="global.html#getRightSrcOfImg">getRightSrcOfImg</a></li><li><a href="global.html#handleForm">handleForm</a></li><li><a href="global.html#handleFormLogin">handleFormLogin</a></li><li><a href="global.html#hideExitDoor">hideExitDoor</a></li><li><a href="global.html#highlightAvatar">highlightAvatar</a></li><li><a href="global.html#highlightCarouselControl">highlightCarouselControl</a></li><li><a href="global.html#highlightCarouselControlOnClick">highlightCarouselControlOnClick</a></li><li><a href="global.html#hightlight">hightlight</a></li><li><a href="global.html#includeHTML">includeHTML</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initAddTask">initAddTask</a></li><li><a href="global.html#initBacklog">initBacklog</a></li><li><a href="global.html#initBoard">initBoard</a></li><li><a href="global.html#initHelp">initHelp</a></li><li><a href="global.html#initIndex">initIndex</a></li><li><a href="global.html#loadCurrentDate">loadCurrentDate</a></li><li><a href="global.html#loadFromBackend">loadFromBackend</a></li><li><a href="global.html#loadJSONFromServer">loadJSONFromServer</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#loginAsGuest">loginAsGuest</a></li><li><a href="global.html#loginAsUser">loginAsUser</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#mm">mm</a></li><li><a href="global.html#modalGenAllUser">modalGenAllUser</a></li><li><a href="global.html#modalHideAllUsers">modalHideAllUsers</a></li><li><a href="global.html#modalShowAllUsers">modalShowAllUsers</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#myCarousel">myCarousel</a></li><li><a href="global.html#myModal">myModal</a></li><li><a href="global.html#newTaskTemp">newTaskTemp</a></li><li><a href="global.html#openModal">openModal</a></li><li><a href="global.html#registrationToast">registrationToast</a></li><li><a href="global.html#removeHeight">removeHeight</a></li><li><a href="global.html#removeHighlightCarouselControl">removeHighlightCarouselControl</a></li><li><a href="global.html#removeHightlight">removeHightlight</a></li><li><a href="global.html#renderAllColumns">renderAllColumns</a></li><li><a href="global.html#renderButtons">renderButtons</a></li><li><a href="global.html#renderColumn">renderColumn</a></li><li><a href="global.html#reverseChildren">reverseChildren</a></li><li><a href="global.html#reversed">reversed</a></li><li><a href="global.html#saveInBackend">saveInBackend</a></li><li><a href="global.html#saveJSONToServer">saveJSONToServer</a></li><li><a href="global.html#saveRegristration">saveRegristration</a></li><li><a href="global.html#saveTask">saveTask</a></li><li><a href="global.html#selectedUser">selectedUser</a></li><li><a href="global.html#selectUser">selectUser</a></li><li><a href="global.html#setHeight">setHeight</a></li><li><a href="global.html#showAllUser">showAllUser</a></li><li><a href="global.html#showAllUserAndDisable">showAllUserAndDisable</a></li><li><a href="global.html#showExitDoor">showExitDoor</a></li><li><a href="global.html#showPassword">showPassword</a></li><li><a href="global.html#startDragging">startDragging</a></li><li><a href="global.html#startSlideNext">startSlideNext</a></li><li><a href="global.html#startSlidePrev">startSlidePrev</a></li><li><a href="global.html#stopSlideJustOnDrop">stopSlideJustOnDrop</a></li><li><a href="global.html#stopSlideNext">stopSlideNext</a></li><li><a href="global.html#stopSlidePrev">stopSlidePrev</a></li><li><a href="global.html#switchExitDoor">switchExitDoor</a></li><li><a href="global.html#timeOut">timeOut</a></li><li><a href="global.html#toastForEvent">toastForEvent</a></li><li><a href="global.html#toastTrigger1">toastTrigger1</a></li><li><a href="global.html#today">today</a></li><li><a href="global.html#urgencyBoard">urgencyBoard</a></li><li><a href="global.html#urgencyCol">urgencyCol</a></li><li><a href="global.html#users">users</a></li><li><a href="global.html#validationLogin">validationLogin</a></li><li><a href="global.html#verifyNull">verifyNull</a></li><li><a href="global.html#whiteBorderImg">whiteBorderImg</a></li><li><a href="global.html#yyyy">yyyy</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#adaptTask">adaptTask</a></li><li><a href="global.html#addChangeDirectionClassReverseChildren">addChangeDirectionClassReverseChildren</a></li><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#allCategories">allCategories</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#blueBorderImg">blueBorderImg</a></li><li><a href="global.html#BOARD_TOAST">BOARD_TOAST</a></li><li><a href="global.html#changeModalAvatarAfterSelect">changeModalAvatarAfterSelect</a></li><li><a href="global.html#changeModalUrgencyColor">changeModalUrgencyColor</a></li><li><a href="global.html#changeSelectedUser">changeSelectedUser</a></li><li><a href="global.html#checkIfLogin">checkIfLogin</a></li><li><a href="global.html#checkPassword">checkPassword</a></li><li><a href="global.html#checkSelectedAvatar">checkSelectedAvatar</a></li><li><a href="global.html#colorsCategory">colorsCategory</a></li><li><a href="global.html#configDragDropPressHoldMode">configDragDropPressHoldMode</a></li><li><a href="global.html#correctActiveIndicator">correctActiveIndicator</a></li><li><a href="global.html#currentDraggedElement">currentDraggedElement</a></li><li><a href="global.html#currentUser">currentUser</a></li><li><a href="global.html#currentUserImage">currentUserImage</a></li><li><a href="global.html#DATE_PICKER_SETTINGS">DATE_PICKER_SETTINGS</a></li><li><a href="global.html#dd">dd</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#deleteUnsafedInput">deleteUnsafedInput</a></li><li><a href="global.html#filterNames">filterNames</a></li><li><a href="global.html#formBoard">formBoard</a></li><li><a href="global.html#formRegistery">formRegistery</a></li><li><a href="global.html#generateAllTasks">generateAllTasks</a></li><li><a href="global.html#generateUsers">generateUsers</a></li><li><a href="global.html#genHTMLBoardTaskItem">genHTMLBoardTaskItem</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#getDate">getDate</a></li><li><a href="global.html#getInputValue">getInputValue</a></li><li><a href="global.html#getRightSrcOfImg">getRightSrcOfImg</a></li><li><a href="global.html#handleFormAddTask">handleFormAddTask</a></li><li><a href="global.html#handleFormIndex">handleFormIndex</a></li><li><a href="global.html#handleFormLogin">handleFormLogin</a></li><li><a href="global.html#hideExitDoor">hideExitDoor</a></li><li><a href="global.html#highlightAvatar">highlightAvatar</a></li><li><a href="global.html#highlightCarouselControl">highlightCarouselControl</a></li><li><a href="global.html#highlightCarouselControlOnClick">highlightCarouselControlOnClick</a></li><li><a href="global.html#hightlight">hightlight</a></li><li><a href="global.html#includeHTML">includeHTML</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initAddTask">initAddTask</a></li><li><a href="global.html#initBacklog">initBacklog</a></li><li><a href="global.html#initBoard">initBoard</a></li><li><a href="global.html#initHelp">initHelp</a></li><li><a href="global.html#initIndex">initIndex</a></li><li><a href="global.html#loadCurrentDate">loadCurrentDate</a></li><li><a href="global.html#loadFromBackend">loadFromBackend</a></li><li><a href="global.html#loadJSONFromServer">loadJSONFromServer</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#loginAsGuest">loginAsGuest</a></li><li><a href="global.html#loginAsUser">loginAsUser</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#mm">mm</a></li><li><a href="global.html#modalGenAllUser">modalGenAllUser</a></li><li><a href="global.html#modalHideAllUsers">modalHideAllUsers</a></li><li><a href="global.html#modalShowAllUsers">modalShowAllUsers</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#MY_CAROUSEL">MY_CAROUSEL</a></li><li><a href="global.html#MY_CAROUSEL_OPTIONS">MY_CAROUSEL_OPTIONS</a></li><li><a href="global.html#MY_MODAL">MY_MODAL</a></li><li><a href="global.html#MY_MODAL_LOGIN">MY_MODAL_LOGIN</a></li><li><a href="global.html#newTaskTemp">newTaskTemp</a></li><li><a href="global.html#openModal">openModal</a></li><li><a href="global.html#REGISTRATION_TOAST">REGISTRATION_TOAST</a></li><li><a href="global.html#removedChangeDirectionClassReverseBackChildren">removedChangeDirectionClassReverseBackChildren</a></li><li><a href="global.html#removeHeight">removeHeight</a></li><li><a href="global.html#removeHighlightCarouselControl">removeHighlightCarouselControl</a></li><li><a href="global.html#removeHightlight">removeHightlight</a></li><li><a href="global.html#renderAllColumns">renderAllColumns</a></li><li><a href="global.html#renderButtons">renderButtons</a></li><li><a href="global.html#renderColumn">renderColumn</a></li><li><a href="global.html#reverseChildren">reverseChildren</a></li><li><a href="global.html#reversed">reversed</a></li><li><a href="global.html#saveInBackend">saveInBackend</a></li><li><a href="global.html#saveJSONToServer">saveJSONToServer</a></li><li><a href="global.html#saveRegristration">saveRegristration</a></li><li><a href="global.html#saveTask">saveTask</a></li><li><a href="global.html#selectedUser">selectedUser</a></li><li><a href="global.html#selectUser">selectUser</a></li><li><a href="global.html#setDataBsTouchOnWinResize">setDataBsTouchOnWinResize</a></li><li><a href="global.html#setDatePickerSettings">setDatePickerSettings</a></li><li><a href="global.html#setHeight">setHeight</a></li><li><a href="global.html#setScrollbarHeightOfContentContainerOnSubPages">setScrollbarHeightOfContentContainerOnSubPages</a></li><li><a href="global.html#showAllUser">showAllUser</a></li><li><a href="global.html#showAllUserAndDisable">showAllUserAndDisable</a></li><li><a href="global.html#showExitDoor">showExitDoor</a></li><li><a href="global.html#showPassword">showPassword</a></li><li><a href="global.html#showToastOnSingIn">showToastOnSingIn</a></li><li><a href="global.html#startDragging">startDragging</a></li><li><a href="global.html#startSlideNext">startSlideNext</a></li><li><a href="global.html#startSlidePrev">startSlidePrev</a></li><li><a href="global.html#stopSlideJustOnDrop">stopSlideJustOnDrop</a></li><li><a href="global.html#stopSlideNext">stopSlideNext</a></li><li><a href="global.html#stopSlidePrev">stopSlidePrev</a></li><li><a href="global.html#switchExitDoor">switchExitDoor</a></li><li><a href="global.html#timeOut">timeOut</a></li><li><a href="global.html#TOAST_LIVE_EXAMPLE1">TOAST_LIVE_EXAMPLE1</a></li><li><a href="global.html#TOAST_TRIGGER1">TOAST_TRIGGER1</a></li><li><a href="global.html#toastForEvent">toastForEvent</a></li><li><a href="global.html#today">today</a></li><li><a href="global.html#urgencyBoard">urgencyBoard</a></li><li><a href="global.html#urgencyCol">urgencyCol</a></li><li><a href="global.html#users">users</a></li><li><a href="global.html#validationLogin">validationLogin</a></li><li><a href="global.html#verifyNull">verifyNull</a></li><li><a href="global.html#whiteBorderImg">whiteBorderImg</a></li><li><a href="global.html#yyyy">yyyy</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Tue Sep 13 2022 15:06:25 GMT+0200 (Mitteleuropäische Sommerzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Sep 14 2022 19:57:18 GMT+0200 (Mitteleuropäische Sommerzeit)
 </footer>
 
 <script> prettyPrint(); </script>

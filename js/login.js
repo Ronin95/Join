@@ -1,4 +1,3 @@
-/* TODO: Frage 7 */
 // BACKUP of 'users' JSON in case it will be deleted from brackend server.
 /* users = [
   {
@@ -145,7 +144,6 @@ function saveRegristration() {
   saveInBackend(users, "users");
 }
 
-/* TODO: Frage 11: returns */
 /**
  * Checks which HTML element was chosen as avatar.
  * @returns {HTMLElement} The chosen HTML element as avatar.
@@ -204,62 +202,60 @@ function highlightAvatar() {
   }
 }
 
-/* TODO: Frage 18: Direkte Ausführung in js Datei */
 /**
- * The toast output after the input has been checked after the click on the trigger (here: sign in button).
+ * The sing in button as the trigger to output a toast after the input on the login page has been checked.
  */
-const toastTrigger1 = document.getElementById("signInBtn");
-const toastLiveExample1 = document.getElementById("signInToast");
-if (toastTrigger1) {
-  toastTrigger1.addEventListener("click", () => {
-    verifyNull();
-    const toast = new bootstrap.Toast(toastLiveExample1);
-    toast.show();
-  });
+const TOAST_TRIGGER1 = document.getElementById("signInBtn");
+
+/**
+ * The toast output after the input on the login page has been checked after the click on the trigger (here: sign in button).
+ */
+const TOAST_LIVE_EXAMPLE1 = document.getElementById("signInToast");
+
+if (TOAST_TRIGGER1) {
+  TOAST_TRIGGER1.addEventListener("click", () => showToastOnSingIn());
 }
 
-/* TODO: Frage 3:  Instanz von einem Objekt / Klasse / JS Model (ich kenn nocht nicht die richtige Begrifflichkeit) */
+/**
+ * Shows the toast on the login page after signing in.
+ */
+function showToastOnSingIn() {
+  verifyNull();
+  const TOAST_LOGIN = new bootstrap.Toast(TOAST_LIVE_EXAMPLE1);
+  TOAST_LOGIN.show();
+}
+
 /**
  * The bootstrap modal object used on the the login page.
- * @type {Object}
  */
-let myModal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
+const MY_MODAL_LOGIN = new bootstrap.Modal(
+  document.getElementById("staticBackdrop")
+);
 
 /**
  * The HTML form element defining the type and scope of the HTML validation of the login modal.
- * @type {HTMLFormElement}
  */
 let formRegistery = document.getElementById("registery");
 
+formRegistery.addEventListener("submit", () => handleFormLogin(event));
+
 /**
  * The HTML element of the bootstrap toast on the login page.
- * @type {HTMLElement}
  */
-const registrationToast = document.getElementById("registrationToast");
+const REGISTRATION_TOAST = document.getElementById("registrationToast");
 
-/* TODO: Frage 1: Ein Event als Parameter in eine üblich JS Funktion, s. Bsp 
-*/
 /**
- * When the form is submitted, the function is executed. It shows the toast, saves the registered user and closes the modal after 2 seconds.
- * @param {Event} event The returned Event, which will be prevented.
+ * Shows the toast, saves the registered user and closes the modal after 2 seconds.
+ * @param {SubmitEvent} event - The returned event, which will be prevented.
  */
 function handleFormLogin(event) {
-  event.preventDefault(); /* TODO: Frage 12 */
-  toastForEvent("toast-body-registration", "Registration completed!"); 
-  const toast = new bootstrap.Toast(registrationToast); /* TODO: Frage 13 */
-  toast.show(); /* TODO: Frage 14 */
+  event.preventDefault();
+  toastForEvent("toast-body-registration", "Registration completed!");
+  const TOAST_LOGIN_HANDLE = new bootstrap.Toast(REGISTRATION_TOAST);
+  TOAST_LOGIN_HANDLE.show();
   saveRegristration();
-  formRegistery.reset(); /* TODO: Frage 15 */
+  formRegistery.reset();
   setTimeout(function () {
-    myModal.hide();
+    MY_MODAL_LOGIN.hide();
   }, 2000);
 }
-
-/* TODO: Frage 2: addEventListener bei einer gloablen Variable */
-/**
- * Listener of the HTML form validation element of the modal on the login page,
- * which 'listens' to the submit event of it and executes the function handleFormLogin().
- *
- * @listens {event} submit - The submit event of the HTML form validation element of the modal on the login page.
- */
-formRegistery.addEventListener("submit", handleFormLogin);
