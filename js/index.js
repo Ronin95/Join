@@ -423,7 +423,7 @@ function handleForm(event) {
  */
 const boardToast = document.getElementById("boardToast");
 
-/* TODO: Frage 2: addEventListener bei einer gloablen Variable */
+/* TODO: Frage 4:  Instanz von einem Objekt / Klasse / JS Model aber mit direkt eine Funktion hinterm dem Punkt */
 /**
  * The bootstrap modal object used in the board (posibile edition of the task in the board modal).
  * @type {Object}
