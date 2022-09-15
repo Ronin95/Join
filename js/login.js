@@ -237,7 +237,7 @@ const MY_MODAL_LOGIN = new bootstrap.Modal(
  */
 let formRegistery = document.getElementById("registery");
 
-formRegistery.addEventListener("submit", () => handleFormLogin(event));
+formRegistery.addEventListener("submit", handleFormLogin);
 
 /**
  * The HTML element of the bootstrap toast on the login page.

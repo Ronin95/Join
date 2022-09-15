@@ -396,7 +396,7 @@ function modalGenAllUser(task, id) {
  */
 let formBoard = document.getElementById("boardSubmit");
 
-formBoard.addEventListener("submit", () => handleFormIndex());
+formBoard.addEventListener("submit", handleFormIndex);
 
 /**
  * The toast used while closing the modal in the board.

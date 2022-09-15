@@ -126,7 +126,7 @@ function loadCurrentDate() {
   document.getElementById("txtDate").value = today;
 }
 
-formAddTask.addEventListener("submit", () => handleFormAddTask());
+formAddTask.addEventListener("submit", handleFormAddTask);
 
 /**
  * Shows the toast and resets the add task formular.
