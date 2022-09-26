@@ -127,8 +127,8 @@ function loginAsGuest() {
 /**
  * Saves the information in the JSON 'users' as a new user.
  */
-function saveRegristration() {
-  users = loadFromBackend("users");
+ async function saveRegristration() {
+  users = await loadFromBackend("users");
   let firstName = document.getElementById("floatingFirstNameRegister");
   let lastName = document.getElementById("floatingLastNameRegister");
   let email = document.getElementById("floatingEmailRegister");
@@ -141,7 +141,7 @@ function saveRegristration() {
     email: email.value,
   };
   users.push(registration);
-  saveInBackend(users, "users");
+  await saveInBackend(users, "users");
 }
 
 /**

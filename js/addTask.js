@@ -3,7 +3,7 @@
  */
 let selectedUser = [];
 
-let formAddTask = document.getElementById("addTaskSubmit");
+let formAddTask = document.getElementById('addTaskSubmit');
 
 /**
  * The today's date
@@ -35,17 +35,17 @@ let yyyy = today.getFullYear();
  * Shows a message with the value for wich member is the task added.
  */
 async function addTask() {
-  allTasks = await loadFromBackend("allTasks");
-  let date = document.getElementById("txtDate");
+  allTasks = await loadFromBackend('allTasks');
+  let date = document.getElementById('txtDate');
   let newTask = {
-    title: getInputValue("title"),
+    title: getInputValue('title'),
     date: date.value,
-    category: getInputValue("category"),
-    urgency: getInputValue("urgency"),
-    description: getInputValue("description"),
+    category: getInputValue('category'),
+    urgency: getInputValue('urgency'),
+    description: getInputValue('description'),
     userForTask: selectedUser,
     id: new Date().getTime(),
-    state: "toDo",
+    state: 'toDo',
   };
   getDate(newTask, date);
   saveTask(newTask);
@@ -60,7 +60,7 @@ function getDate(newTask, date) {
   if ((newTask.date = !date.value)) {
     newTask.date = today;
   } else {
-    newTask.date = date.value.replace(".", "/");
+    newTask.date = date.value.replace('.', '/');
   }
 }
 
@@ -77,9 +77,9 @@ function getInputValue(id) {
  * Saves the new task and push it to the JSON 'allTasks'.
  * @param {JSON} newTask - The JSON array task that will be stored..
  */
-function saveTask(newTask) {
+async function saveTask(newTask) {
   allTasks.push(newTask);
-  saveInBackend(allTasks, "allTasks");
+  await saveInBackend(allTasks, 'allTasks');
 }
 
 /**
@@ -96,12 +96,12 @@ function deleteUnsafedInput() {
  * @param {string} i - The person, who is chosen by clicking an avatar.
  */
 function selectUser(i) {
-  document.getElementById(`selected${i}`).classList.toggle("user-selected");
+  document.getElementById(`selected${i}`).classList.toggle('user-selected');
   selectedUser = users[i];
   document.getElementById(`user`).innerHTML = /*html*/ ` 
     <div onclick="showAllUserAndDisable()"> 
       <img title="${selectedUser.name}" id="${i}" class="user-show cursor-pointer rounded-circle user-selected" src="${selectedUser.avatar}" alt=""></div>`;
-  document.getElementById("createTask").removeAttribute("disabled");
+  document.getElementById('createTask').removeAttribute('disabled');
 }
 
 /**
@@ -109,7 +109,7 @@ function selectUser(i) {
  */
 function showAllUserAndDisable() {
   showAllUser();
-  document.getElementById("createTask").disabled = true;
+  document.getElementById('createTask').disabled = true;
 }
 
 /**
@@ -117,23 +117,23 @@ function showAllUserAndDisable() {
  */
 function loadCurrentDate() {
   if (/^\d$/.test(dd)) {
-    dd = "0" + dd;
+    dd = '0' + dd;
   }
   if (/^\d$/.test(mm)) {
-    mm = "0" + mm;
+    mm = '0' + mm;
   }
-  today = dd + "/" + mm + "/" + yyyy;
-  document.getElementById("txtDate").value = today;
+  today = dd + '/' + mm + '/' + yyyy;
+  document.getElementById('txtDate').value = today;
 }
 
-formAddTask.addEventListener("submit", handleFormAddTask);
+formAddTask.addEventListener('submit', handleFormAddTask);
 
 /**
  * Shows the toast and resets the add task formular.
  * @param {SubmitEvent} event - The returned event, which will be prevented.
  */
 function handleFormAddTask(event) {
-  const SUCCESS_TOAST = document.getElementById("success_task");
+  const SUCCESS_TOAST = document.getElementById('success_task');
   event.preventDefault();
   const TOAST_ADDTASK = new bootstrap.Toast(SUCCESS_TOAST);
   TOAST_ADDTASK.show();
