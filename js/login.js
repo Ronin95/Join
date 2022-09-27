@@ -37,16 +37,16 @@
  */
 function verifyNull() {
   let email = document
-    .getElementById("floatingEmail")
+    .getElementById('floatingEmail')
     .value.trim()
     .toLowerCase();
-  let password = document.getElementById("floatingPassword").value.trim();
+  let password = document.getElementById('floatingPassword').value.trim();
   if (!email.length && !password.length) {
-    toastForEvent("toast-body-signIn", "Please enter something!");
+    toastForEvent('toast-body-signIn', 'Please enter input!');
   } else if (!email.length) {
-    toastForEvent("toast-body-signIn", "Please enter email!");
+    toastForEvent('toast-body-signIn', 'Please enter email!');
   } else if (!password.length) {
-    toastForEvent("toast-body-signIn", "Please enter password!");
+    toastForEvent('toast-body-signIn', 'Please enter password!');
   } else {
     login(email, password);
   }
@@ -57,7 +57,7 @@ function verifyNull() {
  * @param {email} email - The e-mail address of the logging user.
  * @param {password} password - The password of the logging user.
  */
-function login(email, password, toastBody) {
+function login(email, password) {
   let checkEmail = false;
   let checkPassword = false;
   for (let i = 0; i < users.length; i++) {
@@ -69,7 +69,7 @@ function login(email, password, toastBody) {
       }
     }
   }
-  validationLogin(checkEmail, checkPassword, toastBody);
+  validationLogin(checkEmail, checkPassword);
 }
 
 /**
@@ -79,7 +79,7 @@ function login(email, password, toastBody) {
  */
 function toastForEvent(containerId, text) {
   let toastBody = document.getElementById(containerId);
-  toastBody.innerHTML = "";
+  toastBody.innerHTML = '';
   toastBody.innerHTML = text;
 }
 
@@ -88,19 +88,19 @@ function toastForEvent(containerId, text) {
  * @param {boolean} checkEmail - The result of the e-mail address validation of the login to the app.
  * @param {boolean} checkPassword - The result of the password validation of the login to the app.
  */
-function validationLogin(checkEmail, checkPassword, toastBody) {
+function validationLogin(checkEmail, checkPassword) {
   if (checkEmail && checkPassword) {
-    localStorage.setItem("isLoggedIn", true);
-    location.href = "index.html";
+    localStorage.setItem('isLoggedIn', true);
+    location.href = 'index.html';
   } else if (!checkEmail) {
     toastForEvent(
-      "toast-body-signIn",
-      "Wrong email adress! Please check your input"
+      'toast-body-signIn',
+      'Wrong email adress! Please check your input'
     );
   } else if (!checkPassword) {
     toastForEvent(
-      "toast-body-signIn",
-      "Wrong password! Please check your input"
+      'toast-body-signIn',
+      'Wrong password! Please check your input'
     );
   }
 }
@@ -109,39 +109,39 @@ function validationLogin(checkEmail, checkPassword, toastBody) {
  * Pushes in currentUser the logged in user
  * @param {number} i - The reference which user is logged in.
  */
-function loginAsUser(i) {
-  localStorage.setItem("currentUser", i);
+async function loginAsUser(i) {
+  localStorage.setItem('currentUser', i);
 }
 
 /**
  * Pushes in currentUser the logged in users
  * @param {number} i - The reference which user is logged in.
  */
-function loginAsGuest() {
-  document.getElementById("floatingEmail").value = "guest@join.org";
-  document.getElementById("floatingPassword").value = "000";
-  loginAsUser(0);
+async function loginAsGuest() {
+  document.getElementById('floatingEmail').value = 'guest@join.org';
+  document.getElementById('floatingPassword').value = '000';
+  await loginAsUser(0);
   validationLogin(true, true);
 }
 
 /**
  * Saves the information in the JSON 'users' as a new user.
  */
- async function saveRegristration() {
-  users = await loadFromBackend("users");
-  let firstName = document.getElementById("floatingFirstNameRegister");
-  let lastName = document.getElementById("floatingLastNameRegister");
-  let email = document.getElementById("floatingEmailRegister");
-  let password = document.getElementById("floatingPasswordRegister1");
+async function saveRegristration() {
+  users = await loadFromBackend('users');
+  let firstName = document.getElementById('floatingFirstNameRegister');
+  let lastName = document.getElementById('floatingLastNameRegister');
+  let email = document.getElementById('floatingEmailRegister');
+  let password = document.getElementById('floatingPasswordRegister1');
   let avatar = checkSelectedAvatar();
   let registration = {
-    name: firstName.value + " " + lastName.value,
+    name: firstName.value + ' ' + lastName.value,
     password: password.value,
     avatar: avatar.src,
     email: email.value,
   };
   users.push(registration);
-  await saveInBackend(users, "users");
+  await saveInBackend(users, 'users');
 }
 
 /**
@@ -151,7 +151,7 @@ function loginAsGuest() {
 function checkSelectedAvatar() {
   for (let i = 1; i < 5; i++) {
     let worker = document.getElementById(`worker${i}`);
-    if (worker.classList.contains("border-danger")) {
+    if (worker.classList.contains('border-danger')) {
       return worker;
     }
   }
@@ -161,14 +161,14 @@ function checkSelectedAvatar() {
  * Checks whether both password are identical.
  */
 function checkPassword() {
-  let password1 = document.getElementById("floatingPasswordRegister1");
-  let password2 = document.getElementById("floatingPasswordRegister2");
+  let password1 = document.getElementById('floatingPasswordRegister1');
+  let password2 = document.getElementById('floatingPasswordRegister2');
   if (password2.value == password1.value) {
-    password2.classList.add("is-valid");
-    password2.classList.remove("is-invalid");
+    password2.classList.add('is-valid');
+    password2.classList.remove('is-invalid');
   } else {
-    password2.classList.add("is-invalid");
-    password2.classList.remove("is-valid");
+    password2.classList.add('is-invalid');
+    password2.classList.remove('is-valid');
   }
 }
 
@@ -178,10 +178,10 @@ function checkPassword() {
 function showPassword() {
   let passwords = document.querySelectorAll('input[placeholder="Password"]');
   passwords.forEach((password) => {
-    if (password.type === "password") {
-      password.type = "text";
+    if (password.type === 'password') {
+      password.type = 'text';
     } else {
-      password.type = "password";
+      password.type = 'password';
     }
   });
 }
@@ -193,11 +193,11 @@ function highlightAvatar() {
   for (let i = 1; i < 5; i++) {
     let gridRadio = document.getElementById(`gridRadios${i}`);
     if (gridRadio.checked) {
-      document.getElementById(`worker${i}`).classList.add("border-danger");
-      document.getElementById(`worker${i}`).classList.remove("border-light");
+      document.getElementById(`worker${i}`).classList.add('border-danger');
+      document.getElementById(`worker${i}`).classList.remove('border-light');
     } else {
-      document.getElementById(`worker${i}`).classList.remove("border-danger");
-      document.getElementById(`worker${i}`).classList.add("border-light");
+      document.getElementById(`worker${i}`).classList.remove('border-danger');
+      document.getElementById(`worker${i}`).classList.add('border-light');
     }
   }
 }
@@ -205,15 +205,15 @@ function highlightAvatar() {
 /**
  * The sing in button as the trigger to output a toast after the input on the login page has been checked.
  */
-const TOAST_TRIGGER1 = document.getElementById("signInBtn");
+const TOAST_TRIGGER1 = document.getElementById('signInBtn');
 
 /**
  * The toast output after the input on the login page has been checked after the click on the trigger (here: sign in button).
  */
-const TOAST_LIVE_EXAMPLE1 = document.getElementById("signInToast");
+const TOAST_LIVE_EXAMPLE1 = document.getElementById('signInToast');
 
 if (TOAST_TRIGGER1) {
-  TOAST_TRIGGER1.addEventListener("click", () => showToastOnSingIn());
+  TOAST_TRIGGER1.addEventListener('click', () => showToastOnSingIn());
 }
 
 /**
@@ -229,31 +229,31 @@ function showToastOnSingIn() {
  * The bootstrap modal object used on the the login page.
  */
 const MY_MODAL_LOGIN = new bootstrap.Modal(
-  document.getElementById("staticBackdrop")
+  document.getElementById('staticBackdrop')
 );
 
 /**
  * The HTML form element defining the type and scope of the HTML validation of the login modal.
  */
-let formRegistery = document.getElementById("registery");
+let formRegistery = document.getElementById('registery');
 
-formRegistery.addEventListener("submit", handleFormLogin);
+formRegistery.addEventListener('submit', handleFormLogin);
 
 /**
  * The HTML element of the bootstrap toast on the login page.
  */
-const REGISTRATION_TOAST = document.getElementById("registrationToast");
+const REGISTRATION_TOAST = document.getElementById('registrationToast');
 
 /**
  * Shows the toast, saves the registered user and closes the modal after 2 seconds.
  * @param {SubmitEvent} event - The returned event, which will be prevented.
  */
-function handleFormLogin(event) {
+async function handleFormLogin(event) {
   event.preventDefault();
-  toastForEvent("toast-body-registration", "Registration completed!");
+  toastForEvent('toast-body-registration', 'Registration completed!');
   const TOAST_LOGIN_HANDLE = new bootstrap.Toast(REGISTRATION_TOAST);
   TOAST_LOGIN_HANDLE.show();
-  saveRegristration();
+  await saveRegristration();
   formRegistery.reset();
   setTimeout(function () {
     MY_MODAL_LOGIN.hide();

@@ -65,8 +65,12 @@ function showAllUser() {
  */
 async function currentUserImage() {
   currentUser = localStorage.getItem('currentUser');
-  let currentUserProfile = document.getElementById('currentUser');
-  currentUserProfile.src = users[currentUser].avatar;
+  if (currentUser) {
+    let currentUserProfile = document.getElementById('currentUser');
+    currentUserProfile.src = users[currentUser].avatar;
+  } else {
+    logout();
+  }
 }
 
 /**
