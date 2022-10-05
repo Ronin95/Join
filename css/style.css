@@ -300,7 +300,11 @@ body {
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  margin-bottom: 60px;
+  background-position: 0px -2.2rem;
+}
+
+.carousel-control-text {
+  font-size: 0.9rem;
 }
 
 .carousel-control-next:focus,

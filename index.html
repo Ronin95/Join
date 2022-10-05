@@ -36,14 +36,7 @@
     <div id="safeArea">
       <!-- #region app window -->
       <div
-        class="
-          app-window
-          h-100
-          w-100
-          d-flex
-          flex-column flex-md-row
-          overflow-hidden
-        "
+        class="app-window h-100 w-100 d-flex flex-column flex-md-row overflow-hidden"
       >
         <div w3-include-html="navbar.html" class="top-0 z-index-100"></div>
 
@@ -59,47 +52,27 @@
               <!-- carousel control prev button -->
               <button
                 id="left-slide-button"
-                class="d-sm-none mt-0 carousel-control-prev d-flex flex-column"
+                class="d-sm-none mt-0 carousel-control-prev d-flex flex-column h-100"
                 type="button"
                 data-bs-target="#carousel"
                 data-bs-slide="prev"
-                ondragover="highlightCarouselControl('left')"
-                ondragleave="stopSlidePrev(), removedChangeDirectionClassReverseBackChildren(), removeHighlightCarouselControl('left')"
-                ondragenter="addChangeDirectionClassReverseChildren(); startSlidePrev()"
-                onclick="highlightCarouselControlOnClick('left')"
               >
                 <span
-                  id="leftArrowText"
-                  class="
-                    fs-6
-                    fw-bold
-                    carousel-control-name
-                    d-flex
-                    align-items-start
-                    justify-content-center justify-content-center
-                    text-white
-                  "
-                ></span>
-                <span
                   id="left-arrow"
-                  class="carousel-control-prev-icon"
+                  class="carousel-control-prev-icon w-100 h-100 text-white d-flex justify-content-center align-items-center carousel-control-text"
                   aria-hidden="true"
-                  ><br /><span class="text-white" style="font-size: 10px"
-                    >Drag</span
-                  ></span
+                  ondragover="highlightCarouselControl('left')"
+                  ondragleave="stopSlidePrev(), removedChangeDirectionClassReverseBackChildren(), removeHighlightCarouselControl('left')"
+                  ondragenter="addChangeDirectionClassReverseChildren(); startSlidePrev()"
+                  onclick="highlightCarouselControlOnClick('left')"
+                  >Drag</span
                 >
-                <span class="visually-hidden">Previous</span>
               </button>
 
               <!-- #region carousel inner with slide columns -->
               <div
                 id="carousel-inner"
-                class="
-                  carousel-inner
-                  d-sm-flex
-                  align-items-sm-center
-                  justify-content-sm-center
-                "
+                class="carousel-inner d-sm-flex align-items-sm-center justify-content-sm-center"
               >
                 <div id="0" class="all carousel-item active h-100">
                   <div class="d-flex flex-column align-items-center h-100">
@@ -108,14 +81,7 @@
                     >
                     <div
                       id="toDoColumn"
-                      class="
-                        board-column
-                        bg-grey
-                        scroll-index
-                        flex-grow-1
-                        w-100
-                        px-1
-                      "
+                      class="board-column bg-grey scroll-index flex-grow-1 w-100 px-1"
                       ondrop="moveTo('toDo'), removeHightlight('toDoColumn')"
                       ondragover="allowDrop(event), hightlight('toDoColumn')"
                       ondragleave="removeHightlight('toDoColumn')"
@@ -130,14 +96,7 @@
                     >
                     <div
                       id="inProgressColumn"
-                      class="
-                        board-column
-                        bg-grey
-                        hiddenScrollbarScrollbar
-                        flex-grow-1
-                        w-100
-                        px-1
-                      "
+                      class="board-column bg-grey hiddenScrollbarScrollbar flex-grow-1 w-100 px-1"
                       ondrop="moveTo('inProgress'), removeHightlight('inProgressColumn')"
                       ondragover="allowDrop(event), hightlight('inProgressColumn')"
                       ondragleave="removeHightlight('inProgressColumn')"
@@ -152,14 +111,7 @@
                     >
                     <div
                       id="testingColumn"
-                      class="
-                        board-column
-                        bg-grey
-                        hiddenScrollbarScrollbar
-                        flex-grow-1
-                        w-100
-                        px-1
-                      "
+                      class="board-column bg-grey hiddenScrollbarScrollbar flex-grow-1 w-100 px-1"
                       ondrop="moveTo('testing'), removeHightlight('testingColumn')"
                       ondragover="allowDrop(event), hightlight('testingColumn')"
                       ondragleave="removeHightlight('testingColumn')"
@@ -174,14 +126,7 @@
                     >
                     <div
                       id="doneColumn"
-                      class="
-                        board-column
-                        bg-grey
-                        hiddenScrollbarScrollbar
-                        flex-grow-1
-                        w-100
-                        px-1
-                      "
+                      class="board-column bg-grey hiddenScrollbarScrollbar flex-grow-1 w-100 px-1"
                       ondrop="moveTo('done'), removeHightlight('doneColumn')"
                       ondragover="allowDrop(event), hightlight('doneColumn')"
                       ondragleave="removeHightlight('doneColumn')"
@@ -198,31 +143,17 @@
                 type="button"
                 data-bs-target="#carousel"
                 data-bs-slide="next"
-                ondragover="highlightCarouselControl('right')"
-                ondragleave="stopSlideNext(), removeHighlightCarouselControl('right')"
-                ondragenter="startSlideNext()"
-                onclick="highlightCarouselControlOnClick('right')"
               >
                 <span
-                  id="rightArrowText"
-                  class="
-                    fs-6
-                    fw-bold
-                    carousel-control-name
-                    d-flex
-                    align-items-start
-                    justify-content-center
-                  "
-                ></span>
-                <span
                   id="right-arrow"
-                  class="carousel-control-next-icon"
+                  class="carousel-control-next-icon w-100 h-100 text-white d-flex justify-content-center align-items-center carousel-control-text"
                   aria-hidden="true"
-                  ><br /><span class="text-white" style="font-size: 10px"
-                    >Drag</span
-                  ></span
+                  ondragover="highlightCarouselControl('right')"
+                  ondragleave="stopSlideNext(), removeHighlightCarouselControl('right')"
+                  ondragenter="startSlideNext()"
+                  onclick="highlightCarouselControlOnClick('right')"
+                  >Drag</span
                 >
-                <span class="visually-hidden">Next</span>
               </button>
 
               <!-- carousel indicators -->
@@ -373,23 +304,12 @@
                     >
                       <img
                         id="modalSelectedUser"
-                        class="
-                          assigendToImg
-                          rounded-circle
-                          border border-4 border-primary
-                          m-1
-                        "
+                        class="assigendToImg rounded-circle border border-4 border-primary m-1"
                         src="img/lukas.png"
                       />
                       <div
                         id="modalUserCollection"
-                        class="
-                          d-none
-                          modal-user-collection
-                          d-flex
-                          flex-column
-                          rounded
-                        "
+                        class="d-none modal-user-collection d-flex flex-column rounded"
                         onmouseleave="modalHideAllUsers()"
                       ></div>
                     </div>
