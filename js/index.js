@@ -9,8 +9,8 @@ let currentDraggedElement;
  * The function is executed immediattasky after loading the web page.
  */
 async function initBoard() {
-  users = await loadFromBackend('users');
-  allTasks = await loadFromBackend('allTasks');
+  users = await loadFromBackend("users");
+  allTasks = await loadFromBackend("allTasks");
   renderAllColumns();
   modalShowAllUser();
   isThereScrollBar();
@@ -20,10 +20,10 @@ async function initBoard() {
  * Renders all kanban columns (TO DO, IN PROGRESS etc.) in the board.
  */
 function renderAllColumns() {
-  renderColumn('toDo');
-  renderColumn('inProgress');
-  renderColumn('testing');
-  renderColumn('done');
+  renderColumn("toDo");
+  renderColumn("inProgress");
+  renderColumn("testing");
+  renderColumn("done");
 }
 
 /**
@@ -33,8 +33,8 @@ function renderAllColumns() {
  * This is also the id of the kanban column in the board, where the filtered task are placed as a task HTML-taskement.
  */
 function renderColumn(columnName) {
-  let filteredWithSameState = allTasks.filter((a) => a['state'] == columnName);
-  document.getElementById(`${columnName}Column`).innerHTML = '';
+  let filteredWithSameState = allTasks.filter((a) => a["state"] == columnName);
+  document.getElementById(`${columnName}Column`).innerHTML = "";
   for (let index = 0; index < filteredWithSameState.length; index++) {
     const TASK = filteredWithSameState[index];
     document.getElementById(`${columnName}Column`).innerHTML +=
@@ -60,7 +60,7 @@ function startDragging(id) {
 async function moveTo(state) {
   let taskIndex = allTasks.find((n) => n.id == currentDraggedElement);
   taskIndex.state = state;
-  await saveInBackend(allTasks, 'allTasks');
+  await saveInBackend(allTasks, "allTasks");
   renderAllColumns();
 }
 
@@ -80,7 +80,7 @@ function allowDrop(ev) {
  * @param {string} columnName - The name of the board kanban column, which should be highlighted
  */
 function hightlight(columnName) {
-  document.getElementById(columnName).classList.add('drag-area-highlight');
+  document.getElementById(columnName).classList.add("drag-area-highlight");
 }
 
 /**
@@ -89,14 +89,14 @@ function hightlight(columnName) {
  * @param {string} columnName - The name of the board kanban column, for which the highlicht effect should be removed.
  */
 function removeHightlight(columnName) {
-  document.getElementById(columnName).classList.remove('drag-area-highlight');
+  document.getElementById(columnName).classList.remove("drag-area-highlight");
 }
 
 /**
  * The initial properties for the above instance of bootstrap carousel as a JSON.
  */
 const MY_CAROUSEL_OPTIONS = {
-  interval: 400, // The amount of time to delay between automatically cycling an item = The speed of carousel sliding.
+  interval: 550, // The amount of time to delay between automatically cycling an item = The speed of carousel sliding.
   pause: false, // If set to "hover", pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on mouseleave. If set to false, hovering over the carousel won’t pause it. On touch-enabled devices, when set to "hover", cycling will pause on touchend (once the user finished interacting with the carousel) for two intervals, before automatically resuming. This is in addition to the mouse behavior.
   wrap: true, // Whether the carousel should cycle continuously or have hard stops.
 };
@@ -105,7 +105,7 @@ const MY_CAROUSEL_OPTIONS = {
  * The instance of bootstrap carousel object with its initial properties.
  */
 const MY_CAROUSEL = new bootstrap.Carousel(
-  document.getElementById('carousel'),
+  document.getElementById("carousel"),
   MY_CAROUSEL_OPTIONS
 );
 
@@ -120,8 +120,8 @@ const MY_CAROUSEL = new bootstrap.Carousel(
  */
 function highlightCarouselControl(side) {
   document
-    .getElementById(side + '-slide-button')
-    .classList.add('highlight-carousel-control');
+    .getElementById(side + "-slide-button")
+    .classList.add("highlight-carousel-control");
 }
 
 /**
@@ -132,8 +132,8 @@ function highlightCarouselControl(side) {
  */
 function removeHighlightCarouselControl(side) {
   document
-    .getElementById(side + '-slide-button')
-    .classList.remove('highlight-carousel-control');
+    .getElementById(side + "-slide-button")
+    .classList.remove("highlight-carousel-control");
 }
 
 /**
@@ -200,8 +200,8 @@ function stopSlideJustOnDrop() {
   if (reversed) {
     removedChangeDirectionClassReverseBackChildren();
   }
-  removeHighlightCarouselControl('right');
-  removeHighlightCarouselControl('left');
+  removeHighlightCarouselControl("right");
+  removeHighlightCarouselControl("left");
 }
 
 /**
@@ -213,7 +213,7 @@ let reversed = false;
  * Adds the class 'change direction' changing the directon of the bootstrap default function cycling to from right to left.
  */
 function addChangeDirectionClassReverseChildren() {
-  document.getElementById('carousel-inner').classList.add('changeDirection');
+  document.getElementById("carousel-inner").classList.add("changeDirection");
   reverseChildren();
   reversed = true;
 }
@@ -222,7 +222,7 @@ function addChangeDirectionClassReverseChildren() {
  * Removes the css class 'change direction' changing the directon of the bootstrap default function cycling to from right to left.
  */
 function removedChangeDirectionClassReverseBackChildren() {
-  document.getElementById('carousel-inner').classList.remove('changeDirection');
+  document.getElementById("carousel-inner").classList.remove("changeDirection");
   reverseChildren();
   reversed = false;
   correctActiveIndicator();
@@ -238,17 +238,17 @@ function correctActiveIndicator() {
   /* Find the false active slide indicator */
   for (let i = 0; i < 4; i++) {
     let value = document.getElementById(`ind${i}`).className;
-    if (value == 'active') {
+    if (value == "active") {
       foundedIndex = i;
     }
   }
   /* Removes the css class 'active' and the value 'true'of the bootstrap aria-current attribute of the false slide indicator and add them to the right one. */
   let wrongInd = document.getElementById(`ind${foundedIndex}`);
-  wrongInd.classList.remove('active');
-  wrongInd.removeAttribute('aria-current');
+  wrongInd.classList.remove("active");
+  wrongInd.removeAttribute("aria-current");
   let rightInd = document.getElementById(`ind${MY_CAROUSEL._activeElement.id}`);
-  rightInd.classList.add('active');
-  rightInd.setAttribute('aria-current', 'true');
+  rightInd.classList.add("active");
+  rightInd.setAttribute("aria-current", "true");
 }
 
 /**
@@ -256,8 +256,8 @@ function correctActiveIndicator() {
  */
 function reverseChildren() {
   MY_CAROUSEL.pause();
-  let parentItems = document.getElementById('carousel-inner');
-  let parentIndicators = document.getElementById('carousel-indicators');
+  let parentItems = document.getElementById("carousel-inner");
+  let parentIndicators = document.getElementById("carousel-indicators");
 
   for (var i = 1; i < parentItems.childNodes.length; i++) {
     parentItems.insertBefore(parentItems.childNodes[i], parentItems.firstChild);
@@ -268,18 +268,25 @@ function reverseChildren() {
   }
 }
 
-window.addEventListener('resize', () => setDataBsTouchOnWinResize());
+window.addEventListener("resize", () => setDataBsTouchOnWinResize());
 
 /**
  * Sets the data-bs-touch attribute to true, if the window width is less than 576px, otherwise set it to false.
  */
 function setDataBsTouchOnWinResize() {
   if (window.innerWidth < 576) {
-    document.getElementById('carousel').setAttribute('data-bs-touch', 'true');
+    document.getElementById("carousel").setAttribute("data-bs-touch", "true");
   } else {
-    document.getElementById('carousel').setAttribute('data-bs-touch', 'false');
+    document.getElementById("carousel").setAttribute("data-bs-touch", "false");
   }
 }
+
+/**
+ * The index of the last selected user which should be assigned to the task open in the modal.
+ * @type {number | undefined}
+ * @default undefined
+ */
+let indexOflastSelectedUserOpenedModal;
 
 /**
  * Opens the selected board task item in the modal.
@@ -288,16 +295,36 @@ function setDataBsTouchOnWinResize() {
 function openModal(idValue) {
   let task = allTasks.find((n) => n.id == idValue);
   let indexTask = allTasks.findIndex((obj) => obj.id == idValue);
-  modalGenAllUser(task, idValue);
-  document.getElementById('modalTitle').value = task.title;
-  document.getElementById('modalDate').value = task.date;
-  document.getElementById('modalCategory').value = task.category;
-  document.getElementById('modalUrgency').value = task.urgency;
-  document.getElementById('modalDescription').value = task.description;
-  document.getElementById('modalSelectedUser').src = task.userForTask.avatar;
+  indexOflastSelectedUserOpenedModal = findUserIndexForOpenModal(task);
+  modalGenAllUser(idValue);
+  document.getElementById("modalTitle").value = task.title;
+  document.getElementById("modalDate").value = task.date;
+  document.getElementById("modalCategory").value = task.category;
+  document.getElementById("modalUrgency").value = task.urgency;
+  document.getElementById("modalDescription").value = task.description;
+  document.getElementById("modalSelectedUser").src = task.userForTask.avatar;
   renderButtons(indexTask);
   urgencyCol(task.urgency);
   modalHideAllUsers();
+}
+
+/**
+ * Finds the index of the user (in the 'users' array) that is assigned to the task.
+ * @param {JSON} task - The task opened in the modal window, for which the index of the assigned user should be finded.
+ * @returns {number | undefined} The index in 'users' array of the finded user.
+ */
+function findUserIndexForOpenModal(task) {
+  for (let i = 0; i < users.length; i++) {
+    const user = users[i];
+    if (
+      user.avatar == task.userForTask.avatar &&
+      user.email == task.userForTask.email &&
+      user.name == task.userForTask.name &&
+      user.password == task.userForTask.password
+    ) {
+      return i;
+    }
+  }
 }
 
 /**
@@ -307,44 +334,28 @@ function openModal(idValue) {
  * @param {string} fct - The function name.
  */
 async function adaptTask(indexTask, fct) {
-  allTasks[indexTask].title = document.getElementById('modalTitle').value || '';
-  allTasks[indexTask].date = document.getElementById('modalDate').value;
-  allTasks[indexTask].category = document.getElementById('modalCategory').value;
-  allTasks[indexTask].urgency = document.getElementById('modalUrgency').value;
+  allTasks[indexTask].title = document.getElementById("modalTitle").value || "";
+  allTasks[indexTask].date = document.getElementById("modalDate").value;
+  allTasks[indexTask].category = document.getElementById("modalCategory").value;
+  allTasks[indexTask].urgency = document.getElementById("modalUrgency").value;
   allTasks[indexTask].description =
-    document.getElementById('modalDescription').value;
-  allTasks[indexTask].userForTask.avatar = getRightSrcOfImg();
-  await saveInBackend(allTasks, 'allTasks');
+    document.getElementById("modalDescription").value;
+  allTasks[indexTask].userForTask = users[indexOflastSelectedUserOpenedModal];
+  // allTasks[indexTask].userForTask.avatar = getRightSrcOfImg();
+  await saveInBackend(allTasks, "allTasks");
   fct();
 }
 
 /**
- * Changes a relative link to an absolute link.
- * @returns {string} An absolute link.
- */
-function getRightSrcOfImg() {
-  let imgSrc = document.getElementById('modalSelectedUser').src;
-  let indexSrc = imgSrc.indexOf('img');
-  return './' + imgSrc.substring(indexSrc, imgSrc.length);
-}
-
-/**
- * Changes the assigned user in the task.
+ * Changes the assigned user in the task while open modal.
  * @param {number} i - The selected user.
  * @param {number} id - The id of the selected task.
  */
-async function changeSelectedUser(i, id) {
-  let indexTask = allTasks.findIndex((obj) => obj.id == id);
-  let userTask = allTasks[indexTask].userForTask;
+function changeSelectedUser(i, id) {
   let user = users[i];
-  let imgSrc = getRightSrcOfImg();
-  imgSrc = user.avatar;
-  userTask.avatar = user.avatar;
-  userTask.email = user.email;
-  userTask.name = user.name;
-  userTask.password = user.password;
-  await saveInBackend(allTasks, 'allTasks');
   changeModalAvatarAfterSelect(user);
+  indexOflastSelectedUserOpenedModal = i;
+  modalGenAllUser(id);
 }
 
 /**
@@ -352,38 +363,37 @@ async function changeSelectedUser(i, id) {
  * @param {JSON} user - The selected user from the drop dowm menu in the modal.
  */
 function changeModalAvatarAfterSelect(user) {
-  document.getElementById('modalSelectedUser').src = user.avatar;
+  document.getElementById("modalSelectedUser").src = user.avatar;
 }
 
 /**
  * Switches the view in the modal between the selected user of the task and the scrollable container with all users to select.
  */
 function modalShowAllUsers() {
-  document.getElementById('modalSelectedUser').classList.toggle('d-none');
-  document.getElementById('modalUserCollection').classList.toggle('d-none');
+  document.getElementById("modalSelectedUser").classList.toggle("d-none");
+  document.getElementById("modalUserCollection").classList.toggle("d-none");
 }
 
 /**
  * Hides the open drop down menu of all user avatars in the modal.
  */
 function modalHideAllUsers() {
-  document.getElementById('modalSelectedUser').classList.remove('d-none');
-  document.getElementById('modalUserCollection').classList.add('d-none');
+  document.getElementById("modalSelectedUser").classList.remove("d-none");
+  document.getElementById("modalUserCollection").classList.add("d-none");
 }
 
 /**
  * Generates all user avatars for the scrollable container: all users collection,
  * sets the blue border for avatar of the assigned user to the task,
  * sets the white border for the rest of user avatars.
- * @param {JSON} task - The selected task with all its properties (saved in 'allTasks' JSON).
  * @param {number} id - The value of id of the selected board task item.
  */
-function modalGenAllUser(task, id) {
-  let modalUserCollection = document.getElementById('modalUserCollection');
-  modalUserCollection.innerHTML = '';
+function modalGenAllUser(id) {
+  let modalUserCollection = document.getElementById("modalUserCollection");
+  modalUserCollection.innerHTML = "";
   for (let i = 1; i < users.length; i++) {
     const USER = users[i];
-    if (task.userForTask.avatar == USER.avatar) {
+    if (indexOflastSelectedUserOpenedModal == i) {
       modalUserCollection.innerHTML += blueBorderImg(USER, i, id);
     } else {
       modalUserCollection.innerHTML += whiteBorderImg(USER, i, id);
@@ -394,19 +404,19 @@ function modalGenAllUser(task, id) {
 /**
  * The HTML form element defining the type and scope of the HTML validation of the board modal.
  */
-let formBoard = document.getElementById('boardSubmit');
+let formBoard = document.getElementById("boardSubmit");
 
-formBoard.addEventListener('submit', handleFormIndex);
+formBoard.addEventListener("submit", handleFormIndex);
 
 /**
  * The toast used while closing the modal in the board.
  */
-const BOARD_TOAST = document.getElementById('boardToast');
+const BOARD_TOAST = document.getElementById("boardToast");
 
 /**
  * The instance of a bootstrap modal object used in the board (posibile edition of the task in the board modal).
  */
-const MY_MODAL = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+const MY_MODAL = new bootstrap.Modal(document.getElementById("staticBackdrop"));
 
 /**
  * Shows the toast and closes the modal after 1 second.
@@ -421,7 +431,7 @@ function handleFormIndex(event) {
   }, 1000);
 }
 
-window.addEventListener('resize', () => configDragDropPressHoldMode());
+window.addEventListener("resize", () => configDragDropPressHoldMode());
 
 /**
  * Changes the conditions of the start of the dragging for smartphones.

@@ -200,7 +200,7 @@
 
         <!-- #region modal -->
         <div
-          class="modal fade"
+          class="modal fade hiddenScrollbar"
           id="staticBackdrop"
           data-bs-keyboard="true"
           tabindex="-1"
@@ -300,16 +300,17 @@
                     <div
                       id="modalAssignedUser"
                       class="w-100 position-relative modalAssignedUser"
-                      onclick="modalShowAllUsers()"
                     >
                       <img
                         id="modalSelectedUser"
                         class="assigendToImg rounded-circle border border-4 border-primary m-1"
                         src="img/lukas.png"
+                        onclick="modalShowAllUsers()"
                       />
                       <div
                         id="modalUserCollection"
                         class="d-none modal-user-collection d-flex flex-column rounded"
+                        onclick="modalHideAllUsers()"
                         onmouseleave="modalHideAllUsers()"
                       ></div>
                     </div>

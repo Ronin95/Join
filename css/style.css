@@ -323,7 +323,7 @@ body {
 .carousel-item {
   padding: 8px;
   /* The speed of carousel sliding */
-  transition: all 400ms ease !important;
+  transition: all 550ms ease !important;
 }
 
 .carousel-indicators button {

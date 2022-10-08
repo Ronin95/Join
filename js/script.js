@@ -95,7 +95,7 @@ async function initAddTask() {
 }
 
 /**
- * Initially executed while loading every sub page (board, backlog, add task, help). 
+ * Initially executed while loading every sub page (board, backlog, add task, help).
  * Inserts the navbar html template to all mentioned before sub pages.
  */
 async function includeHTML() {
@@ -110,4 +110,14 @@ async function includeHTML() {
       ELEMENT.innerHTML = "Page not found";
     }
   }
+}
+
+/**
+ * Changes a relative link to an absolute link.
+ * @returns {string} An absolute link.
+ */
+function getRightSrcOfImg(HTMLElementWithId) {
+  let imgSrc = HTMLElementWithId.src;
+  let indexSrc = imgSrc.indexOf("img");
+  return "./" + imgSrc.substring(indexSrc, imgSrc.length);
 }

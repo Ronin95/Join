@@ -73,7 +73,7 @@ function genHTMLBoardTaskItem(task) {
     <!-- a column task item -->
     <div 
       id="${task.id}" 
-      class="card green board-border my-2" 
+      class="card green board-border my-2 cursor-pointer" 
       draggable="true" 
       ondragend="stopSlideJustOnDrop()"
       ondragstart="startDragging(${task["id"]})" 
