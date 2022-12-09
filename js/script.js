@@ -30,7 +30,7 @@ let users = [];
  */
 async function init() {
   await setURL(
-    "https://gruppe-293-join.developerakademie.net/smallest_backend_ever"
+    "https://nikola-badjevic.developerakademie.net/smallest_backend_ever"
   );
   await downloadFromServer();
   users = (await JSON.parse(backend.getItem("users"))) || [];
